@@ -1,0 +1,136 @@
+/* TODO: Implement dark mode */
+
+/*=====================
+Responsive
+=======================*/
+@custom-media --screen-sm (width >= 576px);
+
+@custom-media --screen-md (width >= 768px);
+
+@custom-media --screen-lg (width >= 992px);
+
+@custom-media --screen-xl (width >= 1200px);
+
+:root {
+    /*=====================
+    Colors
+    =======================*/
+    --primary: #08fd68;
+    --secondary: #fff;
+
+    --black: #181818;
+    --black-light: #1d1d1d;
+    --gray: #8d8d8d;
+    --red: #ff4d4d;
+    --green: #08fd20;
+    --green-dark: #0bd058;
+    --yellow: #fdf108;
+    --orange: #fdab08;
+    --purple: #a258ff;
+    --pink: #ff71e8;
+    --celeste: #63e8ff;
+    --blue: #305dff;
+}
+
+
+
+* {
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    transition: background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+        width: 6px; /* width of the entire scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+        /* background: var(--bg-body); /* color of the tracking area */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--primary); /* color of the scroll thumb */
+        border-radius: 4rem; /* roundness of the scroll thumb */
+    }
+
+    scrollbar-width: thin; /* "auto" or "thin" */
+    /* scrollbar-color: var(--primary) var(--bg-body); /* scroll thumb and track */
+
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+main {
+    display: grid;
+    align-content: start;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+
+    /*NOTE: 6.5rem is nabvar height */
+    /*NOTE: 15.0rem is rightbar width */
+    /* padding: 10.0rem 5% 10rem 5%; */
+
+    @media (--screen-md) {
+        padding: 5.0rem 10% 10rem 10%;
+    }
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    /* color: var(--font-color-h1); */
+    font-size: 4.0rem;
+    line-height: 4.0rem;
+    font-weight: bold;
+    @media (--screen-md) {
+        font-size: 5.0rem;
+        line-height: 5.0rem;
+    }
+    @media (--screen-xl) {
+        font-size: 6.0rem;
+        line-height: 6.0rem;
+    }
+}
+
+h6 {
+    color: var(--font-color-h6);
+    font-weight: normal;
+    font-size: 1.1rem;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 3px;
+}
+
+p {
+    font-size: 14px;
+    /* color: var(--font-color-p); */
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+figure {
+    padding: 0;
+    margin: 0;
+}
+
+figcaption {
+    /* color: var(--font-color-figcaption); */
+    font-size: 1.1rem;
+}
