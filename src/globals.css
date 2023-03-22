@@ -30,10 +30,17 @@ Responsive
     --pink: #ff71e8;
     --celeste: #63e8ff;
     --blue: #305dff;
+
+    --deepPurple: #190845;
 }
 
-
-
+@font-face{
+    font-family: Roboto;
+    src: url(../public/Roboto-Regular.ttf);
+}
+.Roboto{
+    font-family: Roboto;
+}
 * {
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
