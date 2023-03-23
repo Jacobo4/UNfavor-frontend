@@ -7,7 +7,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 // Styles
-import './globals.css';
+import '@styles/styles.css';
 // components
 import RequireAuth from "./router/RequireAuth";
 import Layout from './layout/index.layout';

@@ -1,15 +1,4 @@
-/* TODO: Implement dark mode */
-
-/*=====================
-Responsive
-=======================*/
-@custom-media --screen-sm (width >= 576px);
-
-@custom-media --screen-md (width >= 768px);
-
-@custom-media --screen-lg (width >= 992px);
-
-@custom-media --screen-xl (width >= 1200px);
+@import "@styles/responsive.css";
 
 :root {
     /*=====================
@@ -64,6 +53,7 @@ body {
     height: 100%;
     min-height: 100vh;
     overflow-x: hidden;
+    background: #DEFFF6;
 }
 
 main {
