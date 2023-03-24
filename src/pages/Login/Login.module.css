@@ -1,71 +1,73 @@
-@import "../../globals.css";
+@import "@styles/responsive.css";
 
 body{
-    margin: 0px;
-    /*font-family: 'Roboto';*/
-    
+    background: white;
 }
 
-.loginContainer{
+.loginContainer {
     /* display: grid; */
     /* grid-template-rows: auto; */
     width: 100%;
-    min-height: 1050px;
 }
-.sideVector{
+
+.sideVector {
     display: none;
 }
-.lowerVector{
-    
-    position: relative;
-    bottom: -280px;
+
+.lowerVector {
+    display: grid;
     @media (--screen-lg) {
         display: none;
     }
 }
-.topVector svg{
+
+.topVector svg {
     background: var(--deepPurple);
     @media (--screen-lg) {
         display: none;
     }
 }
 
-.lowerVector svg{
-    
+.lowerVector svg {
+
     background: var(--deepPurple);
     transform: rotate(180deg);
 }
-.logoContainer{
+
+.logoContainer {
     display: flex;
-    justify-content: center; 
-    margin: 3rem 2rem 0rem 2rem;; 
+    justify-content: center;
+    margin: 3rem 2rem 0rem 2rem;;
 }
-.logoContainer img{
+
+.logoContainer img {
     width: 57px;
     height: 58px;
 }
 
-.logoContainer h1{
+.logoContainer h1 {
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.formContainer{
+
+.formContainer {
     width: 100%;
-    height: 300px;
     margin-top: 20px;
     display: grid;
     justify-items: center;
     padding: 12px;
 }
-.formContainer h2{
+
+.formContainer h2 {
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     justify-self: center;
 }
-.otherLoginContainer p{
+
+.otherLoginContainer p {
     margin-top: 24px;
     font-size: 20px;
     line-height: 23px;
@@ -73,38 +75,43 @@ body{
     color: #190845;
 
 }
-.otherLoginContainer p a{
+
+.otherLoginContainer p a {
     font-weight: bolder;
     color: #190845;
-   
+
 }
-.otherLoginContainer div{
+
+.otherLoginContainer div {
     padding: 20px 0;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 }
-hr{
+
+hr {
     width: 30.5px;
     height: 0px;
-   
 
-border: 0.8px solid #000000;
+
+    border: 0.8px solid #000000;
 }
-.otherLoginContainer h2{
+
+.otherLoginContainer h2 {
     font-weight: bolder;
     color: #190845;
     font-size: 20px;
     line-height: 24px;
-    
+
 }
 
-.buttonsContainer{
+.buttonsContainer {
     display: grid;
     justify-content: center;
     padding: 24px 0;
     gap: 24px;
 }
-.googleButton{
+
+.googleButton {
     display: grid;
     grid-template-columns: 25% 75%;
     width: 200px;
@@ -117,31 +124,44 @@ border: 0.8px solid #000000;
     align-items: center;
 
 }
+
 button:hover,
 button:focus {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
     transform: translateY(-0.25em);
 }
-.googleButton img{
-    width: 46px;
-    height: 50px;
-    
+
+.googleButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 46px;
+        height: 50px;
+
+    }
+
+    p {
+        width: 136px;
+        height: 38px;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+
+        color: rgba(0, 0, 0, 0.54);
+
+    }
+
 }
-.googleButton p{
-    width: 136px;
-    height: 38px;
 
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: center;
 
-    color: rgba(0, 0, 0, 0.54);
-
-}
-.faceButton{
-    display: grid;
-    grid-template-columns: 25% 75%;
+.faceButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 200px;
     height: 60px;
     border: #FFFFFF;
@@ -150,19 +170,21 @@ button:focus {
     padding: 5px 0;
     align-items: center;
     border-radius: 16px;
-}
-.faceButton img{
-    width: 50px;
-    height: 50px;
-    
-}
-.faceButton p{
-    width: 136px;
-    height: 38px;
 
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: center;
-    color: #FFFFFF;
+    img {
+        width: 50px;
+        height: 50px;
+    }
+
+    p {
+        width: 136px;
+        height: 38px;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+
 }

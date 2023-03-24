@@ -1,8 +1,11 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
-import styles from './Form.module.css'
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import LockOpenIcon from '@mui/icons-material/LockOpen';
+// Core
+import React from 'react';
+// Form
+import { useForm } from 'react-hook-form';
+//Styles
+import styles from './Form.module.css';
+// Icons
+import {MdLockOpen, MdPersonOutline} from 'react-icons/md';
 
 type Profile = {
     email: string
@@ -29,14 +32,14 @@ export default function Form() {
                 
                 {errors.email?.type === 'required' && <p>El campo Email es obigatorio</p>}
                 {errors.email?.type === 'pattern' && <p>El campo Email no es correcto</p>}
-                <PersonOutlineIcon className={styles.icon}/>
+                <MdPersonOutline className={styles.icon}/>
             
                 
                 <input placeholder="Password" type="password" {...register('password', {
                     required:true,
                 })}   />
                 {errors.password?.type === 'required' && <p>El campo Password es obigatorio</p>}
-                <LockOpenIcon className={styles.icon}/>
+                <MdLockOpen className={styles.icon}/>
             
             
             <button className={styles.sendButton} type="submit">Iniciar sesión</button>
