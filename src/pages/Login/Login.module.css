@@ -2,7 +2,7 @@
 
 body{
     margin: 0px;
-    font-family: 'Roboto';
+    /*font-family: 'Roboto';*/
     
 }
 
@@ -19,13 +19,13 @@ body{
     
     position: relative;
     bottom: -280px;
-    @custom-media --screen-lg{
+    @media (--screen-lg) {
         display: none;
     }
 }
 .topVector svg{
     background: var(--deepPurple);
-    @custom-media --screen-lg{
+    @media (--screen-lg) {
         display: none;
     }
 }

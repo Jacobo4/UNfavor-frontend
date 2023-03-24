@@ -29,6 +29,7 @@ input{
 }
 button:hover,
 button:focus {
+    cursor: pointer;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
     transform: translateY(-0.25em);
 }

@@ -45,7 +45,7 @@ Responsive
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
     transition: background-color 0.3s ease-in-out,
-    color 0.3s ease-in-out;
+    color 0.3s ease-in-out, transform 0.3s ease-in-out;
     scroll-behavior: smooth;
 
     &::-webkit-scrollbar {
