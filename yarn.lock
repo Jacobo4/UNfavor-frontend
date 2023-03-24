@@ -546,10 +546,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@mui/base@5.0.0-alpha.121":
-  "integrity" "sha512-8nJRY76UqlJV+q/Yzo0tgGfPWEOa+4N9rjO81fMmcJqP0I6m54hLDXsjvMg4tvelY5eKHXUK6Tb7en+GHfTqZA=="
-  "resolved" "https://registry.npmjs.org/@mui/base/-/base-5.0.0-alpha.121.tgz"
-  "version" "5.0.0-alpha.121"
+"@mui/base@5.0.0-alpha.122":
+  "integrity" "sha512-IgZEFQyHa39J1+Q3tekVdhPuUm1fr3icddaNLmiAIeYTVXmR7KR5FhBAIL0P+4shlPq0liUPGlXryoTm0iCeFg=="
+  "resolved" "https://registry.npmjs.org/@mui/base/-/base-5.0.0-alpha.122.tgz"
+  "version" "5.0.0-alpha.122"
   dependencies:
     "@babel/runtime" "^7.21.0"
     "@emotion/is-prop-valid" "^1.2.0"
@@ -560,20 +560,27 @@
     "prop-types" "^15.8.1"
     "react-is" "^18.2.0"
 
-"@mui/core-downloads-tracker@^5.11.13":
-  "integrity" "sha512-lx+GXBR9h/ApZsEP728tl0pyZyuajto+VnBgsoAzw1d5+CbmOo8ZWieKwVUGxZlPT1wMYNUYS5NtKzCli0xYjw=="
-  "resolved" "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.13.tgz"
-  "version" "5.11.13"
+"@mui/core-downloads-tracker@^5.11.14":
+  "integrity" "sha512-rfc08z6+3Fif+Gopx2/qmk+MEQlwYeA+gOcSK048BHkTty/ol/boHuVeL2BNC/cf9OVRjJLYHtVb/DeW791LSQ=="
+  "resolved" "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.14.tgz"
+  "version" "5.11.14"
 
-"@mui/material@^5.11.13":
-  "integrity" "sha512-2CnSj43F+159LbGmTLLQs5xbGYMiYlpTByQhP7c7cMX6opbScctBFE1PuyElpAmwW8Ag9ysfZH1d1MFAmJQkjg=="
-  "resolved" "https://registry.npmjs.org/@mui/material/-/material-5.11.13.tgz"
-  "version" "5.11.13"
+"@mui/icons-material@^5.11.11":
+  "integrity" "sha512-Eell3ADmQVE8HOpt/LZ3zIma8JSvPh3XgnhwZLT0k5HRqZcd6F/QDHc7xsWtgz09t+UEFvOYJXjtrwKmLdwwpw=="
+  "resolved" "https://registry.npmjs.org/@mui/icons-material/-/icons-material-5.11.11.tgz"
+  "version" "5.11.11"
   dependencies:
     "@babel/runtime" "^7.21.0"
-    "@mui/base" "5.0.0-alpha.121"
-    "@mui/core-downloads-tracker" "^5.11.13"
-    "@mui/system" "^5.11.13"
+
+"@mui/material@^5.0.0", "@mui/material@^5.11.14":
+  "integrity" "sha512-uoiUyybmo+M+nYARBygmbXgX6s/hH0NKD56LCAv9XvmdGVoXhEGjOvxI5/Bng6FS3NNybnA8V+rgZW1Z/9OJtA=="
+  "resolved" "https://registry.npmjs.org/@mui/material/-/material-5.11.14.tgz"
+  "version" "5.11.14"
+  dependencies:
+    "@babel/runtime" "^7.21.0"
+    "@mui/base" "5.0.0-alpha.122"
+    "@mui/core-downloads-tracker" "^5.11.14"
+    "@mui/system" "^5.11.14"
     "@mui/types" "^7.2.3"
     "@mui/utils" "^5.11.13"
     "@types/react-transition-group" "^4.4.5"
@@ -602,10 +609,10 @@
     "csstype" "^3.1.1"
     "prop-types" "^15.8.1"
 
-"@mui/system@^5.11.13":
-  "integrity" "sha512-OWP0Alp6C8ufnGm9+CZcl3d+OoRXL2PnrRT5ohaMLxvGL9OfNcL2t4JOjMmA0k1UAGd6E/Ygbu5lEPrZSDlvCg=="
-  "resolved" "https://registry.npmjs.org/@mui/system/-/system-5.11.13.tgz"
-  "version" "5.11.13"
+"@mui/system@^5.11.14":
+  "integrity" "sha512-/MBv5dUoijJNEKEGi5tppIszGN0o2uejmeISi5vl0CLcaQsI1cd+uBgK+JYUP1VWvI/MtkWRLVSWtF2FWhu5Nw=="
+  "resolved" "https://registry.npmjs.org/@mui/system/-/system-5.11.14.tgz"
+  "version" "5.11.14"
   dependencies:
     "@babel/runtime" "^7.21.0"
     "@mui/private-theming" "^5.11.13"
