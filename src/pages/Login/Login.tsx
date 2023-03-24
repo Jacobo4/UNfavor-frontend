@@ -3,7 +3,7 @@ import styles from "./Login.module.css";
 import React from "react";
 import { useState } from "react";
 import Form from "./Form";
-import logo from "../../images/logo.png";
+import logo from "@assets/images/logo.png";
 const Login: React.FC = () => {
   return (
     <div className={styles.loginContainer}>

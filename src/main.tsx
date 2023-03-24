@@ -14,6 +14,7 @@ import Layout from './layout/index.layout';
 // Pages
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
+import Monitor from './pages/Monitor/Monitor';
 
 const router = createBrowserRouter([
     {
@@ -22,8 +23,12 @@ const router = createBrowserRouter([
         // errorElement: <ErrorPage />,
         children: [
             {
-                path: "home/",
+                path: "/",
                 element: <RequireAuth component={Home}/>
+            },
+            {
+                path: "/monitor",
+                element: <RequireAuth component={Monitor}/>
             },
         ],
     },
