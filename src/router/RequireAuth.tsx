@@ -14,10 +14,13 @@ const AccessDenied = () => {
         </div>
     )
 }
+
+
 //TODO: Find the correct type for the attribute "component"
 const RequireAuth = ({component: RouteComponent, ...rest}: {component: React.FC}) => {
     // TODO: Add login logic
     const isAuthenticated = true;
+    
     if (!isAuthenticated) {
         return <Navigate to={"/login"} replace/>
     }
