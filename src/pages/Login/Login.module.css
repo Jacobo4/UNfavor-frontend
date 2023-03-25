@@ -1,190 +1,210 @@
 @import "@styles/responsive.css";
 
-body{
+body {
     background: white;
 }
 
 .loginContainer {
-    /* display: grid; */
-    /* grid-template-rows: auto; */
     width: 100%;
+
+    @media (--screen-lg) {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
 
     button:hover,
     button:focus {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
         transform: translateY(-0.25em);
     }
-}
 
-.sideVector {
-    display: none;
-}
-
-.lowerVector {
-    display: grid;
-    @media (--screen-lg) {
-        display: none;
-    }
-}
-
-.topVector svg {
-    background: var(--deepPurple);
-    @media (--screen-lg) {
-        display: none;
-    }
-}
-
-.lowerVector svg {
-
-    background: var(--deepPurple);
-    transform: rotate(180deg);
-}
-
-.logoContainer {
-    display: flex;
-    justify-content: center;
-    margin: 3rem 2rem 0rem 2rem;;
-}
-
-.logoContainer img {
-    width: 57px;
-    height: 58px;
-}
-
-.logoContainer h1 {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 40px;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.formContainer {
-    width: 100%;
-    margin-top: 20px;
-    display: grid;
-    justify-items: center;
-    padding: 12px;
-}
-
-.formContainer h2 {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    justify-self: center;
-}
-
-.otherLoginContainer p {
-    margin-top: 24px;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    color: #190845;
-
-}
-
-.otherLoginContainer p a {
-    font-weight: bolder;
-    color: #190845;
-
-}
-
-.otherLoginContainer div {
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-}
-
-hr {
-    width: 30.5px;
-    height: 0px;
-
-
-    border: 0.8px solid #000000;
-}
-
-.otherLoginContainer h2 {
-    font-weight: bolder;
-    color: #190845;
-    font-size: 20px;
-    line-height: 24px;
-
-}
-
-.buttonsContainer {
-    display: grid;
-    justify-content: center;
-    padding: 24px 0;
-    gap: 24px;
-}
-
-.googleButton {
-    display: grid;
-    grid-template-columns: 25% 75%;
-    width: 200px;
-    height: 60px;
-    border: #FFFFFF;
-    background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 16px;
-    padding: 5px 0;
-    align-items: center;
-
-}
-
-.googleButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-        width: 46px;
-        height: 50px;
-
+    .lowerVector {
+        display: grid;
+        @media (--screen-lg) {
+            display: none;
+        }
     }
 
-    p {
-        width: 136px;
-        height: 38px;
+    .topVector svg {
+        background: var(--deepPurple);
+        @media (--screen-lg) {
+            display: none;
+        }
+    }
 
+    .logoContainer {
+        display: flex;
+        justify-content: center;
+        margin: 3rem 2rem 0rem 2rem;
+        @media (--screen-lg) {
+            margin: 0;
+        }
+    }
+
+    .logoContainer img {
+        width: 57px;
+        height: 58px;
+    }
+
+    .logoContainer h1 {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .formContainer {
+        width: 100%;
+        display: grid;
+        justify-items: center;
+        padding: 12px;
+        @media (--screen-lg) {
+            margin-top: 0px;
+        }
+    }
+
+    .formContainer h2 {
+        font-style: normal;
         font-weight: 700;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 24px;
+        justify-self: center;
+    }
+
+    .otherLoginContainer p {
+        margin-top: 24px;
+        font-size: 20px;
+        line-height: 23px;
         text-align: center;
+        color: #190845;
 
-        color: rgba(0, 0, 0, 0.54);
+    }
 
+    .otherLoginContainer p a {
+        font-weight: bolder;
+        color: #190845;
+
+    }
+
+    .otherLoginContainer div {
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    hr {
+        width: 30.5px;
+        height: 0px;
+
+
+        border: 0.8px solid #000000;
+    }
+
+    .otherLoginContainer h2 {
+        font-weight: bolder;
+        color: #190845;
+        font-size: 20px;
+        line-height: 24px;
+
+    }
+
+    .buttonsContainer {
+        display: grid;
+        justify-content: center;
+        padding: 24px 0;
+        gap: 24px;
+    }
+
+    .googleButton {
+        display: grid;
+        grid-template-columns: 25% 75%;
+        width: 200px;
+        height: 60px;
+        border: #FFFFFF;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 16px;
+        padding: 5px 0;
+        align-items: center;
+
+    }
+
+    .googleButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 46px;
+            height: 50px;
+
+        }
+
+        p {
+            width: 136px;
+            height: 38px;
+
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+
+            color: rgba(0, 0, 0, 0.54);
+
+        }
+
+    }
+
+
+    .faceButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 60px;
+        border: #FFFFFF;
+        background: #1877F2;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        padding: 5px 0;
+        align-items: center;
+        border-radius: 16px;
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+
+        p {
+            width: 136px;
+            height: 38px;
+
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+    }
+
+
+    .sideDecors {
+        position: relative;
+        height: 100vh;
+        display: grid;
+        align-items: center;
+
+        svg {
+            position: absolute;
+
+            &:first-child {
+                left: -65px;
+                z-index: 2;
+            }
+        }
     }
 
 }
 
-
-.faceButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 60px;
-    border: #FFFFFF;
-    background: #1877F2;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 5px 0;
-    align-items: center;
-    border-radius: 16px;
-
-    img {
-        width: 50px;
-        height: 50px;
-    }
-
-    p {
-        width: 136px;
-        height: 38px;
-
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 19px;
-        text-align: center;
-        color: #FFFFFF;
-    }
-
-}
