@@ -46,7 +46,7 @@ const Header: React.FC = () => {
                     </li>
                     <span className={styles['line']}></span>
                     <li>
-                        <Link to="/">Mis favores <TiMessages/></Link>
+                        <Link to="/monitor">Mis favores <TiMessages/></Link>
                     </li>
                     <span className={styles['line']}></span>
                 </ul>

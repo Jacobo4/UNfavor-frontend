@@ -23,16 +23,10 @@
     --deepPurple: #190845;
 }
 
-@font-face{
-    font-family: Roboto;
-    src: url(../public/Roboto-Regular.ttf);
-}
-.Roboto{
-    font-family: Roboto;
-}
+
 * {
     box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Roboto', 'sans-serif';
     transition: background-color 0.3s ease-in-out,
     color 0.3s ease-in-out, transform 0.3s ease-in-out;
     scroll-behavior: smooth;
