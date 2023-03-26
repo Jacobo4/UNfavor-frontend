@@ -10,7 +10,7 @@
             padding: 0 10px;
             background: #DEFFF6;
         }
-         button {
+         a {
              display: grid;
              gap: 5px;
              grid-auto-flow: column;

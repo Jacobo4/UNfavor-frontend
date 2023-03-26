@@ -1,5 +1,7 @@
 // Core
 import React from "react";
+// Router
+import { Link } from "react-router-dom";
 //Styles
 import styles from './Monitor.module.css';
 // Icons
@@ -57,7 +59,7 @@ const Monitor: React.FC = () => {
     <div className={styles['Monitor']}>
         <div className={styles['actions']}>
             <div className={styles['action-wrapper']}>
-                <button type={"button"}>Chat <BsChatDots/></button>
+                <Link to="/chat" type={"button"}>Chat <BsChatDots/></Link>
             </div>
             <hr/>
         </div>

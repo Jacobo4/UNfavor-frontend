@@ -1,0 +1,112 @@
+@import '@styles/responsive.css';
+
+main {
+    padding: 0;
+}
+
+.Chat {
+    background: #FFFFFF;
+
+    @media (--screen-md) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        border-radius: 16px;
+        max-width: 1440px;
+        width: 100%;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .details {
+        display: grid;
+        align-items: center;
+        border-bottom: 0.5px solid #E5E5E5;
+        @media (--screen-md) {
+            align-content: baseline;
+        }
+
+        &__header {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            @media (--screen-md) {
+                background: #6951AE;
+                padding: 16px;
+            }
+
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+
+            h4 {
+                gap: 4px;
+                font-weight: 700;
+                font-size: 20px;
+                @media (--screen-md) {
+                    color: white;
+                }
+
+                span {
+                    font-weight: lighter;
+                    color: #A8A8A8;
+                    @media (--screen-md) {
+                        color: white;
+                    }
+                    svg{
+                        @media (--screen-md) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__info {
+            display: grid;
+            gap: 8px;
+            padding: 14px;
+            border-bottom: 0.5px solid #E5E5E5;
+
+            @media (--screen-md) {
+                display: grid !important;
+                border: none;
+
+            }
+
+            &--close {
+                display: none;
+            }
+
+            h2 {
+                text-align: center;
+                color: #3F3D56;
+            }
+
+            span {
+                text-align: center;
+                color: #502DB4;
+            }
+
+            p {
+                text-align: justify;
+            }
+
+            img {
+                filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.25));
+                border-radius: 32px;
+            }
+        }
+    }
+
+
+}
