@@ -15,6 +15,7 @@ import Layout from './layout/index.layout';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Monitor from './pages/Monitor/Monitor';
+import Profile from './pages/Profile/Profile'
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             {
                 path: "/monitor",
                 element: <RequireAuth component={Monitor}/>
+            },
+            {
+                path: "/profile",
+                element: <RequireAuth component={Profile}/>
             },
         ],
     },

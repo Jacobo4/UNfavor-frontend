@@ -1,0 +1,10 @@
+@import "@styles/responsive.css";
+
+.Profile{
+    .avatar {
+        justify-self: flex-end;
+        @media (--screen-sm) {
+            order: 2;
+        }
+    }
+}
