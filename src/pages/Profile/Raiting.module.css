@@ -1,0 +1,14 @@
+@import "@styles/responsive.css";
+
+.stars{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 16px;
+    svg{
+        color: #FFDF00;
+        width: 25px;
+        height: 25px;
+        
+    }
+}
