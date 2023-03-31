@@ -8,13 +8,15 @@ import favor from "@assets/images/favor.png";
 const Profile: React.FC = () => {
   return (
     <div className={styles["Profile"]}>
-      <nav></nav>
+      
       <div className={styles["profileData"]}>
         <figure className={styles["avatar"]}>
           <img src={avatar} alt="" />
         </figure>
+        <div className={styles["userInfo"]}>
         <h2>Juana Perez</h2>
         <span>juana_paint</span>
+        </div>
         <div className={styles["divRaitings"]}>
           <h3>Favores Realizados</h3>
           <span>13</span>
@@ -35,7 +37,7 @@ const Profile: React.FC = () => {
           <h3>Fecha realización:</h3>
           <span>14/03/2023</span>
           <h3>Favor realizado para:</h3>
-          <figure className={styles["avatar"]}>
+          <figure className={styles["avatarHist"]}>
             <img src={avatar} alt="" />
           </figure>
           <h3>Calificación:</h3>

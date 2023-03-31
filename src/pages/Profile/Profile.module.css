@@ -1,16 +1,20 @@
 @import "@styles/responsive.css";
 
 .Profile {
-  justify-content: center;
-  padding: 5px;
+  padding: 20px 8px;
+  display: grid;
+  @media (--screen-lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: 46px;
+    padding: 56px 8px;
+  }
   .profileData {
     margin: 0;
     background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 12px;
     padding: 22px;
-    display: grid;
-    justify-content: center;
+
     .avatar {
       display: grid;
       height: auto;
@@ -20,28 +24,43 @@
       @media (--screen-sm) {
         order: 2;
       }
+      @media (--screen-lg) {
+        margin: 20px;
+      }
       img {
         width: 100%;
         max-width: 100px;
       }
     }
-    h2 {
-      font-weight: 700;
-      font-size: 24px;
-      text-align: center;
-
-      color: var(--deepPurple);
-
-      backdrop-filter: blur(2px);
+    .userInfo {
+      display: grid;
+      @media (--screen-lg) {
+        padding: 28px;
+      }
+      h2 {
+        font-weight: 700;
+        font-size: 24px;
+        text-align: center;
+        color: var(--deepPurple);
+        backdrop-filter: blur(2px);
+        @media (--screen-lg) {
+          font-weight: 700;
+          font-size: 40px;
+        }
+      }
+      span {
+        font-weight: 300;
+        font-size: 18px;
+        text-align: center;
+        backdrop-filter: blur(2px);
+        color: var(--deepPurple);
+        @media (--screen-lg) {
+          font-weight: 700;
+          font-size: 32px;
+        }
+      }
     }
-    span {
-      font-weight: 300;
-      font-size: 18px;
-      text-align: center;
-      backdrop-filter: blur(2px);
-      color: var(--deepPurple);
-    }
-    .divRaitings{
+    .divRaitings {
       margin: 10px 0;
       background: rgba(0, 212, 166, 0.7);
       border-radius: 12px;
@@ -49,17 +68,30 @@
       display: grid;
       width: 100%;
       justify-content: center;
+      @media (--screen-lg) {
+        padding: 20px;
+        margin: 32px 0;
+      }
       h3 {
         font-weight: 600;
         font-size: 20px;
         color: #000000;
         padding: 16px;
+        @media (--screen-lg) {
+          font-weight: 600;
+          font-size: 36px;
+        }
       }
       span {
         margin: 12px 0;
         font-weight: 400;
         font-size: 16px;
+        text-align: center;
         color: #000000;
+        @media (--screen-lg) {
+          font-weight: 600;
+          font-size: 32px;
+        }
       }
     }
   }
@@ -72,16 +104,27 @@
     justify-items: center;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 13px;
-    h2{
-        font-weight: 400;
-        font-size: 24px;
-        color: #190845;
-        text-align: center;
-        padding: 16px;
+    @media (--screen-lg) {
+      margin: 0;
+    }
+    h2 {
+      font-weight: 400;
+      font-size: 24px;
+      color: #190845;
+      text-align: center;
+      padding: 16px;
+      @media (--screen-lg) {
+        font-weight: 500;
+        font-size: 40px;
+      }
     }
     h2:first-child {
       font-weight: 700;
       justify-self: center;
+      @media (--screen-lg) {
+        font-weight: 700;
+        font-size: 40px;
+      }
     }
     h4 {
       font-weight: 700;
@@ -89,37 +132,54 @@
       text-align: center;
       justify-self: center;
       color: #00d4a6;
+      @media (--screen-lg) {
+        font-weight: 700;
+        font-size: 32px;
+      }
     }
-    
+
     .imgFav {
+      filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.25));
+      border-radius: 32px;
+      img {
+        width: 100%;
         
-        background: url(image.png);
-        filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.25));
-        border-radius: 32px;
-        img{
-            width: 100%;
-            max-width: 250px;
+        @media (--screen-lg) {
+            width: 312px;
         }
+      }
     }
-    h3{
+    h3 {
+      font-weight: 600;
+      font-size: 20px;
+      justify-self: baseline;
+      @media (--screen-lg) {
+        justify-self: center;
         font-weight: 600;
-        font-size: 20px;
-        justify-self: baseline;
+        font-size: 32px;
+      }
     }
-    span{
+    span {
+      font-weight: 400;
+      font-size: 16px;
+      padding: 16px;
+      @media (--screen-lg) {
         font-weight: 400;
-        font-size: 16px;
-        padding: 16px;
+        font-size: 24px;
+      }
     }
-    figure{
-        height:auto;
-        padding: 12px;
-        .avatar{
+    .avatarHist {
+      height: auto;
+      padding: 12px;
+       img{
+        width: 50px;
+        height: 50px;
+        @media (--screen-lg) {
+            width: 100px;
+            height: 100px;
             
-            width: 50px;
-            height: 50px;
-        }
+          }
+      }
     }
-    
   }
 }
