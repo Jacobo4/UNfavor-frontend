@@ -16,6 +16,7 @@ import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Monitor from './pages/Monitor/Monitor';
 import Match from './pages/Match/Match';
+import Profile from './pages/Profile/Profile'
 
 const router = createBrowserRouter([
     {
@@ -35,14 +36,17 @@ const router = createBrowserRouter([
                 path: "/match",
                 element: <RequireAuth component={Match}/>
             },
-           
+
+            {
+                path: "/profile",
+                element: <RequireAuth component={Profile}/>
+            },
         ],
     },
     {
         path: "/login",
         element: <Login/>
     },
-    
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
