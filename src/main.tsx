@@ -15,7 +15,7 @@ import Layout from './layout/index.layout';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Monitor from './pages/Monitor/Monitor';
-import Chat from './pages/Chat/Chat';
+import Match from './pages/Match/Match';
 
 const router = createBrowserRouter([
     {
@@ -32,15 +32,17 @@ const router = createBrowserRouter([
                 element: <RequireAuth component={Monitor}/>
             },
             {
-                path: "/chat",
-                element: <RequireAuth component={Chat}/>
+                path: "/match",
+                element: <RequireAuth component={Match}/>
             },
+           
         ],
     },
     {
         path: "/login",
         element: <Login/>
     },
+    
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
