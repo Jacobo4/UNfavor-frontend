@@ -49,7 +49,8 @@
             width: 58px;
             height: 58px;
         }
-
+        /*Drop Down Menu display*/
+        
         h1 {
             font-style: normal;
             line-height: normal;
@@ -61,7 +62,6 @@
     }
 
     .avatar {
-        justify-self: flex-end;
         @media (--screen-md) {
             order: 2;
         }
@@ -122,5 +122,27 @@
                 content: "a";
             }
         }
+    }
+    .dropDownMenu{
+        justify-self: flex-end;
+        display: grid;
+        
+        @media (--screen-md) {
+            grid-auto-flow: column;
+            align-content: center;
+            gap: 4px;
+            align-items: center;
+            order: 2;
+        }
+    }
+    .buttonDropDown{
+        height: auto ;
+    width:auto ;
+    display: grid;
+    padding: 0rem;
+            grid-auto-flow: column;
+            align-content: center;
+            gap: 4px;
+            align-items: center;
     }
 }

@@ -12,14 +12,22 @@ import {FiMenu} from 'react-icons/fi';
 // Images
 import avatar from "@assets/images/avatar.png";
 import logo from "@assets/images/logo.png";
-
+import {Button, Menu,MenuItem,Fade} from '@mui/material/'
 const Header: React.FC = () => {
 
     const [isOpen, toggleMenu] = useState<boolean>(false);
     const handleMenuClick = () => {
         toggleMenu(!isOpen);
     }
-
+    
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleCloseDropMenu = () => {
+      setAnchorEl(null);
+    };
 
     return (
         <div className={styles['Header']}>
@@ -29,11 +37,39 @@ const Header: React.FC = () => {
                 <img src={logo} alt="" />
                 <h1>UNfavor</h1>
             </figure>
-
-            <figure className={styles['avatar']}>
+            
+            <div className={styles['dropDownMenu']}>
+                <Button 
+                    id="buttonDropDown"
+                    className={styles['buttonDropDown']}
+                    aria-controls={open ? 'fade-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}
+                >
+                    <figure className={styles['avatar']}>
                 <img src={avatar} alt="" />
-            </figure>
-
+                </figure>
+                    
+                </Button>
+                <Menu
+                    id="fade-menu"
+                    MenuListProps={{
+                    'aria-labelledby': 'buttonDropDown',
+                    }}
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleCloseDropMenu}
+                    TransitionComponent={Fade}
+                >
+                    <MenuItem component={Link} to="/Profile"onClick={handleCloseDropMenu}>Perfil</MenuItem>
+                    <MenuItem component={Link} to="#"onClick={handleCloseDropMenu}>Configuración</MenuItem>
+                    <MenuItem component={Link} to="#"onClick={handleCloseDropMenu}>Cerrar Sesión</MenuItem>
+                </Menu>
+            </div>
+                
+                
+            
             <nav className={`${styles['menu']} ${!isOpen ? styles['menu--close'] : ''}`}>
                 <ul>
                     <li>
@@ -51,10 +87,19 @@ const Header: React.FC = () => {
                     <span className={styles['line']}></span>
                 </ul>
             </nav>
-
+            
 
         </div>
     )
 }
-
-export default Header
+const DropDownMenu: React.FC = () =>{
+    return(
+        <Menu>
+            <Menu.Button>Hola</Menu.Button>
+            <Menu.Items>
+                
+            </Menu.Items>
+        </Menu>
+    )
+}
+export default Header;
