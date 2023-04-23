@@ -147,7 +147,7 @@ h2 {
       gap: 20px;
     }
   }
-  button {
+  .settings {
     width: 210px;
     height: 48px;
     margin-top: 16px;
@@ -165,8 +165,8 @@ h2 {
       font-size: 24px;
   }
   }
-  button:hover,
-  button:focus {
+  .settings:hover,
+  .settings:focus {
     cursor: pointer;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
     transform: translateY(-0.25em);

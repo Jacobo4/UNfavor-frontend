@@ -3,7 +3,7 @@ import React from "react";
 // Form
 import { useForm } from "react-hook-form";
 //Styles
-import styles from "./SettingForm.module.css";
+
 // Icons
 
 type publicProfile = {
@@ -27,7 +27,7 @@ export default function Form() {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <div className={styles.formContainer}>
+        <div>
           <h3>Nombre completo: </h3>
           <input
             type="text"
@@ -35,7 +35,7 @@ export default function Form() {
               required: true,
             })}
             placeholder="Nombre completo"
-            className={styles.emailInput}
+            
           />
 
           {errors.fullName?.type === "required" && (
@@ -48,7 +48,7 @@ export default function Form() {
               required: true,
             })}
             placeholder="Contraseña"
-            className={styles.emailInput}
+            
           />
 
           {errors.password?.type === "required" && (
@@ -61,7 +61,7 @@ export default function Form() {
               required: true,
             })}
             placeholder="Edad"
-            className={styles.emailInput}
+            
           />
 
           {errors.age?.type === "required" && (
@@ -79,7 +79,7 @@ export default function Form() {
             <p>El campo Telefono es obigatorio</p>
           )}
 
-          <button className={styles.sendButton} type="submit">
+          <button type="submit">
             Guardar cambios
           </button>
         </div>

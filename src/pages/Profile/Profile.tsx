@@ -50,7 +50,7 @@ const Profile: React.FC = () => {
           <span>12/09/2020</span>
         </div>
       </div>
-      <button>Editar perfil</button>
+      <button className={styles["settings"]}>Editar perfil</button>
       <div className={styles["historial"]}>
         <h2>Historial</h2>
 
