@@ -92,14 +92,4 @@ const Header: React.FC = () => {
         </div>
     )
 }
-const DropDownMenu: React.FC = () =>{
-    return(
-        <Menu>
-            <Menu.Button>Hola</Menu.Button>
-            <Menu.Items>
-                
-            </Menu.Items>
-        </Menu>
-    )
-}
 export default Header;
