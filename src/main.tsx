@@ -17,6 +17,7 @@ import Login from './pages/Login/Login';
 import Monitor from './pages/Monitor/Monitor';
 import Match from './pages/Match/Match';
 import Profile from './pages/Profile/Profile'
+import SettingsProfile from './pages/Profile/SettingsProfile';
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
                 path: "/profile",
                 element: <RequireAuth component={Profile}/>
             },
+            {
+                path: "profile/settings",
+                element: <RequireAuth component={SettingsProfile}/>
+            }
         ],
     },
     {
