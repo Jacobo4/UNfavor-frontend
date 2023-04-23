@@ -14,7 +14,7 @@ const Login: React.FC = () => {
 
             <div className={styles.otherLoginContainer}>
                 <p>
-                    No tienes una cuenta? <Link to={"/auth/register"}>Regístrate aquí</Link>
+                    No tienes una cuenta? <Link to={"/auth/signin"}>Regístrate aquí</Link>
                 </p>
                 <div>
                     <hr/>

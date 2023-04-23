@@ -25,7 +25,7 @@ import Match from './pages/Match/Match';
 import Profile from './pages/Profile/Profile'
 import Chat from './pages/Chat/Chat';
 import Auth from "./pages/Auth/Auth";
-import Register from "./pages/Auth/Register/Register";
+import SignIn from "./pages/Auth/SignIn/SignIn";
 
 
 const router = createBrowserRouter([
@@ -65,8 +65,8 @@ const router = createBrowserRouter([
                 element: <Login/>
             },
             {
-                path: "/auth/register",
-                element: <Register/>
+                path: "/auth/signin",
+                element: <SignIn/>
             },
         ],
     },

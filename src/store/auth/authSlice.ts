@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {login, LoginSuccess, LoginFailure} from '@store/auth/authAsyncActions';
 import {toast} from "react-toastify";
-import {clearAuthTokens} from "axios-jwt";
+import {clearAuthTokens, getAccessToken} from "axios-jwt";
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected' | 'idle';
 export interface AuthState {
@@ -9,6 +9,7 @@ export interface AuthState {
     userInfo: any;
     error: string | null | any;
     toastLoaderId: number | string;
+    isLogged: boolean;
 };
 
 
@@ -17,6 +18,7 @@ const initialState: AuthState = {
     userInfo: null,
     error: null,
     toastLoaderId: null,
+    isLogged: !!getAccessToken(),
 };
 
 
@@ -29,6 +31,7 @@ const authSlice = createSlice({
             state.status = 'idle';
             state.userInfo = null;
             state.error = null;
+            state.isLogged = false;
         },
     },
 
@@ -40,9 +43,8 @@ const authSlice = createSlice({
                 state.error = null;
             })
             .addCase(login.fulfilled, (state:AuthState, action ) => {
-                const {access, refresh} = action.payload as LoginSuccess;
                 toast.dismiss(state.toastLoaderId);
-                // toast.success('Login successful!', {position: 'top-center', autoclose: 1500});
+                state.isLogged = true;
                 state.status = 'fulfilled';
             })
             .addCase(login.rejected, (state:AuthState, action) => {

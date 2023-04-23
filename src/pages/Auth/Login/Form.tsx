@@ -11,11 +11,12 @@ import styles from './Form.module.css';
 // Icons
 import {MdLockOpen, MdPersonOutline} from 'react-icons/md';
 import {useAppDispatch, useAppSelector} from '@store/hooks';
+import {isLoggedIn} from "axios-jwt";
 
 export default function Form() {
     const {register, handleSubmit, formState: {errors}} = useForm();
 
-    const {status, error, authToken} = useAppSelector((state) => state.auth);
+    const {isLogged} = useAppSelector((state) => state.auth);
     const dispatch = useAppDispatch();
 
     const navigate = useNavigate()
@@ -27,10 +28,8 @@ export default function Form() {
 
     // redirect authenticated user to profile screen
     useEffect(() => {
-        if (authToken) {
-            navigate('/')
-        }
-    }, [navigate, authToken])
+        if (isLogged) navigate('/');
+    }, [navigate, isLogged]);
 
 
     return (
