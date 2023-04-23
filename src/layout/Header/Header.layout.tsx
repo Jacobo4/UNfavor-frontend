@@ -12,12 +12,19 @@ import {FiMenu} from 'react-icons/fi';
 // Images
 import avatar from "@assets/images/avatar.png";
 import logo from "@assets/images/logo.png";
+import {logout} from "@store/auth/authSlice";
+import { useAppDispatch } from "@store/hooks";
 
 const Header: React.FC = () => {
 
     const [isOpen, toggleMenu] = useState<boolean>(false);
+    const dispatch = useAppDispatch();
     const handleMenuClick = () => {
         toggleMenu(!isOpen);
+    }
+
+    const handleLogout = () => {
+        dispatch(logout())
     }
 
 
@@ -36,6 +43,9 @@ const Header: React.FC = () => {
 
             <nav className={`${styles['menu']} ${!isOpen ? styles['menu--close'] : ''}`}>
                 <ul>
+                     <li>
+                        <button onClick={handleLogout}>cerrar sesión</button>
+                    </li>
                     <li>
                         <Link to="/">Buscar favores <BsSearch/></Link>
                     </li>

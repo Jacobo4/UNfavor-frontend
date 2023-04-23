@@ -1,0 +1,79 @@
+@import "@styles/responsive.css";
+
+body {
+    background: white;
+}
+
+.loginContainer {
+    width: 100%;
+
+    @media (--screen-lg) {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    button:hover,
+    button:focus {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
+        transform: translateY(-0.25em);
+    }
+
+    .lowerVector {
+        display: grid;
+        @media (--screen-lg) {
+            display: none;
+        }
+    }
+
+    .topVector svg {
+        background: var(--deepPurple);
+        @media (--screen-lg) {
+            display: none;
+        }
+    }
+
+    .logoContainer {
+        display: flex;
+        justify-content: center;
+        @media (--screen-lg) {
+            margin: 0;
+        }
+
+        img {
+            width: 57px;
+            height: 58px;
+        }
+
+        h1 {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 40px;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+
+    .sideDecors {
+        position: relative;
+        height: 100vh;
+        display: none;
+        align-items: center;
+
+        @media (--screen-lg) {
+            display: grid;
+        }
+
+        svg {
+            position: absolute;
+
+            &:first-child {
+                left: -65px;
+                z-index: 2;
+            }
+        }
+    }
+}
+

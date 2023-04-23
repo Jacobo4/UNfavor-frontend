@@ -2,10 +2,10 @@
 import styles from "./MatchingCard.module.css";
 import React from "react";
 
-import { SlLike } from 'react-icons/Sl'; //Like icon  import
+import { SlLike } from 'react-icons/sl'; //Like icon  import
 import { AiFillHeart } from 'react-icons/ai'; //Heart icon import
-import { SlDislike } from 'react-icons/Sl'; //Dislike icon  import
-import { TbHeartHandshake } from 'react-icons/Tb'; //Dislike icon  import
+import { SlDislike } from 'react-icons/sl'; //Dislike icon  import
+import { TbHeartHandshake } from 'react-icons/tb'; //Dislike icon  import
 import { useState } from "react";
 
 import fotoFavour1 from "@assets/images/favour1.jpg";

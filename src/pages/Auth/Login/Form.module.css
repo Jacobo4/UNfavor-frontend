@@ -1,12 +1,7 @@
-.formContainer {
-    margin-top: 12px;
+.Form {
     display: grid;
     justify-content: center;
-
-    main {
-        padding: 10px;
-        max-height: 400px;
-    }
+    gap: 16px;
 
     button:hover,
     button:focus {
@@ -15,12 +10,17 @@
         transform: translateY(-0.25em);
     }
 
+    > div{
+        display: grid;
+        position: relative;
+        grid-gap: 12px;
+    }
+
     input {
         border: none;
-        width: 284px;
-        height: 50px;
-        left: 0px;
-        top: 0px;
+        width: 100%;
+        max-width: 300px;
+        padding: 12px;
         background: rgba(170, 212, 200, 0.15);
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 16px;
@@ -29,18 +29,21 @@
         position: relative;
         text-align: center;
     }
+    p {
+        font-size: 14px;
+        color: var(--salmon);
+        text-align: center;
+    }
 
     .icon {
-        position: relative;
+        position: absolute;
         left: 20px;
-        top: -35px;
-
+        top: 15px;
     }
 
     .sendButton {
         width: 210px;
         height: 48px;
-        margin-top: 16px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 16px;
         color: #FFFFFF;

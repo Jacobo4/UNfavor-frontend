@@ -107,6 +107,14 @@
     @media (--screen-lg) {
       margin: 0;
     }
+
+    overflow-y: scroll;
+
+    .favorCard{
+      border: 1px solid red;
+      border-radius: 16px;
+
+    }
     h2 {
       font-weight: 400;
       font-size: 24px;

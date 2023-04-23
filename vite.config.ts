@@ -16,6 +16,7 @@ export default defineConfig({
       '@styles' : path.resolve(__dirname, './src/styles'),
       '@components' : path.resolve(__dirname, './src/components'),
       '@router' : path.resolve(__dirname, './src/router'),
+      '@store' : path.resolve(__dirname, './src/store'),
     },
   },
   plugins: [react(),svgr()],

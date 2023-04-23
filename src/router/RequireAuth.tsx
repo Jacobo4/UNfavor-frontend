@@ -4,6 +4,7 @@ import React from "react";
 import {Navigate} from "react-router-dom";
 //Icons
 import {BsShieldLockFill} from "react-icons/bs";
+import {useAppSelector} from "@store/hooks";
 
 //TODO: Style this page
 const AccessDenied = () => {
@@ -18,11 +19,11 @@ const AccessDenied = () => {
 
 //TODO: Find the correct type for the attribute "component"
 const RequireAuth = ({component: RouteComponent, ...rest}: {component: React.FC}) => {
-    // TODO: Add login logic
-    const isAuthenticated = true;
-    
-    if (!isAuthenticated) {
-        return <Navigate to={"/login"} replace/>
+
+    const {authToken} = useAppSelector((state) => state.auth);
+
+    if (!authToken) {
+        return <Navigate to={"/auth/login"} replace/>
     }
     else {
         return <RouteComponent {...rest}/>
