@@ -19,7 +19,7 @@ export default function Form() {
     const {isLogged} = useAppSelector((state) => state.auth);
     const dispatch = useAppDispatch();
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
 
     const onSubmit = handleSubmit((data: LoginCredentials) => {
@@ -40,16 +40,16 @@ export default function Form() {
                     pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
                 })} placeholder="Email"/>
 
-                {errors.email?.type === 'required' && <p>El campo email es obigatorio</p>}
-                {errors.email?.type === 'pattern' && <p>El campo email no es correcto</p>}
-                <MdPersonOutline className={styles.icon}/>
+                {errors.email?.type === 'required' && <span>El campo email es obigatorio</span>}
+                {errors.email?.type === 'pattern' && <span>El campo email no es correcto</span>}
+                <MdPersonOutline/>
             </div>
             <div>
                 <input placeholder="Password" type="password" {...register('password', {
                     required: true,
                 })}   />
-                {errors.password?.type === 'required' && <p>El campo password es obigatorio</p>}
-                <MdLockOpen className={styles.icon}/>
+                {errors.password?.type === 'required' && <span>El campo password es obigatorio</span>}
+                <MdLockOpen />
             </div>
 
             <div>

@@ -1,7 +1,7 @@
 // Core
 import React, {useState} from "react";
 // Router
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 // Styles
 import styles from './Header.module.css';
 // Icons
@@ -12,13 +12,15 @@ import {FiMenu} from 'react-icons/fi';
 // Images
 import avatar from "@assets/images/avatar.png";
 import logo from "@assets/images/logo.png";
-import {logout} from "@store/auth/authSlice";
+import { logout } from "@store/auth/authSlice";
 import { useAppDispatch } from "@store/hooks";
 
 import {Button, Menu,MenuItem,Fade} from '@mui/material/'
 const Header: React.FC = () => {
 
     const [isOpen, toggleMenu] = useState<boolean>(false);
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const handleMenuClick = () => {
         toggleMenu(!isOpen);
     }
@@ -70,9 +72,9 @@ const Header: React.FC = () => {
                     onClose={handleCloseDropMenu}
                     TransitionComponent={Fade}
                 >
-                    <MenuItem component={Link} to="/Profile"onClick={handleCloseDropMenu}>Perfil</MenuItem>
-                    <MenuItem component={Link} to="#"onClick={handleCloseDropMenu}>Configuración</MenuItem>
-                    <MenuItem component={Link} to="#"onClick={handleCloseDropMenu}>Cerrar Sesión</MenuItem>
+                    <MenuItem onClick={() => navigate('/profile')}>Perfil</MenuItem>
+                    <MenuItem onClick={() => navigate('/profile/settings')}>Configuración</MenuItem>
+                    <MenuItem onClick={handleLogout}>Cerrar Sesión</MenuItem>
                 </Menu>
             </div>
 
@@ -80,15 +82,15 @@ const Header: React.FC = () => {
 
             <nav className={`${styles['menu']} ${!isOpen ? styles['menu--close'] : ''}`}>
                 <ul>
-                    <li>
-                        <Link to="/">Buscar favores <BsSearch/></Link>
-                    </li>
-                    <span className={styles['line']}></span>
+                    {/*<li>*/}
+                    {/*    <Link to="/">Buscar favores <BsSearch/></Link>*/}
+                    {/*</li>*/}
+                    {/*<span className={styles['line']}></span>*/}
 
-                    <li>
-                        <Link to="/">Crear favor <AiOutlinePlusCircle/></Link>
-                    </li>
-                    <span className={styles['line']}></span>
+                    {/*<li>*/}
+                    {/*    <Link to="/">Crear favor <AiOutlinePlusCircle/></Link>*/}
+                    {/*</li>*/}
+                    {/*<span className={styles['line']}></span>*/}
                     <li>
                         <Link to="/monitor">Mis favores <TiMessages/></Link>
                     </li>

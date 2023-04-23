@@ -21,19 +21,30 @@ type FormProps = {
         password: string,
         phone: string,
         age: number,
-        user_reviews_num: string,
-        user_reviews_sum: string,
-        user_favors: Array<string>
     },
     favor: {
         title: string,
         description: string,
-        price: number,
         location: string
     }
 }
 export default function Form() {
-    const {register, handleSubmit, formState: {errors}, control} = useForm();
+    const {register, handleSubmit, formState: {errors}, control} = useForm<FormProps>({
+        defaultValues: {
+            user: {
+                name: "Juan",
+                email: "juan@gmail.com",
+                password: "123",
+                phone: "123",
+                age: 19,
+            },
+            favor: {
+                title: "My favor",
+                description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consectetur delectus explicabo id iure maiores maxime quaerat quasi quos tempora. Ab adipisci debitis dolores est, exercitationem in iste quia sequi.",
+                location: "Colombia"
+            }
+        }
+    });
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -45,7 +56,9 @@ export default function Form() {
 
     return (
         <form className={styles.Form} onSubmit={onSubmit}>
+            <h2>Información del usuario</h2>
             <div>
+
                 <input placeholder="Nombre" type="text" {...register(`user[name]`, {
                     required: true,
                 })}   />
@@ -78,6 +91,19 @@ export default function Form() {
                     rules={{required: true}} // Optional: add validation rules
                 />
                 {errors.user?.phone?.type === 'required' && <p>El campo phone es obigatorio</p>}
+            </div>
+            <h2>Favor: </h2>
+            <div>
+                <input placeholder="Edad" type="number" {...register(`user[age]`, {
+                    required: true,
+                })}   />
+                {errors.user?.age?.type === 'required' && <p>El campo age es obigatorio</p>}
+            </div>
+            <div>
+                <input placeholder="Edad" type="number" {...register(`user[age]`, {
+                    required: true,
+                })}   />
+                {errors.user?.age?.type === 'required' && <p>El campo age es obigatorio</p>}
             </div>
             <div>
                 <button type="submit">Registrarse</button>

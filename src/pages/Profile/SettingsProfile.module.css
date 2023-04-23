@@ -57,13 +57,7 @@
     @media (--screen-lg) {
         top: 76px;
     }
-    label{
-        font-weight: 500;
-        font-size: 20px;
-        @media (--screen-lg) {
-            font-size: 28px;
-        }
-    }
+
     .photo{
         justify-self: center;
         img{
@@ -76,99 +70,6 @@
             }
         }
     }
-    form{
-        div{
-            gap: 12px;
-            display: grid;
-            @media (--screen-lg) {
-                justify-items: center;
-            }
-            input {
-                border: none;
-                max-width: 500px;
-                height: 50px;
-                left: 0px;
-                top: 0px;
-                background: rgba(170, 212, 200, 0.15);
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                border-radius: 16px;
-                font-weight: 400;
-                font-size: 18px;
-                position: relative;
-                text-align: center;
-                @media (--screen-lg) {
-                    width: 580px;
-                    height: 64px;
-                    font-size: 24px;
-                }
-            }
-            textarea {
-                border: none;
-                max-width: 500px;
-                height: 100px;
-                left: 0px;
-                top: 0px;
-                background: rgba(170, 212, 200, 0.15);
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                border-radius: 16px;
-                font-weight: 400;
-                font-size: 18px;
-                position: relative;
-                text-align: center;
-                @media (--screen-lg) {
-                    width: 580px;
-                    height: 64px;
-                    font-size: 24px;
-                }
-            }
-            .select{
-                border: none;
-                max-width: 500px;
-                height: 50px;
-                left: 0px;
-                top: 0px;
-                background: rgba(170, 212, 200);
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                border-radius: 16px;
-                font-weight: 400;
-                font-size: 18px;
-                position: relative;
-                text-align: center;
-                @media (--screen-lg) {
-                    width: 580px;
-                    height: 64px;
-                    font-size: 24px;
-                }
-                
-            }
-            .slider{
-                padding-top: 50px; 
-            }
-        }
-    }
-    button {
-    width: 210px;
-    height: 48px;
-    margin-top: 16px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 16px;
-    color: #ffffff;
-    background: var(--salmon);
-    border: var(--salmon);
-    font-weight: bold;
-    justify-self: center;
-    font-size: 20px;
-    @media (--screen-lg) {
-      width: 300px;
-      height: 64px;
-      font-size: 24px;
-  }
-  }
-  button:hover,
-  button:focus {
-    cursor: pointer;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
-    transform: translateY(-0.25em);
-  }
+
 }
 

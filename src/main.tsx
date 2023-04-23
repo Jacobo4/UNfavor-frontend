@@ -26,6 +26,7 @@ import Profile from './pages/Profile/Profile'
 import Chat from './pages/Chat/Chat';
 import Auth from "./pages/Auth/Auth";
 import SignIn from "./pages/Auth/SignIn/SignIn";
+import SettingsProfile from "./pages/Profile/SettingsProfile";
 
 
 const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
             {
                 path: "/profile",
                 element: <RequireAuth component={Profile}/>
+            },
+            {
+                path: "/profile/settings",
+                element: <RequireAuth component={SettingsProfile}/>
             },
             {
                 path: "/chat",
