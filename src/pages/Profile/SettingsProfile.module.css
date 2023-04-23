@@ -1,1 +1,58 @@
 @import "@styles/responsive.css";
+
+.background {
+  background: #190845;
+  height: 294px;
+  position: absolute;
+  top: 73px;
+  left: 0;
+  z-index: auto;
+  width: 100%;
+  border-radius: 0px 0px 12px 12px;
+  @media (--screen-lg) {
+    top: 78px;
+    border-radius: 0px 0px 60px 60px;
+  }
+  div{
+    padding: 20px;
+    display: flex;
+    @media (--screen-lg) {
+        justify-content: center;
+      }
+    svg {
+        color: #fff;
+        font-size: 30px;
+        
+        @media (--screen-lg) {
+          font-size: 50px;
+        }
+    }
+    h2{
+        color: #fff;
+        font-weight: 400;
+        font-size: 28px;
+        @media (--screen-lg) {
+            font-weight: 500;
+            font-size: 48px;
+        }
+    }
+
+  }
+  
+}
+.container{
+    z-index: 1;
+    position: relative;
+    display: grid;
+    grid-gap: 12px;
+    gap: 12px;
+    margin: 12px 0;
+    padding: 16px;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    top: 60px;
+    @media (--screen-lg) {
+        top: 76px;
+    }
+}

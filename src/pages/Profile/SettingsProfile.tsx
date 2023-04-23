@@ -8,22 +8,27 @@ import SettingForm from "./SettingForm";
 const SettingsProfile: React.FC = () => {
   return (
     <div>
-      <div className={styles.backgrund}>
+      <div className={styles.background}>
         <div>
           <MdSettings />
           <h2>Settings</h2>
         </div>
       </div>
-      <div>
-        <h3>Public Profile</h3>
+      <div className={styles.container}>
+        <h3>Editar perfil</h3>
         <div className={styles.photo}>
           <img src={avatar} alt="" />
-          <button>Editar</button>
-          <button>Eliminar</button>
+          
         </div>
         <div>
           <SettingForm/>
         </div>
+      </div>
+      <div className={styles.container}>
+        <h3>Editar favor</h3>
+      </div>
+      <div className={styles.container}>
+        <h3>Editar filtros</h3>
       </div>
     </div>
   );
