@@ -1,10 +1,20 @@
 @import "@styles/responsive.css";
-
+h2 {
+  font-weight: 700;
+  font-size: 24px;
+  align-items: center;
+  text-align: center;
+  color: #190845;
+  @media (--screen-lg) {
+    font-weight: 600;
+    font-size: 32px;
+  }
+}
 .Profile {
   padding: 20px 8px;
+  gap: 20px;
   display: grid;
   @media (--screen-lg) {
-    grid-template-columns: 1fr 1fr;
     gap: 46px;
     padding: 56px 8px;
   }
@@ -14,7 +24,12 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 12px;
     padding: 22px;
-
+    @media (--screen-lg) {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 46px;
+      padding: 16px;
+    }
     .avatar {
       display: grid;
       height: auto;
@@ -37,17 +52,7 @@
       @media (--screen-lg) {
         padding: 28px;
       }
-      h2 {
-        font-weight: 700;
-        font-size: 24px;
-        text-align: center;
-        color: var(--deepPurple);
-        backdrop-filter: blur(2px);
-        @media (--screen-lg) {
-          font-weight: 700;
-          font-size: 40px;
-        }
-      }
+
       span {
         font-weight: 300;
         font-size: 18px;
@@ -55,8 +60,8 @@
         backdrop-filter: blur(2px);
         color: var(--deepPurple);
         @media (--screen-lg) {
-          font-weight: 700;
-          font-size: 32px;
+          font-weight: 400;
+          font-size: 28px;
         }
       }
     }
@@ -68,22 +73,22 @@
       display: grid;
       width: 100%;
       justify-content: center;
+      text-align: center;
       @media (--screen-lg) {
         padding: 20px;
-        margin: 32px 0;
       }
       h3 {
         font-weight: 600;
         font-size: 20px;
         color: #000000;
-        padding: 16px;
+        padding: 8px;
         @media (--screen-lg) {
           font-weight: 600;
           font-size: 36px;
         }
       }
       span {
-        margin: 12px 0;
+        padding: 4px 0;
         font-weight: 400;
         font-size: 16px;
         text-align: center;
@@ -95,98 +100,164 @@
       }
     }
   }
-  .historial {
-    margin: 42px 0;
+  .favFilters {
+    margin: 0;
+    padding: 16px;
     background: #ffffff;
-    padding: 22px;
-    display: grid;
-    justify-content: center;
-    justify-items: center;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 13px;
+    border-radius: 12px;
+
+    .filters {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      @media (--screen-lg) {
+        padding: 16px 62px;
+        font-weight: 400;
+        font-size: 24px;
+      }
+    }
+  }
+  .myFavor {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 16px;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
     @media (--screen-lg) {
-      margin: 0;
-    }
-
-    overflow-y: scroll;
-
-    .favorCard{
-      border: 1px solid red;
-      border-radius: 16px;
-
-    }
-    h2 {
+      padding: 24px 62px;
       font-weight: 400;
       font-size: 24px;
-      color: #190845;
-      text-align: center;
-      padding: 16px;
-      @media (--screen-lg) {
-        font-weight: 500;
-        font-size: 40px;
-      }
     }
-    h2:first-child {
-      font-weight: 700;
-      justify-self: center;
-      @media (--screen-lg) {
-        font-weight: 700;
-        font-size: 40px;
-      }
-    }
-    h4 {
-      font-weight: 700;
-      font-size: 20px;
-      text-align: center;
-      justify-self: center;
-      color: #00d4a6;
-      @media (--screen-lg) {
-        font-weight: 700;
-        font-size: 32px;
-      }
-    }
-
-    .imgFav {
-      filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.25));
-      border-radius: 32px;
-      img {
-        width: 100%;
-        
-        @media (--screen-lg) {
-            width: 312px;
-        }
-      }
-    }
-    h3 {
-      font-weight: 600;
-      font-size: 20px;
-      justify-self: baseline;
-      @media (--screen-lg) {
-        justify-self: center;
-        font-weight: 600;
-        font-size: 32px;
-      }
-    }
-    span {
+    p {
       font-weight: 400;
       font-size: 16px;
-      padding: 16px;
+      text-align: justify;
       @media (--screen-lg) {
         font-weight: 400;
         font-size: 24px;
       }
     }
-    .avatarHist {
-      height: auto;
-      padding: 12px;
-       img{
-        width: 50px;
-        height: 50px;
+    div {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+  }
+  .settings {
+    width: 210px;
+    height: 48px;
+    margin-top: 16px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    color: #ffffff;
+    background: var(--salmon);
+    border: var(--salmon);
+    font-weight: bold;
+    justify-self: center;
+    font-size: 20px;
+    @media (--screen-lg) {
+      width: 300px;
+      height: 64px;
+      font-size: 24px;
+  }
+  }
+  .settings:hover,
+  .settings:focus {
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
+    transform: translateY(-0.25em);
+  }
+  .historial {
+    background: #ffffff;
+    padding: 22px;
+    display: grid;
+    gap: 12px;
+    justify-content: center;
+    justify-items: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 13px;
+  }
+  .cardsContainer {
+    display: grid;
+    gap: 16px;
+    @media (--screen-md) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (--screen-lg) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .card {
+      background: rgba(25, 8, 69, 0.1);
+      padding: 22px;
+      display: grid;
+      justify-content: center;
+      justify-items: center;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 13px;
+      h2:nth-child(2) {
+        font-weight: 400;
+        justify-self: center;
         @media (--screen-lg) {
+          font-weight: 500;
+          font-size: 32px;
+        }
+      }
+      h4 {
+        font-weight: 700;
+        font-size: 24px;
+        text-align: center;
+        justify-self: center;
+        color: #00d4a6;
+        @media (--screen-lg) {
+          font-weight: 750;
+          font-size: 32px;
+        }
+      }
+
+      .imgFav {
+        filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.2));
+        border-radius: 32px;
+        img {
+          width: 100%;
+          @media (--screen-lg) {
+            width: 312px;
+          }
+        }
+      }
+      h3 {
+        font-weight: 450;
+        font-size: 20px;
+        justify-self: baseline;
+        @media (--screen-lg) {
+          justify-self: center;
+          font-weight: 600;
+          font-size: 28px;
+        }
+      }
+      span {
+        font-weight: 400;
+        font-size: 16px;
+        padding: 16px;
+        @media (--screen-lg) {
+          font-weight: 400;
+          font-size: 24px;
+        }
+      }
+      .avatarHist {
+        height: auto;
+        padding: 12px;
+        img {
+          width: 50px;
+          height: 50px;
+          @media (--screen-lg) {
             width: 100px;
             height: 100px;
-            
           }
+        }
       }
     }
   }

@@ -1,1 +1,164 @@
 @import "@styles/responsive.css";
+
+.background {
+  background: #190845;
+  height: 294px;
+  position: absolute;
+  top: 73px;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  border-radius: 0px 0px 12px 12px;
+  @media (--screen-lg) {
+    top: 78px;
+    border-radius: 0px 0px 60px 60px;
+  }
+  div{
+    padding: 20px;
+    display: flex;
+    @media (--screen-lg) {
+        justify-content: center;
+      }
+    svg {
+        color: #fff;
+        font-size: 30px;
+        
+        @media (--screen-lg) {
+          font-size: 50px;
+        }
+    }
+    h2{
+        color: #fff;
+        font-weight: 400;
+        font-size: 28px;
+        @media (--screen-lg) {
+            font-weight: 500;
+            font-size: 48px;
+        }
+    }
+
+  }
+  
+}
+.container{
+    z-index: 1;
+    position: relative;
+    display: grid;
+    grid-gap: 12px;
+    gap: 12px;
+    margin: 12px 0;
+    padding: 16px;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    top: 60px;
+    @media (--screen-lg) {
+        top: 76px;
+    }
+    h3{
+        font-weight: 500;
+        font-size: 20px;
+        @media (--screen-lg) {
+            font-size: 28px;
+        }
+    }
+    .photo{
+        justify-self: center;
+        img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            @media (--screen-lg) {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    }
+    form{
+        div{
+            gap: 12px;
+            display: grid;
+            @media (--screen-lg) {
+                justify-items: center;
+            }
+            input {
+                border: none;
+                max-width: 500px;
+                height: 50px;
+                left: 0px;
+                top: 0px;
+                background: rgba(170, 212, 200, 0.15);
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 16px;
+                font-weight: 400;
+                font-size: 18px;
+                position: relative;
+                text-align: center;
+                @media (--screen-lg) {
+                    width: 580px;
+                    height: 64px;
+                    font-size: 24px;
+                }
+            }
+            textarea {
+                border: none;
+                max-width: 500px;
+                height: 100px;
+                left: 0px;
+                top: 0px;
+                background: rgba(170, 212, 200, 0.15);
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 16px;
+                font-weight: 400;
+                font-size: 18px;
+                position: relative;
+                text-align: center;
+                @media (--screen-lg) {
+                    width: 580px;
+                    height: 64px;
+                    font-size: 24px;
+                }
+            }
+            .select{
+                display: grid;
+                justify-items: center;
+                max-width: 500px;
+                
+                @media (--screen-lg) {
+                    width: 580px;
+                    
+                    font-size: 24px;
+                }
+                
+            }
+            .slider{
+                padding-top: 50px; 
+            }
+        }
+    }
+    button {
+    width: 210px;
+    height: 48px;
+    margin-top: 16px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    color: #ffffff;
+    background: var(--salmon);
+    border: var(--salmon);
+    font-weight: bold;
+    justify-self: center;
+    font-size: 20px;
+    @media (--screen-lg) {
+      width: 300px;
+      height: 64px;
+      font-size: 24px;
+  }
+  }
+  button:hover,
+  button:focus {
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
+    transform: translateY(-0.25em);
+  }
+}
+
