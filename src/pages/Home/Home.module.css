@@ -1,71 +1,109 @@
 @import "@styles/responsive.css";
 @import "@styles/global.css";
-main{
-    padding:5% 0%
-}
-.Home{
-        display: grid;
-        grid-template-columns: 1fr;
-        row-gap:5%;
-        a{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 210px;
-            height: 48px;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 4px;
-            color: #FFFFFF;
-            background: var(--salmon);
-            border: var(--salmon);
-            font-weight: bold;
-            justify-self: center;
-            font-size: 1.25rem;
-            
 
-        }
-        a:hover,button:focus {
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
-            transform: translateY(-0.25em);
-        }
-        .buttonInfo{
-            background: var(--celeste)
-        }
-    .Info{
-        padding: 5% 0%;
-        @media (--screen-md) {
-            padding: 5% 15%;
-            grid-row-gap: 5%;
-        }
-        display: grid;
-        
-        grid-auto-rows: auto;
-        min-width: 1rem;
-        width: 100%;
-        justify-content: center; 
-        text-align: center;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        background-color:var(--secondary);
-        
-        .logo{
-            justify-self: center; 
-        }
-        h1{
-            color: var(--deepPurple);
-            
-        }
-        .buttonsContainer{
-            display:grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap:5%;
-            a{
-                width: 100%;
-            }
-        }
-        
+.Home {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 24px;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 210px;
+    height: 48px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    color: #ffffff;
+    background: var(--salmon);
+    border: var(--salmon);
+    font-weight: bold;
+    justify-self: center;
+    font-size: 1.25rem;
+  }
+  a:hover,
+  button:focus {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
+    transform: translateY(-0.25em);
+  }
+
+  .Info {
+    padding: 8px;
+    min-width: 1rem;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: var(--secondary);
+    @media (--screen-md) {
+      padding: 16px;
+      grid-row-gap: 5%;
     }
-    
-
+    .ilustration{
+        display: none;
+        @media (--screen-md) {
+            display: block;
+        }
+    }
+    .logo {
+      justify-self: center;
+    }
+    h1 {
+      font-size: 36px;
+      line-height: 42px;
+      color: var(--deepPurple);
+      @media (--screen-md) {
+        font-size: 68px;
+        line-height: 72px;
+      }
+    }
+    h2 {
+      font-size: 1.5rem;
+      @media (--screen-md) {
+        font-size: 2.5rem;
+      }
+    }
+    .buttonsContainer {
+      padding: 12px;
+      display: grid;
+      justify-items: center;
+      gap: 12px;
+      column-gap: 8px;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 5%;
+      a {
+        width: 100%;
+      }
+    }
+    .buttonInfo {
+      background: var(--celeste);
+    }
+    .credits {
+      div {
+        display: grid;
+        justify-content: center;
+        div {
+            display: grid;
+            justify-items: center;
+            padding:4px;
+            @media (--screen-md) {
+              display: flex;
+              justify-items: center;
+              align-items: center;
+            }
+            div{
+                display: grid;
+                align-items: start;
+            }
+            span {
+              color: var(--salmon);
+              font-weight: bold;
+              @media (--screen-md) {
+                font-size: 24px;
+              }
+            }
+          }
+      }
+    }
+  }
 }
-
-
