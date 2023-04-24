@@ -8,6 +8,7 @@ import styles from "../SettingsProfile.module.css";
 import DistanceSlider from "./DistanceSlider";
 import { config } from "process";
 import { useForm, Controller } from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 
 type publicProfile = {
   //user
@@ -26,17 +27,13 @@ type publicProfile = {
 };
 const API_URL = import.meta.env.VITE_API_URL;
 export default function Form() {
-  
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
     control
   } = useForm<publicProfile>();
-
-  function refreshPage() {
-    window.location.reload(false);
-  }
 
   const onSubmit = handleSubmit(async (data) => {
     console.log(data);
@@ -68,7 +65,7 @@ export default function Form() {
       },
       config
     );
-    refreshPage();
+    navigate("/user");
   });
 
   return (
