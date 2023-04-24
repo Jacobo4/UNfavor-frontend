@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <RequireAuth component={Home}/>
+                element: <Home/>
             },
             {
                 path: "/monitor",
