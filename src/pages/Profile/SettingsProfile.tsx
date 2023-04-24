@@ -1,12 +1,13 @@
 //Styles
 import styles from "./SettingsProfile.module.css";
-import React from "react";
+import React, { useState } from "react";
 import avatar from "@assets/images/avatar.png";
 import { MdSettings } from "react-icons/md";
 import SettingForm from "./Forms/SettingForm";
 
 
 const SettingsProfile: React.FC = () => {
+  
   return (
     <div>
       <div className={styles.background}>

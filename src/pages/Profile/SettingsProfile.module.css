@@ -70,6 +70,14 @@
             }
         }
     }
+    .slider{
+      display: grid;
+      gap:50px;
+      justify-items: center;
+      label{
+        justify-self: start;
+      }
+    }
 
 }
 
