@@ -1,7 +1,7 @@
 // Core
 import React, {useEffect} from 'react';
 // Redux
-import {login, LoginCredentials} from '@store/auth/authAsyncActions';
+import {login, LoginFormValues} from '@store/auth/authAsyncActions';
 // Router
 import {useNavigate} from "react-router-dom";
 // Form
@@ -22,11 +22,11 @@ export default function Form() {
     const navigate = useNavigate();
 
 
-    const onSubmit = handleSubmit((data: LoginCredentials) => {
+    const onSubmit = handleSubmit((data: LoginFormValues) => {
         dispatch(login(data));
     })
 
-    // redirect authenticated user to profile screen
+    // redirect authenticated user to user screen
     useEffect(() => {
         if (isLogged) navigate('/');
     }, [navigate, isLogged]);

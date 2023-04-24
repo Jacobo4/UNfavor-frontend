@@ -25,9 +25,7 @@ const Auth: React.FC = () => {
                         <img src={logo} alt="Logo"/>
                         <h1>UNfavor</h1>
                     </div>
-                    <section>
                         <Outlet/>
-                    </section>
                 </div>
                 <div className={styles.lowerVector}>
                     <BottomDecor/>

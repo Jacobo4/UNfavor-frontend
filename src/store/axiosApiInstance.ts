@@ -5,7 +5,6 @@ import axios from 'axios'
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
-// 1. Create an axios instance that you wish to apply the interceptor to
 export const axiosApiInstance = axios.create({baseURL: BASE_URL})
 
 const requestRefresh: TokenRefreshRequest = async (refreshToken: string): Promise<IAuthTokens | string> => {
@@ -13,6 +12,5 @@ const requestRefresh: TokenRefreshRequest = async (refreshToken: string): Promis
     return response.data.access;
 }
 
-applyAuthTokenInterceptor(axiosApiInstance, {requestRefresh})
-const getStorage = getBrowserLocalStorage
-applyAuthTokenInterceptor(axiosApiInstance, {requestRefresh, getStorage})
+const getStorage = getBrowserLocalStorage;
+applyAuthTokenInterceptor(axiosApiInstance, {requestRefresh, getStorage});

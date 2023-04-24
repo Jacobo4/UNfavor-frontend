@@ -72,8 +72,8 @@ const Header: React.FC = () => {
                     onClose={handleCloseDropMenu}
                     TransitionComponent={Fade}
                 >
-                    <MenuItem onClick={() => navigate('/profile')}>Perfil</MenuItem>
-                    <MenuItem onClick={() => navigate('/profile/settings')}>Configuración</MenuItem>
+                    <MenuItem onClick={() => navigate('/user')}>Perfil</MenuItem>
+                    <MenuItem onClick={() => navigate('/user/settings')}>Configuración</MenuItem>
                     <MenuItem onClick={handleLogout}>Cerrar Sesión</MenuItem>
                 </Menu>
             </div>
@@ -87,10 +87,10 @@ const Header: React.FC = () => {
                     {/*</li>*/}
                     {/*<span className={styles['line']}></span>*/}
 
-                    {/*<li>*/}
-                    {/*    <Link to="/">Crear favor <AiOutlinePlusCircle/></Link>*/}
-                    {/*</li>*/}
-                    {/*<span className={styles['line']}></span>*/}
+                    <li>
+                        <Link to="/match">¡Favores!<AiOutlinePlusCircle/></Link>
+                    </li>
+                    <span className={styles['line']}></span>
                     <li>
                         <Link to="/monitor">Mis favores <TiMessages/></Link>
                     </li>

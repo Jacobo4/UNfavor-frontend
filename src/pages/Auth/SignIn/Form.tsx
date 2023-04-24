@@ -1,7 +1,7 @@
 // Core
 import React, {useEffect} from 'react';
 // Redux
-import {login, LoginCredentials} from '@store/auth/authAsyncActions';
+import {login, LoginFormValues, signIn, SignInFormValues} from '@store/auth/authAsyncActions';
 // Router
 import {useNavigate} from "react-router-dom";
 // Form
@@ -14,22 +14,9 @@ import {useAppDispatch, useAppSelector} from '@store/hooks';
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
 
-type FormProps = {
-    user: {
-        name: string,
-        email: string,
-        password: string,
-        phone: string,
-        age: number,
-    },
-    favor: {
-        title: string,
-        description: string,
-        location: string
-    }
-}
+
 export default function Form() {
-    const {register, handleSubmit, formState: {errors}, control} = useForm<FormProps>({
+    const {register, handleSubmit, formState: {errors}, control} = useForm<SignInFormValues>({
         defaultValues: {
             user: {
                 name: "Juan",
@@ -47,16 +34,22 @@ export default function Form() {
     });
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const {isLogged} = useAppSelector((state) => state.auth);
 
-    const onSubmit = handleSubmit((data) => {
-        console.log(data)
-        // dispatch(signIn(data));
+
+    const onSubmit = handleSubmit((data:SignInFormValues) => {
+        dispatch(signIn(data));
     })
+
+     // redirect authenticated user to user screen
+    useEffect(() => {
+        if (isLogged) navigate('/');
+    }, [navigate, isLogged]);
 
 
     return (
         <form className={styles.Form} onSubmit={onSubmit}>
-            <h2>Información del usuario</h2>
+            <h3>Información del usuario</h3>
             <div>
 
                 <input placeholder="Nombre" type="text" {...register(`user[name]`, {
@@ -85,25 +78,31 @@ export default function Form() {
                             placeholder="Enter phone number"
                             value={value}
                             onChange={onChange}
-                            defaultCountry="CO" // Optional: set the default country
+                            defaultCountry="US" // Optional: set the default country
                         />
                     )}
                     rules={{required: true}} // Optional: add validation rules
                 />
                 {errors.user?.phone?.type === 'required' && <p>El campo phone es obigatorio</p>}
             </div>
-            <h2>Favor: </h2>
+            <h3>Favor: </h3>
             <div>
-                <input placeholder="Edad" type="number" {...register(`user[age]`, {
+                <input placeholder="Titulo" type="text" {...register(`favor[title]`, {
                     required: true,
                 })}   />
-                {errors.user?.age?.type === 'required' && <p>El campo age es obigatorio</p>}
+                {errors.favor?.title?.type === 'required' && <p>El campo title es obigatorio</p>}
             </div>
             <div>
-                <input placeholder="Edad" type="number" {...register(`user[age]`, {
+                <textarea placeholder="Descripción" {...register(`favor[description]`, {
                     required: true,
                 })}   />
-                {errors.user?.age?.type === 'required' && <p>El campo age es obigatorio</p>}
+                {errors.favor?.description?.type === 'required' && <p>El campo description es obigatorio</p>}
+            </div>
+            <div>
+                <input placeholder="Edad" type="text" {...register(`favor[location]`, {
+                    required: true,
+                })}   />
+                {errors.favor?.location?.type === 'required' && <p>El campo location es obigatorio</p>}
             </div>
             <div>
                 <button type="submit">Registrarse</button>

@@ -2,12 +2,14 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 // Reducers
 import authReducer from './auth/authSlice';
+import userReducer from './user/userSlice';
 
 
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    user: userReducer,
   },
   // Just for debbuging purposes
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),

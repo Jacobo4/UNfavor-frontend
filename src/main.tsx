@@ -22,7 +22,7 @@ import Home from './pages/Home/Home';
 import Login from './pages/Auth/Login/Login';
 import Monitor from './pages/Monitor/Monitor';
 import Match from './pages/Match/Match';
-import Profile from './pages/Profile/Profile'
+import Profile from './pages/Profile/Profile';
 import Chat from './pages/Chat/Chat';
 import Auth from "./pages/Auth/Auth";
 import SignIn from "./pages/Auth/SignIn/SignIn";
@@ -48,11 +48,11 @@ const router = createBrowserRouter([
                 element: <RequireAuth component={Match}/>
             },
             {
-                path: "/profile",
+                path: "/user",
                 element: <RequireAuth component={Profile}/>
             },
             {
-                path: "/profile/settings",
+                path: "/user/settings",
                 element: <RequireAuth component={SettingsProfile}/>
             },
             {
@@ -78,10 +78,10 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <React.StrictMode>
+    <>
         <Provider store={store}>
             <RouterProvider router={router}/>
             <ToastContainer/>
         </Provider>
-    </React.StrictMode>,
+    </>,
 )

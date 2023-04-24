@@ -1,6 +1,23 @@
+@import "@styles/responsive.css";
+
 .Form {
 
+    input{
+        padding-left: 55px;
+        @media (--screen-lg) {
+            padding-left: 55px;
+        }
+    }
 
+     svg {
+        position: absolute;
+        left: 20px;
+        top: 10px;
+        font-size: 22px;
+        @media (--screen-lg) {
+            font-size: 28px;
+        }
+    }
 }
 
 
