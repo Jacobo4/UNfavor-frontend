@@ -14,7 +14,6 @@ export interface AuthState {
     isLogged: boolean;
 };
 
-
 const initialState: AuthState = {
     status: 'idle',
     userInfo: null,
