@@ -12,7 +12,11 @@ import { ReactComponent as BottomDecor } from "@assets/images/login/loginBottomD
 import { ReactComponent as SideBgDecor } from "@assets/images/login/bgDecor.svg";
 // @ts-ignore
 import { ReactComponent as SideDecor } from "@assets/images/login/loginDecor.svg";
+import {Link} from "react-router-dom";
+import {useAppSelector} from "@store/hooks";
 const Home: React.FC = () => {
+  const {isLogged} = useAppSelector(state => state.auth);
+
   return (
     <div className={styles["Home"]}>
       <div className={styles["Info"]}>
@@ -21,9 +25,10 @@ const Home: React.FC = () => {
         </figure>
         <h1>UNFavor</h1>
         <h2>Haz la diferencia en tu comunidad, un favor a la vez</h2>
-        <div className={styles["buttonsContainer"]}>
-          <a href="/Register">Registrarme</a>
-          <a href="/Login">Iniciar Sesión</a>
+        { !isLogged &&
+            <div className={styles["buttonsContainer"]}>
+          <Link to={"/auth/signin"}>Registrarme</Link>
+          <Link to={"/auth/login"}>Iniciar Sesión</Link>
           <a href="/#Info" className={styles["buttonInfo"]}>
             Más Información
           </a>
@@ -31,6 +36,8 @@ const Home: React.FC = () => {
             Créditos
           </a>
         </div>
+
+        }
       </div>
       <div id="Info" className={styles["Info"]}>
         <h1>Ofrece favores y recibe otros a cambio</h1>
