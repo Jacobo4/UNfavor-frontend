@@ -61,15 +61,17 @@ const marks = [
 ];
 
 function valuetext(value: number) {
-  return `${value}°C`;
+  return `${value}km`;
 }
 
-export default function DiscreteSliderLabel() {
+export default function DiscreteSliderLabel({onChange, value}) {
   return (
     <Box sx={{ width: 300 }}>
       <PrettoSlider
         aria-label="Always visible"
         defaultValue={5}
+        onChange={onChange}
+        value={value}
         getAriaValueText={valuetext}
         step={1}
         min={0}

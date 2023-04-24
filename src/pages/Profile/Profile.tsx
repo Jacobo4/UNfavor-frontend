@@ -4,8 +4,14 @@ import React from "react";
 import Raiting from "./Raiting";
 import avatar from "@assets/images/avatar.png";
 import favor from "@assets/images/favor.png";
+import {axiosApiInstance} from "@store/axiosApiInstance";
 
 const Profile: React.FC = () => {
+//   const {data} = await axiosApiInstance.post(
+//     `${API_URL}/user/login`,
+//     {email, password},
+//     config
+// );
   return (
     <div className={styles["Profile"]}>
       <div className={styles["profileData"]}>
