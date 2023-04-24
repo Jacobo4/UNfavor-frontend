@@ -13,11 +13,11 @@ import {FiMenu} from 'react-icons/fi';
 import avatar from "@assets/images/avatar.png";
 import logo from "@assets/images/logo.png";
 import { logout } from "@store/auth/authSlice";
-import { useAppDispatch } from "@store/hooks";
+import {useAppDispatch, useAppSelector} from "@store/hooks";
 
 import {Button, Menu,MenuItem,Fade} from '@mui/material/'
 const Header: React.FC = () => {
-
+    const {isLogged} = useAppSelector(state => state.auth);
     const [isOpen, toggleMenu] = useState<boolean>(false);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -48,6 +48,7 @@ const Header: React.FC = () => {
                 <h1>UNfavor</h1>
             </figure>
 
+            { isLogged &&
             <div className={styles['dropDownMenu']}>
                 <Button
                     id="buttonDropDown"
@@ -77,6 +78,7 @@ const Header: React.FC = () => {
                     <MenuItem onClick={handleLogout}>Cerrar Sesión</MenuItem>
                 </Menu>
             </div>
+            }
 
 
 
