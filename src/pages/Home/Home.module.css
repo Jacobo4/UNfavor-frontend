@@ -1,5 +1,71 @@
-.Home{
-    h1{
-        color: purple;
-    }
+@import "@styles/responsive.css";
+@import "@styles/global.css";
+main{
+    padding:5% 0%
 }
+.Home{
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap:5%;
+        a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 210px;
+            height: 48px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 4px;
+            color: #FFFFFF;
+            background: var(--salmon);
+            border: var(--salmon);
+            font-weight: bold;
+            justify-self: center;
+            font-size: 1.25rem;
+            
+
+        }
+        a:hover,button:focus {
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
+            transform: translateY(-0.25em);
+        }
+        .buttonInfo{
+            background: var(--celeste)
+        }
+    .Info{
+        padding: 5% 0%;
+        @media (--screen-md) {
+            padding: 5% 15%;
+            grid-row-gap: 5%;
+        }
+        display: grid;
+        
+        grid-auto-rows: auto;
+        min-width: 1rem;
+        width: 100%;
+        justify-content: center; 
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        background-color:var(--secondary);
+        
+        .logo{
+            justify-self: center; 
+        }
+        h1{
+            color: var(--deepPurple);
+            
+        }
+        .buttonsContainer{
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap:5%;
+            a{
+                width: 100%;
+            }
+        }
+        
+    }
+    
+
+}
+
+
