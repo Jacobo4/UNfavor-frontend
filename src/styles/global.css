@@ -17,10 +17,10 @@
     --orange: #fdab08;
     --purple: #a258ff;
     --pink: #ff71e8;
-    --celeste: #63e8ff;
+    --celeste: #00D4A6;
     --blue: #305dff;
     --salmon: #FF5B64;
-    --deepPurple: #190845;
+    --deepPurple: hsla(242,88.4%,66.3%,1);
 }
 
 
@@ -40,8 +40,9 @@
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: var(--primary); /* color of the scroll thumb */
+        background-color: var(--celeste); /* color of the scroll thumb */
         border-radius: 4rem; /* roundness of the scroll thumb */
+        
     }
 
     scrollbar-width: thin; /* "auto" or "thin" */
@@ -64,7 +65,7 @@ body {
 }
 
 .App {
-    background: #DEFFF6;
+   
 
 }
 
