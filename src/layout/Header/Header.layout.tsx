@@ -53,10 +53,12 @@ const Header: React.FC = () => {
           <FiMenu />
         </button>
 
-        <figure className={styles["logo"]}>
-          <img src={logo} alt="" />
-          <h1>UNfavor</h1>
-        </figure>
+        <Link to={"/"}>
+          <figure className={styles["logo"]}>
+            <img src={logo} alt="" />
+            <h1>UNfavor</h1>
+          </figure>
+        </Link>
 
         {isLogged && (
           <div className={styles["dropDownMenu"]}>

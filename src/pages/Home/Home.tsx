@@ -16,15 +16,16 @@ import { Link } from "react-router-dom";
 import { useAppSelector } from "@store/hooks";
 
 //Framer motion
-import { motion } from "framer-motion";
+import {motion, useMotionValue} from "framer-motion";
 import {
   slideIn,
   staggerContainer,
   textVariant,
 } from "../../styles/motion";
-import Card3d from "./Card3d";
+import MatchingCard from "@components/MatchingCard/MatchingCard";
 import Slider from "./Slider";
 import CreditsCard from "./CreditsCard";
+import {useTransform} from "framer-motion";
 
 const Home: React.FC = () => {
   const { isLogged } = useAppSelector((state) => state.auth);
@@ -34,44 +35,51 @@ const Home: React.FC = () => {
       avatar: "https://lh3.googleusercontent.com/a-/ACB-R5TaTas8hZXgwR1IsgtMpxfjABQXDoYF3GkbST6LJA=s48-p",
       github: "https://github.com/Jacobo4",
       linkedin: "https://www.linkedin.com/in/juan-jacobo-izquierdo-9aa617217/",
-      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",  
+      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
     },
     {
       name: "Natalia Andrea Quiroga Castillo",
       avatar: "https://lh3.googleusercontent.com/a/AGNmyxZCSIqgtAe8C5JxqkLE4E3gfEvj3hvJ36GP2Ng1WE8=s288",
       github: "https://github.com/nquirogac",
       linkedin: "https://www.linkedin.com/in/natalia-andrea-quiroga-castillo-7978a4213/",
-      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",  
+      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
     },
     {
       name: "Fabian Leandro Lopez Gomez",
       avatar: "https://media.licdn.com/dms/image/C4D03AQG9Jym1CW9ugw/profile-displayphoto-shrink_800_800/0/1643224091817?e=1688601600&v=beta&t=ay0kLlRRUZBQ5Qp4gUk4TBrqeRb3FLETOiDF2Q7AWCU",
       github: "https://github.com/ElSistemologo",
       linkedin: "https://www.linkedin.com/in/leandrogomezfa/",
-      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",  
+      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
     },
     {
       name: "Ivan Yared Lombana Lozano",
       avatar: "https://lh3.googleusercontent.com/a-/ACB-R5SyNM7IGod4ke6fdzGHoIq9Fd_UfVmRDgm56Avb_g=s48-p",
       github: "https://github.com/IvanLoLo",
       linkedin: "",
-      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",  
+      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
     },
     {
       name: "Juan Camilo Zambrano Lopez",
       avatar: "https://lh3.googleusercontent.com/a-/ACB-R5SifGrQdp7k5sGnEKk7K0WFH7fgCTZBI05dN2csUg=s48-p",
       github: "https://github.com/juzambranol",
       linkedin: "https://www.linkedin.com/in/juan-camilo-zambrano-lopez-472a7424b/",
-      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",  
+      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
     },
     {
       name: "Nicolas David Galindo Carvajal",
       avatar: "https://media.licdn.com/dms/image/C5603AQFwEgJ8vUiqVQ/profile-displayphoto-shrink_800_800/0/1614117310798?e=1688601600&v=beta&t=BSenyeI_ihGcLaQCqy5QjJps86JSjPKTIe1i3ZVW-JA",
       github: "https://github.com/NickGalindo",
       linkedin: "https://www.linkedin.com/in/nicolas-david-galindo-carvajal-a79a56207/",
-      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",  
+      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
     },
   ]
+
+  // Card 3d motion
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-100, 100], [30, -30]);
+  const rotateY = useTransform(x, [100, -100], [-30, 30]);
+
   return (
     <div className={styles["Home"]}>
       <section className={styles["mainInfo"]}>
@@ -136,7 +144,15 @@ const Home: React.FC = () => {
       </section>
       <section id="Info" className={styles["InfoApp"]}>
         <div>
-        <Card3d></Card3d>
+          <MatchingCard motionProps={{
+            style: {x, y, rotateX, rotateY, z: 100},
+            drag: true,
+            dragElastic: 1,
+            dragConstraints: {top: 0, left: 0, right: 0, bottom: 0},
+            whileHover: {cursor: "crosshair"},}
+          }
+                        customStyles={styles["card3d"]}
+          />
         </div>
         <motion.div
             variants={staggerContainer}

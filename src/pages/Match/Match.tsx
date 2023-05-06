@@ -1,13 +1,14 @@
+//Core
+import React, { useState } from "react";
 //Styles
 import styles from "./Match.module.css";
-import React from "react";
-import MatchingCard from "./MatchingCard";
-import { useState } from "react";
+//Components
+import MatchingCard from "@components/MatchingCard/MatchingCard";
 
 const Match: React.FC = () => {
   return (
     <div className={styles.matchContainer}>
-        <MatchingCard></MatchingCard>
+        <MatchingCard/>
     </div>
   );
 };
