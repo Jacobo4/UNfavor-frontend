@@ -6,11 +6,8 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import avatar from "@assets/images/avatar.png";
 import { ReactComponent as TopDecor } from "@assets/images/login/loginTopDecor.svg";
-// @ts-ignore
 import { ReactComponent as BottomDecor } from "@assets/images/login/loginBottomDecor.svg";
-// @ts-ignore
 import { ReactComponent as SideBgDecor } from "@assets/images/login/bgDecor.svg";
-// @ts-ignore
 import { ReactComponent as SideDecor } from "@assets/images/login/loginDecor.svg";
 import {Link} from "react-router-dom";
 import {useAppSelector} from "@store/hooks";
