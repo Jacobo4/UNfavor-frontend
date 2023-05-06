@@ -1,9 +1,10 @@
 @import '@styles/responsive.css';
 
-main {
-    padding: 0;
+.Chat{
+    background: white;
+    width: 100vw;
 }
-
+/*
 .Chat {
     background: #FFFFFF;
 
@@ -109,4 +110,4 @@ main {
     }
 
 
-}
+}*/
