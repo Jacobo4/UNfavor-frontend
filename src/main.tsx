@@ -45,7 +45,8 @@ const router = createBrowserRouter([
             },
             {
                 path: "/match",
-                element: <RequireAuth component={Match}/>
+                element: <Match/>
+                // element: <RequireAuth component={Match}/>
             },
             {
                 path: "/user",

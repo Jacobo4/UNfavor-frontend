@@ -55,8 +55,8 @@ const Home: React.FC = () => {
       name: "Ivan Yared Lombana Lozano",
       avatar: "https://lh3.googleusercontent.com/a-/ACB-R5SyNM7IGod4ke6fdzGHoIq9Fd_UfVmRDgm56Avb_g=s48-p",
       github: "https://github.com/IvanLoLo",
-      linkedin: "",
-      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
+      linkedin: "https://www.linkedin.com/in/ivanlombana/",
+      description : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",  
     },
     {
       name: "Juan Camilo Zambrano Lopez",
@@ -123,9 +123,7 @@ const Home: React.FC = () => {
                   <a href="/#Info" className={styles["buttonInfo"]}>
                     Más Información
                   </a>
-                  <a href="/#credits" className={styles["buttonInfo"]}>
-                    Créditos
-                  </a>
+
                 </motion.div>
               )}
             </div>
