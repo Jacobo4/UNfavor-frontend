@@ -1,10 +1,7 @@
 @import "@styles/responsive.css";
-@import "@styles/global.css";
 
 .container {
   display: grid;
-  judtify-content: center;
-  padding-button: 32px;
   .card {
     background-color: #fff;
     border-radius: 8px;
@@ -12,16 +9,14 @@
     padding: 20px;
     margin: 28px;
     min-height: 500px;
+    width: 100%;
     max-width: 320px;
     display: grid;
     grid-template-rows: auto auto;
-    justify-self: center;
     justify-items: center;
     align-items: center;
-    @media (--screen-md) {
-      max-height: 600px;
-      min-width: 380px;
-    }
+
+
     .ImageFavour {
       max-height: 80%;
       object-fit: cover;
@@ -77,7 +72,7 @@
             text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           }
           h4 {
-            font-size: 1.25;
+            font-size: 1.25rem;
           }
           span {
             font-size: 1.2rem;
@@ -94,7 +89,7 @@
         column-gap: 5%;
         padding: min(0.75rem, 10%) 0;
         @media (--screen-md) {
-          padding: 0.2rem 0 rem;
+          padding: 0.2rem 0rem;
         }
         button {
           border-radius: 50%;
@@ -149,15 +144,7 @@
         }
         
       }
-      .image3d {
-        position: absolute;
-        left: 25px;
-        top: 368px;
-        img {
-          height: 280px;
-          width: 280px;
-        }
-      }
+
     }
   }
 }
