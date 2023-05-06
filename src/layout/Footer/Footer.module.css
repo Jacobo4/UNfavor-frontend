@@ -1,0 +1,81 @@
+@import "@styles/responsive.css";
+@import "@styles/global.css";
+
+.Footer{
+    background: #190845;
+    padding: 2rem;
+    display: grid;
+    .Info{
+        display: grid;
+        justify-content: center;
+        figure{
+            justify-self: center;
+            img{
+                width: 100px;
+                @media(--screen-md){
+                    width: 120px;
+                }
+            }
+        }
+        h1{
+            text-align: center;
+            font-size: 2rem;
+            color: #fff;
+            @media(--screen-md){
+                font-size: 2.5rem;      
+            }
+        }
+        h2{
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #fff;
+            @media(--screen-md){
+                font-size: 2rem;      
+            }
+        }
+    }
+    .icons{
+        padding: 1.5rem;
+        display: flex;
+        width: 70%;
+        justify-self: center;
+        gap: 1rem;
+        justify-content: space-between;
+        @media(--screen-md){
+            justify-content: space-around;
+        }
+        svg{
+            color: #fff;
+            font-size: 3rem;
+        }
+        svg:hover{
+            color: var(--salmon);
+        }
+    }
+    .links{
+        display: grid;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        text-align: center;
+        @media(--screen-md){
+            display: flex;
+            width: 70%;
+            justify-self: center;
+            justify-content: space-around;
+        }
+        
+        a{
+            color: #fff;
+            font-size: 1.5rem;
+            text-decoration: none;
+            &:hover{
+                color: var(--salmon);
+            }
+            @media(--screen-md){
+                font-size: 2rem;
+            }
+        }
+    }
+}
