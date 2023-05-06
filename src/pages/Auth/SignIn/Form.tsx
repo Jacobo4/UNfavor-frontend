@@ -48,7 +48,7 @@ export default function Form() {
 
 
     return (
-        <form className={styles.Form} onSubmit={onSubmit}>
+        <form className={`form ${styles.Form}`} onSubmit={onSubmit}>
             <h3>Información del usuario</h3>
             <div>
 

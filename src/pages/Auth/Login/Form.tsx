@@ -33,7 +33,7 @@ export default function Form() {
 
 
     return (
-        <form className={styles.Form} onSubmit={onSubmit}>
+        <form className={`form ${styles.Form}`} onSubmit={onSubmit}>
             <div>
                 <input type="text" {...register('email', {
                     required: true,
