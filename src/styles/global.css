@@ -132,7 +132,7 @@ figcaption {
     font-size: 1.1rem;
 }
 
-form {
+/*form {
     display: grid;
     justify-content: center;
     gap: 16px;
@@ -246,4 +246,4 @@ form {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
         transform: translateY(-0.25em);
     }
-}
+}*/

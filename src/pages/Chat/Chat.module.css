@@ -2,8 +2,14 @@
 
 main {
     padding: 0;
+    margin: 0;
+    max-width: 0;
 }
-
+.Chat{
+    background: white;
+    width: 100vw;
+}
+/*
 .Chat {
     background: #FFFFFF;
 
@@ -109,4 +115,4 @@ main {
     }
 
 
-}
+}*/

@@ -3,23 +3,35 @@ import {login, signIn} from '@store/auth/authAsyncActions';
 import type {LoginSuccess, LoginFailure, SignInSuccess, SignInFailure} from '@store/auth/authAsyncActions';
 import {toast} from "react-toastify";
 import {clearAuthTokens, getAccessToken} from "axios-jwt";
+import jwt from 'jwt-decode';
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected' | 'idle';
 
+export interface tokenDecoded {
+    id: string;
+    email: string;
+    type: string;
+    admin: boolean,
+    iat: number,
+    exp: number
+}
+
 export interface AuthState {
     status: RequestState;
-    userInfo: any;
+    token: tokenDecoded | null;
     error: string | null | any;
     toastLoaderId: number | string;
     isLogged: boolean;
 };
 
+const token: tokenDecoded | null = getAccessToken() ? jwt(getAccessToken()): null;
+
 const initialState: AuthState = {
     status: 'idle',
-    userInfo: null,
+    token: token,
     error: null,
     toastLoaderId: null,
-    isLogged: !!getAccessToken(),
+    isLogged: !!token,
 };
 
 /**
@@ -44,7 +56,7 @@ const authSlice = createSlice({
         logout: (state: AuthState) => {
             clearAuthTokens();
             state.status = 'idle';
-            state.userInfo = null;
+            state.token = null;
             state.error = null;
             state.isLogged = false;
         },
@@ -64,12 +76,14 @@ const authSlice = createSlice({
                 state.error = null;
             })
             .addCase(login.fulfilled, (state: AuthState, action) => {
+                const {message, access} = action.payload as SignInSuccess;
                 toast.dismiss(state.toastLoaderId);
                 state.isLogged = true;
                 state.status = 'fulfilled';
+                state.token = jwt(access);
             })
             .addCase(login.rejected, (state: AuthState, action) => {
-                const {message} = action.payload as SignInSuccess;
+                const {message} = action.payload as SignInFailure;
                 toast.dismiss(state.toastLoaderId);
                 toast.error('Error on login', {position: 'top-center'})
                 state.status = 'rejected';
@@ -84,6 +98,7 @@ const authSlice = createSlice({
                 toast.dismiss(state.toastLoaderId);
                 state.isLogged = true;
                 state.status = 'fulfilled';
+                state.token = jwt(action.payload.access);
             })
             .addCase(signIn.rejected, (state: AuthState, action) => {
                 const {message} = action.payload as SignInFailure;
