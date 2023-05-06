@@ -64,7 +64,7 @@ const Monitor: React.FC = () => {
             <hr/>
         </div>
         <div className={styles['favorsWrapper']}>
-            {dommieInfo.map((info, index) => <FavorCard {...info}/> )}
+            {dommieInfo.map((info, index) => <FavorCard key={index} {...info}/> )}
         </div>
 
     </div>

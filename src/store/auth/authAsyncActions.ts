@@ -125,6 +125,8 @@ export const signIn = createAsyncThunk(
                 accessToken: data.access,
                 refreshToken: data.refresh
             });
+
+            return data;
         } catch (error) {
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)

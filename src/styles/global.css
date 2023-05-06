@@ -133,7 +133,7 @@ figcaption {
     font-size: 1.1rem;
 }
 
-form {
+.form {
     display: grid;
     justify-content: center;
     gap: 16px;
