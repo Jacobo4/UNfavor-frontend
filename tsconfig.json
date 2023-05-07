@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl":  "./",
+    "module": "es2022",
+    "moduleResolution": "Node",
     "paths": {
       "@layout/*": ["src/layout/*"],
       "@assets/*": ["src/assets/*"],
