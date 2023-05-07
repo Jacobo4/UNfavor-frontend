@@ -9,6 +9,7 @@ import styles from "./Home.module.css";
 import Stack from "@mui/material/Stack";
 // Images
 import logo from "@assets/images/logo.png";
+import fotoFavour1 from "@assets/images/favour1.jpg";
 // @ts-ignore
 import {ReactComponent as SideDecor} from "@assets/images/login/loginDecor.svg";
 // Framer motion
@@ -138,16 +139,19 @@ const Home: React.FC = () => {
             <div className={styles['section-wrapper']}>
                 <section id="Info" className={styles["InfoApp"]}>
                     <div>
-                        <MatchingCard motionProps={{
+                        <MatchingCard
+                            imgSrc={fotoFavour1}
+                            title={"Card 1"}
+                            description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint."}
+                            location={"Bogotá D.C"}
+                            motionProps={{
                             style: {x, y, rotateX, rotateY, z: 100},
                             drag: true,
                             dragElastic: 1,
                             dragConstraints: {top: 0, left: 0, right: 0, bottom: 0},
-                            whileHover: {cursor: "move"},
-                        }
-                        }
-                                      customStyles={styles["card3d"]}
-                        />
+                            whileHover: {cursor: "move"}
+                        }}
+                                      customStyles={styles["card3d"]}                         />
                     </div>
                     <motion.div
                         variants={staggerContainer}
