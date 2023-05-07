@@ -13,9 +13,7 @@ const Layout = () => {
     <>
       <div className="App">
         <Header />
-        <main>
-             <Outlet />
-        </main>
+        <Outlet />
         <Footer />
       </div>
     </>

@@ -1,6 +1,8 @@
 @import "@styles/responsive.css";
 
 .FavorCard {
+    display: grid;
+    align-content: space-between;
     width: 100%;
     max-width: 325px;
     background: white;

@@ -1,9 +1,9 @@
 @import '@styles/responsive.css';
 
 .Chat{
-    background: white;
-    width: 100vw;
+    display: grid;
 }
+
 /*
 .Chat {
     background: #FFFFFF;

@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import {useAppSelector} from "@store/hooks";
 //Styles
 import styles from './Chat.module.css';
+import './ChatOverrides.css';
 // Images
 import avatar from '@assets/images/avatar2.png';
 import dommieFavor from '@assets/images/dommieFavor.png';
@@ -25,21 +26,23 @@ const Chat: React.FC = () => {
         toggle(!isOpen);
     }
     return (
-        <div className={styles['Chat']}>
+        <main className={styles['Chat']}>
             <ChatEngine
             projectID={import.meta.env.VITE_CHAT_PROJECT_ID}
 			userName={token.email}
 			userSecret={token.id}
+            renderChatSettings={(chatAppState) => {}}
+            renderNewChatForm={(creds) => {}}
 		/>
-        </div>
-        // <div >
+        </main>
+        // <main className={styles['Chat']}>
         //     <PrettyChatWindow
         //         projectId={import.meta.env.VITE_CHAT_PROJECT_ID}
         //         username={token.email}
         //         secret={token.id}
-        //          style={{ height: '100vh' }}
+        //         style={{ height: '100vh' }}
         //     />
-        // </div>
+        // </main>
         // <div className={styles['Chat']}>
         //
         //     <div onClick={toggleDetails} className={styles['details']}>

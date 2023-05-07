@@ -1,0 +1,23 @@
+.ce-settings-column{
+    display: none !important;
+
+}
+.ce-wrapper{
+    display: grid !important;
+    grid-auto-flow: column !important;
+    grid-template-columns: 1fr 2fr !important;
+}
+.ce-chat-feed-column{
+    display: grid !important;
+    max-width: none !important;
+    width: auto !important;
+}
+.ce-chat-list-column{
+    display: grid !important;
+    max-width: none !important;
+    width: auto !important;
+}
+
+.ce-chat-feed{
+    max-height: calc(100vh - 90px) !important;
+}
