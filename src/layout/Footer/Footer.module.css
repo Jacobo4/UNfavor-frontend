@@ -11,34 +11,36 @@
         figure{
             justify-self: center;
             img{
-                width: 100px;
+                width: 90px;
                 @media(--screen-md){
-                    width: 120px;
+                    width: 110px;
                 }
             }
         }
         h1{
             text-align: center;
-            font-size: 2rem;
+            font-size: 32px;
             color: #fff;
+            line-height: normal;
+            padding: 8px 0;
             @media(--screen-md){
-                font-size: 2.5rem;      
+                font-size: 36px;      
             }
         }
         h2{
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 20px;
             font-weight: 300;
             color: #fff;
             @media(--screen-md){
-                font-size: 2rem;      
+                font-size: 24px;      
             }
         }
     }
     .icons{
         padding: 1.5rem;
         display: flex;
-        width: 70%;
+        width: 60%;
         justify-self: center;
         gap: 1rem;
         justify-content: space-between;
@@ -47,7 +49,7 @@
         }
         svg{
             color: #fff;
-            font-size: 3rem;
+            font-size: 32px;
         }
         svg:hover{
             color: var(--salmon);
@@ -68,13 +70,13 @@
         
         a{
             color: #fff;
-            font-size: 1.5rem;
+            font-size: 20px;
             text-decoration: none;
             &:hover{
                 color: var(--salmon);
             }
             @media(--screen-md){
-                font-size: 2rem;
+                font-size: 24px;
             }
         }
     }
