@@ -55,7 +55,7 @@ section {
     padding: 12px;
     color: var(--deepPurple);
     @media (--screen-md) {
-      font-size: 68px;
+      font-size: 60px;
       line-height: 72px;
     }
   }
@@ -64,10 +64,11 @@ section {
     font-weight: 400;
     color: #121212;
     text-align: justify;
-    font-size: 1.5rem;
+    font-size: 24px;
     @media (--screen-md) {
       padding-button: 32px;
-      font-size: 1.8rem;
+      font-size: 32px;
+      font-weight: 300;
     }
   }
   .InfoApp {
@@ -125,7 +126,7 @@ section {
     background: var(--deepPurple);
     font-weight: bold;
     justify-self: center;
-    font-size: 1.25rem;
+    font-size: 20px;
     background: var(--celeste);
   }
   .buttonInfo:hover,
@@ -145,10 +146,10 @@ section {
     h4{
       color: var(--celeste);
       padding: 24px 0;
-      font-size: 1.8rem;
+      font-size: 20px;
       font-weight: bold;
       @media (--screen-md) {
-        font-size: 2.5rem;
+        font-size: 36px;
         font-weight: 600;
       }
     }
