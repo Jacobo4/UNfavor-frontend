@@ -1,24 +1,27 @@
-//Styles
+import React from "react";
+// Router
+import {Link} from "react-router-dom";
+// Redux
+import {useAppSelector} from "@store/hooks";
+// Styles
 import styles from "./Home.module.css";
-import React, {useEffect} from "react";
-import logo from "@assets/images/logo.png";
+// MUI
 import Stack from "@mui/material/Stack";
+// Images
+import logo from "@assets/images/logo.png";
 // @ts-ignore
 import {ReactComponent as SideDecor} from "@assets/images/login/loginDecor.svg";
-import {Link} from "react-router-dom";
-import {useAppSelector} from "@store/hooks";
-
-//Framer motion
-import {motion, useMotionValue} from "framer-motion";
+// Framer motion
+import {motion, useMotionValue, useTransform} from "framer-motion";
 import {
     slideIn,
     staggerContainer,
     textVariant,
 } from "../../styles/motion";
+// Components
 import MatchingCard from "@components/MatchingCard/MatchingCard";
 import Slider from "./Slider";
 import CreditsCard from "./CreditsCard";
-import {useTransform} from "framer-motion";
 
 const creators = [
     {

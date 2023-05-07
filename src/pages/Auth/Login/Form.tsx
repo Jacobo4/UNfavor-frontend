@@ -4,6 +4,7 @@ import React, {useEffect} from 'react';
 import {login, LoginFormValues} from '@store/auth/authAsyncActions';
 // Router
 import {useNavigate} from "react-router-dom";
+import type {NavigateFunction} from "react-router";
 // Form
 import {useForm} from 'react-hook-form';
 //Styles

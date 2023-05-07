@@ -7,9 +7,13 @@ import {Outlet} from "react-router-dom";
 import styles from "./Auth.module.css";
 // Assets
 import logo from "@assets/images/logo.png";
+// @ts-ignore
 import {ReactComponent as TopDecor} from "@assets/images/login/loginTopDecor.svg";
+// @ts-ignore
 import {ReactComponent as BottomDecor} from "@assets/images/login/loginBottomDecor.svg";
+// @ts-ignore
 import {ReactComponent as SideBgDecor} from "@assets/images/login/bgDecor.svg";
+// @ts-ignore
 import {ReactComponent as SideDecor} from "@assets/images/login/loginDecor.svg";
 // Components
 
