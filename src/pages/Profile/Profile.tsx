@@ -120,7 +120,7 @@ const Profile: React.FC = () => {
 
   return (
     userInfo && (
-      <div className={styles["Profile"]}>
+      <main className={styles["Profile"]}>
         <section className={styles["profileData"]}>
           <figure className={styles["avatar"]}>
             <img
@@ -243,7 +243,7 @@ const Profile: React.FC = () => {
             </div>
           )}
         </section>
-      </div>
+      </main>
     )
   );
 };
