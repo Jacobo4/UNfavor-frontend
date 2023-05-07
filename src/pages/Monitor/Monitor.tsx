@@ -56,7 +56,7 @@ const dommieInfo = [
 const Monitor: React.FC = () => {
 
   return (
-    <div className={styles['Monitor']}>
+    <main className={styles['Monitor']}>
         <div className={styles['actions']}>
             <div className={styles['action-wrapper']}>
                 <Link to="/chat" type={"button"}>Chat <BsChatDots/></Link>
@@ -67,7 +67,7 @@ const Monitor: React.FC = () => {
             {dommieInfo.map((info, index) => <FavorCard key={index} {...info}/> )}
         </div>
 
-    </div>
+    </main>
   )
 }
 

@@ -33,6 +33,7 @@
 
     &::-webkit-scrollbar {
         width: 6px; /* width of the entire scrollbar */
+        height: 6px;
     }
 
     &::-webkit-scrollbar-track {
@@ -86,18 +87,18 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 h1 {
-    /* color: var(--font-color-h1); */
-    font-size: 4.0rem;
-    line-height: 4.0rem;
+    color: var(--deepPurple);
+    font-size: 3.0rem;
+    line-height: 3.0rem;
     font-weight: bold;
     @media (--screen-md) {
-        font-size: 5.0rem;
-        line-height: 5.0rem;
+        font-size: 4.0rem;
+        line-height: 4.0rem;
     }
-    @media (--screen-xl) {
+/*    @media (--screen-xl) {
         font-size: 6.0rem;
         line-height: 6.0rem;
-    }
+    }*/
 }
 
 h6 {

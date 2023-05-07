@@ -7,9 +7,9 @@ import MatchingCard from "@components/MatchingCard/MatchingCard";
 
 const Match: React.FC = () => {
   return (
-    <div className={styles.matchContainer}>
+    <main className={styles.matchContainer}>
         <MatchingCard/>
-    </div>
+    </main>
   );
 };
 
