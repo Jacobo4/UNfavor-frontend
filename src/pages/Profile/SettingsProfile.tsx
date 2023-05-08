@@ -9,7 +9,7 @@ import SettingForm from "./Forms/SettingForm";
 const SettingsProfile: React.FC = () => {
   
   return (
-    <div>
+    <div className={styles.page}>
       <div className={styles.background}>
         <div>
           <MdSettings />
