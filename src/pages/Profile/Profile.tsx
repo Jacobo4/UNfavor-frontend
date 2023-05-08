@@ -11,10 +11,17 @@ import avatar from "@assets/images/avatar.png";
 import favor from "@assets/images/favor.png";
 import { IoLocation } from "react-icons/io5";
 import { getProfileInfo } from "@store/user/userAsyncAction";
-import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
+import { ThemeProvider, createTheme, styled, colors} from "@mui/material";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { MdReport } from "react-icons/md";
 import { Link } from "react-router-dom";
+
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 const ReportUser = styled(Button)({
   margin: "8px 0px",
@@ -26,6 +33,42 @@ const ReportUser = styled(Button)({
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.45)",
   },
 });
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#807cf6',
+      main: '#615CF4',
+      dark: '#4340aa',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#33dcb7',
+      main: '#00D4A6',
+      dark: '#009474',
+      contrastText: '#000',
+    },
+    error:{
+      light: '#ff7b83',
+      main: '#FF5B64',
+      dark: '#b23f46',
+    }
+  },
+});
+const CssTextField = styled(TextField)({
+  "& label.Mui-focused": {
+    color: "#00D4A6",
+  },
+
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "#00D4A6",
+  },
+  "& .MuiOutlinedInput-root": {
+    "&.Mui-focused fieldset": {
+      borderColor: "#00D4A6",
+    },
+  },
+});
+
 const historial = [
   {
     state: "Finalizado",
@@ -110,8 +153,18 @@ const Profile: React.FC = () => {
   const [userOpen, setUserOpen] = useState(true);
   const [historialOpen, setHistorialOpen] = useState(!userOpen);
   const { userInfo } = useAppSelector((state) => state.user);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
+    console.log(userInfo);
     if (!userInfo) {
       dispatch(getProfileInfo());
       console.log(userInfo);
@@ -139,16 +192,53 @@ const Profile: React.FC = () => {
             <div className={styles["Raitings"]}>
               <h3>Calificación Promedio</h3>
               <div className={styles["stars"]}>
-                <h4>3,5</h4>
-                <Rating size="large" precision={0.5} value={3.5} readOnly />
+                <h4>{userInfo.user_reviews_avg}</h4>
+                <Rating
+                  size="large"
+                  precision={0.5}
+                  value={userInfo.user_reviews_avg}
+                  readOnly
+                />
               </div>
               <h3>Favores Realizados</h3>
-              <h4>13</h4>
+              <h4>{userInfo.user_reviews_num}</h4>
             </div>
-            <ReportUser variant="outlined" color="error">
+            <ReportUser
+              variant="outlined"
+              color="error"
+              onClick={handleClickOpen}
+            >
               Reportar usuario
               <MdReport />
             </ReportUser>
+            <ThemeProvider theme={theme}>
+            <Dialog open={open} onClose={handleClose}>
+              <DialogTitle>¿Estas seguro de reportar a este usuario?</DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  Por favor describe el motivo de tu reporte para que podamos dar una solución al problema.
+                </DialogContentText>
+                <TextField
+                  multiline
+                  autoFocus
+                  margin="dense"
+                  id="reason"
+                  label="Descripción del reporte" 
+                  type="text"
+                  fullWidth
+               
+                  variant="standard"
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button color="error" onClick={handleClose}>Cancelar</Button>
+                <Button color="secondary" onClick={handleClose}>Reportar</Button>
+                
+                
+
+              </DialogActions>
+            </Dialog>
+            </ThemeProvider>
           </div>
         </section>
 
@@ -212,8 +302,7 @@ const Profile: React.FC = () => {
             <div className={styles["historial"]}>
               <h2>Historial</h2>
               <div className={styles["cardsContainer"]}>
-              {historial.map((h) => (
-                
+                {historial.map((h) => (
                   <div className={styles["card"]}>
                     <h4>{h.state}</h4>
                     <h2>{h.title}</h2>
@@ -229,16 +318,10 @@ const Profile: React.FC = () => {
                     <span>{h.to}</span>
                     <h3>Calificación:</h3>
                     <div>
-                        <Rating
-                     
-                      
-                      value={h.rate}
-                      readOnly
-                    />
+                      <Rating value={h.rate} readOnly />
                     </div>
                   </div>
-                
-              ))}
+                ))}
               </div>
             </div>
           )}
