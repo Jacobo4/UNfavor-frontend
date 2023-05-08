@@ -10,9 +10,9 @@ import dommieFavor from '@assets/images/dommieFavor.png';
 // Icons
 import {IoIosArrowDown} from 'react-icons/io';
 //Chat
-import {PrettyChatWindow} from "react-chat-engine-pretty";
-import {getAccessToken} from "axios-jwt";
-import { ChatEngine } from 'react-chat-engine';
+// import {PrettyChatWindow} from "react-chat-engine-pretty";
+// import {getAccessToken} from "axios-jwt";
+// import { ChatEngine } from 'react-chat-engine';
 
 const Chat: React.FC = () => {
     const [isOpen, toggle] = useState<boolean>(false);
