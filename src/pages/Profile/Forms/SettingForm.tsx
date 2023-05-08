@@ -131,6 +131,7 @@ export default function Form() {
               <CssTextField
                 required
                 fullWidth
+                type="number"
                 defaultValue={userInfo.phone}
                 error={value == ""}
                 helperText={value == "" ? "El campo es obligatorio" : ""}
