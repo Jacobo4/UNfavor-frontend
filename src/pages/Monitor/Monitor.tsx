@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 //Styles
 import styles from './Monitor.module.css';
+
 // Icons
 import { BsChatDots } from "react-icons/bs";
 // Components
