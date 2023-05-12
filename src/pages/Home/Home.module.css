@@ -82,10 +82,11 @@
         justify-content: center;
         text-align: center;
         display: grid;
-
+        gap: 24px;
 
         div:nth-of-type(1) {
             order: 2;
+            justify-self: center;
         }
 
         div:nth-of-type(2) {

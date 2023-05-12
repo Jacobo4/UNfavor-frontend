@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // Router
 import {Link} from "react-router-dom";
 // Redux
@@ -68,6 +68,8 @@ const creators = [
         description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
     },
 ];
+import {toast} from "react-toastify";
+
 const Home: React.FC = () => {
     const { isLogged } = useAppSelector((state) => state.auth);
     // Card 3d motion
@@ -75,6 +77,11 @@ const Home: React.FC = () => {
     const y = useMotionValue(0);
     const rotateX = useTransform(y, [-100, 100], [30, -30]);
     const rotateY = useTransform(x, [100, -100], [-30, 30]);
+
+    // useEffect(() => { 
+    //     toast.error('Logging in...', {position: 'top-center'});
+        
+    // }, []);
 
     return (
         <main className={styles["Home"]}>

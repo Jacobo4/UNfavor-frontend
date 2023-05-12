@@ -341,7 +341,7 @@
           @media (--screen-lg) {
             justify-self: center;
             font-weight: 600;
-            font-size: 28px;
+            font-size: 20px;
           }
         }
         span {
@@ -350,7 +350,7 @@
           padding: 4px;
           @media (--screen-lg) {
             font-weight: 400;
-            font-size: 24px;
+            font-size: 16px;
           }
         }
         .avatarHist {
