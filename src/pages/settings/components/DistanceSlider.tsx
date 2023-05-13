@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import { Controller } from "react-hook-form";
+// Core
+import React from "react";
+// Mui
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import Tooltip from '@mui/material/Tooltip';
 
 const PrettoSlider = styled(Slider)({
     color: '#00D4A6',
@@ -59,11 +58,9 @@ const marks = [
     label: '40km',
   },
 ];
-
 function valuetext(value: number) {
   return `${value}km`;
 }
-
 export default function DiscreteSliderLabel({onChange, value}) {
   return (
     <Box sx={{ width: 300 }}>

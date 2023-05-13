@@ -8,7 +8,7 @@ import styles from './Monitor.module.css';
 // Icons
 import { BsChatDots } from "react-icons/bs";
 // Components
-import FavorCard from "@components/FavorCard/FavorCard";
+import FavorCard from "./components/FavorCard";
 
 const dommieInfo = [
     {

@@ -1,27 +1,30 @@
+// Core
+import React, { useEffect, useState } from "react";
+// Router
+import { Link } from "react-router-dom";
+// Redux
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { getProfileInfo } from "@store/user/userAsyncAction";
 //Styles
 import styles from "./Profile.module.css";
-import React, { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+// Icons
 import { BiUser, BiHistory } from "react-icons/bi";
-import Rating from "@mui/material/Rating";
-import Button, { ButtonProps } from "@mui/material/Button";
-import avatar from "@assets/images/avatar.png";
-import favor from "@assets/images/favor.png";
 import { IoLocation } from "react-icons/io5";
-import { getProfileInfo } from "@store/user/userAsyncAction";
-import { ThemeProvider, createTheme, styled, colors} from "@mui/material";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { MdReport } from "react-icons/md";
-import { Link } from "react-router-dom";
-
+// Images
+import avatar from "@assets/images/avatar.png";
+// Mui
+import { ThemeProvider, createTheme, styled, colors} from "@mui/material";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import Rating from "@mui/material/Rating";
+import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+
 
 const ReportUser = styled(Button)({
   margin: "8px 0px",
@@ -68,7 +71,7 @@ const CssTextField = styled(TextField)({
     },
   },
 });
-
+// Dommie historical
 const historial = [
   {
     state: "Finalizado",

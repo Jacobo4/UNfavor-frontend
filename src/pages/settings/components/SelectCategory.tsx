@@ -1,12 +1,14 @@
-import * as React from 'react';
+// Core
+import React from 'react';
+// Mui
 import { Theme, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
-
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
+
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -36,7 +38,7 @@ function getStyles(name: string, category: readonly string[], theme: Theme) {
   };
 }
 
-export default function MultipleSelectChip() {
+const MultipleSelectChip: React.FC = () => {
   const theme = useTheme();
   const [category, setCategory] = React.useState<string[]>([]);
 
@@ -83,3 +85,5 @@ export default function MultipleSelectChip() {
     </div>
   );
 }
+
+export default MultipleSelectChip;

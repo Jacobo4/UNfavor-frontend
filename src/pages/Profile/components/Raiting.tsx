@@ -1,5 +1,7 @@
 import React from 'react'
+// Styles
 import styles from './Raiting.module.css'
+// Icons
 import { BsStarFill,BsStarHalf } from 'react-icons/bs';
 
 

@@ -1,20 +1,19 @@
-//Styles
+// Core
+import React from "react";
+// Styles
 import styles from "./FavorCard.module.css";
+// Mui
 import {
   ThemeProvider,
   createTheme,
-  styled,
-  colors,
   Button,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
-
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import React from "react";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 
@@ -51,7 +50,6 @@ const labels: { [index: string]: string } = {
   4.5: '4.5 estrellas',
   5: '5.0 estrellas',
 };
-
 function getLabelText(value: number) {
   return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
 }
@@ -69,30 +67,30 @@ const FavorCard: React.FC = ({
   limitDate,
   responsable,
 }: IProps) => {
-  const [openConfirm, setOpenConfirm] = React.useState(false);
-  const [openCancel, setOpenCancel] = React.useState(false);
-  const [openRaiting, setOpenRaiting] = React.useState(false);
+  const [openConfirm, setOpenConfirm] = React.useState<boolean>(false);
+  const [openCancel, setOpenCancel] = React.useState<boolean>(false);
+  const [openRaiting, setOpenRaiting] = React.useState<boolean>(false);
   const [value, setValue] = React.useState<number | null>(2);
-  const [hover, setHover] = React.useState(-1);
-  const handleClickOpenConfirm = () => {
+  const [hover, setHover] = React.useState<number | null>(-1);
+  const handleClickOpenConfirm = (): void=> {
     setOpenConfirm(true);
   };
 
-  const handleCloseConfirm = () => {
+  const handleCloseConfirm = (): void => {
     setOpenConfirm(false);
   };
-  const handleClickOpenCancel = () => {
+  const handleClickOpenCancel = (): void => {
     setOpenCancel(true);
   };
 
-  const handleCloseCancel = () => {
+  const handleCloseCancel = (): void => {
     setOpenCancel(false);
   };
-  const handleClickOpenRaiting = () => {
+  const handleClickOpenRaiting = (): void => {
     setOpenRaiting(true);
   };
 
-  const handleCloseRaiting = () => {
+  const handleCloseRaiting = (): void => {
     setOpenRaiting(false);
   };
   return (
