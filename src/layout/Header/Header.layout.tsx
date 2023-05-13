@@ -55,12 +55,12 @@ const Header: React.FC = () => {
                     <FiMenu/>
                 </button>
 
-                <Link to={"/"}>
-                    <figure className={styles["logo"]}>
-                        <img src={logo} alt=""/>
-                        <h1>UNfavor</h1>
-                    </figure>
-                </Link>
+        <Link to={"/"} className={styles["link"]}>
+          <figure className={styles["logo"]}>
+            <img src={logo} alt="" />
+            <h1>UNfavor</h1>
+          </figure>
+        </Link>
 
                 {isLogged && (
                     <>

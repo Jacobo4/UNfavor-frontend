@@ -47,16 +47,16 @@ const PrettoSlider = styled(Slider)({
   
 const marks = [
   {
-    value: 3,
-    label: '3km',
-  },
-  {
-    value: 6,
-    label: '6km',
-  },
-  {
     value: 10,
     label: '10km',
+  },
+  {
+    value: 25,
+    label: '25km',
+  },
+  {
+    value: 40,
+    label: '40km',
   },
 ];
 
@@ -69,13 +69,13 @@ export default function DiscreteSliderLabel({onChange, value}) {
     <Box sx={{ width: 300 }}>
       <PrettoSlider
         aria-label="Always visible"
-        defaultValue={5}
+        defaultValue={value}
         onChange={onChange}
         value={value}
         getAriaValueText={valuetext}
         step={1}
         min={0}
-        max={10}
+        max={50}
         marks={marks}
         color= "secondary"
         valueLabelDisplay="on"

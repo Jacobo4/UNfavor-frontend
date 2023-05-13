@@ -1,83 +1,111 @@
 @import "@styles/responsive.css";
 
-.background {
-  background: #190845;
-  height: 294px;
-  position: absolute;
-  top: 73px;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  border-radius: 0px 0px 12px 12px;
-  @media (--screen-lg) {
-    top: 78px;
-    border-radius: 0px 0px 60px 60px;
-  }
-  div{
-    padding: 20px;
-    display: flex;
-    @media (--screen-lg) {
-        justify-content: center;
-      }
-    svg {
-        color: #fff;
-        font-size: 30px;
-        
-        @media (--screen-lg) {
-          font-size: 50px;
-        }
-    }
-    h2{
-
-        margin: 12px 0;
-        color: #fff;
-        font-weight: 500;
-        font-size: 32px;
-        @media (--screen-lg) {
-            font-weight: 600;
-            font-size: 52px;
-        }
-    }
-
-  }
+.page{
+  display: grid;
   
-}
-.container{
-    z-index: 1;
-    position: relative;
-    display: grid;
-    grid-gap: 12px;
-    gap: 12px;
-    margin: 12px 0;
-    padding: 16px;
-    background: #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
-    top: 60px;
-    @media (--screen-lg) {
-        top: 76px;
-    }
-
-    .photo{
-        justify-self: center;
-        img{
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            @media (--screen-lg) {
-                width: 150px;
-                height: 150px;
-            }
+  .background {
+    
+    div{
+      padding: 12px;
+      display: flex;
+      @media (--screen-lg) {
+          justify-content: center;
         }
-    }
-    .slider{
-      display: grid;
-      gap:50px;
-      justify-items: center;
-      label{
-        justify-self: start;
+      svg {
+          color: var(--deepPurple);
+          font-size: 30px;
+          
+          @media (--screen-lg) {
+            font-size: 50px;
+          }
       }
+      h2{
+          color: var(--deepPurple);
+          font-weight: 500;
+          font-size: 32px;
+          @media (--screen-lg) {
+              font-weight: 600;
+              font-size: 52px;
+          }
+      }
+  
     }
-
+    
+  }
+  .container{
+     
+      display: grid;
+      grid-gap: 12px;
+      gap: 12px;
+      margin: 8px;
+      padding: 16px;
+      background: #ffffff;
+      border-radius: 8px;
+        border: 2px solid hsla(242, 100%, 94.81%, 0.8);
+      
+      @media (--screen-lg) {
+          
+          width: 80%;
+          justify-self: center;
+      }
+  
+      .photo{
+          justify-self: center;
+          img{
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+              @media (--screen-lg) {
+                  width: 150px;
+                  height: 150px;
+              }
+          }
+      }
+      form{
+        h2{
+          padding: 10px;
+        }
+        div{
+          display: grid;
+          gap: 16px;
+        }
+        button{
+          justify-self: center;
+          width: fit-content;
+          padding: 8px;
+          margin: 8px;
+          border-radius: 8px;
+          border: 2px solid hsla(242, 100%, 94.81%, 0.8);
+          background: var(--deepPurple);
+          color: #ffffff;
+          font-weight: 600;
+          font-size: 16px;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover{
+            background: hsl(242deg 87.83% 56.5%);
+          }
+          &:hover,
+  &:focus {
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
+    transform: translateY(-0.25em);
+  }
+        }
+      }
+      .slider{
+        display: grid;
+        gap:50px;
+        justify-items: center;
+        h3{
+          justify-self: start;
+          padding: 10px;
+          color: hsl(0deg 0% 51.93% );
+          font-weight: 300;
+          font-size: 18px;
+        }
+      }
+  
+  }
 }
 
