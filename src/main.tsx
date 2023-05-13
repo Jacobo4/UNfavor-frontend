@@ -31,7 +31,7 @@ import Dashboard from './pages/DashBoard/Dashboard/Dashboard';
 import Admin from './pages/DashBoard/Admin';
 import ProfileControl from './pages/DashBoard/ProfileControl/ProfileControl';
 import Settings from './pages/DashBoard/Settings/Settings';
-
+import ReportedProfiles from './pages/DashBoard/ReportedProfiles/ReportedProfiles'
 const router = createBrowserRouter([
     {
         path: "/",
@@ -93,6 +93,10 @@ const router = createBrowserRouter([
             {
                 path: "/admin/settings",
                 element: <Settings/>
+            },
+            {
+                path: "/admin/reportedProfiles",
+                element: <ReportedProfiles/>
             },
         ],
     },

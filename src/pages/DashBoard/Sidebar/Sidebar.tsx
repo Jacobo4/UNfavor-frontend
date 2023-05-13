@@ -4,7 +4,7 @@ import { NavLink , useNavigate} from "react-router-dom";
 import logo from "@assets/images/logo.png";
 import {AiOutlineLineChart, AiOutlineLogout} from 'react-icons/ai';
 import {FiSettings} from 'react-icons/fi';
-import {MdAdminPanelSettings} from 'react-icons/md'
+import {MdAdminPanelSettings, MdOutlineReportProblem} from 'react-icons/md'
 const Sidebar: React.FC = () => {
   const navigate = useNavigate();
   const handleLogout=()=>{
@@ -34,12 +34,18 @@ const Sidebar: React.FC = () => {
             </NavLink>
             </li>
             <li className={styles.navItem} >
+            <NavLink to="/admin/reportedProfiles" className={navClass=>navClass.isActive? styles.nav_active :styles.nav_link}>
+            <MdOutlineReportProblem/>
+              Reportes
+            </NavLink>
+            </li>
+            
+            <li className={styles.navItem} >
             <NavLink to="/admin/settings" className={navClass=>navClass.isActive? styles.nav_active :styles.nav_link}>
             <FiSettings/>
               Configuraciones
             </NavLink>
             </li>
-            
             
           </ul>
         </div>

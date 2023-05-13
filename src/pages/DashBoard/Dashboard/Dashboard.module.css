@@ -1,12 +1,8 @@
 @import "@styles/responsive.css";
 .Dashboard{
-    padding-top: 5rem;
-    background: var(--gray);
+    padding: 5rem 1rem 5rem 1rem;
     .DashboardWrapper{
         .DashboardCardsContent{
-            .DashboardCards{
-
-            }
             .singleDashboardCard{
                 
                 background-image: linear-gradient(to bottom, var(--salmon), #ff7279);
@@ -16,13 +12,17 @@
                 justify-content:space-between;
                 .cardContent{
                     h2{
-                        color:var(--deepPurple)
+                        color:var(--deepPurple);
                     }
                     span{
                         font-size: 2rem;
                     }
                 }
+                .cardIcon{
+
+                }
             }
+            
         }
     }
 }

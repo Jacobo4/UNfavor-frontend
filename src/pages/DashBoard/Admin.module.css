@@ -1,4 +1,15 @@
 @import "@styles/responsive.css";
 .main{
-    padding-left: 270px;
+    
+    
+    .content{
+        width:100%;
+        padding-left: 0px;
+        @media (--screen-md) {
+            width: calc(100%-260px);
+            padding-left: 260px;
+        }
+        
+        height: 100%;
+    }
 }
