@@ -12,8 +12,7 @@ import dommieFavor from '@assets/images/dommieFavor.png';
 import {IoIosArrowDown} from 'react-icons/io';
 //Chat
 // import {PrettyChatWindow} from "react-chat-engine-pretty";
-import {getAccessToken} from "axios-jwt";
-// import { ChatEngine } from 'react-chat-engine';
+import { ChatEngine } from 'react-chat-engine';
 
 const Chat: React.FC = () => {
     const [isOpen, toggle] = useState<boolean>(false);
@@ -26,23 +25,21 @@ const Chat: React.FC = () => {
         toggle(!isOpen);
     }
     return (
-        <main className={styles['Chat']}>
+        <div className={styles['Chat']}>
             <ChatEngine
             projectID={import.meta.env.VITE_CHAT_PROJECT_ID}
 			userName={token.email}
 			userSecret={token.id}
-            renderChatSettings={(chatAppState) => {}}
-            renderNewChatForm={(creds) => {}}
 		/>
-        </main>
-        // <main className={styles['Chat']}>
+        </div>
+        // <div >
         //     <PrettyChatWindow
         //         projectId={import.meta.env.VITE_CHAT_PROJECT_ID}
         //         username={token.email}
         //         secret={token.id}
-        //         style={{ height: '100vh' }}
+        //          style={{ height: '100vh' }}
         //     />
-        // </main>
+        // </div>
         // <div className={styles['Chat']}>
         //
         //     <div onClick={toggleDetails} className={styles['details']}>

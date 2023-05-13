@@ -33,33 +33,40 @@
             height: 100%;
         }
     }
-
-    .logo {
+    .link{
         display: none;
-
         @media (--screen-md) {
             display: grid;
-            grid-auto-flow: column;
-            align-content: center;
-            gap: 4px;
-            align-items: center;
+            
         }
-
-        img {
-            width: 58px;
-            height: 58px;
-        }
-        /*Drop Down Menu display*/
-        
-        h1 {
-            font-style: normal;
-            line-height: normal;
-            font-weight: 400;
-            font-size: 30px;
-            color: var(--deepPurple)
-
+        .logo {
+            
+    
+            @media (--screen-md) {
+                display: grid;
+                grid-auto-flow: column;
+                align-content: center;
+                gap: 4px;
+                align-items: center;
+            }
+    
+            img {
+                width: 58px;
+                height: 58px;
+            }
+            /*Drop Down Menu display*/
+            
+            h1 {
+                font-style: normal;
+                line-height: normal;
+                font-weight: 400;
+                font-size: 30px;
+                color: var(--deepPurple)
+    
+            }
         }
     }
+    
 
     .avatar {
         @media (--screen-md) {
