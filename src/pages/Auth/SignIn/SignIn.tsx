@@ -3,7 +3,7 @@ import React from "react";
 //Styles
 import styles from "./SignIn.module.css";
 // Components
-import Form from "./Form";
+import Form from "./components/Form";
 
 const SignIn: React.FC = () => {
     return (

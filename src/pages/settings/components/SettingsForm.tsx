@@ -1,24 +1,19 @@
 // Core
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 // Form
-
-import { axiosApiInstance } from "@store/axiosApiInstance";
-import SelectCategory from "./SelectCategory";
-import styles from "../SettingsProfile.module.css";
-import DistanceSlider from "./DistanceSlider";
-import { config } from "process";
-import { useForm, Controller } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { alpha, createTheme, styled } from "@mui/material/styles";
-import { getProfileInfo } from "@store/user/userAsyncAction";
-import TextField, { TextFieldProps } from "@mui/material/TextField";
+import {axiosApiInstance} from "@store/axiosApiInstance";
+import {useForm, Controller} from "react-hook-form";
+// Router
+import {useNavigate} from "react-router-dom";
+// Styles
+import styles from "./SettingsForm.module.css";
+// Mui
+import {InputLabel, MenuItem, Select} from "@mui/material";
+import {styled} from "@mui/material/styles";
 import FormControl from "@mui/material/FormControl";
-import { OutlinedInputProps } from "@mui/material/OutlinedInput";
-import { Description } from "@headlessui/react/dist/components/description/description";
-import { useAppSelector } from "@store/hooks";
-import { InputLabel, MenuItem, Select } from "@mui/material";
-import { AsyncThunkAction } from "@reduxjs/toolkit";
-import { Dispatch, AnyAction } from "redux";
+import TextField from "@mui/material/TextField";
+// Components
+import DistanceSlider from "./DistanceSlider";
 
 type publicProfile = {
   //user
@@ -52,21 +47,16 @@ const CssTextField = styled(TextField)({
 });
 
 const API_URL = import.meta.env.VITE_API_URL;
-export default function Form() {
+const Form: React.FC = ({userInfo}) => {
   const navigate = useNavigate();
-  const { userInfo } = useAppSelector((state) => state.user);
- 
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
     control,
   } = useForm<publicProfile>();
-  useEffect(() => {
-    if (!userInfo) {
-      dispatch(getProfileInfo());
-    }
-  }, []);
+
   const onSubmit = handleSubmit(async (data) => {
     console.log(data);
     const config = {
@@ -74,7 +64,7 @@ export default function Form() {
         "Content-Type": "application/json",
       },
     };
-    const { userData } = await axiosApiInstance.post(
+    const {userData} = await axiosApiInstance.post(
       `${API_URL}/user/updateProfile`,
       {
         newUserData: {
@@ -88,8 +78,8 @@ export default function Form() {
             location: data.location,
             preferences: {
               favor_filters: {
-                favor_type: { type: data.type },
-                max_distance_km: { type: data.distance },
+                favor_type: {type: data.type},
+                max_distance_km: {type: data.distance},
               },
             },
           },
@@ -99,9 +89,9 @@ export default function Form() {
     ).then(response => {
       console.log(response.data);
     })
-    .catch(error => {
-      console.log(error);
-    });
+      .catch(error => {
+        console.log(error);
+      });
     navigate("/user");
   });
 
@@ -110,7 +100,7 @@ export default function Form() {
       <form onSubmit={onSubmit}>
         <div>
           <Controller
-            render={({ field: { onChange, value } }) => (
+            render={({field: {onChange, value}}) => (
               <CssTextField
                 required
                 fullWidth
@@ -127,7 +117,7 @@ export default function Form() {
             control={control}
           />
           <Controller
-            render={({ field: { onChange, value } }) => (
+            render={({field: {onChange, value}}) => (
               <CssTextField
                 required
                 fullWidth
@@ -149,7 +139,7 @@ export default function Form() {
         <h2>Editar favor</h2>
         <div>
           <Controller
-            render={({ field: { onChange, value } }) => (
+            render={({field: {onChange, value}}) => (
               <CssTextField
                 required
                 fullWidth
@@ -167,7 +157,7 @@ export default function Form() {
           />
 
           <Controller
-            render={({ field: { onChange, value } }) => (
+            render={({field: {onChange, value}}) => (
               <CssTextField
                 required
                 fullWidth
@@ -186,7 +176,7 @@ export default function Form() {
           />
 
           <Controller
-            render={({ field: { onChange, value } }) => (
+            render={({field: {onChange, value}}) => (
               <CssTextField
                 required
                 fullWidth
@@ -205,20 +195,20 @@ export default function Form() {
 
           <FormControl
             variant="standard"
-            sx={{ m: 1, minWidth: 220, color: "#00D4A6" }}
+            sx={{m: 1, minWidth: 220, color: "#00D4A6"}}
           >
             <InputLabel id="demo-simple-select-standard-label">
               Categoria
             </InputLabel>
             <Controller
-              render={({ field: { onChange, value } }) => (
+              render={({field: {onChange, value}}) => (
                 <Select
                   labelId="demo-simple-select-standard-label"
                   id="demo-simple-select-standard"
                   value={value}
                   label="Categoria"
                   onChange={onChange}
-                  defaultChecked={(userInfo.favor.category)?userInfo.favor.category:"None"}
+                  defaultChecked={(userInfo.favor.category) ? userInfo.favor.category : "None"}
                 >
                   <MenuItem value="">
                     <em>None</em>
@@ -232,26 +222,26 @@ export default function Form() {
               control={control}
             />
           </FormControl>
-          <div />
+          <div/>
         </div>
         <h2>Editar filtro</h2>
         <div className={styles.select}>
           <FormControl
             variant="standard"
-            sx={{ m: 1, minWidth: 220, color: "#00D4A6" }}
+            sx={{m: 1, minWidth: 220, color: "#00D4A6"}}
           >
             <InputLabel id="demo-simple-select-standard-label">
               Categoria
             </InputLabel>
             <Controller
-              render={({ field: { onChange, value } }) => (
+              render={({field: {onChange, value}}) => (
                 <Select
                   labelId="demo-simple-select-standard-label"
                   id="demo-simple-select-standard"
                   value={value}
                   label="Categoria"
                   onChange={onChange}
-                  defaultChecked={(userInfo.preferences.favor_filters.type )?userInfo.favor.preferences.favor_filters.type:"None"}
+                  defaultChecked={(userInfo.preferences.favor_filters.type) ? userInfo.favor.preferences.favor_filters.type : "None"}
                 >
                   <MenuItem value="">
                     <em>None</em>
@@ -274,8 +264,8 @@ export default function Form() {
           <Controller
             name="distance"
             control={control}
-            render={({ field: { onChange, value } }) => (
-              <DistanceSlider onChange={onChange} value={value} />
+            render={({field: {onChange, value}}) => (
+              <DistanceSlider onChange={onChange} value={value}/>
             )}
           />
         </div>
@@ -287,21 +277,4 @@ export default function Form() {
     </div>
   );
 }
-function dispatch(
-  arg0: AsyncThunkAction<
-    any,
-    void,
-    {
-      state?: unknown;
-      dispatch?: Dispatch<AnyAction>;
-      extra?: unknown;
-      rejectValue?: unknown;
-      serializedErrorType?: unknown;
-      pendingMeta?: unknown;
-      fulfilledMeta?: unknown;
-      rejectedMeta?: unknown;
-    }
-  >
-) {
-  throw new Error("Function not implemented.");
-}
+export default Form;

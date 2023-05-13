@@ -26,7 +26,7 @@ import Profile from './pages/Profile/Profile';
 import Chat from './pages/Chat/Chat';
 import Auth from "./pages/Auth/Auth";
 import SignIn from "./pages/Auth/SignIn/SignIn";
-import SettingsProfile from "./pages/Profile/SettingsProfile";
+import SettingsProfile from "./pages/settings/SettingsProfile";
 
 
 const router = createBrowserRouter([

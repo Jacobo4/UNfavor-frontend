@@ -31,6 +31,7 @@ const Header: React.FC = () => {
 
     const handleLogout = () => {
         dispatch(logout());
+        navigate("/");
         // location.reload();
     };
 

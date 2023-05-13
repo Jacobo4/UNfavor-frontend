@@ -1,0 +1,13 @@
+.slider {
+  display: grid;
+  gap: 50px;
+  justify-items: center;
+
+  h3 {
+    justify-self: start;
+    padding: 10px;
+    color: hsl(0deg 0% 51.93%);
+    font-weight: 400;
+    font-size: 16px;
+  }
+}

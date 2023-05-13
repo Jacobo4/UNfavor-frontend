@@ -1,10 +1,11 @@
 //Core
 import React from "react";
+// Redux
+import {useAppSelector} from "@store/hooks";
 //Router
 import {Navigate} from "react-router-dom";
 //Icons
 import {BsShieldLockFill} from "react-icons/bs";
-import {useAppSelector} from "@store/hooks";
 
 //TODO: Style this page
 const AccessDenied = () => {
@@ -29,25 +30,5 @@ const RequireAuth = ({component: RouteComponent, ...rest}: {component: React.FC}
         return <RouteComponent {...rest}/>
     }
 }
-
-
-// {
-//     user: {
-//         name: string,
-//         email: string,
-//         password: string,
-//         phone: string,
-//         age: number,
-//         user_reviews_num: string,
-//         user_reviews_sum: string,
-//         user_favors: Array<string>
-//     },
-//     favor: {
-//         title: string,
-//         description: string,
-//         price: number,
-//         location: string
-//     }
-// }
 
 export default RequireAuth;

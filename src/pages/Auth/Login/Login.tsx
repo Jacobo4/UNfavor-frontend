@@ -3,7 +3,7 @@ import React from "react";
 //Styles
 import styles from "./Login.module.css";
 // Components
-import Form from "./Form";
+import Form from "./components/Form";
 import {Link} from "react-router-dom";
 
 const Login: React.FC = () => {

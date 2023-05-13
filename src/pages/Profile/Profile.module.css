@@ -7,21 +7,24 @@
   @media (--screen-lg) {
     gap: 24px;
   }
+
   .profileData {
     display: grid;
     margin: 0;
     background: #fff;
     border-radius: 8px;
-      border: 2px solid hsla(242, 100%, 94.81%, 0.8);
+    border: 2px solid hsla(242, 100%, 94.81%, 0.8);
     @media (--screen-md) {
       grid-template-columns: 1fr 2fr;
       gap: 4px;
       padding: 16px;
     }
+
     .avatar {
       display: grid;
       height: auto;
       justify-items: center;
+
       img {
         width: 100%;
         height: 100%;
@@ -34,16 +37,19 @@
         }
       }
     }
+
     .info {
       padding: 12px;
       display: grid;
+
       .userInfo {
         display: grid;
-        justify-content: center;  
+        justify-content: center;
         @media (--screen-sm) {
-          
+
           align-items: center;
         }
+
         h2 {
           font-weight: 700;
           font-size: 28px;
@@ -65,6 +71,7 @@
             height: 12px;
           }
         }
+
         span {
           font-weight: 300;
           font-size: 18px;
@@ -77,8 +84,10 @@
           }
         }
       }
+
       .Raitings {
         text-align: initial;
+
         h3 {
           padding: 4px 0;
           font-weight: 500;
@@ -90,22 +99,26 @@
             font-size: 20px;
           }
         }
+
         h4 {
           color: #190845;
           font-weight: 300;
           padding: 4px 0;
         }
+
         .stars {
           display: flex;
           gap: 12px;
           align-items: center;
         }
+
         button {
           margin: 8px 0;
           justify-self: end;
           align-self: flex-end;
           width: fit-content;
           align-items: center;
+
           svg {
             width: 20px;
             height: 20px;
@@ -116,11 +129,13 @@
       }
     }
   }
+
   .nav {
     display: flex;
     gap: 4px;
     padding: 0 12px;
-    button{
+
+    button {
       display: flex;
       align-items: center;
       font-size: 16px;
@@ -130,20 +145,22 @@
         font-size: 24px;
       }
     }
+
     .disabled {
       padding: 12px;
       background: none;
       border: none;
-      color: hsl(242deg 13.77% 58.54%);    
+      color: hsl(242deg 13.77% 58.54%);
       border-bottom: 2.5px solid hsl(242deg 100% 94.81% / 80%);
       border-radius: 2px;
-      
-      
+
+
     }
+
     .disabled:hover {
       background: hsl(242deg 100% 94.81% / 30%);
     }
-    
+
     .active {
       padding: 12px;
       background: #00d4a6a8;
@@ -151,21 +168,24 @@
       color: #fff;
       border-bottom: 2.5px solid var(--celeste);
       border-radius: 2px;
-      
+
     }
   }
+
   .user {
     margin: 16px 0;
     justify-items: baseline;
     padding: 0;
+
     .userContainer {
       padding: 12px;
       margin-top: -2px;
       border-radius: 8px;
       border: 2px solid hsla(242, 100%, 94.81%, 0.8);
-      
+
       display: grid;
       justify-items: baseline;
+
       h2 {
         justify-self: center;
         font-weight: 700;
@@ -179,6 +199,7 @@
           font-size: 40px;
         }
       }
+
       .aboutUser {
         width: 100%;
         padding: 12px;
@@ -189,36 +210,41 @@
         @media (--screen-md) {
           grid-template-columns: auto auto;
         }
+
         h3 {
           font-weight: 500;
           font-size: 16px;
 
           color: var(--deepPurple);
           @media (--screen-md) {
-           
+
             font-size: 20px;
             margin-right: 16px;
           }
         }
+
         h4 {
           color: #190845;
           font-weight: 300;
           padding: 4px 0;
         }
+
         div {
           gap: 8px;
           display: grid;
           justify-content: flex-start;
           justify-items: baseline;
+
           h3 {
             font-weight: 400;
             font-size: 16px;
             color: var(--deepPurple);
             @media (--screen-md) {
-              
+
               font-size: 20px;
             }
           }
+
           p {
             text-align: justify;
             width: 90%;
@@ -226,6 +252,7 @@
         }
       }
     }
+
     .settings {
       display: flex;
       justify-content: center;
@@ -241,11 +268,13 @@
       justify-self: center;
       font-size: 20px;
       background: var(--celeste);
+
       a {
         text-decoration: none;
         color: #ffffff;
       }
     }
+
     .settings:hover,
     .settings:focus {
       cursor: pointer;
@@ -262,7 +291,8 @@
     margin: -2px;
     border-radius: 8px;
     border: 2px solid hsla(242, 100%, 94.81%, 0.8);
-    h2{
+
+    h2 {
       justify-self: center;
       font-weight: 700;
       font-size: 28px;
@@ -275,6 +305,7 @@
         font-size: 40px;
       }
     }
+
     .cardsContainer {
       display: grid;
       gap: 12px;
@@ -286,6 +317,7 @@
       @media (--screen-lg) {
         grid-template-columns: 1fr 1fr 1fr;
       }
+
       .card {
         background: #ffffff;
         padding: 16px;
@@ -293,11 +325,12 @@
         justify-content: center;
         justify-items: center;
         box-shadow: 2px 8px 8px hsla(242, 100%, 94.81%, 0.8);
-        
+
         border-radius: 8px;
         @media (--screen-md) {
           max-width: 300px;
         }
+
         h2:nth-child(2) {
           font-weight: 400;
           justify-self: center;
@@ -306,6 +339,7 @@
             font-size: 32px;
           }
         }
+
         h4 {
           font-weight: 700;
           font-size: 24px;
@@ -317,13 +351,14 @@
             font-size: 28px;
           }
         }
-  
+
         .imgFav {
           filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.2));
           border-radius: 32px;
+
           img {
             object-fit: cover;
-            
+
             object-position: center;
             width: 180px;
             height: 180px;
@@ -334,6 +369,7 @@
             }
           }
         }
+
         h3 {
           font-weight: 450;
           font-size: 20px;
@@ -344,6 +380,7 @@
             font-size: 20px;
           }
         }
+
         span {
           font-weight: 400;
           font-size: 16px;
@@ -353,9 +390,11 @@
             font-size: 16px;
           }
         }
+
         .avatarHist {
           height: auto;
           padding: 4px;
+
           img {
             width: 50px;
             height: 50px;
@@ -368,5 +407,5 @@
       }
     }
   }
-  
+
 }

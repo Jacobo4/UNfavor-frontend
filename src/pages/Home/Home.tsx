@@ -18,11 +18,11 @@ import {
     slideIn,
     staggerContainer,
     textVariant,
-} from "../../styles/motion";
+} from "@styles/motion.js";
 // Components
 import MatchingCard from "@components/MatchingCard/MatchingCard";
-import Slider from "./Slider";
-import CreditsCard from "./CreditsCard";
+import Slider from "./components/Slider";
+import CreditsCard from "./components/CreditsCard";
 
 const creators = [
     {
@@ -68,7 +68,6 @@ const creators = [
         description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
     },
 ];
-import {toast} from "react-toastify";
 
 const Home: React.FC = () => {
     const { isLogged } = useAppSelector((state) => state.auth);
