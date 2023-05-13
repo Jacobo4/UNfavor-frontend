@@ -12,7 +12,7 @@ const Dashboard: React.FC = () => {
                 <h2>Total Favores Publicados</h2>
                 <span>300</span>
               </div>
-              <span>
+              <span className={styles.cardIcon}>
                 <BsFilePost/>
               </span>
             </div>
