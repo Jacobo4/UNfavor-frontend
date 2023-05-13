@@ -21,7 +21,7 @@
     -webkit-border-radius: 1ex;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--celeste);
+    background: var(--primary);
     -webkit-border-radius: 1ex;
   }
 
@@ -43,7 +43,7 @@
         justify-self: center;
         background: white;
         border-radius: 8px;
-        border: 1px solid var(--deepPurple);
+        border: 1px solid var(--secondary);
         padding: 4px 6px;
         transform: translate(0%, -40%);
         h3 {
@@ -51,7 +51,7 @@
           font-weight: 600;
           margin: 0;
           text-align: center;
-          color: var(--deepPurple);
+          color: var(--secondary);
           @media (--screen-md) {
             font-size: 1.8rem;
           }

@@ -29,7 +29,7 @@ body {
     }
 
     .topVector svg {
-        background: var(--deepPurple);
+        background: var(--secondary);
         @media (--screen-lg) {
             display: none;
         }

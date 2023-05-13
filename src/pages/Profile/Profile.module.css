@@ -63,7 +63,7 @@
         }
 
         svg {
-          color: var(--deepPurple);
+          color: var(--secondary);
           width: 12px;
           height: 12px;
           @media (--screen-md) {
@@ -77,7 +77,7 @@
           font-size: 18px;
           text-align: center;
           backdrop-filter: blur(2px);
-          color: var(--deepPurple);
+          color: var(--secondary);
           @media (--screen-md) {
             font-weight: 400;
             font-size: 16px;
@@ -92,7 +92,7 @@
           padding: 4px 0;
           font-weight: 500;
           font-size: 16px;
-          color: var(--deepPurple);
+          color: var(--secondary);
 
           @media (--screen-md) {
             font-weight: 400;
@@ -166,7 +166,7 @@
       background: #00d4a6a8;
       border: none;
       color: #fff;
-      border-bottom: 2.5px solid var(--celeste);
+      border-bottom: 2.5px solid var(--primary);
       border-radius: 2px;
 
     }
@@ -193,7 +193,7 @@
         align-items: center;
         text-align: initial;
         padding: 8px 0;
-        color: var(--deepPurple);
+        color: var(--secondary);
         @media (--screen-lg) {
           font-weight: 600;
           font-size: 40px;
@@ -215,7 +215,7 @@
           font-weight: 500;
           font-size: 16px;
 
-          color: var(--deepPurple);
+          color: var(--secondary);
           @media (--screen-md) {
 
             font-size: 20px;
@@ -238,7 +238,7 @@
           h3 {
             font-weight: 400;
             font-size: 16px;
-            color: var(--deepPurple);
+            color: var(--secondary);
             @media (--screen-md) {
 
               font-size: 20px;
@@ -263,11 +263,11 @@
       border: none;
       border-radius: 4px;
       color: #ffffff;
-      background: var(--deepPurple);
+      background: var(--secondary);
       font-weight: bold;
       justify-self: center;
       font-size: 20px;
-      background: var(--celeste);
+      background: var(--primary);
 
       a {
         text-decoration: none;
@@ -299,7 +299,7 @@
       align-items: center;
       text-align: initial;
       padding: 8px 0;
-      color: var(--deepPurple);
+      color: var(--secondary);
       @media (--screen-lg) {
         font-weight: 600;
         font-size: 40px;
@@ -345,7 +345,7 @@
           font-size: 24px;
           text-align: center;
           justify-self: center;
-          color: var(--salmon);
+          color: var(--third);
           @media (--screen-lg) {
             font-weight: 750;
             font-size: 28px;
