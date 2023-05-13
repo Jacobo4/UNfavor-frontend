@@ -147,7 +147,7 @@ const historial = [
   },
 ];
 const buttonNavigation = styled(BottomNavigationAction)({
-  color: "var(--deepPurple)",
+  color: "var(--secondary)",
   padding: "0px",
   fontSize: "24px",
 });

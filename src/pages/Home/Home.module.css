@@ -84,12 +84,22 @@
         display: grid;
         gap: 24px;
 
-        div:nth-of-type(1) {
+
+        .cardsContainer {
             order: 2;
-            justify-self: center;
+            justify-items: center;
+            align-items: center;
+            min-height: 650px;
+            display: grid;
+            width: 100%;
+            h5{
+                color: var(--third);
+                font-weight: bold;
+                font-size: 1.5rem;
+            }
         }
 
-        div:nth-of-type(2) {
+        .slogan {
             order: 1;
         }
 
@@ -97,18 +107,18 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
 
-            div:nth-of-type(1) {
+            .cardsContainer {
                 order: 1;
             }
 
-            div:nth-of-type(2) {
+            .slogan {
                 order: 2;
                 align-self: center;
             }
         }
 
         h1 {
-            color: var(--deepPurple);
+            color: var(--secondary);
         }
 
         .card3d {
@@ -139,11 +149,11 @@
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 4px;
         color: #ffffff;
-        background: var(--deepPurple);
+        background: var(--secondary);
         font-weight: bold;
         justify-self: center;
         font-size: 1.25rem;
-        background: var(--celeste);
+        background: var(--primary);
     }
 
     .buttonInfo:hover,
@@ -162,7 +172,7 @@
 
 
         h4 {
-            color: var(--celeste);
+            color: var(--primary);
             padding: 24px 0;
             font-size: 1.8rem;
             font-weight: bold;
@@ -209,7 +219,7 @@
                     }
 
                     span {
-                        color: var(--salmon);
+                        color: var(--third);
                         font-weight: bold;
                         @media (--screen-md) {
                             font-size: 24px;

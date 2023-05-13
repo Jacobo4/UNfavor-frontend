@@ -52,7 +52,7 @@
             font-size: 32px;
         }
         svg:hover{
-            color: var(--salmon);
+            color: var(--third);
         }
     }
     .links{
@@ -74,7 +74,7 @@
             font-size: 20px;
             text-decoration: none;
             &:hover{
-                color: var(--salmon);
+                color: var(--third);
             }
             @media(--screen-md){
                 font-size: 24px;
