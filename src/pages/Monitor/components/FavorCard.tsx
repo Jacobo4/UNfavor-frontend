@@ -72,25 +72,25 @@ const FavorCard: React.FC = ({
   const [openRaiting, setOpenRaiting] = React.useState<boolean>(false);
   const [value, setValue] = React.useState<number | null>(2);
   const [hover, setHover] = React.useState<number | null>(-1);
-  const handleClickOpenConfirm = (): void=> {
+  const handleClickOpenConfirm = ()=> {
     setOpenConfirm(true);
   };
 
-  const handleCloseConfirm = (): void => {
+  const handleCloseConfirm = () => {
     setOpenConfirm(false);
   };
-  const handleClickOpenCancel = (): void => {
+  const handleClickOpenCancel = () => {
     setOpenCancel(true);
   };
 
-  const handleCloseCancel = (): void => {
+  const handleCloseCancel = () => {
     setOpenCancel(false);
   };
-  const handleClickOpenRaiting = (): void => {
+  const handleClickOpenRaiting = () => {
     setOpenRaiting(true);
   };
 
-  const handleCloseRaiting = (): void => {
+  const handleCloseRaiting = () => {
     setOpenRaiting(false);
   };
   return (
