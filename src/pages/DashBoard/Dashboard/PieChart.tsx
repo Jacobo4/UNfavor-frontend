@@ -43,7 +43,6 @@ const PieChart = ({ arr }: { arr: any }) => {
     }
   }
   useEffect(() => {
-    
     adjustData();
     console.log(data);
   }, []);
@@ -98,15 +97,15 @@ const PieChart = ({ arr }: { arr: any }) => {
             anchor: "bottom",
             direction: "row",
             justify: false,
-            translateX: 0,
-            translateY: 56,
-            itemsSpacing: 0,
-            itemWidth: 100,
+            translateX: -23,
+            translateY: 45,
+            itemsSpacing: 18,
+            itemWidth: 50,
             itemHeight: 18,
             itemTextColor: "#999",
             itemDirection: "left-to-right",
             itemOpacity: 1,
-            symbolSize: 18,
+            symbolSize: 7,
             symbolShape: "circle",
             effects: [
               {
