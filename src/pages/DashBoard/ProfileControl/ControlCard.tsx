@@ -36,6 +36,7 @@ const ControlCard: React.FC = ({title, profile, ubication, description,state}:da
                     </button>
                     
                 </div>
+                
             </div>
         </div>
       );
