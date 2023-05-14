@@ -14,7 +14,7 @@ const ReportCard: React.FC = ({reportedProfile,reportedPhotoProfile,reporterProf
         
         <div className={styles.profiles}>
             <div className={styles.profile}>
-                <h2>Usuario Reportado:</h2>
+                <h2>Usuario Reportado</h2>
                 
                 <img src={reportedPhotoProfile} alt="" />
                 <h3>{reportedProfile}</h3>
