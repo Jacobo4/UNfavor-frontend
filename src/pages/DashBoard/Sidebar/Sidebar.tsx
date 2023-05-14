@@ -4,8 +4,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import logo from "@assets/images/logo.png";
 import { AiOutlineLineChart, AiOutlineLogout } from "react-icons/ai";
 import { FiSettings } from "react-icons/fi";
-import { MdAdminPanelSettings, MdOutlineReportProblem } from "react-icons/md";
-import {AiOutlineMenuUnfold} from 'react-icons/ai'
+import {AiOutlineMenuUnfold} from 'react-icons/ai';
+import navLinks from '@assets/dummy-data/navLinksSideBar.jsx'
 const Sidebar: React.FC = () => {
   
 
@@ -24,51 +24,21 @@ const Sidebar: React.FC = () => {
         <div className={styles.SidebarContent}>
           <div className={styles.menu}>
             <ul className={styles.navList}>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/admin/dashboard"
-                  className={(navClass) =>
-                    navClass.isActive ? styles.nav_active : styles.nav_link
-                  }
-                >
-                  <AiOutlineLineChart />
-                  <span>Estadísticas</span>
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/admin/profilecontrol"
-                  className={(navClass) =>
-                    navClass.isActive ? styles.nav_active : styles.nav_link
-                  }
-                >
-                  <AiOutlineLineChart />
-                  <span>Control de Perfiles</span>
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/admin/reportedProfiles"
-                  className={(navClass) =>
-                    navClass.isActive ? styles.nav_active : styles.nav_link
-                  }
-                >
-                  <MdOutlineReportProblem />
-                  <span>Reportes</span>
-                </NavLink>
-              </li>
-
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/admin/settings"
-                  className={(navClass) =>
-                    navClass.isActive ? styles.nav_active : styles.nav_link
-                  }
-                >
-                  <FiSettings />
-                  <span>Configuraciones</span>
-                </NavLink>
-              </li>
+            {
+                  navLinks.map((item, idx)=>
+                  <li className={styles.navItem}>
+                  <NavLink
+                    to={item.path}
+                    className={(navClass) =>
+                      navClass.isActive ? styles.nav_active : styles.nav_link
+                    }
+                  >
+                    {item.icon}
+                    <span>{item.display}</span>
+                  </NavLink>
+                </li>
+                  )
+                }
             </ul>
           </div>
           <div className={styles.SidebarBottom}>
