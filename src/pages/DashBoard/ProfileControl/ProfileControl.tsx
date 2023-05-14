@@ -45,6 +45,13 @@ const ProfileControl: React.FC = () => {
       description: "Se pintan fachadas de casas, excelencia garantizada",
       state: "",
     },
+    {
+      title: "Pintar fachada de casa",
+      profile: "Ana1234",
+      ubication: "Bogotá D.C",
+      description: "Se pintan fachadas de casas, excelencia garantizada",
+      state: "",
+    },
   ]
   return (
     <div className={styles.ProfileControl}>

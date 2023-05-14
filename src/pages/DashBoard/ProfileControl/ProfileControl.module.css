@@ -4,11 +4,11 @@
     padding: 20px;
     display: grid;
     grid-template-rows: auto auto;
-    border: 1px solid red;
     grid-row-gap: 2rem;
     justify-content: center;
     align-items: center;
     justify-items: center;
+    width:100%;
     .headInfo{
         background-color: #f5f5f5;
         border: 1px solid #ddd;
@@ -38,9 +38,10 @@
         gap: 16px;
         
         @media(--screen-xl) {
+            
             display:grid;
             width:100%;
-            grid-template-columns: auto auto auto;
+            grid-template-columns: 1fr 1fr;
             grid-gap: 32px;
         }
     }
