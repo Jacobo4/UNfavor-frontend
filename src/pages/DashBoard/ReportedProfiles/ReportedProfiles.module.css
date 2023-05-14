@@ -1,0 +1,17 @@
+@import "@styles/responsive.css";
+.ReportedProfiles{
+    padding: 32px;
+    
+    .ReportCardsContainer{
+        width: 750px;
+        display:flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 16px;
+        @media(--screen-xl) {
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+    }
+}
