@@ -1,67 +1,52 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ResponsiveLine } from '@nivo/line'
-
-const data = [
+import styles from "./Dashboard.module.css";
+let data = [
     {
-      "id": "japan",
-      "color": "hsl(73, 70%, 50%)",
-      "data": [
+      id: "Progress",
+      
+        data: [
         {
-          "x": "plane",
-          "y": 185
+          x: "mes 1",
+          y: 0
         },
         {
-          "x": "helicopter",
-          "y": 253
+          x: "mes 2",
+          y: 0
         },
         {
-          "x": "boat",
-          "y": 17
+          x: "mes 3",
+          y: 0
         },
         {
-          "x": "train",
-          "y": 216
+          x: "mes 4",
+          y: 0
         },
         {
-          "x": "subway",
-          "y": 197
+          x: "mes 5",
+          y: 0
         },
-        {
-          "x": "bus",
-          "y": 194
-        },
-        {
-          "x": "car",
-          "y": 181
-        },
-        {
-          "x": "moto",
-          "y": 69
-        },
-        {
-          "x": "bicycle",
-          "y": 243
-        },
-        {
-          "x": "horse",
-          "y": 70
-        },
-        {
-          "x": "skateboard",
-          "y": 231
-        },
-        {
-          "x": "others",
-          "y": 101
-        }
+        
+        
       ]
     },
    
   ];
 
-const LineChart=()=> {
+const LineChart=({ arr }: { arr: any })=> {
+  function adjustData() {
+    for (let i = 0; i < arr.length; i++) {
+      data[0].data[i].y  = arr[i].count;
+    }
+  }
+  useEffect(() => {
+    
+    adjustData();
+    console.log(data[0]);
+   
+  }, [data[0]]);
   return (
-    <div style={{height: 500}}>
+    <div className={styles.line}>
         <h2>Flujo de usuarios al mes</h2>
         <ResponsiveLine
         data={data}
@@ -81,7 +66,7 @@ const LineChart=()=> {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'transportation',
+            legend: 'Meses',
             legendOffset: 36,
             legendPosition: 'middle'
         }}
@@ -89,7 +74,7 @@ const LineChart=()=> {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'count',
+            legend: 'Usuarios nuevos por mes',
             legendOffset: -40,
             legendPosition: 'middle'
         }}

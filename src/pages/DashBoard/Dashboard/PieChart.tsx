@@ -1,38 +1,62 @@
-import React from 'react'
-import { ResponsivePie } from '@nivo/pie'
+import React from "react";
+import styles from "./Dashboard.module.css";
+import { ResponsivePie } from "@nivo/pie";
 import { useEffect } from "react";
 
-const data = [
-    {
-      id: "Neutros",
-      label: "Neutros",
-      value: 322,
-    }, 
-    {
-        id: "Negativos",
-        label: "Negativos",
-        value: 170,
-      },
-    {
-        id: "Positivos",
-        label: "Positivos",
-        value: 58,
-        color: "#61cdbb"
-      }
-  ];
+let data = [
+  {
+    id: "0 estrellas",
+    label: "0 estrellas",
+    value: 2,
+  },
+  {
+    id: "1 estrellas",
+    label: "1 estrellas",
+    value: 0,
+  },
+  {
+    id: "2 estrellas",
+    label: "2 estrellas",
+    value: 0,
+  },
+  {
+    id: "3 estrellas",
+    label: "3 estrellas",
+    value: 0,
+  },
+  {
+    id: "4 estrellas",
+    label: "4 estrellas",
+    value: 0,
+  },
+  {
+    id: "5 estrellas",
+    label: "5 estrellas",
+    value: 0,
+  },
+];
 
-const PieChart=()=>{
+const PieChart = ({ arr }: { arr: any }) => {
+  function adjustData() {
+    for (let i = 0; i < arr.length; i++) {
+      data[i].value = arr[i].count;
+    }
+  }
+  useEffect(() => {
+    
+    adjustData();
+    console.log(data);
+  }, []);
   return (
-    <div style={{height: 500}}>
-        <h2>Calificaciones de los usuarios</h2>
-        <ResponsivePie
+    <div className={styles.pie}>
+      <h2>Calificaciones de los usuarios</h2>
+      <ResponsivePie
         data={data}
-        
         margin={{ top: 50, right: 50, bottom: 100, left: 50 }}
         innerRadius={0.5}
         padAngle={0.7}
         cornerRadius={2}
-        colors={{ scheme: 'nivo' }}
+        colors={{ scheme: "nivo" }}
         activeOuterRadiusOffset={5}
         borderColor={{
           from: "color",
@@ -65,7 +89,7 @@ const PieChart=()=>{
             background: "inherit",
             color: "rgba(255, 255, 255, 0.3)",
             rotation: -45,
-            lineWidth: 6,
+            lineWidth: 2,
             spacing: 10,
           },
         ]}
@@ -96,8 +120,7 @@ const PieChart=()=>{
         ]}
       />
     </div>
-   
-  )
-}
+  );
+};
 
-export default PieChart
+export default PieChart;

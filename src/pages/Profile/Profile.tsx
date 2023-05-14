@@ -13,8 +13,11 @@ const Profile: React.FC = () => {
     const {userInfo} = useAppSelector((state) => state.user);
 
     useEffect(() => {
+        console.log(userInfo);
         if (!userInfo){
             dispatch(getProfileInfo());
+            console.log(userInfo);
+            
         }
     }, []);
 

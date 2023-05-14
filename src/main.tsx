@@ -84,19 +84,19 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/admin/dashboard",
-                element: <Dashboard/>
+                element: <RequireAuth component={Dashboard}/> 
             },
             {
                 path: "/admin/profilecontrol",
-                element: <ProfileControl/>
+                element: <RequireAuth component={ProfileControl}/>
             },
             {
                 path: "/admin/settings",
-                element: <Settings/>
+                element: <RequireAuth component={Settings}/>
             },
             {
                 path: "/admin/reportedProfiles",
-                element: <ReportedProfiles/>
+                element: <RequireAuth component={ReportedProfiles}/>
             },
         ],
     },

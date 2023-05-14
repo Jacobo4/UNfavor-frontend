@@ -84,6 +84,24 @@
         padding: 1rem 0;
         display: grid;
         justify-content: center;
-        gap: 0.5em;
+        gap: 1em;
+        justify-items: center;
+        .pie{
+
+            width:330px;
+            height: 300px;
+            @media (--screen-md){
+                width: 700px;
+                height: 600px;
+            }
+        }
+        .line{
+            width: 340px;
+            height: 300px;
+            @media (--screen-md){
+                width: 600px;
+                height: 600px;
+            }
+        }
     }
 }
