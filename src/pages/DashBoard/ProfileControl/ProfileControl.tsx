@@ -1,5 +1,6 @@
 import styles from "./ProfileControl.module.css";
 import React from "react";
+import FavorCard from "@components/FavorCard/FavorCard";
 import ControlCard from "./ControlCard";
 const ProfileControl: React.FC = () => {
   const dataDummie=[
@@ -66,6 +67,7 @@ const ProfileControl: React.FC = () => {
         
         <div className={styles.ControlCardsContainer}>
           {dataDummie.map((info, index) => <ControlCard {...info}/> )}
+          
         </div>
         
     </div>
