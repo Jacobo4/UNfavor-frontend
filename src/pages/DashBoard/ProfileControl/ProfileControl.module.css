@@ -42,6 +42,10 @@
             display:grid;
             width:100%;
             grid-template-columns: 1fr 1fr;
+            grid-gap: 16px;
+        }
+        @media(--screen-xl) {
+            grid-template-columns: 1fr 1fr 1fr;
             grid-gap: 32px;
         }
     }
