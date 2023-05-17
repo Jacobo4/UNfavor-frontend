@@ -2,9 +2,7 @@ import styles from "./Sidebar.module.css";
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "@assets/images/logo.png";
-import { AiOutlineLineChart, AiOutlineLogout } from "react-icons/ai";
-import { FiSettings } from "react-icons/fi";
-import {AiOutlineMenuUnfold} from 'react-icons/ai';
+import { AiOutlineLogout } from "react-icons/ai";
 import navLinks from '@assets/dummy-data/navLinksSideBar.jsx'
 const Sidebar: React.FC = () => {
   
@@ -12,8 +10,6 @@ const Sidebar: React.FC = () => {
   const navigate = useNavigate();
   const handleLogout = () => {};
   return (
-      
-      
       <div className={styles.Sidebar}>
         <div className={styles.SidebarTop}>
           <figure className={styles["logo"]}>
