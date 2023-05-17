@@ -5,6 +5,8 @@ import {useState} from "react";
 import {Outlet} from "react-router-dom";
 //Styles
 import styles from "./Auth.module.css";
+//Link
+import { Link } from 'react-router-dom';
 // Assets
 import logo from "@assets/images/logo.png";
 import {ReactComponent as TopDecor} from "@assets/images/login/loginTopDecor.svg";
@@ -21,10 +23,10 @@ const Auth: React.FC = () => {
                     <TopDecor/>
                 </div>
                 <div>
-                    <div className={styles.logoContainer}>
+                    <Link to="/" className={styles.logoContainer}>
                         <img src={logo} alt="Logo"/>
                         <h1>UNfavor</h1>
-                    </div>
+                   </Link>
                         <Outlet/>
                 </div>
                 <div className={styles.lowerVector}>
