@@ -58,6 +58,7 @@ const cardData: Array = [
 
 const creators = [
   {
+    id: 1,
     name: "Juan Jacobo Izquierdo Becerra",
     avatar: "https://lh3.googleusercontent.com/a-/ACB-R5TaTas8hZXgwR1IsgtMpxfjABQXDoYF3GkbST6LJA=s48-p",
     github: "https://github.com/Jacobo4",
@@ -65,6 +66,7 @@ const creators = [
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
   },
   {
+    id: 2,
     name: "Natalia Andrea Quiroga Castillo",
     avatar: "https://lh3.googleusercontent.com/a/AGNmyxZCSIqgtAe8C5JxqkLE4E3gfEvj3hvJ36GP2Ng1WE8=s288",
     github: "https://github.com/nquirogac",
@@ -72,6 +74,7 @@ const creators = [
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
   },
   {
+    id: 3,
     name: "Fabian Leandro Lopez Gomez",
     avatar: "https://media.licdn.com/dms/image/C4D03AQG9Jym1CW9ugw/profile-displayphoto-shrink_800_800/0/1643224091817?e=1688601600&v=beta&t=ay0kLlRRUZBQ5Qp4gUk4TBrqeRb3FLETOiDF2Q7AWCU",
     github: "https://github.com/ElSistemologo",
@@ -79,6 +82,7 @@ const creators = [
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
   },
   {
+    id: 4,
     name: "Ivan Yared Lombana Lozano",
     avatar: "https://lh3.googleusercontent.com/a-/ACB-R5SyNM7IGod4ke6fdzGHoIq9Fd_UfVmRDgm56Avb_g=s48-p",
     github: "https://github.com/IvanLoLo",
@@ -86,6 +90,7 @@ const creators = [
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
   },
   {
+    id: 5,
     name: "Juan Camilo Zambrano Lopez",
     avatar: "https://lh3.googleusercontent.com/a-/ACB-R5SifGrQdp7k5sGnEKk7K0WFH7fgCTZBI05dN2csUg=s48-p",
     github: "https://github.com/juzambranol",
@@ -93,6 +98,7 @@ const creators = [
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
   },
   {
+    id: 6,
     name: "Nicolas David Galindo Carvajal",
     avatar: "https://media.licdn.com/dms/image/C5603AQFwEgJ8vUiqVQ/profile-displayphoto-shrink_800_800/0/1614117310798?e=1688601600&v=beta&t=BSenyeI_ihGcLaQCqy5QjJps86JSjPKTIe1i3ZVW-JA",
     github: "https://github.com/NickGalindo",
@@ -266,7 +272,7 @@ const Home: React.FC = () => {
             <Stack direction="row" spacing={2}>
               <div className={styles["container"]}>
                 {creators.map((creator) =>
-                  <CreditsCard
+                  <CreditsCard key={creator.id}
                     name={creator.name}
                     img={creator.avatar}
                     description={creator.description}

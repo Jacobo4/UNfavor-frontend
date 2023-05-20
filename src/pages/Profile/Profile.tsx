@@ -168,10 +168,9 @@ const Profile: React.FC = () => {
 
   useEffect(() => {
     console.log(userInfo);
-    if (!userInfo) {
       dispatch(getProfileInfo());
       console.log(userInfo);
-    }
+    
   }, []);
 
   return (
@@ -274,6 +273,8 @@ const Profile: React.FC = () => {
               <div className={styles["aboutUser"]}>
                 <h3>E-mail: </h3>
                 <span>{userInfo.email}</span>
+                <h3>Telefono: </h3>
+                <span>{userInfo.phone}</span>
                 <h3>Filtros</h3>
                 <div>
                   <h3>Tipo de favor: </h3>

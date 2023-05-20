@@ -53,6 +53,10 @@ const router = createBrowserRouter([
                 element: <RequireAuth component={Profile}/>
             },
             {
+                path: "/user/:userId",
+                element: <RequireAuth component={Profile}/>
+            },
+            {
                 path: "/user/settings",
                 element: <RequireAuth component={SettingsProfile}/>
             },
