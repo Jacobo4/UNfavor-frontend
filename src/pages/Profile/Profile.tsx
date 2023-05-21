@@ -324,71 +324,15 @@ const Profile: React.FC = () => {
                     <div>
                       <Rating value={h.rate} readOnly />
                     </div>
-                    <div className={styles["card"]}>
-                        <h4>Finalizada</h4>
-                        <h2>Pintar Fachada de Casa</h2>
-                        <figure className={styles["imgFav"]}>
-                            <img src={favor} alt=""/>
-                        </figure>
-                        <h3>Fecha realización:</h3>
-                        <span>14/03/2023</span>
-                        <h3>Favor realizado para:</h3>
-                        <figure className={styles["avatarHist"]}>
-                            <img src={avatar} alt=""/>
-                        </figure>
-                        <h3>Calificación:</h3>
-                        <Raiting/>
-                    </div>
-                    <div className={styles["card"]}>
-                        <h4>Finalizada</h4>
-                        <h2>Pintar Fachada de Casa</h2>
-                        <figure className={styles["imgFav"]}>
-                            <img src={favor} alt=""/>
-                        </figure>
-                        <h3>Fecha realización:</h3>
-                        <span>14/03/2023</span>
-                        <h3>Favor realizado para:</h3>
-                        <figure className={styles["avatarHist"]}>
-                            <img src={avatar} alt=""/>
-                        </figure>
-                        <h3>Calificación:</h3>
-                        <Raiting/>
-                    </div>
-                    <div className={styles["card"]}>
-                        <h4>Finalizada</h4>
-                        <h2>Pintar Fachada de Casa</h2>
-                        <figure className={styles["imgFav"]}>
-                            <img src={favor} alt=""/>
-                        </figure>
-                        <h3>Fecha realización:</h3>
-                        <span>14/03/2023</span>
-                        <h3>Favor realizado para:</h3>
-                        <figure className={styles["avatarHist"]}>
-                            <img src={avatar} alt=""/>
-                        </figure>
-                        <h3>Calificación:</h3>
-                        <Raiting/>
-                    </div>
-                    <div className={styles["card"]}>
-                        <h4>Finalizada</h4>
-                        <h2>Pintar Fachada de Casa</h2>
-                        <figure className={styles["imgFav"]}>
-                            <img src={favor} alt=""/>
-                        </figure>
-                        <h3>Fecha realización:</h3>
-                        <span>14/03/2023</span>
-                        <h3>Favor realizado para:</h3>
-                        <figure className={styles["avatarHist"]}>
-                            <img src={avatar} alt=""/>
-                        </figure>
-                        <h3>Calificación:</h3>
-                        <Raiting/>
-                    </div>
-                </div>
+                  </div>
+                ))}
+              </div>
             </div>
-        </div>)
+          )}
+        </section>
+      </main>
     )
-        ;
+  );
 };
 
 export default Profile;
