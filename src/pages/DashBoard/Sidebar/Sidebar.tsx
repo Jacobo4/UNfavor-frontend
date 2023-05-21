@@ -2,18 +2,19 @@ import styles from "./Sidebar.module.css";
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "@assets/images/logo.png";
-import { AiOutlineLineChart, AiOutlineLogout } from "react-icons/ai";
-import { FiSettings } from "react-icons/fi";
-import { MdAdminPanelSettings, MdOutlineReportProblem } from "react-icons/md";
-import {AiOutlineMenuUnfold} from 'react-icons/ai'
+import { AiOutlineLogout } from "react-icons/ai";
+import navLinks from '@assets/dummy-data/navLinksSideBar.jsx'
+import { logout } from "@store/auth/authSlice";
+import { useAppDispatch } from "@store/hooks";
 const Sidebar: React.FC = () => {
   
-
+  const dispatch= useAppDispatch();
   const navigate = useNavigate();
-  const handleLogout = () => {};
+  const handleLogout = () => {
+      dispatch(logout());
+      navigate("/");
+  };
   return (
-      
-      
       <div className={styles.Sidebar}>
         <div className={styles.SidebarTop}>
           <figure className={styles["logo"]}>
@@ -24,62 +25,30 @@ const Sidebar: React.FC = () => {
         <div className={styles.SidebarContent}>
           <div className={styles.menu}>
             <ul className={styles.navList}>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/admin/dashboard"
-                  className={(navClass) =>
-                    navClass.isActive ? styles.nav_active : styles.nav_link
-                  }
-                >
-                  <AiOutlineLineChart />
-                  <span>Estadísticas</span>
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/admin/profilecontrol"
-                  className={(navClass) =>
-                    navClass.isActive ? styles.nav_active : styles.nav_link
-                  }
-                >
-                  <AiOutlineLineChart />
-                  <span>Control de Perfiles</span>
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/admin/reportedProfiles"
-                  className={(navClass) =>
-                    navClass.isActive ? styles.nav_active : styles.nav_link
-                  }
-                >
-                  <MdOutlineReportProblem />
-                  <span>Reportes</span>
-                </NavLink>
-              </li>
-
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/admin/settings"
-                  className={(navClass) =>
-                    navClass.isActive ? styles.nav_active : styles.nav_link
-                  }
-                >
-                  <FiSettings />
-                  <span>Configuraciones</span>
-                </NavLink>
-              </li>
+            {
+                  navLinks.map((item, idx)=>
+                  <li className={styles.navItem}>
+                  <NavLink
+                    to={item.path}
+                    className={(navClass) =>
+                      navClass.isActive ? styles.nav_active : styles.nav_link
+                    }
+                  >
+                    {item.icon}
+                    <span>{item.display}</span>
+                  </NavLink>
+                </li>
+                  )
+                }
             </ul>
           </div>
           <div className={styles.SidebarBottom}>
-            <NavLink
-              to="/"
-              className={styles.SidebarBottomButton}
-              onClick={() => handleLogout()}
+            <a              className={styles.SidebarBottomButton}
+              onClick={handleLogout}
             >
               <AiOutlineLogout />
               <span>Cerrar Sesión</span>
-            </NavLink>
+            </a>
           </div>
         </div>
       </div>

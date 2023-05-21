@@ -1,5 +1,6 @@
 import styles from "./ProfileControl.module.css";
 import React from "react";
+import FavorCard from "@components/FavorCard/FavorCard";
 import ControlCard from "./ControlCard";
 const ProfileControl: React.FC = () => {
   const dataDummie=[
@@ -23,7 +24,35 @@ const ProfileControl: React.FC = () => {
       ubication: "Bogotá D.C",
       description: "Se pintan fachadas de casas, excelencia garantizada",
       state: "",
-    }
+    },
+    {
+      title: "Pintar fachada de casa",
+      profile: "Ana1234",
+      ubication: "Bogotá D.C",
+      description: "Se pintan fachadas de casas, excelencia garantizada",
+      state: "",
+    },
+    {
+      title: "Pintar apartamento",
+      profile: "Juan1234",
+      ubication: "Bogotá D.C",
+      description: "Se pintan apartamentos en la ciudad de Bogota",
+      state: "",
+    },
+    {
+      title: "Pintar fachada de casa",
+      profile: "Ana1234",
+      ubication: "Bogotá D.C",
+      description: "Se pintan fachadas de casas, excelencia garantizada",
+      state: "",
+    },
+    {
+      title: "Pintar fachada de casa",
+      profile: "Ana1234",
+      ubication: "Bogotá D.C",
+      description: "Se pintan fachadas de casas, excelencia garantizada",
+      state: "",
+    },
   ]
   return (
     <div className={styles.ProfileControl}>
@@ -38,6 +67,7 @@ const ProfileControl: React.FC = () => {
         
         <div className={styles.ControlCardsContainer}>
           {dataDummie.map((info, index) => <ControlCard {...info}/> )}
+          
         </div>
         
     </div>
