@@ -56,7 +56,7 @@ const Form: React.FC = ({ userInfo }) => {
   const navigate = useNavigate();
 
   const {
-    register,
+    
     handleSubmit,
     formState: { errors },
     control,

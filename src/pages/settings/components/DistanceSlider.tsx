@@ -61,22 +61,23 @@ const marks = [
 function valuetext(value: number) {
   return `${value}km`;
 }
-export default function DiscreteSliderLabel({onChange, value}) {
+export default function DiscreteSliderLabel({onChange, value, distance}) {
   return (
     <Box sx={{ width: 300 }}>
       <PrettoSlider
         aria-label="Always visible"
-        defaultValue={value}
+        defaultValue={distance}
         onChange={onChange}
         value={value}
         getAriaValueText={valuetext}
         step={1}
         min={0}
-        max={50}
+        max={60}
         marks={marks}
         color= "secondary"
         valueLabelDisplay="on"
       />
+      
     </Box>
   );
 }
