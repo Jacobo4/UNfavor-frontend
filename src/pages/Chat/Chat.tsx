@@ -25,7 +25,7 @@ const Chat: React.FC = () => {
         toggle(!isOpen);
     }
     return (
-        <div className={styles['Chat']}>
+        <div className={`overrideChat ${styles['Chat']}`}>
             <ChatEngine
             projectID={import.meta.env.VITE_CHAT_PROJECT_ID}
 			userName={token.email}
@@ -34,7 +34,7 @@ const Chat: React.FC = () => {
         </div>
         // <div >
         //     <PrettyChatWindow
-        //         projectId={import.meta.env.VITE_CHAT_PROJECT_ID}
+        //         projectId={import.meta..env.VITE_CHAT_PROJECT_ID}
         //         username={token.email}
         //         secret={token.id}
         //          style={{ height: '100vh' }}

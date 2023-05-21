@@ -1,0 +1,68 @@
+.overrideDialog .MuiDialog-container {
+    background: rgba(26, 26, 26, 0.75) !important;
+
+    .MuiPaper-root {
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 20px;
+    }
+
+    .text-shadows {
+        text-shadow: 3px 3px 0 #11ffcb, 6px 6px 0 #4cffd8,
+        9px 9px #88ffe5, 12px 12px 0 #c3fff2;
+        font-family: bungee, sans-serif;
+        color: var(--primary);
+        animation: shadows 2s ease-in infinite;
+    }
+
+    @keyframes shadows {
+        0% {
+            text-shadow: none;
+        }
+        10% {
+            transform: translate(-3px, -3px);
+            text-shadow: 3px 3px 0 #11ffcb;
+        }
+        20% {
+            transform: translate(-6px, -6px);
+            text-shadow: 3px 3px 0 #11ffcb,
+            6px 6px 0 #4cffd8;
+        }
+        30% {
+            transform: translate(-9px, -9px);
+            text-shadow: 3px 3px 0 #11ffcb,
+            6px 6px 0 #4cffd8, 9px 9px #88ffe5;
+        }
+        40% {
+            transform: translate(-12px, -12px);
+            text-shadow: 3px 3px 0 #11ffcb,
+            6px 6px 0 #4cffd8, 9px 9px #88ffe5,
+            12px 12px 0 #c3fff2;
+        }
+        50% {
+            transform: translate(-12px, -12px);
+            text-shadow: 3px 3px 0 #11ffcb,
+            6px 6px 0 #4cffd8, 9px 9px #88ffe5,
+            12px 12px 0 #c3fff2;
+        }
+        60% {
+            text-shadow: 3px 3px 0 #11ffcb,
+            6px 6px 0 #4cffd8, 9px 9px #88ffe5,
+            12px 12px 0 #c3fff2;
+        }
+        70% {
+            text-shadow: 3px 3px 0 #11ffcb,
+            6px 6px 0 #4cffd8, 9px 9px #88ffe5;
+        }
+        80% {
+            text-shadow: 3px 3px 0 #11ffcb,
+            6px 6px 0 #4cffd8;
+        }
+        90% {
+            text-shadow: 3px 3px 0 #11ffcb;
+        }
+        100% {
+            text-shadow: none;
+        }
+    }
+}
