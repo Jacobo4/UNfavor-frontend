@@ -3,10 +3,12 @@ import logger from 'redux-logger';
 // Reducers
 import authReducer from './auth/authSlice';
 import userReducer from './user/userSlice';
+import adminReducer from './Admin/adminSlice';
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     user: userReducer,
+    admin: adminReducer,
   },
   // Just for debbuging purposes
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),

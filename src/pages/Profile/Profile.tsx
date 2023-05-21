@@ -170,7 +170,7 @@ const Profile: React.FC = () => {
     console.log(userInfo);
       dispatch(getProfileInfo());
       console.log(userInfo);
-    
+
   }, []);
 
   return (
@@ -225,18 +225,18 @@ const Profile: React.FC = () => {
                   autoFocus
                   margin="dense"
                   id="reason"
-                  label="Descripción del reporte" 
+                  label="Descripción del reporte"
                   type="text"
                   fullWidth
-               
+
                   variant="standard"
                 />
               </DialogContent>
               <DialogActions>
                 <Button color="error" onClick={handleClose}>Cancelar</Button>
                 <Button color="secondary" onClick={handleClose}>Reportar</Button>
-                
-                
+
+
 
               </DialogActions>
             </Dialog>
@@ -324,15 +324,71 @@ const Profile: React.FC = () => {
                     <div>
                       <Rating value={h.rate} readOnly />
                     </div>
-                  </div>
-                ))}
-              </div>
+                    <div className={styles["card"]}>
+                        <h4>Finalizada</h4>
+                        <h2>Pintar Fachada de Casa</h2>
+                        <figure className={styles["imgFav"]}>
+                            <img src={favor} alt=""/>
+                        </figure>
+                        <h3>Fecha realización:</h3>
+                        <span>14/03/2023</span>
+                        <h3>Favor realizado para:</h3>
+                        <figure className={styles["avatarHist"]}>
+                            <img src={avatar} alt=""/>
+                        </figure>
+                        <h3>Calificación:</h3>
+                        <Raiting/>
+                    </div>
+                    <div className={styles["card"]}>
+                        <h4>Finalizada</h4>
+                        <h2>Pintar Fachada de Casa</h2>
+                        <figure className={styles["imgFav"]}>
+                            <img src={favor} alt=""/>
+                        </figure>
+                        <h3>Fecha realización:</h3>
+                        <span>14/03/2023</span>
+                        <h3>Favor realizado para:</h3>
+                        <figure className={styles["avatarHist"]}>
+                            <img src={avatar} alt=""/>
+                        </figure>
+                        <h3>Calificación:</h3>
+                        <Raiting/>
+                    </div>
+                    <div className={styles["card"]}>
+                        <h4>Finalizada</h4>
+                        <h2>Pintar Fachada de Casa</h2>
+                        <figure className={styles["imgFav"]}>
+                            <img src={favor} alt=""/>
+                        </figure>
+                        <h3>Fecha realización:</h3>
+                        <span>14/03/2023</span>
+                        <h3>Favor realizado para:</h3>
+                        <figure className={styles["avatarHist"]}>
+                            <img src={avatar} alt=""/>
+                        </figure>
+                        <h3>Calificación:</h3>
+                        <Raiting/>
+                    </div>
+                    <div className={styles["card"]}>
+                        <h4>Finalizada</h4>
+                        <h2>Pintar Fachada de Casa</h2>
+                        <figure className={styles["imgFav"]}>
+                            <img src={favor} alt=""/>
+                        </figure>
+                        <h3>Fecha realización:</h3>
+                        <span>14/03/2023</span>
+                        <h3>Favor realizado para:</h3>
+                        <figure className={styles["avatarHist"]}>
+                            <img src={avatar} alt=""/>
+                        </figure>
+                        <h3>Calificación:</h3>
+                        <Raiting/>
+                    </div>
+                </div>
             </div>
-          )}
-        </section>
-      </main>
+        </div>)
     )
-  );
+        ;
 };
 
 export default Profile;

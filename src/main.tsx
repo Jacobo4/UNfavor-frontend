@@ -27,8 +27,11 @@ import Chat from './pages/Chat/Chat';
 import Auth from "./pages/Auth/Auth";
 import SignIn from "./pages/Auth/SignIn/SignIn";
 import SettingsProfile from "./pages/settings/SettingsProfile";
-
-
+import Dashboard from './pages/DashBoard/Dashboard/Dashboard';
+import Admin from './pages/DashBoard/Admin';
+import ProfileControl from './pages/DashBoard/ProfileControl/ProfileControl';
+import Settings from './pages/DashBoard/Settings/Settings';
+import ReportedProfiles from './pages/DashBoard/ReportedProfiles/ReportedProfiles'
 const router = createBrowserRouter([
     {
         path: "/",
@@ -45,8 +48,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/match",
-                element: <Match/>
-                // element: <RequireAuth component={Match}/>
+                element: <RequireAuth component={Match}/>
             },
             {
                 path: "/user",
@@ -77,6 +79,28 @@ const router = createBrowserRouter([
             {
                 path: "/auth/signin",
                 element: <SignIn/>
+            },
+        ],
+    },
+    {
+        path: "/admin",
+        element: <Admin/>,
+        children: [
+            {
+                path: "/admin/dashboard",
+                element: <RequireAuth component={Dashboard}/>
+            },
+            {
+                path: "/admin/profilecontrol",
+                element: <RequireAuth component={ProfileControl}/>
+            },
+            {
+                path: "/admin/settings",
+                element: <RequireAuth component={Settings}/>
+            },
+            {
+                path: "/admin/reportedProfiles",
+                element: <RequireAuth component={ReportedProfiles}/>
             },
         ],
     },
