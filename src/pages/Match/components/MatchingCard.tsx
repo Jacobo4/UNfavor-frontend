@@ -5,16 +5,16 @@ import {motion, HTMLMotionProps} from "framer-motion";
 import styles from "./MatchingCard.module.css";
 //Icons
 import {SlLike, SlDislike} from "react-icons/sl";
+import type {MatchCard} from "../Match";
 
 interface IProps {
-  customStyles?: string
-  imgSrc: string;
-  title: string;
-  description: string;
-  location: string;
+  card: MatchCard
+  index: number;
+  removeCard: (card:MatchCard) => void;
+  active: boolean;
 }
 
-const MatchingCard: React.FC<any> = ({card, index, removeCard, active}) => {
+const MatchingCard: React.FC<IProps> = ({card, index, removeCard, active}) => {
   const [leaveX, setLeaveX] = useState(0);
   const onDragEnd = (_e: any, info) => {
     if (info.offset.x > 100) {

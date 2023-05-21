@@ -170,7 +170,7 @@ const Profile: React.FC = () => {
     console.log(userInfo);
       dispatch(getProfileInfo());
       console.log(userInfo);
-    
+
   }, []);
 
   return (
@@ -225,18 +225,18 @@ const Profile: React.FC = () => {
                   autoFocus
                   margin="dense"
                   id="reason"
-                  label="Descripción del reporte" 
+                  label="Descripción del reporte"
                   type="text"
                   fullWidth
-               
+
                   variant="standard"
                 />
               </DialogContent>
               <DialogActions>
                 <Button color="error" onClick={handleClose}>Cancelar</Button>
                 <Button color="secondary" onClick={handleClose}>Reportar</Button>
-                
-                
+
+
 
               </DialogActions>
             </Dialog>
