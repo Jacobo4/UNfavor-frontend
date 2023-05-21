@@ -15,7 +15,6 @@ export type  updateUserInfoFormValues = {
         }
     }
 }    
-
 export interface UpdateUserInfoSuccess {
     message: string;
 }
@@ -23,6 +22,18 @@ export interface UpdateUserInfoFailure {
     message: string | any;
     error: string;
 }
+export type UpdateFavorFiltersFormValues = {
+    favor_type: string,
+    max_distance_km: number,
+}
+export interface UpdateFavorFiltersSuccess {
+    message: string;
+}
+export interface UpdateFavorFiltersFailure {
+    message: string | any;
+    error: string;
+}
+
 /**
  * This function update the user info by sending a POST request to the endpoint
  
@@ -60,7 +71,30 @@ export const updateUserInfo = createAsyncThunk(
         }
     }
 )
-
+export const updateFavorFilters = createAsyncThunk(
+    '/favor/changeFavorFilters',
+    async (formValues: UpdateFavorFiltersFormValues, {rejectWithValue}) => {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+            const { data } = await axiosApiInstance.post(
+                `${API_URL}/favor/changeFavorFilters`,
+                {...formValues},
+                config
+            );
+            return data;
+        } catch (error) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)
 export const getProfileInfo = createAsyncThunk(
     'user/getProfileInfo',
     async (_, {rejectWithValue}) => {
