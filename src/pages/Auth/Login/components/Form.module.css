@@ -3,6 +3,9 @@
 .Form {
 
     input{
+        background: rgba(170, 212, 200, 0.15);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 16px;
         padding-left: 55px;
         @media (--screen-lg) {
             padding-left: 55px;
