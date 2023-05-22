@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 // Redux
 import {
   login,
-  LoginFormValues,
+  LoginValues,
   signIn,
   SignInFormValues,
 } from "@store/auth/authAsyncActions";

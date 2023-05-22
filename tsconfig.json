@@ -9,7 +9,8 @@
       "@styles/*": ["src/styles/*"],
       "@components/*": ["src/components/*"],
       "@router/*": ["src/router/*"],
-      "@store/*": ["src/store/*"]
+      "@store/*": ["src/store/*"],
+      "@config/*": ["src/config/*"]
     },
     "allowSyntheticDefaultImports": true,
     "jsx": "react",

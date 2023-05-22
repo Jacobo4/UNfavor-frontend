@@ -4,31 +4,33 @@ import logger from 'redux-logger';
 import authReducer from './auth/authSlice';
 import userReducer from './user/userSlice';
 import adminReducer from './Admin/adminSlice';
+import matchReducer from '@store/match/matchSlice';
 
 const combinedReducer = combineReducers({
-   auth: authReducer,
+    auth: authReducer,
     user: userReducer,
     admin: adminReducer,
+    match: matchReducer,
 });
 
 const rootReducer = (state, action) => {
-  if (action.type === 'user/logout') {
-    state = undefined;
-  }
-  return combinedReducer(state, action);
+    if (action.type === 'user/logout') {
+        state = undefined;
+    }
+    return combinedReducer(state, action);
 };
 
 export const store = configureStore({
-  reducer: rootReducer,
-  // Just for debbuging purposes
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+    reducer: rootReducer,
+    // Just for debbuging purposes
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
+    ReturnType,
+    RootState,
+    unknown,
+    Action<string>
 >;

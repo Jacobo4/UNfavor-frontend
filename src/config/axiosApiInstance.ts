@@ -1,5 +1,3 @@
-// api.ts
-
 import {IAuthTokens, TokenRefreshRequest, applyAuthTokenInterceptor, getBrowserLocalStorage} from 'axios-jwt'
 import axios from 'axios'
 

@@ -1,5 +1,5 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {axiosApiInstance} from "@store/axiosApiInstance";
+import {axiosApiInstance} from "../../config/axiosApiInstance";
 
 const API_URL = import.meta.env.VITE_API_URL;
 

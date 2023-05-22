@@ -1,6 +1,6 @@
 @import "@styles/responsive.css";
 
-.MatchingCard {
+.MatchCard {
   position: absolute;
   background-color: #fff;
   border-radius: 8px;

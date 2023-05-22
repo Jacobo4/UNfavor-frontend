@@ -1,10 +1,10 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {axiosApiInstance} from "@store/axiosApiInstance";
+import {axiosApiInstance} from "../../config/axiosApiInstance";
 import {setAuthTokens} from 'axios-jwt'
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-export type LoginFormValues = {
+export type LoginValues = {
     email: string;
     password: string;
 }
@@ -50,7 +50,7 @@ export interface SignInFailure {
  * of the API with the user's form values. It then stores the user's tokens in
  * local storage and returns the response data.
  *
- * @param formValues The form values of the user.
+ * @param values User's credentials.
  * @param rejectWithValue The callback function to reject the promise with a
  * custom error message.
  *
@@ -59,7 +59,7 @@ export interface SignInFailure {
 */
 export const login = createAsyncThunk(
     'auth/login',
-    async (formValues: LoginFormValues, {rejectWithValue}) => {
+    async (values: LoginValues, {rejectWithValue}) => {
         try {
             // configure header's Content-Type as JSON
             const config = {
@@ -70,7 +70,7 @@ export const login = createAsyncThunk(
 
             const {data} = await axiosApiInstance.post(
                 `${API_URL}/user/login`,
-                {...formValues},
+                {...values},
                 config
             );
 

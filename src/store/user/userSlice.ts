@@ -51,7 +51,6 @@ const userSlice = createSlice({
                 state.error = null;
             })
             .addCase(updateUserInfo.fulfilled, (state: UserState, action) => {
-                
                 toast.dismiss(state.toastLoaderId);
                 toast.success('User info updated', {position: 'top-center'})
                 state.status = 'fulfilled';

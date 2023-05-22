@@ -1,7 +1,7 @@
 // Core
 import React, {useEffect} from 'react';
 // Redux
-import {login, LoginFormValues} from '@store/auth/authAsyncActions';
+import {login, LoginValues} from '@store/auth/authAsyncActions';
 // Router
 import {useNavigate} from "react-router-dom";
 import type {NavigateFunction} from "react-router";
@@ -23,7 +23,7 @@ export default function Form() {
     const navigate = useNavigate();
 
 
-    const onSubmit = handleSubmit((data: LoginFormValues) => {
+    const onSubmit = handleSubmit((data: LoginValues) => {
         dispatch(login(data));
     })
 

@@ -1,7 +1,7 @@
 // Core
 import React, { ChangeEvent, useEffect, useState } from "react";
 // Form
-import { axiosApiInstance } from "@store/axiosApiInstance";
+import { axiosApiInstance } from "../../../config/axiosApiInstance";
 import { useForm, Controller } from "react-hook-form";
 // Router
 import { useNavigate } from "react-router-dom";

@@ -1,79 +1,76 @@
-import React, {useState} from "react";
+// Core
+import React, {useEffect, useState} from "react";
+// Redux
+import {useAppDispatch, useAppSelector} from "@store/hooks";
 // Styles
 import styles from "./Match.module.css";
 import "./MatchOverrides.css"
-//Images
-import fotoFavour1 from "@assets/images/favour1.jpg";
+// Images
 import bgMatch from "@assets/images/bgMatch.jpg";
-// Components
-import MatchingCard from "./components/MatchingCard";
+// Animations
 import {AnimatePresence} from "framer-motion";
-import {Modal} from "@mui/material";
+// Mui
 import Box from "@mui/material/Box";
 import Dialog from "@mui/material/Dialog";
-
-
-export interface MatchCard {
-    id: number,
-    title: string,
-    description: string,
-    location: string,
-    image: string,
-}
+// Components
+import MatchCard from "./components/MatchCard";
+// Types
+import type {Match} from "@store/match/matchAsyncAction"
+import {getMatches} from "@store/match/matchAsyncAction";
+import {removeMatch} from "@store/match/matchSlice";
+import {askPermission, registerSw, subscribeNotifications} from "@config/serviceWorker";
 
 const Match: React.FC = () => {
-    const [openModal, setOpenModal] = useState<boolean>(true);
-    const handleClose = () => setOpenModal(false);
-    const cardData: Array<MatchCard> = [
-        {
-            id: 1,
-            title: "Card 1",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint.",
-            location: "This is a location",
-            image: fotoFavour1,
-        },
-        {
-            id: 2,
-            title: "Card 2",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint.",
-            location: "This is a location",
-            image: fotoFavour1,
-        },
-        {
-            id: 3,
-            title: "Card 3",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint.",
-            location: "This is a location",
-            image: fotoFavour1,
-        },
-        {
-            id: 4,
-            title: "Card 4",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint.",
-            location: "This is a location",
-            image: fotoFavour1,
-        },
-    ];
+    /// =========================== General ===========================
+    const dispatch = useAppDispatch();
+    /// =========================== Dialog ===========================
+    const [openDialog, setOpenDialog] = useState<boolean>(false);
+    const handleClose = () => setOpenDialog(false);
 
-    const [cards, setCards] = useState<null | Array<MatchCard>>(cardData);
+    /// =========================== Matches ===========================
+    const {matches}: { matches: Array<Match> } = useAppSelector((state) => state.match);
 
-    // index of last card
-    const activeIndex: number = cards.length - 1;
-    const removeCard = (oldCard: MatchCard) => {
-        setCards((currentCards) =>
-            currentCards.filter((card: MatchCard) => {
-                return card.id !== oldCard.id;
-            })
-        );
+    const removeCard = (indexToRemove: number) => {
+        dispatch(removeMatch(indexToRemove));
+    };
+
+    useEffect(() => {
+        const getNotifications = async () => {
+            console.log("asdf")
+            try {
+                await askPermission();
+                const serviceWorkerReg = await registerSw();
+                await subscribeNotifications(serviceWorkerReg);
+                // Listen to push notifications
+                // serviceWorkerReg.addEventListener('push', (event) => {
+                //     // Retrieve the notification payload
+                //     const notificationData = event.data.json();
+                //
+                //     // Handle the push notification as desired
+                //     handlePushNotification(notificationData);
+                // });
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getNotifications();
+        dispatch(getMatches());
+
+    }, []);
+
+    const handlePushNotification = (notificationData) => {
+        // Handle the push notification payload
+        console.log('Received push notification:', notificationData);
+
+        // Update your component state or perform any other desired actions
     };
 
     return (
-        <div  className={styles['Match']}>
+        <div className={styles['Match']}>
 
 
-            <Dialog  className={'overrideDialog'} onClose={handleClose} open={openModal}>
+            <Dialog className={'overrideDialog'} onClose={handleClose} open={openDialog}>
                 <h1 className={'text-shadows'}>¡MATCH!</h1>
-
             </Dialog>
 
 
@@ -81,15 +78,16 @@ const Match: React.FC = () => {
 
             <div className={styles['container']}>
                 <AnimatePresence>
-                    {cards.map((card: MatchCard, index) => (
-                        <MatchingCard
-                            key={index}
-                            index={index}
-                            active={index === activeIndex}
-                            removeCard={() => removeCard(card)}
-                            card={card}
-                        />
-                    ))}
+                    {matches &&
+                        matches.map((card: Match, index) => (
+                            <MatchCard
+                                key={index}
+                                index={index}
+                                removeCard={() => removeCard(index)}
+                                card={card}
+                            />
+                        ))
+                    }
                 </AnimatePresence>
             </div>
         </div>
