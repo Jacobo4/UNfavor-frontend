@@ -40,3 +40,14 @@ export const askPermission = () => {
     });
 }
 
+export const getUserSubscription = () => {
+  //wait for service worker installation to be ready, and then
+  return navigator.serviceWorker.ready
+    .then(function(serviceWorker) {
+      return serviceWorker.pushManager.getSubscription();
+    })
+    .then(function(pushSubscription) {
+      return pushSubscription;
+    });
+}
+

@@ -14,6 +14,7 @@ import {useForm} from 'react-hook-form';
 import styles from './Form.module.css';
 // Icons
 import {MdLockOpen, MdPersonOutline} from 'react-icons/md';
+import {toast} from "react-toastify";
 
 export default function Form() {
     const {register, handleSubmit, formState: {errors}} = useForm();
@@ -29,15 +30,8 @@ export default function Form() {
             await dispatch(login(data));
             const serviceWorkerReg = await registerSw();
             await subscribeNotifications(serviceWorkerReg);
+
             navigate('/');
-            // Listen to push notifications
-            // serviceWorkerReg.addEventListener('push', (event) => {
-            //     // Retrieve the notification payload
-            //     const notificationData = event.data.json();
-            //
-            //     // Handle the push notification as desired
-            //     handlePushNotification(notificationData);
-            // });
         } catch (error) {
             console.log(error);
         }

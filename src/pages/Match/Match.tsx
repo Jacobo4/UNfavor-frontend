@@ -18,7 +18,8 @@ import MatchCard from "./components/MatchCard";
 import type {Match} from "@store/match/matchAsyncAction"
 import {getMatches} from "@store/match/matchAsyncAction";
 import {removeMatch} from "@store/match/matchSlice";
-import {askPermission, registerSw, subscribeNotifications} from "@config/serviceWorker";
+import {askPermission, getUserSubscription, registerSw, subscribeNotifications} from "@config/serviceWorker";
+import {toast} from "react-toastify";
 
 const Match: React.FC = () => {
     /// =========================== General ===========================
@@ -36,38 +37,17 @@ const Match: React.FC = () => {
 
     useEffect(() => {
         dispatch(getMatches());
-
-        const showNotification = async () => {
-            Notification.requestPermission((result) => {
-                if (result === "granted") {
-                    navigator.serviceWorker.ready.then((registration) => {
-
-
-                        registration.addEventListener('push', (event) => {
-                            // Retrieve the notification payload
-                            const notificationData = event.data.json();
-
-                            toast.info(notificationData);
-
-                            setOpenDialog(true);
-
-                            registration.showNotification("Vibration Sample", {
-                                body: "Buzz! Buzz!",
-                                icon: "../images/touch/chrome-touch-icon-192x192.png",
-                                vibrate: [200, 100, 200, 100, 200, 100, 200],
-                                tag: "vibration-sample",
-                            });
-
-
-                            // Handle the push notification as desired
-                            // handlePushNotification(notificationData);
-                        });
-                    });
-                }
-            });
+        const handleNotifications = (event) => {
+            if (event.data) {
+                const payload = event.data.json();
+                // Handle the push notification payload
+                console.log('Push notification received:', payload);
+            }
         }
-
-        showNotification();
+        navigator.serviceWorker.addEventListener('message', handleNotifications)
+        return () => {
+            navigator.serviceWorker.removeEventListener('message', handleNotifications);
+        };
     }, []);
 
     return (
