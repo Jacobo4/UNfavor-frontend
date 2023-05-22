@@ -1,6 +1,6 @@
 import styles from "./ProfileControl.module.css";
 import React, { useEffect } from "react";
-import { getAllUsers } from "@store/Admin/adminAsyncActions";
+import { getAllUsers, controlFavor } from "@store/Admin/adminAsyncActions";
 import ControlCard from "./ControlCard";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 
@@ -32,7 +32,16 @@ const ProfileControl: React.FC = () => {
            
           {users.map((user, index )=>
           (user.favor.favor_state === "REVIEWING")&&(
-            <ControlCard age={user.age} email={user.email} name={user.name} title={user.favor.title} description={user.favor.description} location={user.favor.location}/>
+            <ControlCard 
+            key={index}
+            age={user.age} 
+            email={user.email} 
+            name={user.name} 
+            title={user.favor.title} 
+            description={user.favor.description} 
+            location={user.favor.location} 
+            userId={user._id}/>
+            
           )
             
           )}

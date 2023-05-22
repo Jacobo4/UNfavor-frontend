@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {toast} from "react-toastify";
-import {getAdminInfo, getAllUsers} from "@store/Admin/adminAsyncActions";
+import {getAdminInfo, getAllUsers, controlFavor} from "@store/Admin/adminAsyncActions";
+import type {ControlFavorSuccess, ControlFavorFailure, controlFavorFormValues} from "@store/Admin/adminAsyncActions";
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected' | 'idle';
 
@@ -60,6 +61,25 @@ const adminSlice = createSlice({
                 const {message} = action.payload;
                 toast.dismiss(state.toastLoaderId);
                 toast.error('Error obtaining info', {position: 'top-center'})
+                state.status = 'rejected';
+                state.error = message;
+            })
+            .addCase(controlFavor.pending, (state: AdminState, action) => {
+                state.toastLoaderId = toast.loading('Updating favors', {position: 'top-center'});
+                state.status = 'pending';
+                state.error = null;
+            }
+            )
+            .addCase(controlFavor.fulfilled, (state: AdminState, {payload}) => {
+                toast.dismiss(state.toastLoaderId);
+                state.status = 'fulfilled';
+                
+               
+            })
+            .addCase(controlFavor.rejected, (state: AdminState, action) => {
+                const {message} = action.payload;
+                toast.dismiss(state.toastLoaderId);
+                toast.error('Error updating favor', {position: 'top-center'})
                 state.status = 'rejected';
                 state.error = message;
             })

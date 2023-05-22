@@ -1,8 +1,15 @@
 import styles from "./ControlCard.module.css";
 import React from "react";
-import { BsFilePost } from "react-icons/bs";
-import fotoFavour from "@assets/images/favor.png";
-import { SlDislike, SlLike } from "react-icons/sl";
+// Redux
+import {controlFavor } from "@store/Admin/adminAsyncActions";
+import { useAppDispatch } from "@store/hooks";
+import { useNavigate } from "react-router-dom";
+
+type favorAction = {
+    userId: string;
+    action: string;
+}
+
 interface dataFavour {
   
   age: number;
@@ -11,11 +18,34 @@ interface dataFavour {
   title?: string;
   description?: string;
   location?: string;
+  userId: string;
   
 }
 const ControlCard: React.FC<dataFavour> = ({
-  age, email, name, title="Sin titulo", description="Sin descripción", location="Sin ubicación" ,
+  age, email, name, title="Sin titulo", description="Sin descripción", location="Sin ubicación" , userId
 }) => {
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+
+    const handleAccept = () => {
+        const data: favorAction = {
+            userId: userId,
+            action: "PUBLISHED",
+        }
+        dispatch(controlFavor(data));
+        console.log("PUBLISHED");
+        window.location.reload();
+    }
+    const handleReject = () => {
+        const data: favorAction = {
+            userId: userId,
+            action: "DENIED"
+        }
+        dispatch(controlFavor(data));
+        console.log("DENIED");
+        window.location.reload();
+    }
+
   return (
     
     <div className={styles.ControlCardContainer}>
@@ -36,8 +66,8 @@ const ControlCard: React.FC<dataFavour> = ({
           <span>{location}</span>
         </div>
         <div className={styles.ButtonContainer}>
-          <button className={styles.rejectButton}>Denegar</button>
-          <button className={styles.acceptButton}>Permitir</button>
+          <button onClick={handleReject} className={styles.rejectButton}>Denegar</button>
+          <button onClick={handleAccept} className={styles.acceptButton}>Permitir</button>
         </div>
       </div>
     </div>
