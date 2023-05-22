@@ -3,7 +3,8 @@ import {axiosApiInstance} from "../../config/axiosApiInstance";
 
 const API_URL = import.meta.env.VITE_API_URL;
 export interface Match {
-    id: String
+    id: String;
+    email: String;
     reviews: {
         review_sum: number;
         review_num: number;

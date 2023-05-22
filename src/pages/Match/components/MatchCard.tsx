@@ -12,6 +12,7 @@ import styles from "./MatchCard.module.css";
 import {SlLike, SlDislike} from "react-icons/sl";
 // Types
 import type {Match} from "@store/match/matchAsyncAction";
+import {Link} from "react-router-dom";
 
 
 
@@ -78,6 +79,7 @@ const MatchCard: React.FC<MatchCardIProps> = ({card, index, removeCard}) => {
                     {/*Texts*/}
                     <div className={styles.InfoTextContainer}>
                         <h3>{card.title}</h3>
+                        <h6><Link to={"/"}> {card.email} </Link> </h6>
                         <h4>{card.location}</h4>
                         <p>{card.description}</p>
                     </div>
