@@ -2,6 +2,9 @@
 import React, {useEffect} from 'react';
 // Redux
 import {login, LoginValues} from '@store/auth/authAsyncActions';
+import {useAppDispatch, useAppSelector} from '@store/hooks';
+// Service worker
+import {askPermission, registerSw, subscribeNotifications} from "@config/serviceWorker";
 // Router
 import {useNavigate} from "react-router-dom";
 import type {NavigateFunction} from "react-router";
@@ -11,8 +14,6 @@ import {useForm} from 'react-hook-form';
 import styles from './Form.module.css';
 // Icons
 import {MdLockOpen, MdPersonOutline} from 'react-icons/md';
-import {useAppDispatch, useAppSelector} from '@store/hooks';
-import {isLoggedIn} from "axios-jwt";
 
 export default function Form() {
     const {register, handleSubmit, formState: {errors}} = useForm();
@@ -23,8 +24,23 @@ export default function Form() {
     const navigate = useNavigate();
 
 
-    const onSubmit = handleSubmit((data: LoginValues) => {
-        dispatch(login(data));
+    const onSubmit = handleSubmit(async (data: LoginValues) => {
+        try {
+            await dispatch(login(data));
+            const serviceWorkerReg = await registerSw();
+            await subscribeNotifications(serviceWorkerReg);
+            navigate('/');
+            // Listen to push notifications
+            // serviceWorkerReg.addEventListener('push', (event) => {
+            //     // Retrieve the notification payload
+            //     const notificationData = event.data.json();
+            //
+            //     // Handle the push notification as desired
+            //     handlePushNotification(notificationData);
+            // });
+        } catch (error) {
+            console.log(error);
+        }
     })
 
     // redirect authenticated user to user screen
@@ -50,7 +66,7 @@ export default function Form() {
                     required: true,
                 })}   />
                 {errors.password?.type === 'required' && <span>El campo password es obigatorio</span>}
-                <MdLockOpen />
+                <MdLockOpen/>
             </div>
 
             <div>

@@ -1,5 +1,8 @@
 // Core
 import React, { ChangeEvent, useEffect, useState } from "react";
+// Redux
+import { getProfileInfo, updateMyUserInfo, updateUserInfoFormValues } from "@store/user/userAsyncAction";
+import { useAppDispatch } from "@store/hooks";
 // Form
 import { axiosApiInstance } from "../../../config/axiosApiInstance";
 import { useForm, Controller } from "react-hook-form";
@@ -12,11 +15,8 @@ import { InputLabel, MenuItem, Select } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
-// Redux
-import { getProfileInfo, updateUserInfo, updateUserInfoFormValues } from "@store/user/userAsyncAction";
 // Components
 import DistanceSlider from "./DistanceSlider";
-import { useAppDispatch } from "@store/hooks";
 
 type publicProfile = {
   newUserData: {
@@ -59,7 +59,6 @@ const CssTextField = styled(TextField)({
   },
 });
 
-const API_URL = import.meta.env.VITE_API_URL;
 const Form: React.FC = ({ userInfo }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -71,16 +70,15 @@ const Form: React.FC = ({ userInfo }) => {
     control,
   } = useForm<publicProfile>();
 
-  const onSubmit = handleSubmit((data:updateUserInfoFormValues) => {
-    dispatch(updateUserInfo(data));
-    navigate("/");
+  const onSubmit = handleSubmit(async (data:updateUserInfoFormValues) => {
+    try {
+      await dispatch(updateMyUserInfo(data));
+      navigate("/");
+    } catch (e) {
+      console.error(e);
+    }
 })
-useEffect(() => {
-  console.log(userInfo);
-    dispatch(getProfileInfo());
-    console.log(userInfo);
-  
-}, []);
+
   return (
     userInfo && (
     <div>

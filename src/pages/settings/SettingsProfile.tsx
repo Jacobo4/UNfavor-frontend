@@ -2,7 +2,7 @@
 import React, {useEffect} from "react";
 // Router
 import {useAppDispatch, useAppSelector} from "@store/hooks";
-import {getProfileInfo} from "@store/user/userAsyncAction";
+import { getProfileInfo } from "@store/user/userAsyncAction";
 // Styles
 import styles from "./SettingsProfile.module.css";
 // Images
@@ -12,13 +12,15 @@ import {MdSettings} from "react-icons/md";
 // Components
 import SettingForm from "./components/SettingsForm";
 const SettingsProfile: React.FC = () => {
-    const {userInfo} = useAppSelector((state) => state.user);
+    const {myUserInfo} = useAppSelector((state) => state.user);
+    const { token } = useAppSelector((state) => state.auth);
+
     const dispatch = useAppDispatch();
 
 
     useEffect(() => {
-        if (!userInfo) {
-            dispatch(getProfileInfo());
+        if (!myUserInfo) {
+            dispatch(getProfileInfo({query: token.email}));
         }
     }, []);
 
@@ -37,7 +39,7 @@ const SettingsProfile: React.FC = () => {
 
                 </div>
                 <div>
-                    {userInfo && <SettingForm userInfo={userInfo}/>}
+                    {myUserInfo && <SettingForm userInfo={myUserInfo}/>}
                 </div>
             </div>
 

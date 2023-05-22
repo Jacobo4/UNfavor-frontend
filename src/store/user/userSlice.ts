@@ -1,24 +1,24 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {toast} from "react-toastify";
-import {getProfileInfo,updateUserInfo} from "@store/user/userAsyncAction";
+import {getProfileInfo, getUserProfileInfoSuccess, updateMyUserInfo, UserProfile} from "@store/user/userAsyncAction";
 import type {UpdateUserInfoSuccess, UpdateUserInfoFailure} from "@store/user/userAsyncAction";
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected' | 'idle';
 
 export interface UserState {
     status: RequestState;
-    userInfo: any;
+    myUserInfo: UserProfile;
+    anotherUserInfo: UserProfile;
     error: string | null | any;
     toastLoaderId: number | string;
-    isMe: boolean;
 };
 
 const initialState: UserState = {
     status: 'idle',
-    userInfo: null,
+    myUserInfo: null,
+    anotherUserInfo: null,
     error: null,
     toastLoaderId: null,
-    isMe: false,
 };
 
 const userSlice = createSlice({
@@ -33,30 +33,36 @@ const userSlice = createSlice({
                 state.status = 'pending';
                 state.error = null;
             })
-            .addCase(getProfileInfo.fulfilled, (state: UserState, {payload}) => {
+            .addCase(getProfileInfo.fulfilled, (state: UserState, action) => {
+                const {me, user, message} = action.payload as getUserProfileInfoSuccess;
                 toast.dismiss(state.toastLoaderId);
                 state.status = 'fulfilled';
-                state.userInfo = payload.user;
+
+                if(me === user.email){
+                    state.myUserInfo = user;
+                }else{
+                    state.anotherUserInfo = user;
+                }
             })
             .addCase(getProfileInfo.rejected, (state: UserState, action) => {
                 const {message} = action.payload;
                 toast.dismiss(state.toastLoaderId);
-                toast.error('Error on login', {position: 'top-center'})
+                toast.error('Error getting profile info', {position: 'top-center'})
                 state.status = 'rejected';
                 state.error = message;
             })
-            .addCase(updateUserInfo.pending, (state: UserState, action) => {
+            .addCase(updateMyUserInfo.pending, (state: UserState, action) => {
                 state.toastLoaderId = toast.loading('Updating profile info...', {position: 'top-center'});
                 state.status = 'pending';
                 state.error = null;
             })
-            .addCase(updateUserInfo.fulfilled, (state: UserState, action) => {
+            .addCase(updateMyUserInfo.fulfilled, (state: UserState, action) => {
                 toast.dismiss(state.toastLoaderId);
                 toast.success('User info updated', {position: 'top-center'})
                 state.status = 'fulfilled';
                 
             })
-            .addCase(updateUserInfo.rejected, (state: UserState, action) => {
+            .addCase(updateMyUserInfo.rejected, (state: UserState, action) => {
                 const {message} = action.payload as UpdateUserInfoFailure;
                 toast.dismiss(state.toastLoaderId);
                 toast.error('Error updating user info', {position: 'top-center'})

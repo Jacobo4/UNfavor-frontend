@@ -79,7 +79,7 @@ const MatchCard: React.FC<MatchCardIProps> = ({card, index, removeCard}) => {
                     {/*Texts*/}
                     <div className={styles.InfoTextContainer}>
                         <h3>{card.title}</h3>
-                        <h6><Link to={"/"}> {card.email} </Link> </h6>
+                        <h6><Link to={`/user/${card.email}`}> {card.email} </Link> </h6>
                         <h4>{card.location}</h4>
                         <p>{card.description}</p>
                     </div>

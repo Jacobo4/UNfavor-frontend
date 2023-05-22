@@ -3,18 +3,18 @@ import {axiosApiInstance} from "../../config/axiosApiInstance";
 
 const API_URL = import.meta.env.VITE_API_URL;
 export interface Match {
-    id: String;
-    email: String;
+    id: string;
+    email: string;
     reviews: {
         review_sum: number;
         review_num: number;
-        comments: Array<String>;
+        comments: Array<string>;
     },
-    date_published: String;
-    favor_state: String;
-    title: String;
-    description: String;
-    location: String;
+    date_published: string;
+    favor_state: string;
+    title: string;
+    description: string;
+    location: string;
     possible_matches: Array<any>;
 }
 export interface getMatchesSuccess {
@@ -66,7 +66,8 @@ export const getMatches = createAsyncThunk(
 
 export const likeMatch = createAsyncThunk(
     'match/likeMatch',
-    async (values:likeMatchValues, {rejectWithValue}) => {
+    async (values:likeMatchValues, {rejectWithValue, getState}) => {
+        const state = getState();
         try {
             const config = {
                 headers: {

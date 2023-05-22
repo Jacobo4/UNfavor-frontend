@@ -35,35 +35,40 @@ const Match: React.FC = () => {
     };
 
     useEffect(() => {
-        const getNotifications = async () => {
-            console.log("asdf")
-            try {
-                await askPermission();
-                const serviceWorkerReg = await registerSw();
-                await subscribeNotifications(serviceWorkerReg);
-                // Listen to push notifications
-                // serviceWorkerReg.addEventListener('push', (event) => {
-                //     // Retrieve the notification payload
-                //     const notificationData = event.data.json();
-                //
-                //     // Handle the push notification as desired
-                //     handlePushNotification(notificationData);
-                // });
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        getNotifications();
         dispatch(getMatches());
 
+        const showNotification = async () => {
+            Notification.requestPermission((result) => {
+                if (result === "granted") {
+                    navigator.serviceWorker.ready.then((registration) => {
+
+
+                        registration.addEventListener('push', (event) => {
+                            // Retrieve the notification payload
+                            const notificationData = event.data.json();
+
+                            toast.info(notificationData);
+
+                            setOpenDialog(true);
+
+                            registration.showNotification("Vibration Sample", {
+                                body: "Buzz! Buzz!",
+                                icon: "../images/touch/chrome-touch-icon-192x192.png",
+                                vibrate: [200, 100, 200, 100, 200, 100, 200],
+                                tag: "vibration-sample",
+                            });
+
+
+                            // Handle the push notification as desired
+                            // handlePushNotification(notificationData);
+                        });
+                    });
+                }
+            });
+        }
+
+        showNotification();
     }, []);
-
-    const handlePushNotification = (notificationData) => {
-        // Handle the push notification payload
-        console.log('Received push notification:', notificationData);
-
-        // Update your component state or perform any other desired actions
-    };
 
     return (
         <div className={styles['Match']}>
