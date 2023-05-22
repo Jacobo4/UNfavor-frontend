@@ -109,9 +109,9 @@ const creators = [
 
 const Home: React.FC = () => {
   const {isLogged} = useAppSelector((state) => state.auth);
-  console.log(isLogged);
+ 
   const isAdmin = useAppSelector((state) => state.auth.token?.admin);
-  console.log(isAdmin);
+  
   /// =========================== Cards ===========================
   const [cards, setCards] = useState(cardData);
   const activeIndex = cards.length - 1; // index of last card
@@ -159,7 +159,7 @@ const Home: React.FC = () => {
                   <div
                     className={styles["buttonsContainerAdmin"]}>
 
-                    <Link to={"/auth/login"} //CAMBIAR A "/admin/profilecontrol"
+                    <Link to={"/admin/profilecontrol"} 
                           className={styles["buttonInfo"]}>
                       Ir a perfil de administrador</Link>
                     

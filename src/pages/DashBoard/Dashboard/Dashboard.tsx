@@ -8,10 +8,12 @@ import PieChart from "./PieChart";
 import LineChart from "./LineChart";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { getAdminInfo } from "@store/Admin/adminAsyncActions";
+
 const Dashboard: React.FC = () => {
   const dispatch = useAppDispatch();
   const { adminInfo } = useAppSelector((state) => state.admin);
   console.log(adminInfo);
+  console.log("adminInfo");
   useEffect(() => {
     if (!adminInfo) {
       dispatch(getAdminInfo());
