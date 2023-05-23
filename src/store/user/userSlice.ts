@@ -1,5 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {toast} from "react-toastify";
+import {getProfileInfo,updateUserInfo,updateFavorFilters} from "@store/user/userAsyncAction";
+import type {UpdateUserInfoSuccess, UpdateUserInfoFailure, UpdateFavorFiltersFailure} from "@store/user/userAsyncAction";
 import {getProfileInfo, getUserProfileInfoSuccess, updateMyUserInfo, UserProfile} from "@store/user/userAsyncAction";
 import type {UpdateUserInfoSuccess, UpdateUserInfoFailure} from "@store/user/userAsyncAction";
 
@@ -11,6 +13,7 @@ export interface UserState {
     anotherUserInfo: UserProfile;
     error: string | null | any;
     toastLoaderId: number | string;
+    isMe: boolean;
 };
 
 const initialState: UserState = {
@@ -19,6 +22,7 @@ const initialState: UserState = {
     anotherUserInfo: null,
     error: null,
     toastLoaderId: null,
+    isMe: false,
 };
 
 const userSlice = createSlice({
@@ -66,6 +70,23 @@ const userSlice = createSlice({
                 const {message} = action.payload as UpdateUserInfoFailure;
                 toast.dismiss(state.toastLoaderId);
                 toast.error('Error updating user info', {position: 'top-center'})
+                state.status = 'rejected';
+                state.error = message;
+            })
+            .addCase(updateFavorFilters.pending, (state: UserState, action) => {
+                state.toastLoaderId = toast.loading('Updating favor filters...', {position: 'top-center'});
+                state.status = 'pending';
+                state.error = null;
+            })
+            .addCase(updateFavorFilters.fulfilled, (state: UserState, action) => {
+                toast.dismiss(state.toastLoaderId);
+                toast.success('Favor filters updated', {position: 'top-center'})
+                state.status = 'fulfilled';
+            })
+            .addCase(updateFavorFilters.rejected, (state: UserState, action) => {
+                const {message} = action.payload as UpdateFavorFiltersFailure;
+                toast.dismiss(state.toastLoaderId);
+                toast.error('Error updating favor filters', {position: 'top-center'})
                 state.status = 'rejected';
                 state.error = message;
             })

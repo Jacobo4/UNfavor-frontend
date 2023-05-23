@@ -17,6 +17,8 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 // Components
 import DistanceSlider from "./DistanceSlider";
+import FavorForm from "./FavorForm";
+
 
 type publicProfile = {
   newUserData: {
@@ -31,19 +33,8 @@ type publicProfile = {
   }
   
 };
-const categories = [
-  "Académico",
-  "Carpinteria",
-  "Cocina",
-  "Cuidado de niños",
-  "Cuidado de mascotas",
-  "Deportes",
-  "Electricidad",
-  "Fotografia",
-  "Jardineria",
-  "Limpieza",
-  "Transporte",
-];
+
+
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
     color: "#00D4A6",
@@ -59,12 +50,13 @@ const CssTextField = styled(TextField)({
   },
 });
 
+
 const Form: React.FC = ({ userInfo }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const {
-    register,
+    
     handleSubmit,
     formState: { errors },
     control,
@@ -187,60 +179,13 @@ const Form: React.FC = ({ userInfo }) => {
           </FormControl>
           <div />
         </div>
-        {/* <h2>Editar filtro</h2>
-        <div className={styles.select}>
-          <FormControl
-            variant="standard"
-            sx={{ m: 1, minWidth: 220, color: "#00D4A6" }}
-          >
-            <InputLabel id="demo-simple-select-standard-label">
-              Categoria
-            </InputLabel>
-            <Controller
-              render={({ field: { onChange, value } }) => (
-                <Select
-                  labelId="demo-simple-select-standard-label"
-                  id="demo-simple-select-standard"
-                  value={value}
-                  label="Categoria"
-                  onChange={onChange}
-                  defaultChecked={
-                    userInfo.preferences.favor_filters.type
-                      ? userInfo.favor.preferences.favor_filters.type
-                      : "None"
-                  }
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  {categories.map((category) => (
-                    <MenuItem value={category}>{category}</MenuItem>
-                  ))}
-                </Select>
-              )}
-              name="type"
-              control={control}
-            />
-          </FormControl>
-          {errors.type?.type === "required" && (
-            <span className={"error"}>El campo Categoria es obigatorio</span>
-          )}
-        </div>
-        <div className={styles.slider}>
-          <h3>Distancia: </h3>
-          <Controller
-            name="distance"
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <DistanceSlider onChange={onChange} value={value} />
-            )}
-          />
-        </div> */}
+
 
         <div>
           <button type="submit">Guardar cambios</button>
         </div>
       </form>
+      <FavorForm categorie={userInfo.preferences.favor_filters.favor_type} distance={userInfo.preferences.favor_filters.max_distance_km}/>
     </div>
     )
   );
