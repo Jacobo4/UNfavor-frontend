@@ -4,10 +4,10 @@
     "module": "es2022",
     "moduleResolution": "Node",
     "paths": {
-      "@layout/*": ["src/layout/*"],
+      "@root/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
-      "@styles/*": ["src/styles/*"],
-      "@components/*": ["src/components/*"],
+      "@globalStyles/*": ["src/styles/*"],
+      "@globalComponents/*": ["src/components/*"],
       "@router/*": ["src/router/*"],
       "@store/*": ["src/store/*"],
       "@config/*": ["src/config/*"]
