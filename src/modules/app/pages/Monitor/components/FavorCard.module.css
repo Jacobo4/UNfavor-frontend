@@ -1,0 +1,85 @@
+@import "@globalStyles/responsive.css";
+
+.FavorCard {
+    display: grid;
+    align-content: space-between;
+    width: 100%;
+    max-width: 325px;
+    background: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid black;
+
+    @media (--screen-lg){
+        padding: 22px;
+    }
+
+    hr{
+        margin: 10px 0;
+        border: 0.5 solid #666666;
+        width: 100%;
+    }
+
+    .info {
+        display: grid;
+        gap: 4px;
+
+        h2 {
+            font-style: normal;
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 24px;
+            text-align: center;
+
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        p {
+            font-style: normal;
+            font-size: 16px;
+            line-height: 19px;
+        }
+
+        span {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+        }
+
+    }
+
+    .actions {
+        display: grid;
+        place-items: center;
+        gap: 16px;
+
+        button {
+            width: 100%;
+            max-width: 220px;
+            padding: 15px;
+            color: white;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+            &:hover,
+            &:focus {
+                cursor: pointer;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
+                transform: translateY(-0.25em);
+            }
+        }
+
+        .confirm {
+            background: #00D4A6;
+
+        }
+
+        .cancel {
+            background: #FF5B64;
+        }
+    }
+}

@@ -1,9 +1,11 @@
+// Redux
 import {createSlice} from '@reduxjs/toolkit';
+// Toast
 import {toast} from "react-toastify";
-import {getProfileInfo,updateUserInfo,updateFavorFilters} from "@store/user/userAsyncAction";
-import type {UpdateUserInfoSuccess, UpdateUserInfoFailure, UpdateFavorFiltersFailure} from "@store/user/userAsyncAction";
-import {getProfileInfo, getUserProfileInfoSuccess, updateMyUserInfo, UserProfile} from "@store/user/userAsyncAction";
-import type {UpdateUserInfoSuccess, UpdateUserInfoFailure} from "@store/user/userAsyncAction";
+// Actions
+import {getProfileInfo, updateFavorFilters, updateMyUserInfo, } from "@store/user/userAsyncAction";
+// Types
+import type {UpdateUserInfoSuccess, UpdateUserInfoFailure, UpdateFavorFiltersFailure, UserProfile, getUserProfileInfoSuccess} from "@store/user/userAsyncAction";
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected' | 'idle';
 

@@ -10,32 +10,33 @@ import {
     RouterProvider,
 } from "react-router-dom";
 // Styles
-import '@styles/styles.css';
+import '@globalStyles/styles.css';
 // components
 import RequireAuth from "./router/RequireAuth";
-import Layout from './layout/index.layout';
+import AppLayout from './modules/app/layout/App.layout';
 // Toaster / Alerts
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // Pages.
-import Home from './pages/Home/Home';
-import Login from './pages/Auth/Login/Login';
-import Monitor from './pages/Monitor/Monitor';
-import Match from './pages/Match/Match';
-import Profile from './pages/Profile/Profile';
-import Chat from './pages/Chat/Chat';
-import Auth from "./pages/Auth/Auth";
-import SignIn from "./pages/Auth/SignIn/SignIn";
-import SettingsProfile from "./pages/settings/SettingsProfile";
-import Dashboard from './pages/DashBoard/Dashboard/Dashboard';
-import Admin from './pages/DashBoard/Admin';
-import ProfileControl from './pages/DashBoard/ProfileControl/ProfileControl';
-import Settings from './pages/DashBoard/Settings/Settings';
-import ReportedProfiles from './pages/DashBoard/ReportedProfiles/ReportedProfiles'
+import Home from './modules/app/pages/Home/Home';
+import Login from './modules/app/pages/Auth/Login/Login';
+import Monitor from './modules/app/pages/Monitor/Monitor';
+import Match from './modules/app/pages/Match/Match';
+import Profile from './modules/app/pages/Profile/Profile';
+import Chat from './modules/app/pages/Chat/Chat';
+import Auth from "./modules/app/pages/Auth/Auth";
+import SignIn from "./modules/app/pages/Auth/SignIn/SignIn";
+import SettingsProfile from "./modules/app/pages/settings/SettingsProfile";
+import Dashboard from './modules/admin/pages/Dashboard/Dashboard';
+import ProfileControl from './modules/admin/pages/ProfileControl/ProfileControl';
+import Settings from './modules/admin/pages/Settings/Settings';
+import ReportedProfiles from './modules/admin/pages/ReportedProfiles/ReportedProfiles'
+import AdminLayout from "@root/modules/admin/layout/Admin.layout";
+import {createTheme, ThemeProvider} from "@mui/material";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Layout/>,
+        element: <AppLayout/>,
         // errorElement: <ErrorPage />,
         children: [
             {
@@ -84,7 +85,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/admin",
-        element: <Admin/>,
+        element: <AdminLayout/>,
         children: [
             {
                 path: "/admin/dashboard",
@@ -107,11 +108,35 @@ const router = createBrowserRouter([
 
 ]);
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: "#807cf6",
+      main: "#615CF4",
+      dark: "#4340aa",
+      contrastText: "#fff",
+    },
+    secondary: {
+      light: "#33dcb7",
+      main: "#00D4A6",
+      dark: "#009474",
+      contrastText: "#000",
+    },
+    error: {
+      light: "#ff7b83",
+      main: "#FF5B64",
+      dark: "#b23f46",
+    },
+  },
+});
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <>
         <Provider store={store}>
-            <RouterProvider router={router}/>
-            <ToastContainer/>
+            <ThemeProvider theme={theme}>
+                <RouterProvider router={router}/>
+                <ToastContainer/>
+            </ThemeProvider>
         </Provider>
     </>,
 )

@@ -52,7 +52,6 @@ export type  updateUserInfoFormValues = {
         }
     }
 }
-}
 
 export interface UpdateUserInfoSuccess {
     message: string;
@@ -113,7 +112,7 @@ export const updateMyUserInfo = createAsyncThunk(
     }
 )
 export const updateFavorFilters = createAsyncThunk(
-    '/favor/changeFavorFilters',
+    '/user/changeFavorFilters',
     async (formValues: UpdateFavorFiltersFormValues, {rejectWithValue}) => {
         try {
             const config = {

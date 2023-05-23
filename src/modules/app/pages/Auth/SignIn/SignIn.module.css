@@ -1,0 +1,12 @@
+@import "@globalStyles/responsive.css";
+
+.SignIn {
+    display: grid;
+    justify-content: center;
+    padding: 1rem 0;
+    h2{
+        justify-self: center;
+    }
+
+}
+
