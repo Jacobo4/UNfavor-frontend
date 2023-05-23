@@ -9,28 +9,64 @@ import './ChatOverrides.css';
 import avatar from '@assets/images/avatar2.png';
 import dommieFavor from '@assets/images/dommieFavor.png';
 // Icons
+import {BsSearch} from 'react-icons/bs';
 import {IoIosArrowDown} from 'react-icons/io';
 //Chat
 // import {PrettyChatWindow} from "react-chat-engine-pretty";
-import { ChatEngine } from 'react-chat-engine';
+import { Socket } from 'react-chat-engine';
+import { ChatEngine, getOrCreateChat } from 'react-chat-engine';
+import { toast } from "react-toastify";
+
+const allowedUsers = ["lina@gmail.com" ,"jaco@gmail.com","admin@unal.edu.co","ilombana@unal.edu.co","nquirogac@unal.edu.co"]
 
 const Chat: React.FC = () => {
     const [isOpen, toggle] = useState<boolean>(false);
     const {token} = useAppSelector(state => state.auth);
+    const [username, setUsername] = useState('')
 
+	function createDirectChat(creds) {
+        console.log(allowedUsers.includes(username));
+        (allowedUsers.includes(username))? 
+		(getOrCreateChat(
+			creds,
+			{ is_direct_chat: true, usernames: [username] },
+			() => setUsername('')
+		)): 
+        (toast.error('No puedes chatear con este usuario', {position: 'top-center'}))
+	}
+
+	function renderChatForm(creds) {
+		return (
+			<div>
+                <h3>Busca tus matches para chatear</h3>
+				<div className={styles.container}>
+                <input 
+					placeholder='Correo' 
+					value={username} 
+					onChange={(e) => setUsername(e.target.value)} 
+				/>
+				<button onClick={() => createDirectChat(creds)}>
+					<BsSearch/>
+				</button>
+                </div>
+			</div>
+		)
+	}
     useEffect(() => {
         console.log(token);
+        console.log(import.meta.env.VITE_CHAT_PROJECT_ID)
     }, []);
     const toggleDetails = () => {
         toggle(!isOpen);
     }
     return (
         <div className={`overrideChat ${styles['Chat']}`}>
-            <ChatEngine
-            projectID={import.meta.env.VITE_CHAT_PROJECT_ID}
-			userName={token.email}
-			userSecret={token.id}
-		/>
+            <ChatEngine offset={-5}
+                projectID={import.meta.env.VITE_CHAT_PROJECT_ID}
+                userName={token.email}
+                userSecret={token.id}
+                renderNewChatForm={(creds) => renderChatForm(creds)}
+		    />
         </div>
         // <div >
         //     <PrettyChatWindow

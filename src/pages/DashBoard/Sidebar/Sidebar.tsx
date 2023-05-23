@@ -1,11 +1,12 @@
 import styles from "./Sidebar.module.css";
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "@assets/images/logo.png";
 import { AiOutlineLogout } from "react-icons/ai";
 import navLinks from '@assets/dummy-data/navLinksSideBar.jsx'
 import { logout } from "@store/auth/authSlice";
 import { useAppDispatch } from "@store/hooks";
+
 const Sidebar: React.FC = () => {
   
   const dispatch= useAppDispatch();
@@ -17,10 +18,12 @@ const Sidebar: React.FC = () => {
   return (
       <div className={styles.Sidebar}>
         <div className={styles.SidebarTop}>
+          <Link to={"/"} >
           <figure className={styles["logo"]}>
             <img src={logo} alt="" />
             <h1>UNfavor</h1>
           </figure>
+          </Link>
         </div>
         <div className={styles.SidebarContent}>
           <div className={styles.menu}>
