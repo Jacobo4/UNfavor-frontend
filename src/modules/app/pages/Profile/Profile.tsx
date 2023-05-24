@@ -19,7 +19,6 @@ const Profile: React.FC = () => {
     /// =========================== Router ===========================
     const {userEmail} = useParams();
     const isMe = userEmail === undefined;
-    console.log(isMe)
 
     /// =========================== Redux ===========================
     const dispatch = useAppDispatch();
@@ -29,7 +28,6 @@ const Profile: React.FC = () => {
 
     /// =========================== Tabs ===========================
     const [activeTab, setActiveTab] = useState<number>(0)
-    console.log(myUserInfo, anotherUserInfo)
 
     useEffect(() => {
         dispatch(getProfileInfo({email: isMe ? token.email : userEmail}));
