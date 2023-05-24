@@ -20,7 +20,7 @@ const SettingsProfile: React.FC = () => {
 
     useEffect(() => {
         if (!myUserInfo) {
-            dispatch(getProfileInfo({query: token.email}));
+            dispatch(getProfileInfo({email: token.email}));
         }
     }, []);
 

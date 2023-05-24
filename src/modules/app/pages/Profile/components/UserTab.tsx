@@ -6,11 +6,14 @@ import {Link} from "react-router-dom";
 import styles from "./UserTab.module.css";
 // Types
 import {UserProfile} from "@store/user/userAsyncAction";
+
 interface UserTabIProps {
     isActive: boolean;
     user: UserProfile;
+    isMe: boolean;
 }
-const UserTab: React.FC<UserTabIProps> = ({isActive, user}) => {
+
+const UserTab: React.FC<UserTabIProps> = ({isActive, user, isMe}) => {
 
     return (isActive && (
             <div className={styles["UserTab"]}>
@@ -21,12 +24,14 @@ const UserTab: React.FC<UserTabIProps> = ({isActive, user}) => {
                     <h3>Telefono: </h3>
                     <span>{user.phone}</span>
                     <h3>Filtros</h3>
-                    <div>
-                        <h3>Tipo de favor: </h3>
-                        <span>{user.preferences.favor_filters.favor_type}</span>
-                        <h3>Distancia máxima: </h3>
-                        <span> Radio de{" "} {user.preferences.favor_filters.max_distance_km} km </span>
-                    </div>
+                    {isMe &&
+                        <div>
+                            <h3>Tipo de favor: </h3>
+                            <span>{user.preferences.favor_filters.favor_type}</span>
+                            <h3>Distancia máxima: </h3>
+                            <span> Radio de{" "} {user.preferences.favor_filters.max_distance_km} km </span>
+                        </div>
+                    }
                     <h3>Favor </h3>
                     <div>
                         <h3>{user.favor.title}</h3>
@@ -38,9 +43,11 @@ const UserTab: React.FC<UserTabIProps> = ({isActive, user}) => {
                     </div>
                 </div>
 
-                <button className={styles["settings"]}>
-                    <Link to={"/user/settings"}>Editar perfil</Link>
-                </button>
+                {isMe &&
+                    <button className={styles["settings"]}>
+                        <Link to={"/user/settings"}>Editar perfil</Link>
+                    </button>
+                }
             </div>
         )
     );

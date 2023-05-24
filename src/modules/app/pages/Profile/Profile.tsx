@@ -19,6 +19,7 @@ const Profile: React.FC = () => {
     /// =========================== Router ===========================
     const {userEmail} = useParams();
     const isMe = userEmail === undefined;
+    console.log(isMe)
 
     /// =========================== Redux ===========================
     const dispatch = useAppDispatch();
@@ -28,10 +29,10 @@ const Profile: React.FC = () => {
 
     /// =========================== Tabs ===========================
     const [activeTab, setActiveTab] = useState<number>(0)
-
+    console.log(myUserInfo, anotherUserInfo)
 
     useEffect(() => {
-        dispatch(getProfileInfo({query: isMe ? token.email : userEmail}));
+        dispatch(getProfileInfo({email: isMe ? token.email : userEmail}));
     }, []);
 
 
@@ -82,18 +83,22 @@ const Profile: React.FC = () => {
                             <BiUser/>
                             Información del usuario
                         </button>
-                        <button
-                            onClick={() => {
-                                setActiveTab(1)
-                            }}
-                            className={activeTab === 1 ? styles["active"] : styles["disabled"]}
-                        >
-                            <BiHistory/>
-                            Historial
-                        </button>
+                        {isMe &&
+                            <button
+                                onClick={() => {
+                                    setActiveTab(1)
+                                }}
+                                className={activeTab === 1 ? styles["active"] : styles["disabled"]}
+                            >
+                                <BiHistory/>
+                                Historial
+                            </button>
+                        }
                     </div>
-                    <UserTab isActive={activeTab === 0} user={user}/>
-                    <HistoryTab isActive={activeTab === 1}/>
+                    <UserTab isActive={activeTab === 0} user={user} isMe={isMe}/>
+                    {isMe &&
+                        <HistoryTab isActive={activeTab === 1}/>
+                    }
                 </section>
             </main>
         )
