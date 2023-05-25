@@ -58,9 +58,10 @@ const dommieInfo = [
 ]
 const Monitor: React.FC = () => {
     const dispatch = useAppDispatch();
-    
+    const {matches} = useAppSelector((state) => state.match);
     useEffect(() => {
-        dispatch(getMatches());
+        dispatch(getMatches("ANYTHING"));
+        console.log(matches)
     }, []);
   return (
     <main className={styles['Monitor']}>
