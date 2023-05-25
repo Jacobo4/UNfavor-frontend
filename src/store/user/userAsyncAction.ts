@@ -4,16 +4,16 @@ import { Match } from '../match/matchAsyncAction';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-export type getMatchesValues = {
+export type getMatchesHistoryValues = {
     state: string;
 }
 
-export interface getMatchesSuccess {
+export interface getMatchesHistorySuccess {
     message: string;
     matches: Array<Match>
 }
 
-export interface getMatchesFailure {
+export interface getMatchesHistoryFailure {
     message: string;
     error: string;
 }
@@ -130,9 +130,9 @@ export const updateMyUserInfo = createAsyncThunk(
     }
 )
 
-export const getMatches = createAsyncThunk(
-    'user/getMatches',
-    async (values: getMatchesValues, {rejectWithValue}) => {
+export const getMatchesHistory = createAsyncThunk(
+    'user/getMatchesHistory',
+    async (values: getMatchesHistoryValues, {rejectWithValue}) => {
         try {
             const config = {
                 headers: {

@@ -3,8 +3,9 @@ import React, {useEffect, useState} from "react";
 // Router
 import {Link, useParams} from "react-router-dom";
 // Redux
+
 import {useAppDispatch, useAppSelector} from "@store/hooks";
-import {getProfileInfo, UserProfile} from "@store/user/userAsyncAction";
+import {getProfileInfo, UserProfile, getMatchesHistory} from "@store/user/userAsyncAction";
 //Styles
 import styles from "./Profile.module.css";
 // Icons
@@ -22,7 +23,7 @@ const Profile: React.FC = () => {
 
     /// =========================== Redux ===========================
     const dispatch = useAppDispatch();
-    const {myUserInfo, anotherUserInfo} = useAppSelector((state) => state.user);
+    const {myUserInfo, anotherUserInfo, matches} = useAppSelector((state) => state.user);
     const {token} = useAppSelector((state) => state.auth);
     const user: UserProfile = isMe ? myUserInfo : anotherUserInfo;
 
@@ -38,6 +39,8 @@ const Profile: React.FC = () => {
 
     useEffect(() => {
         dispatch(getProfileInfo({query: isMe ? token.email : userEmail}));
+        dispatch(getMatchesHistory({state:"FINISHED"}));
+        console.log(matches)
     }, []);
 
 

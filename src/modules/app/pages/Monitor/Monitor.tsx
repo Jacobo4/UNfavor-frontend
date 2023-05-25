@@ -3,10 +3,10 @@ import React, { useEffect } from "react";
 // Router
 import { Link } from "react-router-dom";
 //Styles
-import styles from './Monitor.module.css';
+import styles from "./Monitor.module.css";
 //Redux
 import {useAppDispatch, useAppSelector} from "@store/hooks";
-import { getMatches } from "@root/store/match/matchAsyncAction";
+import { getMatchesHistory } from "../../../../store/user/userAsyncAction";
 // Icons
 import { BsChatDots } from "react-icons/bs";
 // Components
@@ -58,9 +58,9 @@ const dommieInfo = [
 ]
 const Monitor: React.FC = () => {
     const dispatch = useAppDispatch();
-    const {matches} = useAppSelector((state) => state.match);
+    const {matches} = useAppSelector((state) => state.user);
     useEffect(() => {
-        dispatch(getMatches("ANYTHING"));
+        dispatch(getMatchesHistory({state:"ANYTHING"}));
         console.log(matches)
     }, []);
   return (
