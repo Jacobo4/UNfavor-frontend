@@ -29,6 +29,12 @@ const Profile: React.FC = () => {
     /// =========================== Tabs ===========================
     const [activeTab, setActiveTab] = useState<number>(0)
 
+    const getAvg = (reviews: any) => {
+        let sum = 0;
+        reviews.forEach((review: any) => {
+            sum += review.stars;
+        });
+    };        
 
     useEffect(() => {
         dispatch(getProfileInfo({query: isMe ? token.email : userEmail}));
@@ -65,7 +71,7 @@ const Profile: React.FC = () => {
                             {/*  />*/}
                             {/*</div>*/}
                             <h3>Favores Realizados</h3>
-                            {/*<h4>{user.user_reviews_num}</h4>*/}
+                            {/*<h4>{user.favor.user_reviews_num}</h4>*/}
                             <ReportUserDialog isVisible={!isMe}/>
                         </div>
                     </div>

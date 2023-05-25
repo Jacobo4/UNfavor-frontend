@@ -9,6 +9,7 @@ import styles from "./Home.module.css";
 import Stack from "@mui/material/Stack";
 // Images
 import logo from "@assets/images/logo.png";
+import natalia from "@assets/images/natalia.png";
 import fotoFavour1 from "@assets/images/favour1.jpg";
 // @ts-ignore
 import {ReactComponent as SideDecor} from "@assets/images/login/loginDecor.svg";
@@ -61,15 +62,14 @@ const creators = [
     {
         id: 1,
         name: "Juan Jacobo Izquierdo Becerra",
-        avatar: "https://lh3.googleusercontent.com/a-/ACB-R5TaTas8hZXgwR1IsgtMpxfjABQXDoYF3GkbST6LJA=s48-p",
-        github: "https://github.com/Jacobo4",
+        avatar: "https://media.licdn.com/dms/image/D5635AQGkHYQeX4IfSg/profile-framedphoto-shrink_200_200/0/1669044745251?e=1685638800&v=beta&t=0z4zMRhYDabaLFcZKV2WK7-xOdmh-AK2L-abS_k3yq0",
         linkedin: "https://www.linkedin.com/in/juan-jacobo-izquierdo-9aa617217/",
         description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
     },
     {
         id: 2,
         name: "Natalia Andrea Quiroga Castillo",
-        avatar: "https://lh3.googleusercontent.com/a/AGNmyxZCSIqgtAe8C5JxqkLE4E3gfEvj3hvJ36GP2Ng1WE8=s288",
+        avatar: "https://media.licdn.com/dms/image/C5603AQGh9Jp0-HnlJA/profile-displayphoto-shrink_200_200/0/1654382968764?e=1690416000&v=beta&t=71-vVO0LVSxolKprh3Ts_del8aWd5ELjbl8yEWWT6WE",
         github: "https://github.com/nquirogac",
         linkedin: "https://www.linkedin.com/in/natalia-andrea-quiroga-castillo-7978a4213/",
         description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
@@ -85,7 +85,7 @@ const creators = [
     {
         id: 4,
         name: "Ivan Yared Lombana Lozano",
-        avatar: "https://lh3.googleusercontent.com/a-/ACB-R5SyNM7IGod4ke6fdzGHoIq9Fd_UfVmRDgm56Avb_g=s48-p",
+        avatar: "https://scontent.fbog4-1.fna.fbcdn.net/v/t31.18172-8/26758202_1545578398844583_6227205994640363557_o.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=C-gKpg1kLUcAX9Nwy_6&_nc_ht=scontent.fbog4-1.fna&oh=00_AfDtO8a_0XGT0z-6yzvh3Q_ONbLmHc-8JuRHRhkzzBqNtg&oe=6496F11C",
         github: "https://github.com/IvanLoLo",
         linkedin: "https://www.linkedin.com/in/ivanlombana/",
         description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",
@@ -93,7 +93,7 @@ const creators = [
     {
         id: 5,
         name: "Juan Camilo Zambrano Lopez",
-        avatar: "https://lh3.googleusercontent.com/a-/ACB-R5SifGrQdp7k5sGnEKk7K0WFH7fgCTZBI05dN2csUg=s48-p",
+        avatar: "https://scontent.fbog4-1.fna.fbcdn.net/v/t39.30808-6/249209413_4451798031579211_418906861013948822_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=huyUIYijn5AAX-pmbfs&_nc_ht=scontent.fbog4-1.fna&oh=00_AfArNrP0OF3f0SudfjUeKOxUbQ5sJe8tGsn4w1vIbcmd4g&oe=64756863",
         github: "https://github.com/juzambranol",
         linkedin: "https://www.linkedin.com/in/juan-camilo-zambrano-lopez-472a7424b/",
         description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quod corrupti molestiae quibusdam ipsum voluptatem velit animi libero vero eveniet!",

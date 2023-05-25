@@ -1,10 +1,12 @@
 // Core
-import React from "react";
+import React, { useEffect } from "react";
 // Router
 import { Link } from "react-router-dom";
 //Styles
 import styles from './Monitor.module.css';
-
+//Redux
+import {useAppDispatch, useAppSelector} from "@store/hooks";
+import { getMatches } from "@root/store/match/matchAsyncAction";
 // Icons
 import { BsChatDots } from "react-icons/bs";
 // Components
@@ -55,7 +57,11 @@ const dommieInfo = [
     }
 ]
 const Monitor: React.FC = () => {
-
+    const dispatch = useAppDispatch();
+    
+    useEffect(() => {
+        dispatch(getMatches());
+    }, []);
   return (
     <main className={styles['Monitor']}>
         <div className={styles['actions']}>

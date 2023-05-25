@@ -5,9 +5,11 @@ import type {
     getMatchesSuccess,
     likeMatchFailure,
     likeMatchSuccess,
+    matchActioFailure,
+    matchActionSuccess,
     Match
 } from "@store/match/matchAsyncAction";
-import {getMatches, likeMatch} from "@store/match/matchAsyncAction";
+import {getMatches, likeMatch, matchAction} from "@store/match/matchAsyncAction";
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected' | 'idle';
 
@@ -74,6 +76,24 @@ const matchSlice = createSlice({
                 state.status = 'rejected';
                 state.error = message;
             })
+            .addCase(matchAction.pending, (state: MatchState, action) => {
+                state.toastLoaderId = toast.loading('Matching...', {position: 'top-center'});
+                state.status = 'pending';
+                state.error = null;
+            })
+            .addCase(matchAction.fulfilled, (state: MatchState, action) => {
+                const {message} = action.payload as matchActionSuccess;
+                toast.dismiss(state.toastLoaderId);
+                state.status = 'fulfilled';
+            })
+            .addCase(matchAction.rejected, (state: MatchState, action) => {
+                const {message} = action.payload as matchActioFailure;
+                toast.dismiss(state.toastLoaderId);
+                toast.error('Error updating favor status', {position: 'top-center'})
+                state.status = 'rejected';
+                state.error = message;
+            })
+
     },
 });
 export const {removeMatch} = matchSlice.actions;

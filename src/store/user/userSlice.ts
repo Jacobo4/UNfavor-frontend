@@ -3,9 +3,10 @@ import {createSlice} from '@reduxjs/toolkit';
 // Toast
 import {toast} from "react-toastify";
 // Actions
-import {getProfileInfo, updateFavorFilters, updateMyUserInfo, } from "@store/user/userAsyncAction";
+import {getProfileInfo, updateFavorFilters, updateMyUserInfo, getMatches } from "@store/user/userAsyncAction";
 // Types
-import type {UpdateUserInfoSuccess, UpdateUserInfoFailure, UpdateFavorFiltersFailure, UserProfile, getUserProfileInfoSuccess} from "@store/user/userAsyncAction";
+import type {UpdateUserInfoSuccess, UpdateUserInfoFailure, UpdateFavorFiltersFailure, UserProfile, getUserProfileInfoSuccess, getMatchesSuccess, getMatchesFailure} from "@store/user/userAsyncAction";
+import { Match } from '../match/matchAsyncAction';
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected' | 'idle';
 
@@ -16,6 +17,7 @@ export interface UserState {
     error: string | null | any;
     toastLoaderId: number | string;
     isMe: boolean;
+    matches: Array<Match>;
 };
 
 const initialState: UserState = {
@@ -25,6 +27,7 @@ const initialState: UserState = {
     error: null,
     toastLoaderId: null,
     isMe: false,
+    matches: null,
 };
 
 const userSlice = createSlice({
@@ -89,6 +92,23 @@ const userSlice = createSlice({
                 const {message} = action.payload as UpdateFavorFiltersFailure;
                 toast.dismiss(state.toastLoaderId);
                 toast.error('Error updating favor filters', {position: 'top-center'})
+                state.status = 'rejected';
+                state.error = message;
+            })
+            .addCase(getMatches.pending, (state: UserState, action) => {
+                state.toastLoaderId = toast.loading('Getting matches...', {position: 'top-center'});
+                state.status = 'pending';
+                state.error = null;
+            })
+            .addCase(getMatches.fulfilled, (state: UserState, action) => {
+                const {matches, message} = action.payload as getMatchesSuccess;
+                toast.dismiss(state.toastLoaderId);
+                state.status = 'fulfilled';
+            })
+            .addCase(getMatches.rejected, (state: UserState, action) => {
+                const {message} = action.payload as getMatchesFailure;
+                toast.dismiss(state.toastLoaderId);
+                toast.error('Error getting matches', {position: 'top-center'})
                 state.status = 'rejected';
                 state.error = message;
             })

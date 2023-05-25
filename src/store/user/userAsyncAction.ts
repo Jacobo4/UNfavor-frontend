@@ -1,11 +1,28 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {axiosApiInstance} from "../../config/axiosApiInstance";
+import { Match } from '../match/matchAsyncAction';
 
 const API_URL = import.meta.env.VITE_API_URL;
+
+export type getMatchesValues = {
+    query: string
+}
+
+export interface getMatchesSuccess {
+    message: string;
+    matches: Array<Match>
+}
+
+export interface getMatchesFailure {
+    message: string;
+    error: string;
+}
 
 export interface UserProfile {
     favor: {
         reviews: {
+            review_sum: number,
+            review_num: number,
             comments: Array<string>
         },
         title: string,
@@ -85,6 +102,7 @@ export interface UpdateFavorFiltersFailure {
  * error message.
  */
 
+
 export const updateMyUserInfo = createAsyncThunk(
     'user/updateMyUserInfo',
     async (formValues: updateUserInfoFormValues, {rejectWithValue}) => {
@@ -111,6 +129,34 @@ export const updateMyUserInfo = createAsyncThunk(
         }
     }
 )
+
+export const getMatches = createAsyncThunk(
+    'user/getMatches',
+    async (values: getMatchesValues, {rejectWithValue}) => {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+            const { data } = await axiosApiInstance.post(
+                `${API_URL}/user/matches`,
+                {...values},
+                config
+            );
+            return data;
+        } catch (error) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)
+
+
+
 export const updateFavorFilters = createAsyncThunk(
     '/user/changeFavorFilters',
     async (formValues: UpdateFavorFiltersFormValues, {rejectWithValue}) => {
@@ -147,7 +193,7 @@ export const getProfileInfo = createAsyncThunk(
                 },
             };
             //TODO: change this to the new unified endpoint
-            const {data} = await axiosApiInstance.get(
+            const {data} = await axiosApiInstance.post(
                 `${API_URL}/user/info`,
                 // {...values},
                 config
