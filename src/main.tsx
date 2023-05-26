@@ -31,7 +31,7 @@ import Dashboard from './modules/admin/pages/Dashboard/Dashboard';
 import ProfileControl from './modules/admin/pages/ProfileControl/ProfileControl';
 import Settings from './modules/admin/pages/Settings/Settings';
 import ReportedProfiles from './modules/admin/pages/ReportedProfiles/ReportedProfiles'
-import AdminLayout from "@root/modules/admin/layout/Admin.layout";
+import AdminLayout from "./modules/admin/layout/Admin.layout";
 import {createTheme, ThemeProvider} from "@mui/material";
 const router = createBrowserRouter([
     {

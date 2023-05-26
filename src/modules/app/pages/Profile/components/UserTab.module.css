@@ -37,7 +37,7 @@
         h3 {
             font-weight: 500;
             font-size: 16px;
-
+            padding: 0;
             color: var(--secondary);
             @media (--screen-md) {
 
@@ -53,7 +53,7 @@
         }
 
         div {
-            gap: 8px;
+            gap: 12px;
             display: grid;
             justify-content: flex-start;
             justify-items: baseline;

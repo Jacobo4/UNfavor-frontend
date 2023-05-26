@@ -14,6 +14,7 @@ import {IoLocation} from "react-icons/io5";
 import HistoryTab from "./components/HistoryTab";
 import UserTab from "./components/UserTab";
 import ReportUserDialog from "./components/ReportUserDialog";
+import { Rating } from "@mui/material";
 
 const Profile: React.FC = () => {
     /// =========================== Router ===========================
@@ -28,7 +29,12 @@ const Profile: React.FC = () => {
 
     /// =========================== Tabs ===========================
     const [activeTab, setActiveTab] = useState<number>(0)
-
+    const getAvg = () => {
+        if(user.favor.reviews.review_num && user.favor.reviews.review_sum){
+            return (user.favor.reviews.review_sum/user.favor.reviews.review_num);
+        }
+        return 0;
+    };  
     useEffect(() => {
         dispatch(getProfileInfo({email: isMe ? token.email : userEmail}));
     }, []);
@@ -54,17 +60,17 @@ const Profile: React.FC = () => {
                         </div>
                         <div className={styles["Raitings"]}>
                             <h3>Calificación Promedio</h3>
-                            {/*<div className={styles["stars"]}>*/}
-                            {/*  <h4>{user.user_reviews_avg}</h4>*/}
-                            {/*  <Rating*/}
-                            {/*    size="large"*/}
-                            {/*    precision={0.5}*/}
-                            {/*    value={user.user_reviews_avg}*/}
-                            {/*    readOnly*/}
-                            {/*  />*/}
-                            {/*</div>*/}
+                            <div className={styles["stars"]}>
+                              <h4>{getAvg()}</h4>
+                              <Rating
+                                size="large"
+                                precision={0.5}
+                                value={getAvg()}
+                                readOnly
+                              />
+                            </div>
                             <h3>Favores Realizados</h3>
-                            {/*<h4>{user.user_reviews_num}</h4>*/}
+                            <h4>{(user.favor.reviews.review_num)? user.favor.reviews.review_num:"0"}</h4>
                             <ReportUserDialog isVisible={!isMe}/>
                         </div>
                     </div>
