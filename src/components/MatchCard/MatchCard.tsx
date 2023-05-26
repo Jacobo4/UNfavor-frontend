@@ -29,12 +29,12 @@ const MatchCard: React.FC<MatchCardIProps> = ({card, customStyles, index,likeCb,
     const [leaveX, setLeaveX] = useState(0);
     const dispatch = useAppDispatch();
     const handleLikeMatch = async () => {
-        await likeCb;
+        await likeCb();
         setLeaveX(1000);
         removeCardCB();
     }
     const handleDislikeMatch = async () => {
-        await dislikeCb;
+        await dislikeCb();
         setLeaveX(-1000);
         removeCardCB();
     }

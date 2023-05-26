@@ -5,12 +5,13 @@ import { Match } from '../match/matchAsyncAction';
 const API_URL = import.meta.env.VITE_API_URL;
 
 export type getMatchesHistoryValues = {
-    state: string;
+    option: string;
 }
 
 export interface getMatchesHistorySuccess {
     message: string;
     matches: Array<Match>
+    
 }
 
 export interface getMatchesHistoryFailure {
@@ -19,36 +20,39 @@ export interface getMatchesHistoryFailure {
 }
 
 export interface UserProfile {
-    favor: {
-        reviews: {
-            review_sum: number,
-            review_num: number,
-            comments: Array<string>
+     favor: any;
+     name: ReactNode;
+     user: {
+        favor: {
+            reviews: {
+                review_sum: number,
+                review_num: number,
+                comments: Array<string>
+            },
+            date_published?: string,
+            favor_state?: string,
+            title: string,
+            description: string,
+            location: string,
+            possible_matches?: Array<string>
         },
-        title: string,
-        description: string,
-        location: string,
-        date_published: string,
-        favor_state: string,
-        possible_matches: Array<string>
-    },
-    preferences: {
-        favor_filters: {
-            favor_type: string,
-            max_distance_km: number
-        }
-    },
-    _id: string,
-    name: string,
-    email: string,
-    phone: string,
-    age: number,
-    admin: boolean,
-    __v: number
+        preferences?: {
+            favor_filters: {
+                favor_type: string,
+                max_distance_km: number
+            }
+        },
+        _id: string,
+        name: string,
+        email: string,
+        phone?: string,
+        age?: number,
+        __v?: number
+    }
 }
 
 export type getUserProfileInfoValues = {
-    query: string
+    email: string
 }
 
 export interface getUserProfileInfoSuccess {
@@ -192,10 +196,10 @@ export const getProfileInfo = createAsyncThunk(
                     'Content-Type': 'application/json',
                 },
             };
-            //TODO: change this to the new unified endpoint
+
             const {data} = await axiosApiInstance.post(
                 `${API_URL}/user/info`,
-                // {...values},
+                {...values},
                 config
             );
 

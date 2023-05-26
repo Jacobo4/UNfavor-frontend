@@ -5,78 +5,104 @@ import { Link } from "react-router-dom";
 //Styles
 import styles from "./Monitor.module.css";
 //Redux
-import {useAppDispatch, useAppSelector} from "@store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { getMatchesHistory } from "../../../../store/user/userAsyncAction";
 // Icons
 import { BsChatDots } from "react-icons/bs";
 // Components
 import FavorCard from "./components/FavorCard";
+import NoMatch from "@root/components/NoMatch";
 
-const dommieInfo = [
-    {
-        title: 'Pintar Fachada Casa',
-        description: 'Pintar casa en Engativa de 70 metros cuadrados en máximo 3 dias habiles.',
-        state: 'En Proceso. A la espera de la confirmación de la realización',
-        limitDate: '30/03/2023',
-        responsable: 'Rosalia Monsalve',
-    },
-    {
-        title: 'Limpieza Apartamento',
-        description: 'Limpieza de un apartamento de 30 m^2. Para un plazo de 1 semana.',
-        state: 'Finalizado. Esperando Validación',
-        limitDate: '16/03/2023',
-        responsable: 'Mario Bros',
-    },
-    {
-        title: 'Pintar Fachada Casa',
-        description: 'Pintar casa en Engativa de 70 metros cuadrados en máximo 3 dias habiles.',
-        state: 'En Proceso. A la espera de la confirmación de la realización',
-        limitDate: '30/03/2023',
-        responsable: 'Rosalia Monsalve',
-    },
-    {
-        title: 'Limpieza Apartamento',
-        description: 'Limpieza de un apartamento de 30 m^2. Para un plazo de 1 semana.',
-        state: 'Finalizado. Esperando Validación',
-        limitDate: '16/03/2023',
-        responsable: 'Mario Bros',
-    },
-    {
-        title: 'Pintar Fachada Casa',
-        description: 'Pintar casa en Engativa de 70 metros cuadrados en máximo 3 dias habiles.',
-        state: 'En Proceso. A la espera de la confirmación de la realización',
-        limitDate: '30/03/2023',
-        responsable: 'Rosalia Monsalve',
-    },
-    {
-        title: 'Limpieza Apartamento',
-        description: 'Limpieza de un apartamento de 30 m^2. Para un plazo de 1 semana.',
-        state: 'Finalizado. Esperando Validación',
-        limitDate: '16/03/2023',
-        responsable: 'Mario Bros',
-    }
-]
+// const dommieInfo = [
+//   {
+//     email: "string",
+//     name: "string",
+//     state: "string",
+//     favor: {
+//       title: "string",
+//       description: "string",
+//       location: "string",
+//     },
+//   },
+//   {
+//     email: "string",
+//     name: "string",
+//     state: "string",
+//     favor: {
+//       title: "string",
+//       description: "string",
+//       location: "string",
+//     },
+//   },
+//   {
+//     email: "string",
+//     name: "string",
+//     state: "string",
+//     favor: {
+//       title: "string",
+//       description: "string",
+//       location: "string",
+//     },
+//   },
+//   {
+//     email: "string",
+//     name: "string",
+//     state: "string",
+//     favor: {
+//       title: "string",
+//       description: "string",
+//       location: "string",
+//     },
+//   },
+//   {
+//     email: "string",
+//     name: "string",
+//     state: "string",
+//     favor: {
+//       title: "string",
+//       description: "string",
+//       location: "string",
+//     },
+//   },
+//   {
+//     email: "string",
+//     name: "string",
+//     state: "string",
+//     favor: {
+//       title: "string",
+//       description: "string",
+//       location: "string",
+//     },
+//   },
+// ];
 const Monitor: React.FC = () => {
-    const dispatch = useAppDispatch();
-    const {matches} = useAppSelector((state) => state.user);
-    useEffect(() => {
-        dispatch(getMatchesHistory({state:"ANYTHING"}));
-        console.log(matches)
-    }, []);
+  const dispatch = useAppDispatch();
+  const { matches } = useAppSelector((state) => state.user);
+  useEffect(() => {
+    dispatch(getMatchesHistory({ option: "ANYTHING" }));
+    console.log(matches);
+  }, []);
   return (
-    <main className={styles['Monitor']}>
-        <div className={styles['actions']}>
-            <div className={styles['action-wrapper']}>
-                <Link to="/chat" type={"button"}>Chat <BsChatDots/></Link>
+    <main className={styles["Monitor"]}>
+      {matches && (
+        <>
+          <div className={styles["actions"]}>
+            <div className={styles["action-wrapper"]}>
+              <Link to="/chat" type={"button"}>
+                Chat <BsChatDots />
+              </Link>
             </div>
-            <hr/>
-        </div>
-        <div className={styles['favorsWrapper']}>
-            {dommieInfo.map((info, index) => <FavorCard key={index} {...info}/> )}
-        </div>
-
+            <hr />
+          </div>
+          <div className={styles["favorsWrapper"]}>
+            {matches.length === 0 && <NoMatch />}
+            {matches.length !== 0 &&
+              matches.map((info, index) => <FavorCard key={index} {...info} />)}
+          </div>
+        </>
+      )}
     </main>
-  )
-}
+  );
+};
 
-export default Monitor
+export default Monitor;

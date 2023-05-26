@@ -15,6 +15,7 @@ import {IoLocation} from "react-icons/io5";
 import HistoryTab from "./components/HistoryTab";
 import UserTab from "./components/UserTab";
 import ReportUserDialog from "./components/ReportUserDialog";
+import { Rating } from "@mui/material";
 
 const Profile: React.FC = () => {
     /// =========================== Router ===========================
@@ -23,24 +24,21 @@ const Profile: React.FC = () => {
 
     /// =========================== Redux ===========================
     const dispatch = useAppDispatch();
-    const {myUserInfo, anotherUserInfo, matches} = useAppSelector((state) => state.user);
+    const {myUserInfo, anotherUserInfo} = useAppSelector((state) => state.user);
     const {token} = useAppSelector((state) => state.auth);
     const user: UserProfile = isMe ? myUserInfo : anotherUserInfo;
 
     /// =========================== Tabs ===========================
     const [activeTab, setActiveTab] = useState<number>(0)
-
-    const getAvg = (reviews: any) => {
-        let sum = 0;
-        reviews.forEach((review: any) => {
-            sum += review.stars;
-        });
-    };        
-
+    const getAvg = () => {
+        if(user.favor.reviews.review_num && user.favor.reviews.review_sum){
+            return (user.favor.reviews.review_sum/user.favor.reviews.review_num);
+        }
+        return 0;
+    };  
     useEffect(() => {
-        dispatch(getProfileInfo({query: isMe ? token.email : userEmail}));
-        dispatch(getMatchesHistory({state:"FINISHED"}));
-        console.log(matches)
+        dispatch(getProfileInfo({email: isMe ? token.email : userEmail}));
+        
     }, []);
 
 
@@ -64,17 +62,17 @@ const Profile: React.FC = () => {
                         </div>
                         <div className={styles["Raitings"]}>
                             <h3>Calificación Promedio</h3>
-                            {/*<div className={styles["stars"]}>*/}
-                            {/*  <h4>{user.user_reviews_avg}</h4>*/}
-                            {/*  <Rating*/}
-                            {/*    size="large"*/}
-                            {/*    precision={0.5}*/}
-                            {/*    value={user.user_reviews_avg}*/}
-                            {/*    readOnly*/}
-                            {/*  />*/}
-                            {/*</div>*/}
+                            <div className={styles["stars"]}>
+                              <h4>{getAvg()}</h4>
+                              <Rating
+                                size="large"
+                                precision={0.5}
+                                value={getAvg()}
+                                readOnly
+                              />
+                            </div>
                             <h3>Favores Realizados</h3>
-                            {/*<h4>{user.favor.user_reviews_num}</h4>*/}
+                            <h4>{(user.favor.reviews.review_num)? user.favor.reviews.review_num:"0"}</h4>
                             <ReportUserDialog isVisible={!isMe}/>
                         </div>
                     </div>
@@ -91,18 +89,22 @@ const Profile: React.FC = () => {
                             <BiUser/>
                             Información del usuario
                         </button>
-                        <button
-                            onClick={() => {
-                                setActiveTab(1)
-                            }}
-                            className={activeTab === 1 ? styles["active"] : styles["disabled"]}
-                        >
-                            <BiHistory/>
-                            Historial
-                        </button>
+                        {isMe &&
+                            <button
+                                onClick={() => {
+                                    setActiveTab(1)
+                                }}
+                                className={activeTab === 1 ? styles["active"] : styles["disabled"]}
+                            >
+                                <BiHistory/>
+                                Historial
+                            </button>
+                        }
                     </div>
-                    <UserTab isActive={activeTab === 0} user={user}/>
-                    <HistoryTab isActive={activeTab === 1}/>
+                    <UserTab isActive={activeTab === 0} user={user} isMe={isMe}/>
+                    {isMe &&
+                        <HistoryTab isActive={activeTab === 1} />
+                    }
                 </section>
             </main>
         )

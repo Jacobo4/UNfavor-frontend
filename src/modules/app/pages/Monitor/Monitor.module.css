@@ -9,6 +9,7 @@
             z-index: 999;
             padding: 0 10px;
             background: #ffffff;
+            height: auto;
         }
          a {
              display: grid;
@@ -38,6 +39,7 @@
         }
     }
     .favorsWrapper{
+        padding: 16px;
         display: grid;
         gap: 15px;
         grid-template-columns: repeat(auto-fit,minmax(275px,1fr));

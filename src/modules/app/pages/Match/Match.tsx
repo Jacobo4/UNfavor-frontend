@@ -33,6 +33,7 @@ const Match: React.FC = () => {
 
     const likeMatchFavor = async (id) => {
         try {
+            console.log("asd")
             await dispatch(likeMatch({userId: id}));
         } catch (error) {
             console.error(error)
