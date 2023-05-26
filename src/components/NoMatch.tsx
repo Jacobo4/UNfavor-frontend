@@ -3,11 +3,15 @@ import {MdHeartBroken} from 'react-icons/md'
 import styles from './NoMatch.module.css'
 import { Link } from 'react-router-dom'
 
-export default function NoMatch() {
+interface props {
+    historial: boolean;
+  }
+
+const NoMatch: React.FC<props>= (props) => {
   return (
     <div className={styles["wrapper"]}>
       <MdHeartBroken/>
-      <h1>Aún no tienes matches</h1>
+      <h1>Aún no tienes matches {props.historial? "finalizados":""}</h1>
         <p>¡Sigue buscando!</p>
         <Link
         to={"/match"}
@@ -15,3 +19,4 @@ export default function NoMatch() {
     </div>
   )
 }
+export default NoMatch;

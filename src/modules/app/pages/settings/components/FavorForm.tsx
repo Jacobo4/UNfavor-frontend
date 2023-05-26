@@ -78,6 +78,7 @@ export default function FavorForm({ categorie, distance }) {
                     value={value}
                     color="secondary"
                     label-color="secondary"
+                    defaultValue={categorie}
                     label="Categoria"
                     onChange={onChange}
                     defaultChecked={categorie !== "Any" ? categorie : "None"}
@@ -86,7 +87,9 @@ export default function FavorForm({ categorie, distance }) {
                       <em>None</em>
                     </MenuItem>
                     {categories.map((category) => (
-                      <MenuItem value={category}>{category}</MenuItem>
+                      <MenuItem 
+                      key={category}
+                      value={category}>{category}</MenuItem>
                     ))}
                   </Select>
                 )}

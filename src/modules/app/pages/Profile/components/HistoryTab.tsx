@@ -100,7 +100,7 @@ const HistoryTab: React.FC<HistoryTabIProps> = ({isActive}) => {
             <div className={styles["HistoryTab"]}>
                 <h2>Historial</h2>
                 {matches.length === 0 && (
-                <NoMatch/>
+                <NoMatch historial={true} />
                 )}
                 {matches.length != 0 &&(
                     <div className={styles["cardsContainer"]}>
