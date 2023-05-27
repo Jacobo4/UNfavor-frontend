@@ -1,9 +1,29 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {axiosApiInstance} from "../../config/axiosApiInstance";
+import { Match } from '../match/matchAsyncAction';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
+
+
+export type getMatchesHistoryValues = {
+    option: string;
+}
+
+export interface getMatchesHistorySuccess {
+    message: string;
+    matches: Array<Match>
+    
+}
+
+export interface getMatchesHistoryFailure {
+    message: string;
+    error: string;
+}
+
 export interface UserProfile {
+     favor: any;
+     name: ReactNode;
      user: {
         favor: {
             reviews: {
@@ -88,6 +108,7 @@ export interface UpdateFavorFiltersFailure {
  * error message.
  */
 
+
 export const updateMyUserInfo = createAsyncThunk(
     'user/updateMyUserInfo',
     async (formValues: updateUserInfoFormValues, {rejectWithValue}) => {
@@ -114,6 +135,34 @@ export const updateMyUserInfo = createAsyncThunk(
         }
     }
 )
+
+export const getMatchesHistory = createAsyncThunk(
+    'user/getMatchesHistory',
+    async (values: getMatchesHistoryValues, {rejectWithValue}) => {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+            const { data } = await axiosApiInstance.post(
+                `${API_URL}/user/matches`,
+                {...values},
+                config
+            );
+            return {option:values.option,...data};
+        } catch (error) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)
+
+
+
 export const updateFavorFilters = createAsyncThunk(
     '/user/changeFavorFilters',
     async (formValues: UpdateFavorFiltersFormValues, {rejectWithValue}) => {
@@ -138,6 +187,7 @@ export const updateFavorFilters = createAsyncThunk(
         }
     }
 )
+
 export const getProfileInfo = createAsyncThunk(
     'user/getProfileInfo',
     async (values: getUserProfileInfoValues, {rejectWithValue, getState}) => {

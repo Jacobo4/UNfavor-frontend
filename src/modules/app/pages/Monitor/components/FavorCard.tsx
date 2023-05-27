@@ -29,18 +29,22 @@ function getLabelText(value: number) {
   return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
 }
 interface IProps {
-  title: string;
-  description: string;
-  state: string;
-  limitDate: string;
-  responsable: string;
+  email: string;
+  name: string;
+  status: string;
+  favor: {
+    title: string;
+    description: string;
+    location: string;
+   
+  }
+ 
 }
 const FavorCard: React.FC = ({
-  title,
-  description,
-  state,
-  limitDate,
-  responsable,
+  email,
+  name,
+  status,
+  favor: { title, description, location},
 }: IProps) => {
   const [openConfirm, setOpenConfirm] = React.useState<boolean>(false);
   const [openCancel, setOpenCancel] = React.useState<boolean>(false);
@@ -73,12 +77,14 @@ const FavorCard: React.FC = ({
       <div className={styles["info"]}>
         <h2>{title}</h2>
         <p>{description}</p>
-        <span>Estado:</span>
-        <p>{state}</p>
-        <span>Fecha limite:</span>
-        <p>{limitDate}</p>
-        <span>Responsable: </span>
-        <p>{responsable}</p>
+        <h3>Estado:</h3>
+        <span>{(status=="CREATED")?"Creado":"En espera"}</span>
+        <h3>Ubicación:</h3>
+        <span>{location}</span>
+        <h3>Resspanonsable: </h3>
+        <span>{name}</span>
+        <h3>Correo: </h3>
+        <span>{email}</span>
       </div>
       <hr />
       <div className={styles["actions"]}>

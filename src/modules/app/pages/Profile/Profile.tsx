@@ -3,8 +3,9 @@ import React, {useEffect, useState} from "react";
 // Router
 import {Link, useParams} from "react-router-dom";
 // Redux
+
 import {useAppDispatch, useAppSelector} from "@store/hooks";
-import {getProfileInfo, UserProfile} from "@store/user/userAsyncAction";
+import {getProfileInfo, UserProfile, getMatchesHistory} from "@store/user/userAsyncAction";
 //Styles
 import styles from "./Profile.module.css";
 // Icons
@@ -15,7 +16,7 @@ import HistoryTab from "./components/HistoryTab";
 import UserTab from "./components/UserTab";
 import ReportUserDialog from "./components/ReportUserDialog";
 import { Rating } from "@mui/material";
-
+const urlImage = "https://api.dicebear.com/6.x/adventurer/svg?seed=";
 const Profile: React.FC = () => {
     /// =========================== Router ===========================
     const {userEmail} = useParams();
@@ -37,6 +38,7 @@ const Profile: React.FC = () => {
     };  
     useEffect(() => {
         dispatch(getProfileInfo({email: isMe ? token.email : userEmail}));
+        
     }, []);
 
 
@@ -46,9 +48,10 @@ const Profile: React.FC = () => {
                 <section className={styles["profileData"]}>
                     <figure className={styles["avatar"]}>
                         <img
-                            src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            src={urlImage + token.email}
                             alt=""
                         />
+                        
                     </figure>
                     <div className={styles["info"]}>
                         <div className={styles["userInfo"]}>
@@ -101,7 +104,7 @@ const Profile: React.FC = () => {
                     </div>
                     <UserTab isActive={activeTab === 0} user={user} isMe={isMe}/>
                     {isMe &&
-                        <HistoryTab isActive={activeTab === 1}/>
+                        <HistoryTab isActive={activeTab === 1} />
                     }
                 </section>
             </main>
