@@ -5,7 +5,9 @@ import {toast} from "react-toastify";
 // Actions
 import {getProfileInfo, updateFavorFilters, updateMyUserInfo, getMatchesHistory } from "@store/user/userAsyncAction";
 // Types
-import type {UpdateUserInfoSuccess, UpdateUserInfoFailure, UpdateFavorFiltersFailure, UserProfile, getUserProfileInfoSuccess, getMatchesHistorySuccess, getMatchesHistoryFailure} from "@store/user/userAsyncAction";
+import type {UpdateUserInfoSuccess, UpdateUserInfoFailure, UpdateFavorFiltersFailure, UserProfile, getUserProfileInfoSuccess, 
+    getMatchesHistoryValues,
+    getMatchesHistorySuccess, getMatchesHistoryFailure} from "@store/user/userAsyncAction";
 import { Match } from '../match/matchAsyncAction';
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected' | 'idle';
@@ -16,6 +18,7 @@ export interface UserState {
     anotherUserInfo: UserProfile;
     error: string | null | any;
     toastLoaderId: number | string;
+    toastLoaderIdHistory: number | string;
     isMe: boolean;
     matches: Array<Match>;
 };
@@ -96,15 +99,19 @@ const userSlice = createSlice({
                 state.error = message;
             })
             .addCase(getMatchesHistory.pending, (state: UserState, action) => {
-                state.toastLoaderId = toast.loading('Getting matches...', {position: 'top-center'});
+                // if(getMatchesHistory. =="FINISHED"){
+
+                // }
+                const x = state.toastLoaderId = toast.loading('Getting matches...', {position: 'top-center'});
                 state.status = 'pending';
                 state.error = null;
+                console.log(x);
             })
             .addCase(getMatchesHistory.fulfilled, (state: UserState, action) => {
                 state.matches = action.payload.matches;
+                console.log(state.toastLoaderId);
                 toast.dismiss(state.toastLoaderId);
-                state.status = 'fulfilled';
-                console.log(state.matches);
+                state.status = 'fulfilled';              
             })
             .addCase(getMatchesHistory.rejected, (state: UserState, action) => {
                 const {message} = action.payload as getMatchesHistoryFailure;

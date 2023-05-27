@@ -1,5 +1,5 @@
 // Core
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 // Router
 import {Link, useNavigate} from "react-router-dom";
 // Styles
@@ -13,12 +13,16 @@ import {FiMenu} from "react-icons/fi";
 import avatar from "@assets/images/avatar.png";
 import logo from "@assets/images/logo.png";
 import {logout} from "@store/auth/authSlice";
+//Redux
+import {getProfileInfo, UserProfile} from "@store/user/userAsyncAction";
 import {useAppDispatch, useAppSelector} from "@store/hooks";
 //Framer motion
 import {motion} from "framer-motion";
 import {navVariants} from "@globalStyles/motion";
 
 import {Button, Menu, MenuItem, Fade} from "@mui/material/";
+
+const urlImage = "https://api.dicebear.com/6.x/adventurer/svg?seed=";
 
 const Header: React.FC = () => {
     const {isLogged} = useAppSelector((state) => state.auth);
@@ -28,7 +32,7 @@ const Header: React.FC = () => {
     const handleMenuClick = () => {
         toggleMenu(!isOpen);
     };
-
+    const {myUserInfo} = useAppSelector((state) => state.user);
     const handleLogout = () => {
         dispatch(logout());
         navigate("/");
@@ -37,13 +41,14 @@ const Header: React.FC = () => {
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+    const {token} = useAppSelector((state) => state.auth);
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
     const handleCloseDropMenu = () => {
         setAnchorEl(null);
     };
-
+    
     return (
         <motion.nav
             variants={navVariants}
@@ -62,7 +67,7 @@ const Header: React.FC = () => {
             <h1>UNfavor</h1>
           </figure>
         </Link>
-
+                
                 {isLogged && (
                     <>
                         <div className={styles["dropDownMenu"]}>
@@ -75,9 +80,10 @@ const Header: React.FC = () => {
                                 onClick={handleClick}
                             >
                                 <figure className={styles["avatar"]}>
-                                    <img src={avatar} alt=""/>
+                                    <img src={urlImage + token.email} alt=""/>
                                 </figure>
                             </Button>
+                            
                             <Menu
                                 id="fade-menu"
                                 MenuListProps={{

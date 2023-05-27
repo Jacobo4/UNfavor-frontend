@@ -16,7 +16,7 @@ import HistoryTab from "./components/HistoryTab";
 import UserTab from "./components/UserTab";
 import ReportUserDialog from "./components/ReportUserDialog";
 import { Rating } from "@mui/material";
-
+const urlImage = "https://api.dicebear.com/6.x/adventurer/svg?seed=";
 const Profile: React.FC = () => {
     /// =========================== Router ===========================
     const {userEmail} = useParams();
@@ -48,9 +48,10 @@ const Profile: React.FC = () => {
                 <section className={styles["profileData"]}>
                     <figure className={styles["avatar"]}>
                         <img
-                            src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            src={urlImage + token.email}
                             alt=""
                         />
+                        
                     </figure>
                     <div className={styles["info"]}>
                         <div className={styles["userInfo"]}>

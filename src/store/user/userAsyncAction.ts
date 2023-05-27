@@ -4,6 +4,8 @@ import { Match } from '../match/matchAsyncAction';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
+
+
 export type getMatchesHistoryValues = {
     option: string;
 }
@@ -148,7 +150,7 @@ export const getMatchesHistory = createAsyncThunk(
                 {...values},
                 config
             );
-            return data;
+            return {option:values.option,...data};
         } catch (error) {
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)
@@ -185,6 +187,7 @@ export const updateFavorFilters = createAsyncThunk(
         }
     }
 )
+
 export const getProfileInfo = createAsyncThunk(
     'user/getProfileInfo',
     async (values: getUserProfileInfoValues, {rejectWithValue, getState}) => {
