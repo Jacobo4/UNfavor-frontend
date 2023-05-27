@@ -73,8 +73,7 @@ const adminSlice = createSlice({
             .addCase(controlFavor.fulfilled, (state: AdminState, {payload}) => {
                 toast.dismiss(state.toastLoaderId);
                 state.status = 'fulfilled';
-                
-               
+                state.users = state.users.filter(user => user._id !== payload.userId)
             })
             .addCase(controlFavor.rejected, (state: AdminState, action) => {
                 const {message} = action.payload;
