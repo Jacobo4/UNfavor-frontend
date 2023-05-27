@@ -6,10 +6,10 @@ import {Outlet} from "react-router-dom";
 const AdminLayout: React.FC = () => {
 
     return (
-        <div className={"Admin"}>
+        <div className={styles['Admin']}>
             <Sidebar/>
-            <div className={styles.main}>
-                <div className={styles.content}>
+            <div className={styles['main']}>
+                <div className={styles['content']}>
                     <Outlet/>
                 </div>
             </div>

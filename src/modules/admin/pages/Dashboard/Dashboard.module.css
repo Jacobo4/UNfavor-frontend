@@ -1,6 +1,6 @@
 @import "@globalStyles/responsive.css";
 .Dashboard{
-    padding: 2rem 1rem ;
+    padding: 15px ;
     
         .firstContent{
             display: grid;
@@ -15,7 +15,7 @@
         .singleDashboardCard{
             background: white;
             border-radius: 8px;
-            border: 1px solid var(--salmon);
+            box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
             padding: 10px;
             display: flex;
             align-items: center;
@@ -40,9 +40,9 @@
                 
                 
             }
-            &:hover{
-                box-shadow: 0px 0px 2px 0px var(--salmon);
-            }
+            /*&:hover{
+                box-shadow: 1px 1px 8px var(--salmon);
+            }*/
             &:nth-child(3){
                 .cardIcon{
                     svg{
@@ -81,26 +81,34 @@
             }
         }
     .charts{
-        padding: 1rem 0;
         display: grid;
-        justify-content: center;
-        gap: 1em;
+        gap: 15px;
+        grid-auto-flow: column;
         justify-items: center;
+        justify-content: space-between;
+        box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+
+        padding: 20px;
+        border-radius: 8px;
+        h2{
+            color: var(--secondary);
+            text-align: center;
+        }
         .pie{
 
             width:330px;
             height: 300px;
             @media (--screen-md){
-                width: 700px;
-                height: 600px;
+                width: 500px;
+                height: 500px;
             }
         }
         .line{
             width: 340px;
             height: 300px;
             @media (--screen-md){
-                width: 600px;
-                height: 600px;
+                width: 500px;
+                height: 500px;
             }
         }
     }

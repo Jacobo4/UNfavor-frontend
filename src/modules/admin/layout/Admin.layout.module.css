@@ -1,19 +1,16 @@
 @import "@globalStyles/responsive.css";
 
 .Admin {
-    .main {
-        display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 50px auto;
+    @media (--screen-md) {
+        grid-template-columns: 260px auto;
 
-        .content {
-            width: calc(100% - 40px);
-            padding-left: 40px;
-            @media (--screen-md) {
-                width: calc(100%);
-                padding-left: 260px;
-
-            }
-
-
-        }
     }
+    .main{
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
 }

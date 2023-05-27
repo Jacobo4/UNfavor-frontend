@@ -33,8 +33,6 @@ const ControlCard: React.FC<dataFavour> = ({
             action: "PUBLISHED",
         }
         dispatch(controlFavor(data));
-        console.log("PUBLISHED");
-        window.location.reload();
     }
     const handleReject = () => {
         const data: favorAction = {
@@ -43,7 +41,6 @@ const ControlCard: React.FC<dataFavour> = ({
         }
         dispatch(controlFavor(data));
         console.log("DENIED");
-        window.location.reload();
     }
 
   return (
@@ -61,7 +58,7 @@ const ControlCard: React.FC<dataFavour> = ({
           <h3>Favor:</h3>
           <span>{title}</span>
           <h3>Descripción:</h3>
-          <span>{description}</span>
+          <span className={styles.span2}>{description}</span>
           <h3>Ubicacion:</h3>
           <span>{location}</span>
         </div>
