@@ -89,7 +89,7 @@
         @media (--screen-md) {
             display: grid;
             grid-template-columns: 1fr 1fr;
-
+            align-items: center;
         }
 
 
@@ -97,6 +97,7 @@
             order: 2;
             justify-items: center;
             align-items: center;
+            align-content: center;
             min-height: 650px;
             display: grid;
             width: 100%;

@@ -55,6 +55,8 @@ export const getAdminInfo = createAsyncThunk(
                 `${API_URL}/admin/statistics`,
                 config
             );
+
+            return data;
         } catch (error) {
             console.log("dfdsfas")
             if (error.response && error.response.data.message) {
@@ -79,7 +81,7 @@ export const getAllUsers = createAsyncThunk(
                 `${API_URL}/admin/users`,
                 config
             );
-            
+
             return data;
         } catch (error) {
             console.log("dfdsfas")

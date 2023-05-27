@@ -7,85 +7,9 @@ import avatar from "@assets/images/avatar.png";
 //Redux
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { getMatchesHistory } from "@store/user/userAsyncAction";
-// Mui
-import Rating from "@mui/material/Rating";
-import NoMatch from "@root/components/NoMatch";
-import Match from "../../Match/Match";
-// Dommie historical
-const historial = [
-    {
-        state: "Finalizado",
-        title: "Paseo de perro",
-        img:
-            "https://images.pexels.com/photos/7210754/pexels-photo-7210754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        date: "12/10/2021",
-        to: "admi",
-        rate: 2.5,
-    },
-    {
-        state: "Finalizado",
-        title: "Cocinar",
-        img:
-            "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        date: "23/12/2022",
-        to: "Lau",
-        rate: 2.5,
-    },
-    {
-        state: "Finalizado",
-        title: "Paseo de perro",
-        img:
-            "https://images.pexels.com/photos/7210754/pexels-photo-7210754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        date: "12/10/2021",
-        to: "admi",
-        rate: 2.5,
-    },
-    {
-        state: "Finalizado",
-        title: "Cocinar",
-        img:
-            "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        date: "23/12/2022",
-        to: "Lau",
-        rate: 2.5,
-    },
-    {
-        state: "Finalizado",
-        title: "Paseo de perro",
-        img:
-            "https://images.pexels.com/photos/7210754/pexels-photo-7210754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        date: "12/10/2021",
-        to: "admi",
-        rate: 2.5,
-    },
-    {
-        state: "Finalizado",
-        title: "Cocinar",
-        img:
-            "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        date: "23/12/2022",
-        to: "Lau",
-        rate: 2.5,
-    },
-    {
-        state: "Finalizado",
-        title: "Paseo de perro",
-        img:
-            "https://images.pexels.com/photos/7210754/pexels-photo-7210754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        date: "12/10/2021",
-        to: "admi",
-        rate: 2.5,
-    },
-    {
-        state: "Finalizado",
-        title: "Cocinar",
-        img:
-            "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        date: "23/12/2022",
-        to: "Lau",
-        rate: 2.5,
-    },
-];
+// Components
+import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
+import {MdHeartBroken} from "react-icons/md";
 interface HistoryTabIProps {
     isActive: boolean
 }
@@ -100,7 +24,15 @@ const HistoryTab: React.FC<HistoryTabIProps> = ({isActive}) => {
             <div className={styles["HistoryTab"]}>
                 <h2>Historial</h2>
                 {matches.length === 0 && (
-                <NoMatch historial={true} />
+                <NoItemsLeft
+                    title={`Aún no tienes matches finalizados`}
+                    subtitle={"¡Sigue buscando!"}
+                    icon={<MdHeartBroken/>}
+                    goTo={"/match"}
+                    goToMessage={"¡Encuentra tu match!"}
+                    reloadItems={false}
+
+                />
                 )}
                 {matches.length != 0 &&(
                     <div className={styles["cardsContainer"]}>

@@ -26,6 +26,8 @@ import Slider from "./components/Slider";
 import CreditsCard from "./components/CreditsCard";
 // Types
 import {Match} from "@store/match/matchAsyncAction";
+import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
+import {MdHeartBroken} from "react-icons/md";
 
 const cardData: Array<Match> = [
     {
@@ -115,7 +117,7 @@ const Home: React.FC = () => {
 
     /// =========================== Cards ===========================
     const [cards, setCards] = useState(cardData);
-    const activeIndex = cards.length - 1; // index of last card
+    const reloadCards = () =>{setCards(cardData)};
     const removeCard = (oldCard) => {
         setCards((currentCards) =>
             currentCards.filter((card) => {
@@ -206,13 +208,19 @@ const Home: React.FC = () => {
                                     index={index}
                                     removeCardCB={() => removeCard(card)}
                                     card={card}
-                                    dislikeCb={()=>null}
-                                    likeCb={()=>null}/>
+                                    dislikeCb={() => null}
+                                    likeCb={() => null}/>
                             ))}
                         </AnimatePresence>
-                        {cards.length === 0 ? (
-                            <h5>Terminaste con los favores!</h5>
-                        ) : null}
+                        {cards.length === 0 && (
+                            <NoItemsLeft
+                                icon={<MdHeartBroken/>}
+                                title={"Ya no tienes matches"}
+                                subtitle={"¡Sigue buscando!"}
+                                reloadItems={true}
+                                reloadItemsAction={reloadCards}
+                            />
+                        )}
                     </div>
                     <div className={styles['slogan']}>
                         <motion.div

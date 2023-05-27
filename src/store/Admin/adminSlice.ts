@@ -5,18 +5,49 @@ import type {ControlFavorSuccess, ControlFavorFailure, controlFavorFormValues} f
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected' | 'idle';
 
+export interface AllUserInfo {
+    favor: {
+        reviews: {
+            review_sum: number;
+            review_num: number;
+            comments: Array<string>;
+        },
+        date_published: string;
+        favor_state: string;
+        title: string;
+        description: string;
+        location: string;
+        possible_matches: Array<string>;
+    },
+    preferences: {
+        favor_filters: {
+            favor_type: string;
+            max_distance_km: number;
+        }
+    },
+    _id: string;
+    name: string;
+    email: string;
+    phone: string;
+    "age": number,
+    "admin": boolean,
+    "__v": number
+}
+
 export interface AdminState {
     status: RequestState;
     adminInfo: any;
-    users: any;
-    error: string | null | any;
+    usersToReview: Array<AllUserInfo>;
+    usersPublished: Array<AllUserInfo>;
+    error: string | null;
     toastLoaderId: number | string;
 };
 
 const initialState: AdminState = {
     status: 'idle',
     adminInfo: null,
-    users: null,
+    usersToReview: [],
+    usersPublished: [],
     error: null,
     toastLoaderId: null,
 };
@@ -54,8 +85,9 @@ const adminSlice = createSlice({
             .addCase(getAllUsers.fulfilled, (state: AdminState, {payload}) => {
                 toast.dismiss(state.toastLoaderId);
                 state.status = 'fulfilled';
-                state.users = payload.users;
-               
+                state.usersToReview = payload.users.filter(user => user.favor.favor_state === "REVIEWING");
+                state.usersPublished = payload.users.filter(user => user.favor.favor_state === "PUBLISHED");
+
             })
             .addCase(getAllUsers.rejected, (state: AdminState, action) => {
                 const {message} = action.payload;
@@ -65,15 +97,15 @@ const adminSlice = createSlice({
                 state.error = message;
             })
             .addCase(controlFavor.pending, (state: AdminState, action) => {
-                state.toastLoaderId = toast.loading('Updating favors', {position: 'top-center'});
-                state.status = 'pending';
-                state.error = null;
-            }
+                    state.toastLoaderId = toast.loading('Updating favors', {position: 'top-center'});
+                    state.status = 'pending';
+                    state.error = null;
+                }
             )
             .addCase(controlFavor.fulfilled, (state: AdminState, {payload}) => {
                 toast.dismiss(state.toastLoaderId);
                 state.status = 'fulfilled';
-                state.users = state.users.filter(user => user._id !== payload.userId)
+                state.usersToReview = state.usersToReview.filter(user => user._id !== payload.userId)
             })
             .addCase(controlFavor.rejected, (state: AdminState, action) => {
                 const {message} = action.payload;

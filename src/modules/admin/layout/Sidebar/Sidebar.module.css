@@ -63,7 +63,7 @@
 
     .SidebarContent {
         height: 100%;
-        overflow-y: auto;
+        overflow: hidden;
         display: flex;
         align-content: center;
         align-items: center;
@@ -110,6 +110,7 @@
                         }
                     }
                      .nav_active {
+                         position: sticky;
                         transform: scale(1.05);
                          box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
                     }

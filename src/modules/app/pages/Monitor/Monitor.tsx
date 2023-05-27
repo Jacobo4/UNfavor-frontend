@@ -11,7 +11,8 @@ import { getMatchesHistory } from "../../../../store/user/userAsyncAction";
 import { BsChatDots } from "react-icons/bs";
 // Components
 import FavorCard from "./components/FavorCard";
-import NoMatch from "@root/components/NoMatch";
+import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
+import {MdHeartBroken} from "react-icons/md";
 
 // const dommieInfo = [
 //   {
@@ -95,7 +96,14 @@ const Monitor: React.FC = () => {
             <hr />
           </div>
           <div className={styles["favorsWrapper"]}>
-            {matches.length === 0 && <NoMatch />}
+            {matches.length === 0 &&
+                <NoItemsLeft
+                  icon={<MdHeartBroken/>}
+                  title={"Aún no tienes matches"}
+                  subtitle={"¡Sigue buscando!"}
+                  goTo={"/match"}
+                  goToMessage={"¡Encuentra tu match!"}
+                />}
             {matches.length !== 0 &&
               matches.map((info, index) => <FavorCard key={index} {...info} />)}
           </div>

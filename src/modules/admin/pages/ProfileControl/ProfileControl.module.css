@@ -48,5 +48,15 @@
             grid-template-columns: 1fr 1fr 1fr;
             grid-gap: 32px;
         }
+
+        .noItemsLeft{
+            grid-column: span 3;
+            svg{
+                color: #5bfff1;
+            }
+            button svg {
+                color: white;
+            }
+        }
     }
 }

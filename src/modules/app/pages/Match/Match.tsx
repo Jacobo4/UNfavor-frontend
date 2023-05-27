@@ -20,6 +20,8 @@ import {getMatches, likeMatch} from "@store/match/matchAsyncAction";
 import {removeMatch} from "@store/match/matchSlice";
 import {askPermission, getUserSubscription, registerSw, subscribeNotifications} from "@config/serviceWorker";
 import {toast} from "react-toastify";
+import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
+import {MdHeartBroken} from "react-icons/md";
 
 const Match: React.FC = () => {
     /// =========================== General ===========================
@@ -88,9 +90,15 @@ const Match: React.FC = () => {
                         ))
                     }
                 </AnimatePresence>
-                {matches && matches?.length === 0 ? (
-                    <h1>¡Terminaste con los favores!</h1>
-                ) : null}
+                {matches && matches?.length === 0 && (
+                    <NoItemsLeft
+                                icon={<MdHeartBroken/>}
+                                title={"Ya no tienes matches"}
+                                subtitle={"¡Sigue buscando!"}
+                                reloadItems={true}
+                                reloadItemsAction={()=>{dispatch(getMatches())}}
+                            />
+                )}
 
             </div>
         </div>
