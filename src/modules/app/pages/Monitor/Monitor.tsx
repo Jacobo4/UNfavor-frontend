@@ -88,7 +88,10 @@ const Monitor: React.FC = () => {
         <>
           <div className={styles["actions"]}>
             <div className={styles["action-wrapper"]}>
-              <Link to="/chat" type={"button"}>
+              <Link 
+                to={"/chat" }
+              
+                type={"button"}>
                 Chat <BsChatDots />
               </Link>
             </div>
