@@ -10,6 +10,7 @@ export interface Match {
         review_num: number;
         comments: Array<string>;
     },
+    imgURL: string;
     date_published: string;
     favor_state: string;
     title: string;

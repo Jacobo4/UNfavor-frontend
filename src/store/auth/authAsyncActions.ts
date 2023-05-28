@@ -18,6 +18,7 @@ export type SignInFormValues = {
         age: number,
     },
     favor: {
+        imgURL: string,
         title: string,
         description: string,
         location: string
@@ -107,6 +108,16 @@ export const signIn = createAsyncThunk(
     'auth/signin',
     async (formValues: SignInFormValues, {rejectWithValue}) => {
         try {
+
+            const formdata = new FormData();
+            formdata.append("image", formValues.favor.imgURL, "walpaper.jpg");
+            const image = await fetch(`https://api.imgbb.com/1/upload?expiration=100000&key=${import.meta.env.VITE_IMAGEDB_PUBLIC_KEY}`, {
+                method: 'POST',
+                body: formdata,
+                redirect: 'follow'
+            }).then(response => response.json());
+
+            formValues.favor.imgURL = image.data.display_url;
             const config = {
                 headers: {
                     'Content-Type': 'application/json',
@@ -118,8 +129,6 @@ export const signIn = createAsyncThunk(
                 {...formValues},
                 config
             );
-
-
             // store user's token in local storage
             setAuthTokens({
                 accessToken: data.access,

@@ -1,74 +1,64 @@
 import styles from "./ControlCard.module.css";
 import React from "react";
 // Redux
-import {controlFavor } from "@store/Admin/adminAsyncActions";
-import { useAppDispatch } from "@store/hooks";
-import { useNavigate } from "react-router-dom";
+import {controlFavor} from "@store/Admin/adminAsyncActions";
+import {useAppDispatch} from "@store/hooks";
+import {useNavigate} from "react-router-dom";
+import {AllUserInfo} from "@store/Admin/adminSlice";
 
 type favorAction = {
     userId: string;
     action: string;
 }
-
-interface dataFavour {
-  
-  age: number;
-  email: string;
-  name: string;
-  title?: string;
-  description?: string;
-  location?: string;
-  userId: string;
-  
-}
-const ControlCard: React.FC<dataFavour> = ({
-  age, email, name, title="Sin titulo", description="Sin descripción", location="Sin ubicación" , userId
-}) => {
+const ControlCard: React.FC<dataFavour> = ({user}: { user: AllUserInfo }) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const handleAccept = () => {
         const data: favorAction = {
-            userId: userId,
+            userId: user._id,
             action: "PUBLISHED",
         }
         dispatch(controlFavor(data));
     }
     const handleReject = () => {
         const data: favorAction = {
-            userId: userId,
+            userId: user._id,
             action: "DENIED"
         }
         dispatch(controlFavor(data));
         console.log("DENIED");
     }
 
-  return (
-    
-    <div className={styles.ControlCardContainer}>
-        
-      <div className={styles.InfoContainer}>
-        <div className={styles.InfoTextContainer}>
-          <h3>Nombre:</h3>
-          <span>{name}</span>
-          <h3>Email:</h3>
-          <span>{email}</span>
-          <h3>Edad:</h3>
-          <span>{age}</span>
-          <h3>Favor:</h3>
-          <span>{title}</span>
-          <h3>Descripción:</h3>
-          <span className={styles.span2}>{description}</span>
-          <h3>Ubicacion:</h3>
-          <span>{location}</span>
+    return (
+
+        <div className={styles['ControlCard']}>
+
+            <div className={styles['favor']}>
+                <img src={user.favor.imgURL} className={styles.span2}/>
+                <h3>Favor</h3>
+                <span>{user.favor.title}</span>
+                <h5>Descripción:</h5>
+                <span className={styles.span2}>{user.favor.description}</span>
+                <h5>Ubicacion:</h5>
+                <span>{user.favor.location}</span>
+            </div>
+            <hr/>
+            <h3>User</h3>
+            <div className={styles['user']}>
+                <h5>Nombre:</h5>
+                <span>{user.name}</span>
+                <h5>Email:</h5>
+                <span>{user.email}</span>
+                <h5>Edad:</h5>
+                <span>{user.age}</span>
+            </div>
+            <div className={styles['buttons']}>
+                <button onClick={handleReject} className={styles.rejectButton}>Denegar</button>
+            <button onClick={handleAccept} className={styles.acceptButton}>Permitir</button>
+            </div>
         </div>
-        <div className={styles.ButtonContainer}>
-          <button onClick={handleReject} className={styles.rejectButton}>Denegar</button>
-          <button onClick={handleAccept} className={styles.acceptButton}>Permitir</button>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default ControlCard;

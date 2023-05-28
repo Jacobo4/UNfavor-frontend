@@ -32,13 +32,7 @@ const ProfileControl: React.FC = () => {
                         (user.favor.favor_state === "REVIEWING")
                         && <ControlCard
                             key={index}
-                            age={user.age}
-                            email={user.email}
-                            name={user.name}
-                            title={user.favor.title}
-                            description={user.favor.description}
-                            location={user.favor.location}
-                            userId={user._id}
+                            user={user}
                         />
                 )}
                 {usersToReview.length === 0 &&

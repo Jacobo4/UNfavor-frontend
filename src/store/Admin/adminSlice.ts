@@ -18,6 +18,7 @@ export interface AllUserInfo {
         description: string;
         location: string;
         possible_matches: Array<string>;
+        imgURL: string;
     },
     preferences: {
         favor_filters: {
@@ -29,9 +30,9 @@ export interface AllUserInfo {
     name: string;
     email: string;
     phone: string;
-    "age": number,
-    "admin": boolean,
-    "__v": number
+    age: number,
+    admin: boolean,
+    __v: number
 }
 
 export interface AdminState {

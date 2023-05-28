@@ -58,7 +58,32 @@ export const getAdminInfo = createAsyncThunk(
 
             return data;
         } catch (error) {
-            console.log("dfdsfas")
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)
+
+export const getReportedUsers = createAsyncThunk(
+    '/admin/reportUsers',
+    async (_, {rejectWithValue}) => {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            const { data } = await axiosApiInstance.get(
+                `${API_URL}/admin/reportUsers`,
+                config
+            );
+
+            return data;
+        } catch (error) {
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)
             } else {
@@ -84,7 +109,6 @@ export const getAllUsers = createAsyncThunk(
 
             return data;
         } catch (error) {
-            console.log("dfdsfas")
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)
             } else {
