@@ -39,16 +39,18 @@ export interface likeMatchFailure {
     error: string;
 }
 export interface matchActionsValues{
-    matchId: string,
-    option: string,
+    matchId: string;
+    option: string;
+    comment?: string;
+    rating?: number;
 }
 export interface matchActionSuccess {
-    message: string,
+    message: string;
     
 }
 export interface matchActioFailure{
-    message: string,
-    error: string,
+    message: string | any;
+    error: string;
 }
 export const getMatches = createAsyncThunk(
     'match/getMatches',
@@ -77,8 +79,8 @@ export const getMatches = createAsyncThunk(
 );
 export const matchAction = createAsyncThunk(
     'match/matchAction',
-    async (values:matchActionsValues, {rejectWithValue, getState}) => {
-        const state = getState();
+    async (values:matchActionsValues, {rejectWithValue}) => {
+        
         try {
             const config = {
                 headers: {

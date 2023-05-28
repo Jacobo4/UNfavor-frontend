@@ -77,7 +77,7 @@ const matchSlice = createSlice({
                 state.error = message;
             })
             .addCase(matchAction.pending, (state: MatchState, action) => {
-                state.toastLoaderId = toast.loading('Matching...', {position: 'top-center'});
+                state.toastLoaderId = toast.loading('Updating favor status...', {position: 'top-center'});
                 state.status = 'pending';
                 state.error = null;
             })

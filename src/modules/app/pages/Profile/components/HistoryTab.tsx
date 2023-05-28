@@ -17,7 +17,7 @@ const HistoryTab: React.FC<HistoryTabIProps> = ({isActive}) => {
     const dispatch = useAppDispatch();
     const { matches } = useAppSelector((state) => state.user);
     useEffect(() => {
-        dispatch(getMatchesHistory({option: "FINISHED" }));
+        dispatch(getMatchesHistory({option: "COMPLETED" }));
         console.log(matches);
       }, []);
     return (isActive && (

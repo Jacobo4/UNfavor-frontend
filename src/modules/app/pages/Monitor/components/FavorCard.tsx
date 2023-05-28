@@ -12,6 +12,9 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
+// Redux
+import { useAppDispatch } from "@root/store/hooks";
+import { matchAction } from "@root/store/match/matchAsyncAction";
 
 const labels: { [index: string]: string } = {
   0.5: '0.5 estrellas',
@@ -32,6 +35,7 @@ interface IProps {
   email: string;
   name: string;
   status: string;
+  matchId: string;
   favor: {
     title: string;
     description: string;
@@ -40,38 +44,63 @@ interface IProps {
   }
  
 }
+type matchAction = {
+  matchId: string;
+  option: string;
+  comment?: string;
+  rating?: number;
+}
 const FavorCard: React.FC = ({
   email,
   name,
   status,
+  matchId,
   favor: { title, description, location},
 }: IProps) => {
   const [openConfirm, setOpenConfirm] = React.useState<boolean>(false);
   const [openCancel, setOpenCancel] = React.useState<boolean>(false);
   const [openRaiting, setOpenRaiting] = React.useState<boolean>(false);
-  const [value, setValue] = React.useState<number | null>(2);
+  const [value, setValue] = React.useState<number>(2);
   const [hover, setHover] = React.useState<number | null>(-1);
-  const handleClickOpenConfirm = ()=> {
-    setOpenConfirm(true);
+  const dispatch = useAppDispatch();
+  const [comment, setComment] = React.useState<string>("");
+
+  const handleClickConfirm = ()=> {
+    setOpenConfirm(!openConfirm);
   };
 
-  const handleCloseConfirm = () => {
-    setOpenConfirm(false);
-  };
-  const handleClickOpenCancel = () => {
-    setOpenCancel(true);
+  const handleClickCancel = () => {
+    setOpenCancel(!openCancel);
   };
 
-  const handleCloseCancel = () => {
-    setOpenCancel(false);
-  };
-  const handleClickOpenRaiting = () => {
-    setOpenRaiting(true);
+  const handleClickRaiting = () => {
+    setOpenRaiting(!openRaiting);
   };
 
-  const handleCloseRaiting = () => {
-    setOpenRaiting(false);
-  };
+  
+  
+  const rejectFavor = () => {
+    const data: matchAction = {
+      matchId: matchId,
+      option: "REJECT",
+  }
+  dispatch(matchAction(data));
+  console.log("rejectFavor");
+  setOpenCancel(false);
+}
+const finishFavor = () => {
+  
+  const data: matchAction = {
+    matchId: matchId,
+    option: "FINISH",
+    comment: comment,
+    rating: value,
+  }
+
+dispatch(matchAction(data));
+console.log("finishFavor")
+setOpenRaiting(false);
+}
   return (
     <div className={styles["FavorCard"]}>
       <div className={styles["info"]}>
@@ -89,25 +118,25 @@ const FavorCard: React.FC = ({
       <hr />
       <div className={styles["actions"]}>
         <button
-          onClick={handleClickOpenConfirm}
+          onClick={handleClickConfirm}
           className={styles["confirm"]}
           type={"button"}
         >
           {" "}
           Confirmar realización
         </button>
-          <Dialog open={openConfirm} onClose={handleCloseConfirm}>
+          <Dialog open={openConfirm} onClose={handleClickConfirm}>
             <DialogTitle>¿Fue finalizado el favor?</DialogTitle>
 
             <DialogActions>
-              <Button color="error" onClick={handleCloseConfirm}>
+              <Button color="error" onClick={handleClickConfirm}>
                 Cancelar
               </Button>
               <Button
                 color="secondary"
                 onClick={function(event) {
-                  handleCloseConfirm();
-                  handleClickOpenRaiting();
+                  handleClickConfirm();
+                  handleClickRaiting();
                 }}
               >
                 {" "}
@@ -115,7 +144,7 @@ const FavorCard: React.FC = ({
               </Button>
             </DialogActions>
           </Dialog>
-          <Dialog open={openRaiting} onClose={handleCloseRaiting}>
+          <Dialog open={openRaiting} onClose={handleClickRaiting}>
             <DialogTitle>Califica tu experiencia</DialogTitle>
             <DialogContent
               sx={{
@@ -170,14 +199,16 @@ const FavorCard: React.FC = ({
                   label="Observaciones" 
                   type="text"
                   fullWidth
-               
+                  onChange={(event) => {
+                    setComment(event.target.value);
+                  }}
                   variant="standard"
                 />
               </DialogContent>
             
             <DialogActions>
               
-              <Button color="secondary" onClick={handleCloseRaiting}>
+              <Button color="secondary" onClick={finishFavor}>
                 {" "}
                 Enviar
               </Button>
@@ -186,19 +217,19 @@ const FavorCard: React.FC = ({
         <button
           className={styles["cancel"]}
           type={"button"}
-          onClick={handleClickOpenCancel}
+          onClick={handleClickCancel}
         >
           {" "}
           Cancelar realización
         </button>
-          <Dialog open={openCancel} onClose={handleCloseCancel}>
+          <Dialog open={openCancel} onClose={handleClickCancel}>
             <DialogTitle>¿Estas seguro de cancelar este favor?</DialogTitle>
 
             <DialogActions>
-              <Button color="error" onClick={handleCloseCancel}>
+              <Button color="error" onClick={rejectFavor} >
                 Cancelar favor
               </Button>
-              <Button color="secondary" onClick={handleCloseCancel}>
+              <Button color="secondary" onClick={handleClickCancel}>
                 Continuar con el favor
               </Button>
             </DialogActions>
