@@ -8,6 +8,7 @@
         display: grid !important;
         grid-auto-flow: column !important;
         grid-template-columns: 1fr 2fr !important;
+        min-height: calc(100vh - 80px) !important;
     }
 
     .ce-chat-feed-column {

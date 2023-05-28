@@ -1,10 +1,28 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {axiosApiInstance} from "../../config/axiosApiInstance";
-import { Match } from '../match/matchAsyncAction';
+import {Match} from '../match/matchAsyncAction';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
+export type reportUserFormValues = {
+    reportedId: string;
+    description: string;
+}
 
+export interface reportUserSuccess {
+    message: string;
+    report: {
+        reporterId: string;
+        reportedId: string;
+        description: string;
+        _id: string;
+        __v: number
+    }
+}
+
+export interface reportUserFailure {
+    message: string;
+}
 
 export type getMatchesHistoryValues = {
     option: string;
@@ -13,7 +31,7 @@ export type getMatchesHistoryValues = {
 export interface getMatchesHistorySuccess {
     message: string;
     matches: Array<Match>
-    
+
 }
 
 export interface getMatchesHistoryFailure {
@@ -22,35 +40,31 @@ export interface getMatchesHistoryFailure {
 }
 
 export interface UserProfile {
-     favor: any;
-     name: ReactNode;
-     user: {
-        favor: {
-            reviews: {
-                review_sum: number,
-                review_num: number,
-                comments: Array<string>
-            },
-            date_published?: string,
-            favor_state?: string,
-            title: string,
-            description: string,
-            location: string,
-            possible_matches?: Array<string>
+    favor: {
+        reviews: {
+            review_sum: number,
+            review_num: number,
+            comments: Array<string>
         },
-        preferences?: {
-            favor_filters: {
-                favor_type: string,
-                max_distance_km: number
-            }
-        },
-        _id: string,
-        name: string,
-        email: string,
-        phone?: string,
-        age?: number,
-        __v?: number
-    }
+        date_published?: string,
+        favor_state?: string,
+        title: string,
+        description: string,
+        location: string,
+        possible_matches?: Array<string>
+    },
+    preferences?: {
+        favor_filters: {
+            favor_type: string,
+            max_distance_km: number
+        }
+    },
+    _id: string,
+    name: string,
+    email: string,
+    phone?: string,
+    age?: number,
+    __v?: number
 }
 
 export type getUserProfileInfoValues = {
@@ -89,9 +103,11 @@ export type UpdateFavorFiltersFormValues = {
     favor_type: string,
     max_distance_km: number,
 }
+
 export interface UpdateFavorFiltersSuccess {
     message: string;
 }
+
 export interface UpdateFavorFiltersFailure {
     message: string | any;
     error: string;
@@ -108,7 +124,32 @@ export interface UpdateFavorFiltersFailure {
  * error message.
  */
 
+export const reportUser = createAsyncThunk(
+    'user/reportUser',
+    async (formValues: reportUserFormValues, {rejectWithValue}) => {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
 
+            const {data} = await axiosApiInstance.post(
+                `${API_URL}/user/createReport`,
+                {...formValues},
+                config
+            );
+
+            return data;
+        } catch (error) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)
 export const updateMyUserInfo = createAsyncThunk(
     'user/updateMyUserInfo',
     async (formValues: updateUserInfoFormValues, {rejectWithValue}) => {
@@ -145,12 +186,12 @@ export const getMatchesHistory = createAsyncThunk(
                     'Content-Type': 'application/json',
                 },
             };
-            const { data } = await axiosApiInstance.post(
+            const {data} = await axiosApiInstance.post(
                 `${API_URL}/user/matches`,
                 {...values},
                 config
             );
-            return {option:values.option,...data};
+            return {option: values.option, ...data};
         } catch (error) {
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)
@@ -162,7 +203,6 @@ export const getMatchesHistory = createAsyncThunk(
 )
 
 
-
 export const updateFavorFilters = createAsyncThunk(
     '/user/changeFavorFilters',
     async (formValues: UpdateFavorFiltersFormValues, {rejectWithValue}) => {
@@ -172,7 +212,7 @@ export const updateFavorFilters = createAsyncThunk(
                     'Content-Type': 'application/json',
                 },
             };
-            const { data } = await axiosApiInstance.post(
+            const {data} = await axiosApiInstance.post(
                 `${API_URL}/favor/changeFavorFilters`,
                 {...formValues},
                 config
@@ -191,7 +231,7 @@ export const updateFavorFilters = createAsyncThunk(
 export const getProfileInfo = createAsyncThunk(
     'user/getProfileInfo',
     async (values: getUserProfileInfoValues, {rejectWithValue, getState}) => {
-        const { token } = getState().auth;
+        const {token} = getState().auth;
 
         try {
             const config = {
