@@ -48,7 +48,7 @@ const Profile: React.FC = () => {
                 <section className={styles["profileData"]}>
                     <figure className={styles["avatar"]}>
                         <img
-                            src={urlImage + token.email}
+                            src={urlImage + user.email}
                             alt=""
                         />
                         
