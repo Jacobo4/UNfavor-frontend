@@ -74,7 +74,7 @@ const Profile: React.FC = () => {
                             </div>
                             <h3>Favores Realizados</h3>
                             <h4>{(user.favor.reviews.review_num)? user.favor.reviews.review_num:"0"}</h4>
-                            <ReportUserDialog isVisible={!isMe}/>
+                            <ReportUserDialog userId={user._id} isVisible={!isMe}/>
                         </div>
                     </div>
                 </section>
