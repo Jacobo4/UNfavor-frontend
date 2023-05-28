@@ -23,14 +23,17 @@ const UserTab: React.FC<UserTabIProps> = ({isActive, user, isMe}) => {
                     <span>{user.email}</span>
                     <h3>Telefono: </h3>
                     <span>{user.phone}</span>
-                    <h3>Filtros</h3>
+                    
                     {isMe &&
+                    <>
+                    <h3>Filtros</h3>
                         <div>
                             <h3>Tipo de favor: </h3>
                             <span>{user.preferences.favor_filters.favor_type}</span>
                             <h3>Distancia máxima: </h3>
                             <span> Radio de{" "} {user.preferences.favor_filters.max_distance_km} km </span>
                         </div>
+                        </>    
                     }
                     <h3>Favor </h3>
                     <div>
