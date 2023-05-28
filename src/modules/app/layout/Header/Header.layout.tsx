@@ -5,7 +5,7 @@ import {Link, useNavigate} from "react-router-dom";
 // Styles
 import styles from "./Header.module.css";
 // Icons
-import {BsSearch} from "react-icons/bs";
+import {BsChatDots, BsSearch} from "react-icons/bs";
 import {AiOutlinePlusCircle} from "react-icons/ai";
 import {TiMessages} from "react-icons/ti";
 import {FiMenu} from "react-icons/fi";
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
     const handleCloseDropMenu = () => {
         setAnchorEl(null);
     };
-    
+
     return (
         <motion.nav
             variants={navVariants}
@@ -61,13 +61,13 @@ const Header: React.FC = () => {
                     <FiMenu/>
                 </button>
 
-        <Link to={"/"} className={styles["link"]}>
-          <figure className={styles["logo"]}>
-            <img src={logo} alt="" />
-            <h1>UNfavor</h1>
-          </figure>
-        </Link>
-                
+                <Link to={"/"} className={styles["link"]}>
+                    <figure className={styles["logo"]}>
+                        <img src={logo} alt=""/>
+                        <h1>UNfavor</h1>
+                    </figure>
+                </Link>
+
                 {isLogged && (
                     <>
                         <div className={styles["dropDownMenu"]}>
@@ -83,7 +83,7 @@ const Header: React.FC = () => {
                                     <img src={urlImage + token.email} alt=""/>
                                 </figure>
                             </Button>
-                            
+
                             <Menu
                                 id="fade-menu"
                                 MenuListProps={{
@@ -113,7 +113,12 @@ const Header: React.FC = () => {
                                 {/*    <Link to="/">Buscar favores <BsSearch/></Link>*/}
                                 {/*</li>*/}
                                 {/*<span className={styles['line']}></span>*/}
-
+                                <li>
+                                    <Link to="/chat">
+                                        Chat <BsChatDots/>
+                                    </Link>
+                                </li>
+                                <span className={styles["line"]}></span>
                                 <li>
                                     <Link to="/match">
                                         ¡Favores!

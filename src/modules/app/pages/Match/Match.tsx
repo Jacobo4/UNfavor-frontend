@@ -23,6 +23,8 @@ import {toast} from "react-toastify";
 import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
 import {MdHeartBroken} from "react-icons/md";
 
+const broadcast = new BroadcastChannel('matches-channel');
+
 const Match: React.FC = () => {
     /// =========================== General ===========================
     const dispatch = useAppDispatch();
@@ -53,15 +55,12 @@ const Match: React.FC = () => {
     useEffect(() => {
         dispatch(getMatches());
         const handleNotifications = (event) => {
-            if (event.data) {
-                const payload = event.data.json();
-                // Handle the push notification payload
-                console.log('Push notification received:', payload);
-            }
+            setOpenDialog(true);
+            console.log(event.data.payload)
         }
-        navigator.serviceWorker.addEventListener('message', handleNotifications)
+        broadcast.addEventListener('message', handleNotifications)
         return () => {
-            navigator.serviceWorker.removeEventListener('message', handleNotifications);
+            broadcast.removeEventListener('message', handleNotifications);
         };
     }, []);
 

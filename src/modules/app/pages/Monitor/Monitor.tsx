@@ -87,14 +87,14 @@ const Monitor: React.FC = () => {
     <main className={styles["Monitor"]}>
       {matches && (
         <>
-          <div className={styles["actions"]}>
-            <div className={styles["action-wrapper"]}>
-              <Link to="/chat" type={"button"}>
-                Chat <BsChatDots />
-              </Link>
-            </div>
-            <hr />
-          </div>
+          {/*<div className={styles["actions"]}>*/}
+          {/*  <div className={styles["action-wrapper"]}>*/}
+          {/*    <Link to="/chat" type={"button"}>*/}
+          {/*      Chat <BsChatDots />*/}
+          {/*    </Link>*/}
+          {/*  </div>*/}
+          {/*  <hr />*/}
+          {/*</div>*/}
           <div className={styles["favorsWrapper"]}>
             {matches.length === 0 &&
                 <NoItemsLeft
