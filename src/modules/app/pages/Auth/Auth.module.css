@@ -12,7 +12,6 @@ body {
         grid-template-columns: 2fr 1fr;
         align-items: center;
         height: 100vh;
-        overflow: hidden;
     }
 
     button:hover,
