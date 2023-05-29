@@ -11,6 +11,9 @@ import avatar from "@assets/images/avatar.png";
 import {MdSettings} from "react-icons/md";
 // Components
 import SettingForm from "./components/SettingsForm";
+
+const urlImage = "https://api.dicebear.com/6.x/adventurer/svg?seed=";
+
 const SettingsProfile: React.FC = () => {
     const {myUserInfo} = useAppSelector((state) => state.user);
     const { token } = useAppSelector((state) => state.auth);
@@ -35,7 +38,10 @@ const SettingsProfile: React.FC = () => {
             <div className={styles.container}>
                 <h2>Editar perfil</h2>
                 <div className={styles.photo}>
-                    <img src={avatar} alt=""/>
+                <img
+                            src={urlImage + token.email}
+                            alt=""
+                        />
 
                 </div>
                 <div>

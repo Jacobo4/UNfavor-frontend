@@ -14,68 +14,6 @@ import FavorCard from "./components/FavorCard";
 import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
 import {MdHeartBroken} from "react-icons/md";
 
-// const dommieInfo = [
-//   {
-//     email: "string",
-//     name: "string",
-//     state: "string",
-//     favor: {
-//       title: "string",
-//       description: "string",
-//       location: "string",
-//     },
-//   },
-//   {
-//     email: "string",
-//     name: "string",
-//     state: "string",
-//     favor: {
-//       title: "string",
-//       description: "string",
-//       location: "string",
-//     },
-//   },
-//   {
-//     email: "string",
-//     name: "string",
-//     state: "string",
-//     favor: {
-//       title: "string",
-//       description: "string",
-//       location: "string",
-//     },
-//   },
-//   {
-//     email: "string",
-//     name: "string",
-//     state: "string",
-//     favor: {
-//       title: "string",
-//       description: "string",
-//       location: "string",
-//     },
-//   },
-//   {
-//     email: "string",
-//     name: "string",
-//     state: "string",
-//     favor: {
-//       title: "string",
-//       description: "string",
-//       location: "string",
-//     },
-//   },
-//   {
-//     email: "string",
-//     name: "string",
-//     state: "string",
-//     favor: {
-//       title: "string",
-//       description: "string",
-//       location: "string",
-//     },
-//   },
-// ];
 const Monitor: React.FC = () => {
   const dispatch = useAppDispatch();
   const { matches } = useAppSelector((state) => state.user);

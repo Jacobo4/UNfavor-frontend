@@ -23,6 +23,7 @@ export interface UserState {
     myUserInfo: UserProfile;
     anotherUserInfo: UserProfile;
     error: string | null;
+    myFinishedMatches: Array<Match>;
     toastLoaderIds: Object;
     isMe: boolean;
     matches: Array<Match>;
@@ -33,6 +34,7 @@ const initialState: UserState = {
     myUserInfo: null,
     anotherUserInfo: null,
     error: null,
+    myFinishedMatches: [],
     toastLoaderIds: {},
     isMe: false,
     matches: [],
@@ -125,10 +127,12 @@ const userSlice = createSlice({
                 state.status = 'pending';
                 state.error = null;
             })
-            .addCase(getMatchesHistory.fulfilled, (state: UserState, action) => {
-                state.matches = action.payload.matches;
+            .addCase(getMatchesHistory.fulfilled, (state: UserState,  action) => {
+                
                 toast.dismiss(state.toastLoaderIds['getMatchesHistory']);
-                state.status = 'fulfilled';              
+                state.status = 'fulfilled'; 
+                state.matches = action.payload.matches.filter(match => match.status === "CREATED"); 
+                state.myFinishedMatches = action.payload.matches.filter(match => match.status === "COMPLETED");           
             })
             .addCase(getMatchesHistory.rejected, (state: UserState, action) => {
                 const {message} = action.payload as getMatchesHistoryFailure;

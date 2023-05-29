@@ -15,15 +15,15 @@ interface HistoryTabIProps {
 }
 const HistoryTab: React.FC<HistoryTabIProps> = ({isActive}) => {
     const dispatch = useAppDispatch();
-    const { matches } = useAppSelector((state) => state.user);
+    const { myFinishedMatches } = useAppSelector((state) => state.user);
     useEffect(() => {
         dispatch(getMatchesHistory({option: "COMPLETED" }));
-        console.log(matches);
+        console.log(myFinishedMatches);
       }, []);
     return (isActive && (
             <div className={styles["HistoryTab"]}>
                 <h2>Historial</h2>
-                {matches.length === 0 && (
+                {myFinishedMatches.length === 0 && (
                 <NoItemsLeft
                     title={`Aún no tienes matches finalizados`}
                     subtitle={"¡Sigue buscando!"}
@@ -34,9 +34,9 @@ const HistoryTab: React.FC<HistoryTabIProps> = ({isActive}) => {
 
                 />
                 )}
-                {matches.length != 0 &&(
+                {myFinishedMatches.length != 0 &&(
                     <div className={styles["cardsContainer"]}>
-                    {matches.map((h,index) => (
+                    {myFinishedMatches.map((h,index) => (
                         <div key={index} className={styles["card"]}>
                             <h4>Finalizado</h4>
                             <h2>{h.favor.title}</h2>
