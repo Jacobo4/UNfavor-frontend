@@ -88,6 +88,8 @@ export type  updateUserInfoFormValues = {
             location: string
         }
     }
+    latitude: GeolocationPosition.latitude,
+    longitude: GeolocationPosition.longitude,
 }
 
 export interface UpdateUserInfoSuccess {

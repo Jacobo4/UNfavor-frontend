@@ -23,6 +23,8 @@ export type SignInFormValues = {
         description: string,
         location: string
     }
+    latitude: GeolocationPosition.latitude,
+    longitude: GeolocationPosition.longitude,
 }
 
 export interface LoginSuccess {

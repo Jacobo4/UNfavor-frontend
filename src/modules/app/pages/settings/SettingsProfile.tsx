@@ -15,6 +15,7 @@ import SettingForm from "./components/SettingsForm";
 const urlImage = "https://api.dicebear.com/6.x/adventurer/svg?seed=";
 
 const SettingsProfile: React.FC = () => {
+    const [position, setCurrentPosition] = useState<GeolocationPosition|null>(null);
     const {myUserInfo} = useAppSelector((state) => state.user);
     const { token } = useAppSelector((state) => state.auth);
 

@@ -1,5 +1,5 @@
 // Core
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 // Redux
 import {
     login,
@@ -72,24 +72,32 @@ const defaultValues = {
     },
 }
 export default function Form() {
+    const [position, setCurrentPosition] = useState<GeolocationPosition|null>(null);
     const {
         register,
         handleSubmit,
         formState: {errors},
         control,
-    } = useForm<SignInFormValues>();
+    } = useForm<SignInFormValues>(defaultValues);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const {isLogged} = useAppSelector((state) => state.auth);
 
     const onSubmit = handleSubmit((data: SignInFormValues) => {
-        dispatch(signIn(data));
+
+        dispatch(signIn({latitude: position.coords.latitude, longitude: position.coords.longitude, ...data}));
     });
 
     // redirect authenticated user to user screen
     useEffect(() => {
         if (isLogged) navigate("/");
     }, [navigate, isLogged]);
+
+    useEffect(()=> {
+       navigator.geolocation.getCurrentPosition( (pos)=> {
+            setCurrentPosition(pos);
+        });
+    },[])
 
     return (
         <form className={`form ${styles.Form}`} onSubmit={onSubmit}>

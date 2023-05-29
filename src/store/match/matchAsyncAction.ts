@@ -55,7 +55,7 @@ export interface matchActioFailure{
 }
 export const getMatches = createAsyncThunk(
     'match/getMatches',
-    async (_, {rejectWithValue}) => {
+    async (values, {rejectWithValue}) => {
         try {
             const config = {
                 headers: {
@@ -63,8 +63,9 @@ export const getMatches = createAsyncThunk(
                 },
             };
 
-            const { data } = await axiosApiInstance.get(
-                `${API_URL}/favor/favors`,
+            const { data } = await axiosApiInstance.post(
+                `${API_URL}/favor/recommendFavors`,
+                {...values},
                 config
             );
 

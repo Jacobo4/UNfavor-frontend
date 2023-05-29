@@ -26,6 +26,7 @@ import {MdHeartBroken} from "react-icons/md";
 const broadcast = new BroadcastChannel('matches-channel');
 
 const Match: React.FC = () => {
+    const [position, setCurrentPosition] = useState<GeolocationPosition|null>(null);
     /// =========================== General ===========================
     const dispatch = useAppDispatch();
     /// =========================== Dialog ===========================
@@ -53,7 +54,12 @@ const Match: React.FC = () => {
     };
 
     useEffect(() => {
-        dispatch(getMatches());
+
+        navigator.geolocation.getCurrentPosition( (pos)=> {
+            dispatch(getMatches({latitude: pos.coords.latitude, longitude: pos.coords.longitude}));
+        });
+
+
         const handleNotifications = (event) => {
             setOpenDialog(true);
             console.log(event.data.payload)
