@@ -2,6 +2,8 @@
 import React, {useEffect, useState} from "react";
 // Redux
 import {useAppDispatch, useAppSelector} from "@store/hooks";
+import {getMatches, likeMatch, dislikeMatch} from "@store/match/matchAsyncAction";
+import {removeMatch} from "@store/match/matchSlice";
 // Styles
 import styles from "./Match.module.css";
 import "./MatchOverrides.css"
@@ -12,16 +14,13 @@ import {AnimatePresence} from "framer-motion";
 // Mui
 import Box from "@mui/material/Box";
 import Dialog from "@mui/material/Dialog";
-// Components
-import MatchCard from "@globalComponents/MatchCard/MatchCard";
 // Types
 import type {Match} from "@store/match/matchAsyncAction"
-import {getMatches, likeMatch} from "@store/match/matchAsyncAction";
-import {removeMatch} from "@store/match/matchSlice";
-import {askPermission, getUserSubscription, registerSw, subscribeNotifications} from "@config/serviceWorker";
-import {toast} from "react-toastify";
-import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
+// Icons
 import {MdHeartBroken} from "react-icons/md";
+// Components
+import MatchCard from "@globalComponents/MatchCard/MatchCard";
+import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
 
 const broadcast = new BroadcastChannel('matches-channel');
 
