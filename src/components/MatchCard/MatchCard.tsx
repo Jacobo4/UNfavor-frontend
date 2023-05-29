@@ -72,7 +72,7 @@ const MatchCard: React.FC<MatchCardIProps> = ({card, customStyles, index,likeCb,
                 <img
                     className={styles.ImageFavour}
                     src={card.imgURL}
-                    alt="Persona Pintando Casa"
+                    alt='Mi favor'
                     draggable={false}
                 />
                 <div className={styles.InfoContainer}>

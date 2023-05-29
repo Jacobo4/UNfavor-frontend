@@ -20,7 +20,7 @@ import { toast } from "react-toastify";
 
 //Redux
 import { useAppDispatch } from "@store/hooks";
-import { getMatchesHistory } from "../../../../store/user/userAsyncAction";
+import { getMatchesHistory } from "../../../../store/match/matchAsyncAction";
 
 const allowedUsers =  ["admin@unal.edu.co"];
 

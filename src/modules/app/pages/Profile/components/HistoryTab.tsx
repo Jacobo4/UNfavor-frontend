@@ -6,7 +6,7 @@ import styles from "./HistoryTab.module.css";
 import avatar from "@assets/images/avatar.png";
 //Redux
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { getMatchesHistory } from "@store/user/userAsyncAction";
+import { getMatchesHistory } from "@store/match/matchAsyncAction";
 // Components
 import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
 import {MdHeartBroken} from "react-icons/md";
@@ -15,7 +15,7 @@ interface HistoryTabIProps {
 }
 const HistoryTab: React.FC<HistoryTabIProps> = ({isActive}) => {
     const dispatch = useAppDispatch();
-    const { myFinishedMatches } = useAppSelector((state) => state.user);
+    const { myFinishedMatches } = useAppSelector((state) => state.match);
     useEffect(() => {
         dispatch(getMatchesHistory({option: "COMPLETED" }));
         console.log(myFinishedMatches);

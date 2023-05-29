@@ -13,9 +13,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 // Redux
-import { useAppDispatch } from "@root/store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { matchAction } from "@root/store/match/matchAsyncAction";
 import {Link} from "react-router-dom";
+import { GiToken } from "react-icons/gi";
 
 const labels: { [index: string]: string } = {
   0.5: '0.5 estrellas',
@@ -65,7 +66,10 @@ const FavorCard: React.FC = ({
   const [hover, setHover] = React.useState<number | null>(-1);
   const dispatch = useAppDispatch();
   const [comment, setComment] = React.useState<string>("");
-
+  const { token } = useAppSelector((state) => state.auth);
+  const [rated, setRated] = React.useState<boolean>(false);
+  const {finished} = useAppSelector((state) => state.user);
+  
   const handleClickConfirm = ()=> {
     setOpenConfirm(!openConfirm);
   };
@@ -78,8 +82,6 @@ const FavorCard: React.FC = ({
     setOpenRaiting(!openRaiting);
   };
 
-  
-  
   const rejectFavor = () => {
     const data: matchAction = {
       matchId: matchId,
@@ -97,10 +99,11 @@ const finishFavor = () => {
     comment: comment,
     rating: value,
   }
-
+  finished?setRated(true):setRated(false);
 dispatch(matchAction(data));
 console.log("finishFavor")
 setOpenRaiting(false);
+setRated(true);
 }
   return (
     <div className={styles["FavorCard"]}>
@@ -118,6 +121,7 @@ setOpenRaiting(false);
       </div>
       <hr />
       <div className={styles["actions"]}>
+        {!rated &&(
         <button
           onClick={handleClickConfirm}
           className={styles["confirm"]}
@@ -126,6 +130,7 @@ setOpenRaiting(false);
           {" "}
           Confirmar realización
         </button>
+        )}
           <Dialog open={openConfirm} onClose={handleClickConfirm}>
             <DialogTitle>¿Fue finalizado el favor?</DialogTitle>
 
@@ -133,7 +138,9 @@ setOpenRaiting(false);
               <Button color="error" onClick={handleClickConfirm}>
                 Cancelar
               </Button>
+              
               <Button
+                
                 color="secondary"
                 onClick={function(event) {
                   handleClickConfirm();
@@ -143,6 +150,7 @@ setOpenRaiting(false);
                 {" "}
                 Confirmar finalización
               </Button>
+              
             </DialogActions>
           </Dialog>
           <Dialog open={openRaiting} onClose={handleClickRaiting}>

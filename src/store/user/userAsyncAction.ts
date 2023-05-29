@@ -24,21 +24,6 @@ export interface reportUserFailure {
     message: string;
 }
 
-export type getMatchesHistoryValues = {
-    option: string;
-}
-
-export interface getMatchesHistorySuccess {
-    message: string;
-    matches: Array<Match>
-
-}
-
-export interface getMatchesHistoryFailure {
-    message: string;
-    error: string;
-}
-
 export interface UserProfile {
     favor: {
         reviews: {
@@ -176,32 +161,6 @@ export const updateMyUserInfo = createAsyncThunk(
         }
     }
 )
-
-export const getMatchesHistory = createAsyncThunk(
-    'user/getMatchesHistory',
-    async (values: getMatchesHistoryValues, {rejectWithValue}) => {
-        try {
-            const config = {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            };
-            const {data} = await axiosApiInstance.post(
-                `${API_URL}/user/matches`,
-                {...values},
-                config
-            );
-            return {option: values.option, ...data};
-        } catch (error) {
-            if (error.response && error.response.data.message) {
-                return rejectWithValue(error.response.data.message)
-            } else {
-                return rejectWithValue(error.message)
-            }
-        }
-    }
-)
-
 
 export const updateFavorFilters = createAsyncThunk(
     '/user/changeFavorFilters',
