@@ -1,33 +1,37 @@
-import styles from "./Dashboard.module.css";
+// Core
 import React, { useEffect } from "react";
+// Sytles
+import styles from "./Dashboard.module.css";
+// Redux
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { getStatistics } from "@store/Admin/adminAsyncActions";
+import {AdminState} from "@store/Admin/adminSlice";
+// Icons
 import { BsFilePost, BsSearch } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
 import { FcCancel } from "react-icons/fc";
 import { AiFillCheckCircle } from "react-icons/ai";
+// Components
 import PieChart from "./components/PieChart";
 import LineChart from "./components/LineChart";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { getAdminInfo } from "@store/Admin/adminAsyncActions";
 
 const Dashboard: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { adminInfo } = useAppSelector((state) => state.admin);
-  console.log(adminInfo);
-  console.log("adminInfo");
+  const { statistics }: AdminState = useAppSelector((state) => state.admin);
   useEffect(() => {
-    if (!adminInfo) {
-      dispatch(getAdminInfo());
+    if (!statistics) {
+      dispatch(getStatistics());
     }
   }, []);
   return (
     <div className={styles.Dashboard}>
-      {adminInfo && (
+      {statistics && (
         <>
           <div className={styles.firstContent}>
             <div className={styles.singleDashboardCard}>
               <div className={styles.cardContent}>
                 <h2>Total Favores Publicados</h2>
-                <span>{adminInfo.totalFavors}</span>
+                <span>{statistics.totalFavors}</span>
               </div>
               <span className={styles.cardIcon}>
                 <BsFilePost />
@@ -36,7 +40,7 @@ const Dashboard: React.FC = () => {
             <div className={styles.singleDashboardCard}>
               <div className={styles.cardContent}>
                 <h2>Total de usuarios</h2>
-                <span>{adminInfo.totalUsers}</span>
+                <span>{statistics.totalUsers}</span>
               </div>
               <span className={styles.cardIcon}>
                 <FaUsers />
@@ -47,7 +51,7 @@ const Dashboard: React.FC = () => {
             <div className={styles.singleDashboardCard}>
               <div className={styles.cardContent}>
                 <h2>Favores denegados</h2>
-                <span>{adminInfo.totalDeniedFavors}</span>
+                <span>{statistics.totalDeniedFavors}</span>
               </div>
               <span className={styles.cardIcon}>
                 <FcCancel />
@@ -56,7 +60,7 @@ const Dashboard: React.FC = () => {
             <div className={styles.singleDashboardCard}>
               <div className={styles.cardContent}>
                 <h2>Favores en revisión</h2>
-                <span>{adminInfo.totalReviewingFavors}</span>
+                <span>{statistics.totalReviewingFavors}</span>
               </div>
               <span className={styles.cardIcon}>
                 <BsSearch />
@@ -65,7 +69,7 @@ const Dashboard: React.FC = () => {
             <div className={styles.singleDashboardCard}>
               <div className={styles.cardContent}>
                 <h2>Favores publicados</h2>
-                <span>{adminInfo.totalPublishedFavors}</span>
+                <span>{statistics.totalPublishedFavors}</span>
               </div>
               <span className={styles.cardIcon}>
                 <AiFillCheckCircle />
@@ -73,8 +77,8 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
           <div className={styles.charts}>
-            <PieChart arr={adminInfo.userScore} />
-            <LineChart arr={adminInfo.favorsPerMonth} />
+            <PieChart arr={statistics.userScore} />
+            <LineChart arr={statistics.favorsPerMonth} />
           </div>
         </>
       )}

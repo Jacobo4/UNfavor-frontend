@@ -1,17 +1,31 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {toast} from "react-toastify";
-import {getAdminInfo, getUsersToReview, controlFavor, getReports} from "@store/Admin/adminAsyncActions";
-import type {ControlFavorSuccess, ControlFavorFailure, controlFavorFormValues} from "@store/Admin/adminAsyncActions";
+import {
+    getStatistics,
+    getUsersToReview,
+    controlFavor,
+    getReports,
+    GetStatisticsSuccess,
+    GetStatisticsInfoFailure,
+    GetReportsSuccess,
+    GetReportsFailure,
+    GetUsersToReviewSuccess,
+    GetUsersToReviewFailure, Statistics, Report
+} from "@store/Admin/adminAsyncActions";
+import type {ControlFavorSuccess, ControlFavorFailure, ControlFavorValues} from "@store/Admin/adminAsyncActions";
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected' | 'idle';
 
+/**
+ * Represents the user information.
+ */
 export interface AllUserInfo {
     favor: {
         reviews: {
             review_sum: number;
             review_num: number;
             comments: Array<string>;
-        },
+        };
         date_published: string;
         favor_state: string;
         title: string;
@@ -19,45 +33,41 @@ export interface AllUserInfo {
         location: string;
         possible_matches: Array<string>;
         imgURL: string;
-    },
+    };
     preferences: {
         favor_filters: {
             favor_type: string;
             max_distance_km: number;
-        }
-    },
+        };
+    };
     _id: string;
     name: string;
     email: string;
     phone: string;
-    age: number,
-    admin: boolean,
-    __v: number
+    age: number;
+    admin: boolean;
+    __v: number;
 }
 
-export interface Report {
-    _id: string;
-    reporterId: string;
-    reportedId: string;
-    description: string;
-    status: string;
-    __v: number;
-    reporter: AllUserInfo;
-    reported: AllUserInfo;
-}
+/**
+ * Represents the state of the admin module.
+ */
 export interface AdminState {
     status: RequestState;
-    adminInfo: any;
+    statistics: Statistics;
     usersToReview: Array<AllUserInfo>;
     usersPublished: Array<AllUserInfo>;
     reports: Array<Report>;
     error: string | null;
-    toastLoaderId: number | string;
-};
+    toastLoaderId: number | string | null;
+}
 
+/**
+ * The initial state for the admin module.
+ */
 const initialState: AdminState = {
     status: 'idle',
-    adminInfo: null,
+    statistics: null,
     usersToReview: [],
     usersPublished: [],
     reports: [],
@@ -65,6 +75,9 @@ const initialState: AdminState = {
     toastLoaderId: null,
 };
 
+/**
+ * The admin slice of the Redux store.
+ */
 const adminSlice = createSlice({
     reducers: undefined,
     name: 'admin',
@@ -72,79 +85,85 @@ const adminSlice = createSlice({
 
     extraReducers: builder => {
         builder
-            .addCase(getAdminInfo.pending, (state: AdminState, action) => {
+            //=========================== Get statistics =======================
+            .addCase(getStatistics.pending, (state: AdminState, action) => {
                 state.toastLoaderId = toast.loading('Getting Admin info in...', {position: 'top-center'});
                 state.status = 'pending';
                 state.error = null;
             })
-            .addCase(getAdminInfo.fulfilled, (state: AdminState, {payload}) => {
+            .addCase(getStatistics.fulfilled, (state: AdminState, action) => {
+                const {data} = action.payload as GetStatisticsSuccess;
                 toast.dismiss(state.toastLoaderId);
                 state.status = 'fulfilled';
-                state.adminInfo = payload.data;
-                console.log(state.adminInfo);
+                state.statistics = data;
             })
-            .addCase(getAdminInfo.rejected, (state: AdminState, action) => {
-                const {message} = action.payload;
+            .addCase(getStatistics.rejected, (state: AdminState, action) => {
+                const {message} = action.payload as GetStatisticsInfoFailure;
                 toast.dismiss(state.toastLoaderId);
-                toast.error('Error obtaining info', {position: 'top-center'})
+                toast.error('Error obtaining info', {position: 'top-center'});
                 state.status = 'rejected';
                 state.error = message;
             })
+            //=========================== Get reports =======================
             .addCase(getReports.pending, (state: AdminState, action) => {
                 state.toastLoaderId = toast.loading('Getting reported users...', {position: 'top-center'});
                 state.status = 'pending';
                 state.error = null;
             })
-            .addCase(getReports.fulfilled, (state: AdminState, {payload}) => {
+            .addCase(getReports.fulfilled, (state: AdminState, action) => {
+                const {reports} = action.payload as GetReportsSuccess;
                 toast.dismiss(state.toastLoaderId);
                 state.status = 'fulfilled';
-                state.reports = payload.reports;
+                state.reports = reports;
             })
             .addCase(getReports.rejected, (state: AdminState, action) => {
-                const {message} = action.payload;
+                const {message} = action.payload as GetReportsFailure;
                 toast.dismiss(state.toastLoaderId);
-                toast.error('Error getting reported users', {position: 'top-center'})
+                toast.error('Error getting reported users', {position: 'top-center'});
                 state.status = 'rejected';
                 state.error = message;
             })
+            //=========================== Get users to review =======================
             .addCase(getUsersToReview.pending, (state: AdminState, action) => {
                 state.toastLoaderId = toast.loading('Getting Admin info in...', {position: 'top-center'});
                 state.status = 'pending';
                 state.error = null;
             })
-            .addCase(getUsersToReview.fulfilled, (state: AdminState, {payload}) => {
+            .addCase(getUsersToReview.fulfilled, (state: AdminState, action) => {
+                const {users} = action.payload as GetUsersToReviewSuccess;
+
                 toast.dismiss(state.toastLoaderId);
                 state.status = 'fulfilled';
-                state.usersToReview = payload.users.filter(user => user.favor.favor_state === "REVIEWING");
-                state.usersPublished = payload.users.filter(user => user.favor.favor_state === "PUBLISHED");
-
+                state.usersToReview = users.filter(user => user.favor.favor_state === "REVIEWING");
+                state.usersPublished = users.filter(user => user.favor.favor_state === "PUBLISHED");
             })
             .addCase(getUsersToReview.rejected, (state: AdminState, action) => {
-                const {message} = action.payload;
+                const {message} = action.payload as GetUsersToReviewFailure;
                 toast.dismiss(state.toastLoaderId);
-                toast.error('Error obtaining info', {position: 'top-center'})
+                toast.error('Error obtaining info', {position: 'top-center'});
                 state.status = 'rejected';
                 state.error = message;
             })
+            //=========================== Control favor =======================
             .addCase(controlFavor.pending, (state: AdminState, action) => {
-                    state.toastLoaderId = toast.loading('Updating favors', {position: 'top-center'});
-                    state.status = 'pending';
-                    state.error = null;
-                }
-            )
-            .addCase(controlFavor.fulfilled, (state: AdminState, {payload}) => {
+                state.toastLoaderId = toast.loading('Updating favors', {position: 'top-center'});
+                state.status = 'pending';
+                state.error = null;
+            })
+            .addCase(controlFavor.fulfilled, (state: AdminState, action) => {
+                const {message, data,userId} = action.payload as ControlFavorSuccess;
                 toast.dismiss(state.toastLoaderId);
                 state.status = 'fulfilled';
-                state.usersToReview = state.usersToReview.filter(user => user._id !== payload.userId)
+                state.usersToReview = state.usersToReview.filter(user => user._id !== userId);
             })
             .addCase(controlFavor.rejected, (state: AdminState, action) => {
-                const {message} = action.payload;
+                const {message} = action.payload as ControlFavorFailure;
                 toast.dismiss(state.toastLoaderId);
-                toast.error('Error updating favor', {position: 'top-center'})
+                toast.error('Error updating favor', {position: 'top-center'});
                 state.status = 'rejected';
                 state.error = message;
-            })
-    }
+            });
+    },
 });
 
 export default adminSlice.reducer;
