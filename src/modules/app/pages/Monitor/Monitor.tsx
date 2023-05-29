@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import styles from "./Monitor.module.css";
 //Redux
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { getMatchesHistory } from "../../../../store/user/userAsyncAction";
+import { getMatchesHistory } from "../../../../store/match/matchAsyncAction";
 // Icons
 import { BsChatDots } from "react-icons/bs";
 // Components
@@ -16,7 +16,7 @@ import {MdHeartBroken} from "react-icons/md";
 
 const Monitor: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { matches } = useAppSelector((state) => state.user);
+  const { matches } = useAppSelector((state) => state.match);
   useEffect(() => {
     dispatch(getMatchesHistory({ option: "ANYTHING" }));
     console.log(matches);

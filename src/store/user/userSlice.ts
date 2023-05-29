@@ -7,13 +7,11 @@ import {
     getProfileInfo,
     updateFavorFilters,
     updateMyUserInfo,
-    getMatchesHistory,
     reportUser, reportUserSuccess, reportUserFailure
 } from "@store/user/userAsyncAction";
 // Types
 import type {UpdateUserInfoSuccess, UpdateUserInfoFailure, UpdateFavorFiltersFailure, UserProfile, getUserProfileInfoSuccess, 
-    getMatchesHistoryValues,
-    getMatchesHistorySuccess, getMatchesHistoryFailure} from "@store/user/userAsyncAction";
+    } from "@store/user/userAsyncAction";
 import { Match } from '../match/matchAsyncAction';
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected' | 'idle';
@@ -22,11 +20,10 @@ export interface UserState {
     status: RequestState;
     myUserInfo: UserProfile;
     anotherUserInfo: UserProfile;
-    error: string | null;
-    myFinishedMatches: Array<Match>;
+    error: string | null;   
     toastLoaderIds: Object;
     isMe: boolean;
-    matches: Array<Match>;
+    
 };
 
 const initialState: UserState = {
@@ -34,10 +31,9 @@ const initialState: UserState = {
     myUserInfo: null,
     anotherUserInfo: null,
     error: null,
-    myFinishedMatches: [],
     toastLoaderIds: {},
     isMe: false,
-    matches: [],
+    
 };
 
 const userSlice = createSlice({
@@ -122,25 +118,7 @@ const userSlice = createSlice({
                 state.status = 'rejected';
                 state.error = message;
             })
-            .addCase(getMatchesHistory.pending, (state: UserState, action) => {
-                state.toastLoaderIds['getMatchesHistory'] = toast.loading('Getting matches...', {position: 'top-center'});
-                state.status = 'pending';
-                state.error = null;
-            })
-            .addCase(getMatchesHistory.fulfilled, (state: UserState,  action) => {
-                
-                toast.dismiss(state.toastLoaderIds['getMatchesHistory']);
-                state.status = 'fulfilled'; 
-                state.matches = action.payload.matches.filter(match => match.status === "CREATED"); 
-                state.myFinishedMatches = action.payload.matches.filter(match => match.status === "COMPLETED");           
-            })
-            .addCase(getMatchesHistory.rejected, (state: UserState, action) => {
-                const {message} = action.payload as getMatchesHistoryFailure;
-                toast.dismiss(state.toastLoaderIds['getMatchesHistory']);
-                toast.error('Error getting matches', {position: 'top-center'})
-                state.status = 'rejected';
-                state.error = message;
-            })
+            
     },
 });
 

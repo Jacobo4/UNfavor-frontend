@@ -32,7 +32,7 @@ const Profile: React.FC = () => {
     const [activeTab, setActiveTab] = useState<number>(0)
     const getAvg = () => {
         if(user.favor.reviews.review_num && user.favor.reviews.review_sum){
-            return (user.favor.reviews.review_sum/user.favor.reviews.review_num);
+            return Math.round((user.favor.reviews.review_sum/user.favor.reviews.review_num) * 100) / 100;
         }
         return 0;
     };  
