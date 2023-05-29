@@ -5,7 +5,7 @@ import {useForm, Controller} from "react-hook-form";
 // Styles
 import styles from "./ReportUserDialog.module.css";
 // Icons
-import {MdReport} from "react-icons/all";
+import {MdReport} from "react-icons/md";
 // Mui
 import {styled} from "@mui/material";
 import Button from "@mui/material/Button";
