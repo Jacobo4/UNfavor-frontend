@@ -9,7 +9,6 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -38,10 +37,20 @@ function getStyles(name: string, category: readonly string[], theme: Theme) {
   };
 }
 
+/**
+ * Represents a multiple select chip component.
+ *
+ * @returns {JSX.Element} - Rendered component.
+ */
 const MultipleSelectChip: React.FC = () => {
   const theme = useTheme();
   const [category, setCategory] = React.useState<string[]>([]);
 
+  /**
+   * Handles the change event of the select component.
+   *
+   * @param {SelectChangeEvent<typeof category>} event - The change event.
+   */
   const handleChange = (event: SelectChangeEvent<typeof category>) => {
     const {
       target: { value },

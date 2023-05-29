@@ -38,7 +38,9 @@ const categories = [
     "Limpieza",
     "Transporte",
 ];
-
+/**
+ * Custom styled TextField component using MUI styles.
+ */
 const CssTextField = styled(TextField)({
     "& label.Mui-focused": {
         color: "#00D4A6",
@@ -71,6 +73,9 @@ const defaultValues = {
         },
     },
 }
+/**
+ * Represents the sign in form.
+ */
 export default function Form() {
     const {
         register,
@@ -81,7 +86,11 @@ export default function Form() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const {isLogged} = useAppSelector((state) => state.auth);
-
+    /**
+   * Handles form submission.
+   *
+   * @param {SignInFormValues} data - Form data.
+   */
     const onSubmit = handleSubmit((data: SignInFormValues) => {
         dispatch(signIn(data));
     });
@@ -113,16 +122,7 @@ export default function Form() {
                 />
             </div>
             <div>
-                {/* <input
-          placeholder="Correo electrónico"
-          type="email"
-          {...register(`user[email]`, {
-            required: true,
-          })}
-        />
-        {errors.user?.email?.type === "required" && (
-          <p>El campo email es obigatorio</p>
-        )} */}
+
                 <Controller
                     render={({field: {onChange, value}}) => (
                         <CssTextField
@@ -142,16 +142,7 @@ export default function Form() {
                 />
             </div>
             <div>
-                {/* <input
-          placeholder="Contraseña"
-          type="password"
-          {...register(`user[password]`, {
-            required: true,
-          })}
-        />
-        {errors.user?.password?.type === "required" && (
-          <p>El campo password es obigatorio</p>
-        )} */}
+
                 <Controller
                     render={({field: {onChange, value}}) => (
                         <CssTextField

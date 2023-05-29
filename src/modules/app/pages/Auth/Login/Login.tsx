@@ -5,7 +5,9 @@ import styles from "./Login.module.css";
 // Components
 import Form from "./components/Form";
 import {Link} from "react-router-dom";
-
+/**
+ * Represents the login page.
+ */
 const Login: React.FC = () => {
     return (
         <div className={styles.Login}>

@@ -15,6 +15,7 @@ import Box from "@mui/material/Box";
 // Redux
 import { useAppDispatch } from "@root/store/hooks";
 import { matchAction } from "@root/store/match/matchAsyncAction";
+//Router
 import {Link} from "react-router-dom";
 
 const labels: { [index: string]: string } = {
@@ -41,9 +42,9 @@ interface IProps {
     title: string;
     description: string;
     location: string;
-   
+
   }
- 
+
 }
 type matchAction = {
   matchId: string;
@@ -51,6 +52,22 @@ type matchAction = {
   comment?: string;
   rating?: number;
 }
+/**
+ * Represents a card component for displaying favor information and actions.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.email - Email of the responsible person for the favor.
+ * @param {string} props.name - Name of the responsible person.
+ * @param {string} props.status - Current status of the favor.
+ * @param {string} props.matchId - ID of the favor match.
+ * @param {Object} props.favor - Object containing favor details.
+ * @param {string} props.favor.title - Title of the favor.
+ * @param {string} props.favor.description - Description of the favor.
+ * @param {string} props.favor.location - Location of the favor.
+ * @returns {JSX.Element} - Rendered component.
+ */
+
 const FavorCard: React.FC = ({
   email,
   name,
@@ -58,28 +75,41 @@ const FavorCard: React.FC = ({
   matchId,
   favor: { title, description, location},
 }: IProps) => {
+// State for controlling dialog visibility
   const [openConfirm, setOpenConfirm] = React.useState<boolean>(false);
   const [openCancel, setOpenCancel] = React.useState<boolean>(false);
   const [openRaiting, setOpenRaiting] = React.useState<boolean>(false);
+  // State for rating value and hover
   const [value, setValue] = React.useState<number>(2);
   const [hover, setHover] = React.useState<number | null>(-1);
-  const dispatch = useAppDispatch();
+  // State for comment
   const [comment, setComment] = React.useState<string>("");
+  // Redux dispatch
+  const dispatch = useAppDispatch();
 
+/**
+   * Handles the click event for confirming the favor completion.
+   */
   const handleClickConfirm = ()=> {
     setOpenConfirm(!openConfirm);
   };
-
+/**
+   * Handles the click event for canceling the favor.
+   */
   const handleClickCancel = () => {
     setOpenCancel(!openCancel);
   };
-
+ /**
+   * Handles the click event for opening the rating dialog.
+   */
   const handleClickRaiting = () => {
     setOpenRaiting(!openRaiting);
   };
 
-  
-  
+/**
+   * Rejects the favor by dispatching a reject action.
+   */
+
   const rejectFavor = () => {
     const data: matchAction = {
       matchId: matchId,
@@ -90,7 +120,7 @@ const FavorCard: React.FC = ({
   setOpenCancel(false);
 }
 const finishFavor = () => {
-  
+
   const data: matchAction = {
     matchId: matchId,
     option: "FINISH",
@@ -164,7 +194,7 @@ setOpenRaiting(false);
                 }}
               >
                 <Rating
-                  sx={{ 
+                  sx={{
                     justifySelf: "center",
                     height: 32,
                     alignItems: "center",
@@ -180,7 +210,7 @@ setOpenRaiting(false);
                   onChangeActive={(event, newHover) => {
                     setHover(newHover);
                   }}
-                  
+
                 />
                 {value !== null && (
                   <Box sx={{ ml: 2 }}>
@@ -188,7 +218,7 @@ setOpenRaiting(false);
                   </Box>
                 )}
               </Box>
-            
+
             <DialogContentText>
                   Cuentanos acerca de tu experiencia con este favor.
                 </DialogContentText>
@@ -197,7 +227,7 @@ setOpenRaiting(false);
                   autoFocus
                   margin="dense"
                   id="reason"
-                  label="Observaciones" 
+                  label="Observaciones"
                   type="text"
                   fullWidth
                   onChange={(event) => {
@@ -206,9 +236,9 @@ setOpenRaiting(false);
                   variant="standard"
                 />
               </DialogContent>
-            
+
             <DialogActions>
-              
+
               <Button color="secondary" onClick={finishFavor}>
                 {" "}
                 Enviar

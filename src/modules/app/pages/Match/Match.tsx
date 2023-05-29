@@ -10,7 +10,7 @@ import bgMatch from "@assets/images/bgMatch.jpg";
 // Animations
 import {AnimatePresence} from "framer-motion";
 // Mui
-import Box from "@mui/material/Box";
+
 import Dialog from "@mui/material/Dialog";
 // Components
 import MatchCard from "@globalComponents/MatchCard/MatchCard";

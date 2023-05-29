@@ -17,7 +17,9 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import {useAppDispatch} from "@store/hooks";
 import {reportUser} from "@store/user/userAsyncAction";
-
+/**
+ * Represents a styled button for reporting a user.
+ */
 const ReportUser = styled(Button)({
     margin: "8px 0px",
     justify: "end",
@@ -28,38 +30,63 @@ const ReportUser = styled(Button)({
         boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.45)",
     },
 });
-
+/**
+ * Represents the props for the ReportUserDialog component.
+ */
 interface ReportUserDialogIProps {
     userId: string;
     isVisible: boolean;
 }
 
-type reportForm = {
-    description: string;
+/**
+ * Represents the form data for reporting a user.
+ */
+type ReportForm = {
+  description: string;
 };
-const ReportUserDialog: React.FC<ReportUserDialogIProps> = ({userId, isVisible}) => {
-    const dispatch = useAppDispatch();
 
-    /// =========================== Report user ===========================
-    const [openReportDialog, setOpenReportDialog] = React.useState(false);
-    const handleClickOpenReportDialog = () => {
-        setOpenReportDialog(true);
-    };
-    const handleCloseReportDialog = () => {
-        setOpenReportDialog(false);
-    };
+/**
+ * A dialog component for reporting a user.
+ */
+const ReportUserDialog: React.FC<ReportUserDialogIProps> = ({
+  userId,
+  isVisible,
+}) => {
+  const dispatch = useAppDispatch();
 
-    const {
-        handleSubmit,
-        formState: {errors},
-        control,
-    } = useForm<reportForm>();
-        console.log(errors)
+  const [openReportDialog, setOpenReportDialog] = React.useState(false);
 
-    const onSubmit = handleSubmit(async (data) => {
-        await dispatch(reportUser({reportedId: userId, description: data.description}));
-        setOpenReportDialog(false);
-    });
+  /**
+   * Opens the report dialog.
+   */
+  const handleClickOpenReportDialog = () => {
+    setOpenReportDialog(true);
+  };
+
+  /**
+   * Closes the report dialog.
+   */
+  const handleCloseReportDialog = () => {
+    setOpenReportDialog(false);
+  };
+
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm<ReportForm>();
+  console.log(errors);
+
+  /**
+   * Handles the form submission and reports the user.
+   * @param {ReportForm} data - The form data.
+   */
+  const onSubmit = handleSubmit(async (data) => {
+    await dispatch(
+      reportUser({ reportedId: userId, description: data.description })
+    );
+    setOpenReportDialog(false);
+  });
 
     return (isVisible && (
             <div className={styles["ReportUserDialog"]}>

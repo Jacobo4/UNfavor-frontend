@@ -4,7 +4,6 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { getProfileInfo, updateMyUserInfo, updateUserInfoFormValues } from "@store/user/userAsyncAction";
 import { useAppDispatch } from "@store/hooks";
 // Form
-import { axiosApiInstance } from "@config/axiosApiInstance";
 import { useForm, Controller } from "react-hook-form";
 // Router
 import { useNavigate } from "react-router-dom";
@@ -16,7 +15,6 @@ import { styled } from "@mui/material/styles";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 // Components
-import DistanceSlider from "./DistanceSlider";
 import FavorForm from "./FavorForm";
 
 
@@ -50,7 +48,13 @@ const CssTextField = styled(TextField)({
   },
 });
 
-
+/**
+ * Represents the form component for user settings.
+ *
+ * @component
+ * @param {Object} userInfo - User information.
+ * @returns {JSX.Element} - Rendered component.
+ */
 const Form: React.FC = ({ userInfo }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -61,7 +65,11 @@ const Form: React.FC = ({ userInfo }) => {
     formState: { errors },
     control,
   } = useForm<publicProfile>();
-
+/**
+   * Handles form submission.
+   *
+   * @param {updateUserInfoFormValues} data - Form data to be submitted.
+   */
   const onSubmit = handleSubmit(async (data:updateUserInfoFormValues) => {
     try {
       await dispatch(updateMyUserInfo(data));
