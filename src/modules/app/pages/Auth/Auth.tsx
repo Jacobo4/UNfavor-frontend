@@ -1,6 +1,6 @@
 // Core
 import React from "react";
-import {useState} from "react";
+
 // Router
 import {Outlet} from "react-router-dom";
 //Styles
@@ -17,8 +17,13 @@ import {ReactComponent as BottomDecor} from "@assets/images/login/loginBottomDec
 import {ReactComponent as SideBgDecor} from "@assets/images/login/bgDecor.svg";
 // @ts-ignore
 import {ReactComponent as SideDecor} from "@assets/images/login/loginDecor.svg";
-// Components
 
+/**
+ * Represents the authentication layout component.
+ *
+ * @component
+ * @returns {JSX.Element} - Rendered component.
+ */
 const Auth: React.FC = () => {
     return (
         <div className={styles.loginContainer}>

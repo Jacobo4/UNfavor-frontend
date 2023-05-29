@@ -40,7 +40,13 @@ interface favorInfo {
   categorie: string;
   distance: number;
 }
-
+/**
+ * Represents the form for updating favor filters.
+ *
+ * @param {string} categorie - The selected category.
+ * @param {number} distance - The maximum distance.
+ * @returns {JSX.Element} - Rendered component.
+ */
 
 export default function FavorForm({ categorie, distance }) {
   const dispatch = useAppDispatch();
@@ -52,6 +58,11 @@ export default function FavorForm({ categorie, distance }) {
     control,
   } = useForm<favFilters>();
 
+  /**
+   * Handles form submission.
+   *
+   * @param {UpdateFavorFiltersFormValues} data - Form data to be submitted.
+   */
   const onSubmit = handleSubmit((data: UpdateFavorFiltersFormValues) => {
     dispatch(updateFavorFilters(data));
     //navigate("/");

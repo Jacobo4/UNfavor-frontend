@@ -12,7 +12,12 @@ interface UserTabIProps {
     user: UserProfile;
     isMe: boolean;
 }
-
+/**
+ * Represents a user tab component.
+ *
+ * @param {UserTabIProps} props - The component props.
+ * @returns {JSX.Element | null} - Rendered component.
+ */
 const UserTab: React.FC<UserTabIProps> = ({isActive, user, isMe}) => {
 
     return (isActive && (

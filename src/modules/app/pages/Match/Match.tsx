@@ -12,7 +12,7 @@ import bgMatch from "@assets/images/bgMatch.jpg";
 // Animations
 import {AnimatePresence} from "framer-motion";
 // Mui
-import Box from "@mui/material/Box";
+
 import Dialog from "@mui/material/Dialog";
 // Types
 import type {Match} from "@store/match/matchAsyncAction"

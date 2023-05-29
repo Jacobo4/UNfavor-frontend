@@ -3,7 +3,6 @@ import React, {useEffect, useState} from "react";
 // Router
 import {Link, useParams} from "react-router-dom";
 // Redux
-
 import {useAppDispatch, useAppSelector} from "@store/hooks";
 import {getProfileInfo, UserProfile, getMatchesHistory} from "@store/user/userAsyncAction";
 //Styles
@@ -11,11 +10,13 @@ import styles from "./Profile.module.css";
 // Icons
 import {BiUser, BiHistory} from "react-icons/bi";
 import {IoLocation} from "react-icons/io5";
+//MUI
+import { Rating } from "@mui/material";
 // Components
 import HistoryTab from "./components/HistoryTab";
 import UserTab from "./components/UserTab";
 import ReportUserDialog from "./components/ReportUserDialog";
-import { Rating } from "@mui/material";
+
 const urlImage = "https://api.dicebear.com/6.x/adventurer/svg?seed=";
 const Profile: React.FC = () => {
     /// =========================== Router ===========================
@@ -30,6 +31,11 @@ const Profile: React.FC = () => {
 
     /// =========================== Tabs ===========================
     const [activeTab, setActiveTab] = useState<number>(0)
+
+     /**
+   * Calculates the average rating for the user.
+   * @returns The average rating.
+   */
     const getAvg = () => {
         if(user.favor.reviews.review_num && user.favor.reviews.review_sum){
             return Math.round((user.favor.reviews.review_sum/user.favor.reviews.review_num) * 100) / 100;
@@ -37,6 +43,7 @@ const Profile: React.FC = () => {
         return 0;
     };  
     useEffect(() => {
+        // Fetch the user profile information
         dispatch(getProfileInfo({email: isMe ? token.email : userEmail}));
         
     }, []);

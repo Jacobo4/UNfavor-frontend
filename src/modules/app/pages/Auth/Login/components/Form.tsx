@@ -24,7 +24,10 @@ export default function Form() {
 
     const navigate = useNavigate();
 
-
+/**
+   * Handles form submission.
+   * @param {LoginValues} data - The form data.
+   */
     const onSubmit = handleSubmit(async (data: LoginValues) => {
         try {
             await dispatch(login(data));

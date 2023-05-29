@@ -1,47 +1,47 @@
-// Core
+/**
+ * Represents the monitor component.
+ */
 import React, { useEffect } from "react";
-// Router
-import { Link } from "react-router-dom";
+
 //Styles
 import styles from "./Monitor.module.css";
 //Redux
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { getMatchesHistory } from "../../../../store/match/matchAsyncAction";
+import { getMatchesHistory } from "../../../../store/user/userAsyncAction";
 // Icons
-import { BsChatDots } from "react-icons/bs";
+import {MdHeartBroken} from "react-icons/md";
+
 // Components
 import FavorCard from "./components/FavorCard";
 import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
-import {MdHeartBroken} from "react-icons/md";
 
+/**
+ * The monitor component that displays the user's matches and favor cards.
+ */
 const Monitor: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { matches } = useAppSelector((state) => state.match);
+  const { matches } = useAppSelector((state) => state.user);
+
   useEffect(() => {
+    // Fetch matches history
     dispatch(getMatchesHistory({ option: "ANYTHING" }));
     console.log(matches);
   }, []);
+
   return (
     <main className={styles["Monitor"]}>
       {matches && (
         <>
-          {/*<div className={styles["actions"]}>*/}
-          {/*  <div className={styles["action-wrapper"]}>*/}
-          {/*    <Link to="/chat" type={"button"}>*/}
-          {/*      Chat <BsChatDots />*/}
-          {/*    </Link>*/}
-          {/*  </div>*/}
-          {/*  <hr />*/}
-          {/*</div>*/}
           <div className={styles["favorsWrapper"]}>
-            {matches.length === 0 &&
-                <NoItemsLeft
-                  icon={<MdHeartBroken/>}
-                  title={"Aún no tienes matches"}
-                  subtitle={"¡Sigue buscando!"}
-                  goTo={"/match"}
-                  goToMessage={"¡Encuentra tu match!"}
-                />}
+            {matches.length === 0 && (
+              <NoItemsLeft
+                icon={<MdHeartBroken/>}
+                title={"Aún no tienes matches"}
+                subtitle={"¡Sigue buscando!"}
+                goTo={"/match"}
+                goToMessage={"¡Encuentra tu match!"}
+              />
+            )}
             {matches.length !== 0 &&
               matches.map((info, index) => <FavorCard key={index} {...info} />)}
           </div>

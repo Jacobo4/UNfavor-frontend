@@ -4,7 +4,9 @@ import React from "react";
 import styles from "./SignIn.module.css";
 // Components
 import Form from "./components/Form";
-
+/**
+ * Represents the Sign In page.
+ */
 const SignIn: React.FC = () => {
     return (
         <div className={styles.SignIn}>

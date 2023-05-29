@@ -50,6 +50,13 @@ const CssTextField = styled(TextField)({
     },
 });
 
+/**
+ * Represents the form component for user settings.
+ *
+ * @component
+ * @param {Object} userInfo - User information.
+ * @returns {JSX.Element} - Rendered component.
+ */
 
 const Form: React.FC = ({userInfo}) => {
     const [position, setCurrentPosition] = useState<GeolocationPosition|null>(null);
@@ -62,7 +69,11 @@ const Form: React.FC = ({userInfo}) => {
         formState: {errors},
         control,
     } = useForm<publicProfile>();
-
+/**
+   * Handles form submission.
+   *
+   * @param {updateUserInfoFormValues} data - Form data to be submitted.
+   */
     const onSubmit = handleSubmit(async (data: updateUserInfoFormValues) => {
         try {
             await dispatch(updateMyUserInfo({latitude: position.coords.latitude, longitude: position.coords.longitude, ...data}));
