@@ -2,26 +2,24 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import {axiosApiInstance} from "../../config/axiosApiInstance";
 
 const API_URL = import.meta.env.VITE_API_URL;
+
 export interface Match {
-    id: string;
-    email: string;
-    reviews: {
-        review_sum: number;
-        review_num: number;
-        comments: Array<string>;
-    },
-    imgURL: string;
-    date_published: string;
-    favor_state: string;
-    title: string;
-    description: string;
-    location: string;
-    possible_matches: Array<any>;
+    user_id: string;
+    name: string;
+    age: number;
+    favor_date_published: string;
+    favor_title: string;
+    favor_description: string;
+    favor_category: string;
+    favor_review_avg: number;
+    favor_img_url: string;
 }
+
 export interface getMatchesSuccess {
     message: string;
     favors: Array<Match>
 }
+
 export interface getMatchesFailure {
     message: string;
     error: string;
@@ -35,10 +33,12 @@ export interface likeMatchSuccess {
     message: string;
     favor: Match
 }
+
 export interface likeMatchFailure {
     message: string;
     error: string;
 }
+
 export type getMatchesHistoryValues = {
     option: string;
 }
@@ -53,20 +53,24 @@ export interface getMatchesHistoryFailure {
     message: string;
     error: string;
 }
-export interface matchActionsValues{
+
+export interface matchActionsValues {
     matchId: string;
     option: string;
     comment?: string;
     rating?: number;
 }
+
 export interface matchActionSuccess {
     message: string;
-    
+
 }
-export interface matchActioFailure{
+
+export interface matchActioFailure {
     message: string | any;
     error: string;
 }
+
 export const getMatches = createAsyncThunk(
     'match/getMatches',
     async (values, {rejectWithValue}) => {
@@ -77,7 +81,7 @@ export const getMatches = createAsyncThunk(
                 },
             };
 
-            const { data } = await axiosApiInstance.post(
+            const {data} = await axiosApiInstance.post(
                 `${API_URL}/favor/recommendFavors`,
                 {...values},
                 config
@@ -120,8 +124,8 @@ export const getMatchesHistory = createAsyncThunk(
 
 export const matchAction = createAsyncThunk(
     'match/matchAction',
-    async (values:matchActionsValues, {rejectWithValue}) => {
-        
+    async (values: matchActionsValues, {rejectWithValue}) => {
+
         try {
             const config = {
                 headers: {
@@ -129,7 +133,7 @@ export const matchAction = createAsyncThunk(
                 },
             };
 
-            const { data } = await axiosApiInstance.put(
+            const {data} = await axiosApiInstance.put(
                 `${API_URL}/match/action`,
                 {...values},
                 config
@@ -147,7 +151,7 @@ export const matchAction = createAsyncThunk(
 )
 export const likeMatch = createAsyncThunk(
     'match/likeMatch',
-    async (values:likeMatchValues, {rejectWithValue, getState}) => {
+    async (values: likeMatchValues, {rejectWithValue, getState}) => {
         const state = getState();
         try {
             const config = {
@@ -156,7 +160,7 @@ export const likeMatch = createAsyncThunk(
                 },
             };
 
-            const { data } = await axiosApiInstance.put(
+            const {data} = await axiosApiInstance.put(
                 `${API_URL}/favor/likeFavor`,
                 {...values},
                 config

@@ -19,9 +19,9 @@ import {
     textVariant,
 } from "@globalStyles/motion.js";
 // Components
-import MatchCard from "@globalComponents/MatchCard/MatchCard";
 import Slider from "./components/Slider";
 import CreditsCard from "./components/CreditsCard";
+import MatchCard from "@globalComponents/MatchCard/MatchCard";
 // Types
 import {Match} from "@store/match/matchAsyncAction";
 import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
@@ -29,33 +29,60 @@ import {MdHeartBroken} from "react-icons/md";
 
 const cardData: Array<Match> = [
     {
-        id: 1,
-        title: "Card 1",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint.",
-        location: "This is a location",
-        imgURL: "https://api.dicebear.com/6.x/adventurer/svg?seed=lindo123@unal.edu.co",
+        "user_id": "6474a2083c65493970d792b7",
+        "name": "Jacobo",
+        "age": 19,
+        "favor_date_published": "2023-04-25T00:00:00.000Z",
+        "favor_title": "Pet Sitting",
+        "favor_description": "Take care of someone's pets while they are away.",
+        "favor_category": "Any",
+        "favor_review_avg": 5,
+        "favor_img_url": "https://www.elcomercio.com/wp-content/uploads/2023/01/feid-ec-1-700x391.jpg"
     },
     {
-        id: 2,
-        title: "Card 2",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint.",
-        location: "This is a location",
-        imgURL: "https://api.dicebear.com/6.x/adventurer/svg?seed=lindo123@unal.edu.co",
+        "user_id": "6474a2193c65493970d792bd",
+        "name": "Alejandra",
+        "age": 20,
+        "favor_date_published": "2023-05-24T00:00:00.000Z",
+        "favor_title": "House Cleaning",
+        "favor_description": "Clean and organize someone's home.",
+        "favor_category": "Any",
+        "favor_review_avg": 3,
+        "favor_img_url": "https://www.elcomercio.com/wp-content/uploads/2023/01/feid-ec-1-700x391.jpg"
     },
     {
-        id: 3,
-        title: "Card 3",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint.",
-        location: "This is a location",
-        imgURL: "https://api.dicebear.com/6.x/adventurer/svg?seed=lindo123@unal.edu.co",
+        "user_id": "6474a2203c65493970d792c0",
+        "name": "Andrés",
+        "age": 18,
+        "favor_date_published": "2023-05-24T00:00:00.000Z",
+        "favor_title": "Meal Preparation",
+        "favor_description": "Cook and package meals for someone who is busy or unable to cook.",
+        "favor_category": "Any",
+        "favor_review_avg": 3,
+        "favor_img_url": "https://www.elcomercio.com/wp-content/uploads/2023/01/feid-ec-1-700x391.jpg"
     },
     {
-        id: 4,
-        title: "Card 4",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint.",
-        location: "This is a location",
-        imgURL: "https://api.dicebear.com/6.x/adventurer/svg?seed=lindo123@unal.edu.co",
+        "user_id": "6474a2283c65493970d792c3",
+        "name": "Angel",
+        "age": 20,
+        "favor_date_published": "2023-01-16T00:00:00.000Z",
+        "favor_title": "Garden Maintenance",
+        "favor_description": "Help with gardening tasks such as weeding, watering, and planting.",
+        "favor_category": "Any",
+        "favor_review_avg": 3,
+        "favor_img_url": "https://www.elcomercio.com/wp-content/uploads/2023/01/feid-ec-1-700x391.jpg"
     },
+    {
+        "user_id": "6474a23d3c65493970d792c9",
+        "name": "Juan Camilo",
+        "age": 21,
+        "favor_date_published": "2023-01-17T00:00:00.000Z",
+        "favor_title": "Errand Assistance",
+        "favor_description": "Run errands on behalf of someone, such as picking up prescriptions or mailing packages.",
+        "favor_category": "Any",
+        "favor_review_avg": 5,
+        "favor_img_url": "https://www.elcomercio.com/wp-content/uploads/2023/01/feid-ec-1-700x391.jpg"
+    }
 ];
 
 const creators = [
@@ -119,7 +146,7 @@ const Home: React.FC = () => {
     const removeCard = (oldCard) => {
         setCards((currentCards) =>
             currentCards.filter((card) => {
-                return card.id !== oldCard.id;
+                return card.user_id !== oldCard.user_id;
             })
         );
     };

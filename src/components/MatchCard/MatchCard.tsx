@@ -13,6 +13,7 @@ import {SlLike, SlDislike} from "react-icons/sl";
 // Types
 import type {Match} from "@store/match/matchAsyncAction";
 import {Link} from "react-router-dom";
+import {Rating} from "@mui/material";
 
 
 
@@ -71,17 +72,19 @@ const MatchCard: React.FC<MatchCardIProps> = ({card, customStyles, index,likeCb,
             >
                 <img
                     className={styles.ImageFavour}
-                    src={card.imgURL}
+                    src={card.favor_img_url}
                     alt='Mi favor'
                     draggable={false}
                 />
                 <div className={styles.InfoContainer}>
                     {/*Texts*/}
                     <div className={styles.InfoTextContainer}>
-                        <h3>{card.title}</h3>
-                        <h6><Link to={`/user/${card.email}`}> {card.email} </Link> </h6>
-                        <h4>{card.location}</h4>
-                        <p>{card.description}</p>
+                        <h2>{card.favor_title} - {card.favor_category}</h2>
+                        <Rating readOnly defaultValue={0} value={card.favor_review_avg}/>
+                        <h4>Nombre: {card.name}</h4>
+                        <h4>Edad: {card.age}</h4>
+                        <h5>Fecha publicación: {new Date(card.favor_date_published).toLocaleDateString('es-CO')}</h5>
+                        <p>{card.favor_description}</p>
                     </div>
 
                     {/*Buttons*/}

@@ -57,6 +57,7 @@ const Match: React.FC = () => {
 
         navigator.geolocation.getCurrentPosition( (pos)=> {
             dispatch(getMatches({latitude: pos.coords.latitude, longitude: pos.coords.longitude}));
+            setCurrentPosition(pos);
         });
 
 
@@ -88,7 +89,7 @@ const Match: React.FC = () => {
                             <MatchCard
                                 key={index}
                                 index={index}
-                                likeCb={() => likeMatchFavor(card.id)}
+                                likeCb={() => likeMatchFavor(card.user_id)}
                                 removeCardCB={() => removeCard(index)}
                                 card={card}
                                 dislikeCb={() => null}/>
@@ -101,7 +102,8 @@ const Match: React.FC = () => {
                                 title={"Ya no tienes matches"}
                                 subtitle={"¡Sigue buscando!"}
                                 reloadItems={true}
-                                reloadItemsAction={()=>{dispatch(getMatches())}}
+
+                                reloadItemsAction={()=>{dispatch(getMatches({latitude: position.coords.latitude, longitude: position.coords.longitude}))}}
                             />
                 )}
 
