@@ -5,7 +5,7 @@ import ControlCard from "./components/ControlCard";
 import {useAppDispatch, useAppSelector} from "@store/hooks";
 import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
 import {AllUserInfo} from "@store/Admin/adminSlice";
-import {BiHappyBeaming, TbThumbUpFilled} from "react-icons/all";
+import {BiHappyBeaming} from "react-icons/bi";
 
 const ProfileControl: React.FC = () => {
     const dispatch = useAppDispatch();
