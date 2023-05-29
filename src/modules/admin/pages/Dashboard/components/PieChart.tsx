@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Dashboard.module.css";
+import styles from "../Dashboard.module.css";
 import { ResponsivePie } from "@nivo/pie";
 import { useEffect } from "react";
 

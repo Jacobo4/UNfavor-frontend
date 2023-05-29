@@ -10,7 +10,7 @@ type favorAction = {
     userId: string;
     action: string;
 }
-const ControlCard: React.FC<dataFavour> = ({user}: { user: AllUserInfo }) => {
+const ControlCard: React.FC = ({user}: { user: AllUserInfo }) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 

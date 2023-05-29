@@ -1,13 +1,15 @@
 @import "@globalStyles/responsive.css";
 
-.ControlCard {
+.ReportCard {
     display: grid;
     padding: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 15px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     border: 1px solid #ddd;
     border-radius: 8px;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: fit-content;
     span{
         font-size: 12px;
     }
@@ -20,23 +22,34 @@
     }
 
     hr {
+        display: grid;
+        grid-column: span 2;
         border: 0.5px solid var(--secondary);
         width: 100%;
         margin: 0;
     }
 
-    .favor {
+    .favor{
+        grid-column: span 2;
+    }
+
+    .reporter {
         display: grid;
         grid-gap: 5px;
     }
 
-    .user {
+    .reported {
         display: grid;
-        grid-template-columns: auto 1fr;
         grid-gap: 5px;
+    }
+
+    .description{
+        grid-column: span 2;
+        display: grid;
     }
 
     .buttons {
+        grid-column: span 2;
         display: grid;
         grid-gap: 5px;
         grid-auto-flow: column;

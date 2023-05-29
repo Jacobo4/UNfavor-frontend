@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import {ResponsiveLine} from '@nivo/line'
-import styles from "./Dashboard.module.css";
+import styles from "../Dashboard.module.css";
 
 
 const LineChart = ({arr}: { arr: any }) => {

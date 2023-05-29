@@ -4,8 +4,8 @@ import { BsFilePost, BsSearch } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
 import { FcCancel } from "react-icons/fc";
 import { AiFillCheckCircle } from "react-icons/ai";
-import PieChart from "./PieChart";
-import LineChart from "./LineChart";
+import PieChart from "./components/PieChart";
+import LineChart from "./components/LineChart";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { getAdminInfo } from "@store/Admin/adminAsyncActions";
 

@@ -15,6 +15,7 @@ import Box from "@mui/material/Box";
 // Redux
 import { useAppDispatch } from "@root/store/hooks";
 import { matchAction } from "@root/store/match/matchAsyncAction";
+import {Link} from "react-router-dom";
 
 const labels: { [index: string]: string } = {
   0.5: '0.5 estrellas',
@@ -113,7 +114,7 @@ setOpenRaiting(false);
         <h3>Resspanonsable: </h3>
         <span>{name}</span>
         <h3>Correo: </h3>
-        <span>{email}</span>
+        <Link to={`/user/${email}`}>{email}</Link>
       </div>
       <hr />
       <div className={styles["actions"]}>

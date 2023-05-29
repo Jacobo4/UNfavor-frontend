@@ -1,8 +1,8 @@
 @import "@globalStyles/responsive.css";
 .ReportedProfiles{
-    padding: 12px;
+    padding: 20px;
     display: grid;
-    gap: 2rem;
+    gap: 20px;
     justify-content: center;
     align-items: center;
     justify-items: center;
@@ -31,20 +31,8 @@
         }
     }
     .ReportCardsContainer{
-        display:flex;
-        flex-direction: column;
-        
-        width: 100%;
-        gap: 16px;
-        @media(--screen-lg){
-            display:grid;
-            width:100%;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 16px;
-        }
-        @media(--screen-xl) {
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-gap: 32px;
-        }
+        display: grid;
+        gap: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     }
 }

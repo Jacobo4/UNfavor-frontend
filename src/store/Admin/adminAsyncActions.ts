@@ -67,8 +67,8 @@ export const getAdminInfo = createAsyncThunk(
     }
 )
 
-export const getReportedUsers = createAsyncThunk(
-    '/admin/reportUsers',
+export const getReports = createAsyncThunk(
+    '/admin/getReports',
     async (_, {rejectWithValue}) => {
         try {
             const config = {
@@ -78,7 +78,7 @@ export const getReportedUsers = createAsyncThunk(
             };
 
             const { data } = await axiosApiInstance.get(
-                `${API_URL}/admin/reportUsers`,
+                `${API_URL}/admin/reports`,
                 config
             );
 
@@ -92,8 +92,8 @@ export const getReportedUsers = createAsyncThunk(
         }
     }
 )
-export const getAllUsers = createAsyncThunk(
-    '/admin/getAllUsers',
+export const getUsersToReview = createAsyncThunk(
+    '/admin/getUsersToReview',
     async (_, {rejectWithValue}) => {
         try {
             const config = {

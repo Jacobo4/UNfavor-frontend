@@ -1,7 +1,7 @@
 import styles from "./ProfileControl.module.css";
 import React, {useEffect} from "react";
-import {getAllUsers, controlFavor} from "@store/Admin/adminAsyncActions";
-import ControlCard from "./ControlCard";
+import {getUsersToReview, controlFavor} from "@store/Admin/adminAsyncActions";
+import ControlCard from "./components/ControlCard";
 import {useAppDispatch, useAppSelector} from "@store/hooks";
 import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
 import {AllUserInfo} from "@store/Admin/adminSlice";
@@ -11,7 +11,7 @@ const ProfileControl: React.FC = () => {
     const dispatch = useAppDispatch();
     const {usersToReview}: { usersToReview: Array<AllUserInfo> } = useAppSelector((state) => state.admin);
     useEffect(() => {
-        dispatch(getAllUsers());
+        dispatch(getUsersToReview());
     }, []);
 
     return (
@@ -41,7 +41,7 @@ const ProfileControl: React.FC = () => {
                         subtitle={""}
                         title={"No hay más usuarios por revisar"}
                         reloadItems={true}
-                        reloadItemsAction={()=>dispatch(getAllUsers())}
+                        reloadItemsAction={()=>dispatch(getUsersToReview())}
                         icon={<BiHappyBeaming/>}/>
                 }
 
