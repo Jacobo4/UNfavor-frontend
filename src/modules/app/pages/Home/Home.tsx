@@ -9,8 +9,6 @@ import styles from "./Home.module.css";
 import Stack from "@mui/material/Stack";
 // Images
 import logo from "@assets/images/logo.png";
-import natalia from "@assets/images/natalia.png";
-import fotoFavour1 from "@assets/images/favour1.jpg";
 // @ts-ignore
 import {ReactComponent as SideDecor} from "@assets/images/login/loginDecor.svg";
 // Framer motion
@@ -35,28 +33,28 @@ const cardData: Array<Match> = [
         title: "Card 1",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint.",
         location: "This is a location",
-        image: fotoFavour1,
+        imgURL: "https://api.dicebear.com/6.x/adventurer/svg?seed=lindo123@unal.edu.co",
     },
     {
         id: 2,
         title: "Card 2",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint.",
         location: "This is a location",
-        image: fotoFavour1,
+        imgURL: "https://api.dicebear.com/6.x/adventurer/svg?seed=lindo123@unal.edu.co",
     },
     {
         id: 3,
         title: "Card 3",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint.",
         location: "This is a location",
-        image: fotoFavour1,
+        imgURL: "https://api.dicebear.com/6.x/adventurer/svg?seed=lindo123@unal.edu.co",
     },
     {
         id: 4,
         title: "Card 4",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aperiam architecto dignissimos, illo laboriosam laborum nam obcaecati sequi sint! Ipsam, numquam, quas. Deserunt dolorem eligendi optio praesentium, rerum sint.",
         location: "This is a location",
-        image: fotoFavour1,
+        imgURL: "https://api.dicebear.com/6.x/adventurer/svg?seed=lindo123@unal.edu.co",
     },
 ];
 

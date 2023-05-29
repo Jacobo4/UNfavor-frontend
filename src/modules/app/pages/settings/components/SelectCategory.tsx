@@ -56,8 +56,8 @@ const MultipleSelectChip: React.FC = () => {
     <div>
       <FormControl fullWidth>
         <Select
-          labelId="demo-multiple-chip-label"
-          id="demo-multiple-chip"
+          labelId="categoryLabel"
+          id="categoryID"
           multiple
           value={category}
           onChange={handleChange}

@@ -65,15 +65,15 @@ export default function FavorForm({ categorie, distance }) {
               variant="standard"
               sx={{ m: 1, minWidth: 220, color: "#00D4A6" }}
             >
-              <InputLabel id="demo-simple-select-standard-label">
+              <InputLabel id="categoryLabel">
                 Categoria
               </InputLabel>
 
               <Controller
                 render={({ field: { onChange, value } }) => (
                   <Select
-                    labelId="demo-simple-select-standard-label"
-                    id="demo-simple-select-standard"
+                    labelId="categoryLabel"
+                    id="dcategoryId"
                     required
                     value={value}
                     color="secondary"

@@ -110,7 +110,7 @@ export const signIn = createAsyncThunk(
         try {
 
             const formdata = new FormData();
-            formdata.append("image", formValues.favor.imgURL, "walpaper.jpg");
+            formdata.append("image", formValues.favor.imgURL, `profilePhoto-${formValues.user.email}.jpg`);
             const image = await fetch(`https://api.imgbb.com/1/upload?expiration=100000&key=${import.meta.env.VITE_IMAGEDB_PUBLIC_KEY}`, {
                 method: 'POST',
                 body: formdata,

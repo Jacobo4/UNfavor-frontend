@@ -25,6 +25,20 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import {MuiFileInput} from "mui-file-input";
 
+const categories = [
+    "Académico",
+    "Carpinteria",
+    "Cocina",
+    "Cuidado de niños",
+    "Cuidado de mascotas",
+    "Deportes",
+    "Electricidad",
+    "Fotografia",
+    "Jardineria",
+    "Limpieza",
+    "Transporte",
+];
+
 const CssTextField = styled(TextField)({
     "& label.Mui-focused": {
         color: "#00D4A6",
@@ -63,7 +77,7 @@ export default function Form() {
         handleSubmit,
         formState: {errors},
         control,
-    } = useForm<SignInFormValues>(defaultValues);
+    } = useForm<SignInFormValues>();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const {isLogged} = useAppSelector((state) => state.auth);
@@ -221,7 +235,6 @@ export default function Form() {
                         <CssTextField
                             required
                             fullWidth
-
                             error={value == ""}
                             helperText={value == "" ? "El campo es obligatorio" : ""}
                             value={value}
@@ -236,21 +249,45 @@ export default function Form() {
                 />
             </div>
             <div>
+
                 <Controller
                     render={({field: {onChange, value}}) => (
-                        <CssTextField
-                            required
-                            fullWidth
+                        <FormControl
+                            variant="standard"
+                            sx={{m: 1, minWidth: 220, color: "#00D4A6"}}
+                        >
+                            <InputLabel id="categoryLabel">
+                                Categoria
+                            </InputLabel>
 
-                            error={value == ""}
-                            helperText={value == "" ? "El campo es obligatorio" : ""}
-                            value={value}
-                            onChange={onChange}
-                            id="location"
-                            label="Ubicación"
-                        />
+                            <Controller
+                                render={({field: {onChange, value}}) => (
+                                    <Select
+                                        labelId="categoryLabel"
+                                        id="categoryID"
+                                        required
+                                        value={value}
+                                        color="secondary"
+                                        label-color="secondary"
+                                        label="Categoria"
+                                        onChange={onChange}
+                                    >
+                                        <MenuItem value="">
+                                            <em>None</em>
+                                        </MenuItem>
+                                        {categories.map((category) => (
+                                            <MenuItem
+                                                key={category}
+                                                value={category}>{category}</MenuItem>
+                                        ))}
+                                    </Select>
+                                )}
+                                name={"favor.category"}
+                                control={control}
+                            />
+                        </FormControl>
                     )}
-                    name="favor.location"
+                    name={"favor.category"}
                     control={control}
                 />
             </div>
