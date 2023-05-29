@@ -38,7 +38,6 @@ const Match: React.FC = () => {
 
     const likeMatchFavor = async (id) => {
         try {
-            console.log("asd")
             await dispatch(likeMatch({userId: id}));
         } catch (error) {
             console.error(error)
@@ -46,7 +45,11 @@ const Match: React.FC = () => {
     }
 
     const dislikeMatchFavor = async (id) => {
-        console.log("dislike", id)
+        try {
+            await dispatch(dislikeMatch({userId: id}));
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     const removeCard = (indexToRemove: number) => {
@@ -92,7 +95,7 @@ const Match: React.FC = () => {
                                 likeCb={() => likeMatchFavor(card.user_id)}
                                 removeCardCB={() => removeCard(index)}
                                 card={card}
-                                dislikeCb={() => null}/>
+                                dislikeCb={() => dislikeMatchFavor(card.user_id)}/>
                         ))
                     }
                 </AnimatePresence>

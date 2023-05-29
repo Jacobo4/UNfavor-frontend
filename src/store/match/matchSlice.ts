@@ -9,9 +9,9 @@ import type {
     matchActionSuccess,
     Match,
     getMatchesHistoryValues,
-    getMatchesHistorySuccess, getMatchesHistoryFailure
+    getMatchesHistorySuccess, getMatchesHistoryFailure, dislikeMatchSuccess, dislikeMatchFailure
 } from "@store/match/matchAsyncAction";
-import {getMatches, likeMatch, matchAction,getMatchesHistory} from "@store/match/matchAsyncAction";
+import {getMatches, likeMatch, matchAction, getMatchesHistory, dislikeMatch} from "@store/match/matchAsyncAction";
 
 type RequestState = 'pending' | 'fulfilled' | 'rejected' | 'idle';
 
@@ -82,6 +82,23 @@ const matchSlice = createSlice({
             })
             .addCase(likeMatch.rejected, (state: MatchState, action) => {
                 const {message} = action.payload as likeMatchFailure;
+                toast.dismiss(state.toastLoaderId);
+                toast.error('Error giving a like :(', {position: 'top-center'})
+                state.status = 'rejected';
+                state.error = message;
+            })
+            .addCase(dislikeMatch.pending, (state: MatchState, action) => {
+                state.toastLoaderId = toast.loading('Giving a dislike :(', {position: 'top-center'});
+                state.status = 'pending';
+                state.error = null;
+            })
+            .addCase(dislikeMatch.fulfilled, (state: MatchState, action) => {
+                // const {favor} = action.payload as dislikeMatchSuccess;
+                toast.dismiss(state.toastLoaderId);
+                state.status = 'fulfilled';
+            })
+            .addCase(dislikeMatch.rejected, (state: MatchState, action) => {
+                const {message} = action.payload as dislikeMatchFailure;
                 toast.dismiss(state.toastLoaderId);
                 toast.error('Error giving a like :(', {position: 'top-center'})
                 state.status = 'rejected';

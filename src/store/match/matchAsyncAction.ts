@@ -39,6 +39,20 @@ export interface likeMatchFailure {
     error: string;
 }
 
+export interface dislikeMatchValues {
+    userId: String
+}
+
+export interface dislikeMatchSuccess {
+    message: string;
+    favor: Match
+}
+
+export interface dislikeMatchFailure {
+    message: string;
+    error: string;
+}
+
 export type getMatchesHistoryValues = {
     option: string;
 }
@@ -162,6 +176,34 @@ export const likeMatch = createAsyncThunk(
 
             const {data} = await axiosApiInstance.put(
                 `${API_URL}/favor/likeFavor`,
+                {...values},
+                config
+            );
+
+            return data;
+        } catch (error) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+);
+
+export const dislikeMatch = createAsyncThunk(
+    'match/dislikeMatch',
+    async (values: dislikeMatchValues, {rejectWithValue, getState}) => {
+        const state = getState();
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            const {data} = await axiosApiInstance.put(
+                `${API_URL}/favor/dislikeFavor`,
                 {...values},
                 config
             );
