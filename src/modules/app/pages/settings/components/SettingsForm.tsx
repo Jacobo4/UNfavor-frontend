@@ -76,12 +76,12 @@ const Form: React.FC = ({userInfo}) => {
    */
     const onSubmit = handleSubmit(async (data: updateUserInfoFormValues) => {
     console.log({latitude: position.coords.latitude, longitude: position.coords.longitude, ...data})
-        // try {
-        //     await dispatch(updateMyUserInfo({latitude: position.coords.latitude, longitude: position.coords.longitude, ...data}));
-        //     navigate("/");
-        // } catch (e) {
-        //     console.error(e);
-        // }
+        try {
+            await dispatch(updateMyUserInfo({latitude: position.coords.latitude, longitude: position.coords.longitude, ...data}));
+            navigate("/");
+        } catch (e) {
+            console.error(e);
+        }
     });
 
     useEffect(() => {
