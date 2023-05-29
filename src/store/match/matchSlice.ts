@@ -85,6 +85,7 @@ const matchSlice = createSlice({
                 const {message} = action.payload as matchActionSuccess;
                 toast.dismiss(state.toastLoaderId);
                 state.status = 'fulfilled';
+                
             })
             .addCase(matchAction.rejected, (state: MatchState, action) => {
                 const {message} = action.payload as matchActioFailure;
