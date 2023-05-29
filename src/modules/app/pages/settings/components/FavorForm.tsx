@@ -92,7 +92,7 @@ export default function FavorForm({ categorie, distance }) {
                     defaultValue={categorie}
                     label="Categoria"
                     onChange={onChange}
-                    defaultChecked={categorie !== "Any" ? categorie : "None"}
+                    // defaultChecked={categorie !== "Any" ? categorie : "None"}
                   >
                     <MenuItem value="">
                       <em>None</em>

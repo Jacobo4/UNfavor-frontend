@@ -75,17 +75,19 @@ const Form: React.FC = ({userInfo}) => {
    * @param {updateUserInfoFormValues} data - Form data to be submitted.
    */
     const onSubmit = handleSubmit(async (data: updateUserInfoFormValues) => {
-        try {
-            await dispatch(updateMyUserInfo({latitude: position.coords.latitude, longitude: position.coords.longitude, ...data}));
-            navigate("/");
-        } catch (e) {
-            console.error(e);
-        }
+    console.log({latitude: position.coords.latitude, longitude: position.coords.longitude, ...data})
+        // try {
+        //     await dispatch(updateMyUserInfo({latitude: position.coords.latitude, longitude: position.coords.longitude, ...data}));
+        //     navigate("/");
+        // } catch (e) {
+        //     console.error(e);
+        // }
     });
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((pos) => {
             setCurrentPosition(pos);
+            console.log(pos)
         });
     }, []);
 
@@ -105,7 +107,7 @@ const Form: React.FC = ({userInfo}) => {
                                     onChange={onChange}
                                     id="name"
                                     label="Nombre completo"
-                                    defaultValue={userInfo.name}
+                                    // defaultValue={userInfo.name}
                                 />
                             )}
                             name={"newUserData.name"}
@@ -123,7 +125,7 @@ const Form: React.FC = ({userInfo}) => {
                                     onChange={onChange}
                                     id="tel"
                                     label="Telefono"
-                                    defaultValue={userInfo.phone}
+                                    // defaultValue={userInfo.phone.slice(3)}
                                 />
                             )}
                             name={"newUserData.phone"}
@@ -144,7 +146,7 @@ const Form: React.FC = ({userInfo}) => {
                                     onChange={onChange}
                                     id="favorTitle"
                                     label="Titulo del favor"
-                                    defaultValue={userInfo.favor.title}
+                                    // defaultValue={userInfo.favor.title}
                                 />
                             )}
                             name={"newUserData.favor.title"}
@@ -163,7 +165,7 @@ const Form: React.FC = ({userInfo}) => {
                                     id="description"
                                     label="Descripción del favor"
                                     multiline
-                                    defaultValue={userInfo.favor.description}
+                                    // defaultValue={userInfo.favor.description}
                                 />
                             )}
                             name={"newUserData.favor.description"}
@@ -181,7 +183,7 @@ const Form: React.FC = ({userInfo}) => {
                                     onChange={onChange}
                                     id="location"
                                     label="Ubicación"
-                                    defaultValue={userInfo.favor.location}
+                                    // defaultValue={userInfo.favor.location}
                                 />
                             )}
                             name={"newUserData.favor.location"}
@@ -199,14 +201,13 @@ const Form: React.FC = ({userInfo}) => {
                     </div>
 
 
-                    <div>
-                        <button type="submit">Guardar cambios</button>
-                    </div>
-                </form>
-                <FavorForm categorie={userInfo.preferences.favor_filters.favor_type}
-                           distance={userInfo.preferences.favor_filters.max_distance_km}/>
-            </div>
-        )
-    );
+        <div>
+          <button type="submit">Guardar cambios</button>
+        </div>
+      </form>
+      <FavorForm categorie={userInfo.preferences.favor_filters.favor_type} distance={userInfo.preferences.favor_filters.max_distance_km}/>
+    </div>
+    )
+  );
 };
 export default Form;

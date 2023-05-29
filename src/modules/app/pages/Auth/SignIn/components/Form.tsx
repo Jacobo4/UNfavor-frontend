@@ -83,7 +83,7 @@ export default function Form() {
         handleSubmit,
         formState: {errors},
         control,
-    } = useForm<SignInFormValues>(defaultValues);
+    } = useForm<SignInFormValues>();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const {isLogged} = useAppSelector((state) => state.auth);

@@ -112,7 +112,7 @@ export const getMatches = createAsyncThunk(
     }
 );
 export const getMatchesHistory = createAsyncThunk(
-    'user/getMatchesHistory',
+    'match/getMatchesHistory',
     async (values: getMatchesHistoryValues, {rejectWithValue}) => {
         try {
             const config = {

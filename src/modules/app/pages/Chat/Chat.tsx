@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 import { useAppDispatch } from "@store/hooks";
 import { getMatchesHistory } from "../../../../store/match/matchAsyncAction";
 
-const allowedUsers = ["admin@unal.edu.co"];
+const allowedUsers = [];
 
 /**
  * Component for rendering the chat functionality.
@@ -26,15 +26,16 @@ const Chat: React.FC = () => {
   const { token } = useAppSelector((state) => state.auth);
   const [username, setUsername] = useState("");
   const dispatch = useAppDispatch();
-  const { matches } = useAppSelector((state) => state.user);
+  const { myMatches } = useAppSelector((state) => state.match);
 
   /**
    * Function to add matches' emails to the allowed users list.
    */
   function allowingChats() {
-    if (matches) {
+    console.log(myMatches)
+    if (myMatches) {
       console.log("matches");
-      matches.forEach((match) => {
+      myMatches.forEach((match) => {
         if (!allowedUsers.includes(match.email)) {
           allowedUsers.push(match.email);
         }
@@ -49,6 +50,7 @@ const Chat: React.FC = () => {
    */
   function createDirectChat(creds) {
     console.log(allowedUsers.includes(username));
+    allowingChats();
     allowedUsers.forEach((user) =>
       getOrCreateChat(
         creds,
@@ -102,10 +104,10 @@ const Chat: React.FC = () => {
   }
 
   useEffect(() => {
-    console.log(token);
-    console.log(import.meta.env.VITE_CHAT_PROJECT_ID);
+    // console.log(token);
+    // console.log(import.meta.env.VITE_CHAT_PROJECT_ID);
     dispatch(getMatchesHistory({ option: "ANYTHING" }));
-    console.log(matches);
+    // console.log(myMatches);
     allowingChats();
   }, []);
 
@@ -118,7 +120,7 @@ const Chat: React.FC = () => {
 
   return (
     <div className={`overrideChat ${styles["Chat"]}`}>
-      {matches && (
+      {myMatches && (
         <ChatEngine
           offset={-5}
           projectID={import.meta.env.VITE_CHAT_PROJECT_ID}

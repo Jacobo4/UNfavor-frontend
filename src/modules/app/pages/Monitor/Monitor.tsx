@@ -7,7 +7,7 @@ import React, { useEffect } from "react";
 import styles from "./Monitor.module.css";
 //Redux
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { getMatchesHistory } from "../../../../store/user/userAsyncAction";
+import { getMatchesHistory } from "@store/match/matchAsyncAction";
 // Icons
 import {MdHeartBroken} from "react-icons/md";
 
@@ -20,20 +20,20 @@ import NoItemsLeft from "@root/components/NoItemsLeft/NoItemsLeft";
  */
 const Monitor: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { matches } = useAppSelector((state) => state.user);
+  const { myMatches } = useAppSelector((state) => state.match);
 
   useEffect(() => {
     // Fetch matches history
     dispatch(getMatchesHistory({ option: "ANYTHING" }));
-    console.log(matches);
+    console.log(myMatches);
   }, []);
 
   return (
     <main className={styles["Monitor"]}>
-      {matches && (
+      {myMatches && (
         <>
           <div className={styles["favorsWrapper"]}>
-            {matches.length === 0 && (
+            {myMatches.length === 0 && (
               <NoItemsLeft
                 icon={<MdHeartBroken/>}
                 title={"Aún no tienes matches"}
@@ -42,8 +42,8 @@ const Monitor: React.FC = () => {
                 goToMessage={"¡Encuentra tu match!"}
               />
             )}
-            {matches.length !== 0 &&
-              matches.map((info, index) => <FavorCard key={index} {...info} />)}
+            {myMatches.length !== 0 &&
+              myMatches.map((info, index) => <FavorCard key={index} {...info} />)}
           </div>
         </>
       )}

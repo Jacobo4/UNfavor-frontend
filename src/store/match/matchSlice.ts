@@ -131,8 +131,8 @@ const matchSlice = createSlice({
                 
                 toast.dismiss(state.toastLoaderIds['getMatchesHistory']);
                 state.status = 'fulfilled'; 
-                state.matches = action.payload.matches; 
-                state.myFinishedMatches = action.payload.matches;           
+                state.myMatches = action.payload.matches;
+                state.myFinishedMatches = action.payload.matches;
             })
             .addCase(getMatchesHistory.rejected, (state: MatchState, action) => {
                 const {message} = action.payload as getMatchesHistoryFailure;
